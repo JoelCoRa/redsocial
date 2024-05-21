@@ -1,0 +1,211 @@
+.example-container {
+  width: 100%;
+  background: transparent;
+  margin-top: 3.1rem;
+  position: relative;    
+  top: 0;
+}
+.btn-desplegar{
+  margin-top: 2rem;
+  background-color: #5c3ca9;
+}
+.mensaje{
+  text-align: center  ;
+}
+
+.example-sidenav-content {
+  display: flex;
+  /* height: 100vh; */
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 17rem;
+  width: 100%;
+}
+  
+.rotated {
+  transform: rotate(180deg); /* Puedes ajustar el ángulo de rotación según tus necesidades */
+}
+.sidebar{
+  width: 8rem;
+  display: inline-block;
+  overflow: hidden;
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3); 
+  -webkit-box-shadow: 5px 5px 17px 4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 17px 4px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 17px 4px rgba(0,0,0,0.75); 
+  /* height: 100rem; */
+  position: fixed; 
+  top: 3rem;  
+  z-index: 101;
+}
+
+.sidebar ul{
+  list-style: none;    
+  margin-left: 0;
+  padding: 0;
+  /* border: 3px solid rgb(62, 147, 14); */
+}
+
+.sidebar .seccion{
+  background-color: rgb(246, 242, 236);
+  font-family: var(--fuenteSecundaria);
+  padding: 0.7rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem 2px 1rem;
+  border: 3px solid #000;
+  border-radius: 1rem;
+}
+.sidebar .seccion a{
+  display: none;
+}
+.sidebar .seccion li{
+  margin: 0 auto;
+}
+.iconoResponsive{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.sidebar .seccion:hover{
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  font-weight: bold;
+  border: 3px solid #0348af;
+  background-color: #7f92df;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5), -2px -2px 5px rgba(255, 255, 255, 0.5);
+}
+.sidebar .selected{
+  border: 3px solid #af0303;
+  background-color: #ea7f7f;
+}
+.sidebar .seccion a{
+  margin-left: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar .version{
+  text-align: center;
+  font-family: var(--fuenteGenerica);
+  font-size: 0.8rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.sidebar .iconoResponsive .span{
+  font-size: 0.7rem;
+}
+.example-sidenav-content{
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  overflow: auto;
+  /* margin-left: 3%; */
+}
+
+
+/* Estilos Chatbot */
+
+
+.contBotonChat{
+  border-radius: 50%;
+  padding: 0.5rem;
+  background: #F3904F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-box-shadow: 1px 2px 14px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 2px 14px 0px rgba(0,0,0,0.75);
+  box-shadow: 1px 2px 14px 0px rgba(0,0,0,0.75);
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+
+}
+.contBotonChat button{
+  border: none;
+  background: none;
+}
+.contBotonChat .imgChat{
+  width: 100%;
+  background: none;
+}
+.chatbot2{
+  display: none;
+}
+
+
+
+
+
+@media(min-width: 900px){
+  .btn-desplegar{
+    margin-top: 0.5rem;
+  }
+  .example-container{
+    width: 77%;
+    margin-top: 4rem;
+    z-index: 1;
+  }
+  .example-sidenav-content{
+    justify-content: start;
+    align-items: start;
+    margin: 1% 4%;
+    margin-bottom: 10rem;
+    width: 90%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .sidebar{
+    width: 15rem;
+    top: 3.8rem;
+  }
+  .sidebar .seccion{
+    justify-content: start;
+    padding: 0.7rem;
+  }
+  .sidebar .seccion .iconoResponsive .span{
+    display: none;
+  }
+  .sidebar .seccion a{
+    display: block;
+  }  
+  .sidebar .version{
+    font-size: 1rem;
+  }
+  .contBotonChat{
+    display: none;
+  }
+  .chatbot2{
+    display: block;
+    z-index: 10000000;
+  }
+
+}
+@media(max-width: 299px){
+  .example-sidenav-content{
+    justify-content: start;
+    align-items: start;
+    margin: 1% 4%;
+    margin-bottom: 10rem;
+    width: 60%;
+    height: 100vh;
+    z-index: 0;
+  }
+}
+
+.example-container{
+  position: relative;
+  overflow: hidden;
+}

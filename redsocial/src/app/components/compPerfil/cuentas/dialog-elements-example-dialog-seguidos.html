@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="tituloModal">Información de usuario</h2>
+<mat-dialog-content class="contModal">
+    <div class="headerModal">
+        <img *ngIf="base64Image === ''" src="../../../../assets/avatars/2.jpg" alt="imgPerfilModal" class="imgPerfilModal">
+        <img *ngIf="base64Image !== ''" [src]="base64Image" alt="imgPerfilModal" class="imgPerfilModal">
+        <h4>{{nombreUsuario}}</h4>
+    </div>
+    <div class="bodyModal">
+        <p>{{descripcion}}</p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="contBoton">
+    <button mat-dialog-close class="btnCerrar">Cerrar</button>
+
+</mat-dialog-actions>

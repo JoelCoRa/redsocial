@@ -1,0 +1,188 @@
+
+.temaForo{
+    margin: 1rem;
+}
+.titleForo{
+    font-size: 1.2rem;
+    font-family: var(--fuentePrimaria);
+}
+.cardTema{
+    border-radius: 10px;
+    border: 1px solid #183cbe;
+    width: 20%;
+    text-align: center;
+    padding: 1rem;
+    background-color: aliceblue;
+    -webkit-box-shadow: 2px 7px 28px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 7px 28px -7px rgba(0,0,0,0.75);
+    box-shadow: 2px 7px 28px -7px rgba(0,0,0,0.75);
+}
+.temaResult{
+    margin: 0;
+    display: inline-block;
+    font-size: 1rem;
+    font-family: var(--fuenteGenerica);
+}
+.imgUser{
+    width: 7%;
+    margin: 1rem;
+}
+.infoForo{
+    display: flex;
+    flex-direction: row;
+}
+
+.infoTextoForo{
+    display: flex;
+    flex-direction: column;
+}
+.tituloForoResult{
+    font-size: 1.4rem;
+    margin: 0;
+    font-family: var(--fuenteGenerica);   
+}
+.publicadoPor{
+    font-size: 1rem;
+    color: rgb(191, 191, 191);
+    font-family: var(--fuentePrimaria);
+    font-style: italic;
+    
+}
+.reacciones{
+    width: 80%;
+    display: flex;
+    justify-content: end;
+    text-align: center;
+    /* border: 1px solid #000; */
+
+}
+.contReacciones{
+    display: flex;
+    width: 40%;
+
+    /* border: 1px solid #000; */
+    justify-content: center;
+    align-items: center;
+
+    justify-content: space-evenly;
+}
+
+.numLikes{
+    font-size: 1rem;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* margin: 1rem 1rem; */
+}
+
+.contenidoForo{
+    /* border: 1px solid #000; */
+    padding: 1rem;
+}
+.cardComentarios{
+    margin: 0.5rem 0 2rem 0;
+}
+.cardComentarios p{
+    margin-left: 1rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    font-family: var(--fuenteGenerica);
+}
+.comentarios{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    width: 100%;
+    align-items: center;
+}
+
+.inputReplica{
+    width: 100%;
+    padding: 1rem;
+    /* height: 1rem; */
+}
+
+/* Boton Replicar */
+button {
+    --color: #0077ff;
+    font-family: var(--fuentePrimaria);
+    display: inline-block;
+    width: 6em;
+    height: 2em;
+    line-height: 1em;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 1rem;
+    font-size: 17px;
+    z-index: 1;
+    color: var(--color);
+    border: 2px solid var(--color);
+    border-radius: 6px;
+    position: relative;
+  }
+  
+  button::before {
+    position: absolute;
+    content: "";
+    background: var(--color);
+    width: 150px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  button:hover {
+    color: white;
+  }
+  
+  button:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+  }
+  
+  button:hover::before {
+    top: -30px;
+    left: -30px;
+  }
+  
+
+
+
+.replicas{
+    margin-top: 1rem;
+}
+.contReplicas{
+    padding: 1rem;
+    
+}
+.tituloReplicas h4{
+    font-size: 1.2rem;
+    font-family: var(--fuentePrimaria);
+}
+.cuerpoReplica{
+    display: flex;
+    flex-direction: row;
+}
+.infoUserQueReplica{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #000; */
+}
+.imgUserReplica{
+    width: 40%;
+}
+.infoUserQueReplica h4{
+    font-size: 0.8rem;
+    font-family: var(--fuentePrimaria);
+    font-style: italic;
+}
+.contenidoReplica{
+    border: 1px solid #000;
+    background-color: rgb(225, 226, 226);
+    border-radius: 10px;
+    padding: 1rem;
+}
+

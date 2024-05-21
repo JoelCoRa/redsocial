@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
+    <app-msg-recursos></app-msg-recursos> 
+    
+    <div class="cuerpoRecursos">
+      <app-menurecursos></app-menurecursos>
+      <div class="mat-elevation-z8 tabla">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Titulo </th>
+            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="autor" >
+            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Autor </th>
+            <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="tema" >
+            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Tema </th>
+            <td mat-cell *matCellDef="let element"> {{element.tema}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="link" >
+            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Link </th>
+            <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+          </ng-container>      
+               
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</app-sidebar>
+
+

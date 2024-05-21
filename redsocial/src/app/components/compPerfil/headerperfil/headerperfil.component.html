@@ -1,0 +1,76 @@
+<div class="headerPerfil">
+    <div class="contImg">
+        <img *ngIf="imagenPerfil === ''" src="../../../../assets/avatars/1.jpg" alt="fotoDePerfil" class="avatarPerfil">
+        <img *ngIf="imagenPerfil !== ''" [src]="base64Image" alt="fotoDePerfil" class="avatarPerfil">
+        <form class="accionesImg" [formGroup]="form">
+            <div class="contBotonesAvatar">                
+                <div class="file-upload-wrapper tooltip-container">
+                    <span class="tooltip2">Sube una nueva foto</span>
+                    <input type="file" id="fileInput" (change)="onFileChange($event)"  [(ngModel)]="imgPerfil" [ngModelOptions]="{standalone: true}" />
+                    <label for="fileInput" class="custom-file-upload">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                            <path d="M7 9l5 -5l5 5" />
+                            <path d="M12 4l0 12" />
+                        </svg> 
+                    </label>                    
+                </div>
+                <span class="span">Subir Imagen</span>
+            </div>
+
+            <!-- <div class="contBotonesAvatar">                
+            <button class="btnAcccionImg tooltip-container">
+                <span class="tooltip2">Elige un avatar de perfil</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-body-scan" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                    <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                    <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                    <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+                    <path d="M12 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    <path d="M10 17v-1a2 2 0 1 1 4 0v1" />
+                    <path d="M8 10c.666 .666 1.334 1 2 1h4c.666 0 1.334 -.334 2 -1" />
+                    <path d="M12 11v3" />
+                  </svg>
+            </button>
+            <span class="span">Elegir avatar</span>
+            </div> -->
+        </form>            
+    </div>
+    <div class="infoPerfil">
+        <div class="nombre-id">
+            <div class="headerNombreID">
+                <h3 class="nombreUsuario">{{nombreUsuario}}</h3>
+                <p class="idUsuario"> {{idUsuario}}</p>  
+            </div>                 
+            <div class="contAddDescricpcion">
+                <button class="btnAboutMe tooltip-container" (click)="openInput()">
+                    <span class="tooltip">Añade una descripción a tu perfil</span>
+                    <img src="../../../../assets/aboutme.png" alt="" class="aboutme">    
+                    <span>Acerca De Mi</span>
+                </button>                
+            </div>            
+        </div>
+        <form class="contTextArea" *ngIf="addDescInputOpen">
+            <textarea placeholder="Añade una descripción" [value]="descripcionUsuario" maxlength="100" [(ngModel)]="descripcionUsuario" [ngModelOptions]="{standalone: true}" name="descripcionUsuario"></textarea>
+            <button (click)="updateDescripcion()">Guardar Cambios</button>
+        </form>
+        <div class="menuPerfil">
+        <button class="btnMenuPerfil" [routerLink]="['/perfil']" routerLinkActive="selected"  [routerLinkActiveOptions]="{exact: true}">Publicaciones
+            <span>{{numPublicaciones}}</span>
+        </button>
+        <button class="btnMenuPerfil" [routerLink]="['/perfil/seguidos']" routerLinkActive="selected">Seguidos
+            <span>{{numSeguidos}}</span>
+        </button>
+        <button class="btnMenuPerfil" [routerLink]="['/perfil/seguidores']" routerLinkActive="selected">Seguidores
+        <span>{{numSeguidores}}</span>
+        </button>
+    </div> 
+           
+    </div>
+    
+</div>
+
+
+

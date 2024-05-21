@@ -1,0 +1,85 @@
+.seccion{
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 0;
+  text-align: start;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}    
+.input:focus, input:hover {
+  border-color: rgba(129, 140, 248);
+  background-color: #fff;
+  box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+.card-title{
+  font-size: 1.4rem;
+  font-family: var(--fuentePrimaria);
+  margin: 0;
+}
+.botones{    
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+} 
+/* margin-top: 1rem; */
+.campo{
+  text-align: start;
+  font-family: var(--fuentePrimaria);
+}
+.campo label{
+  margin-left: 1rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}  
+.input{
+  height: 2rem;
+}
+.card-container{
+  height: 20%;
+  margin: 0;
+  margin-bottom: 15rem;
+}
+
+@media(min-width: 500px){    
+  .botones{    
+    padding: 0;
+    flex-direction: row;
+    margin-top: 1rem;
+    justify-content: space-around;
+  }    
+}
+
+@media(min-width: 800px){
+  .card-container{
+    margin: 2rem 0 1rem 0;
+    width: 60%;
+  }   
+  label{
+    margin-top: 1rem;
+  }
+}
+
+.contCheckbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  text-align: start;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+.contCheckbox .aviso{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  margin-bottom: 0;
+}
+.txtCheckbox{
+  font-size: 0.8rem;
+  font-family: var(--fuentePrimaria);
+}
+.txtCheckbox a{
+  color: #506eec;
+}

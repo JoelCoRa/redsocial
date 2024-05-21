@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
+    <div class="headerForo">
+        <app-barrabusqueda placeholderText="Busca el tema de un foro..." class="aver"></app-barrabusqueda>
+       
+      </div>
+    <div class="cuerpoForo">
+    <div>
+        <div class="temaForo">
+            <h3 class="titleForo">Tema Seleccionado</h3>
+            <div class="cardTema">
+                <p class="temaResult">{{temaResultadoForo}}</p>                
+            </div>
+        </div>
+
+        <mat-card class="example-card">
+            <mat-card-header class="headerCuerpo">
+                <div class="infoForo">
+                    <img src="../../../../assets/icon.png" alt="iconoUser" class="imgUser">
+                    <div class="">
+                        <h4 class="tituloForoResult">{{tituloForoResult}}</h4>
+                        <p class="publicadoPor">Publicado por {{usuarioResult}}</p>
+                    </div>
+                    
+                </div>
+                <div class="reacciones">
+                    <div class="contReacciones">
+                        <div class="likes">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart heartIcon" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                            </svg>
+                            <span class="numLikes">{{numLikes}}</span>
+                        </div>                  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                          </svg>
+                    </div>                    
+                </div>                   
+            </mat-card-header>
+            <mat-card-content>
+                <div class="contenidoForo">
+                    <p>{{contResultForo}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem error minus repellendus optio excepturi! Magnam consectetur unde rerum iusto repellendus saepe dolores nostrum, repellat qui, doloribus esse maxime corporis at? </p>
+                </div>          
+                  
+            </mat-card-content>            
+          </mat-card>  
+
+          <mat-card class="cardComentarios">
+            <p>Escribe una replica...</p>
+            <div class="comentarios">
+                <input type="text" class="inputReplica">
+                <button>Replicar</button>
+            </div>
+
+          </mat-card>
+
+          <mat-card class="replicas">
+            <div class="contReplicas">
+                <div class="tituloReplicas">
+                    <h4>Replicas</h4>
+                    <div class="cuerpoReplica">
+                        <div class="infoUserQueReplica">
+                            <img src="../../../../assets/icon.png" alt="iconoUser" class="imgUserReplica">
+                            <h4>{{usuarioQueReplica}}</h4>
+                        </div>
+                        <div class="contenidoReplica">
+                            <p>{{contenidoReplica}}</p>
+                        </div>
+                        <div class="accionesReplica">
+                            
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div> 
+          </mat-card>
+      </div>  
+    </div>  
+  </div>
+</app-sidebar>
+
+
+<app-footer></app-footer>

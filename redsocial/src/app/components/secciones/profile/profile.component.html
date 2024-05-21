@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Perfil'"></app-titulo-seccion>  
+    <div class="cuerpoPerfil">
+      <app-headerperfil></app-headerperfil>      
+      <h5 class="tituloPerfil">Publicaciones Creadas</h5>
+      <div *ngIf="numPublicaciones === 0">
+        <app-mensajevacio class="msgVacioTexto">¡Aun no tienes Publicaciones creadas!</app-mensajevacio>                
+        <app-crearpublicacion></app-crearpublicacion>
+      </div>
+      <div class="publicaciones" *ngIf="numPublicaciones !== 0">
+        <app-crearpublicacion></app-crearpublicacion>
+        <div *ngFor="let item of listPostPropio" class="contenedorPublicacio">
+          <mat-card class="contenedorPublicacion">
+            <div class="contenidoPrincipal">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image">
+                        <img src="../../../../assets/avatars/2.jpg" alt="imgPerfil" class="imgCircular">
+                    </div>
+                    <mat-card-title>{{nombreUsuario}}</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content class="cuerpoPublicacion">
+                      <p>{{item.contenido}}</p> 
+                      <p class="fechaPublicacion">{{item.fechaPublicacion | date: 'dd / MMM / yyyy'}}</p>               
+                  </mat-card-content>
+            </div>
+            
+            <mat-card-actions class="acciones tooltip-container">   
+              <span class="tooltip">Borrar publicación</span>             
+                <button class="accion delete" (click)="openDialog(item.id)" >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                  <span style="visibility: hidden;"></span>
+                </button>
+                <!-- Button trigger modal -->
+
+             
+             
+
+
+            </mat-card-actions>    
+          </mat-card>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+</app-sidebar>
+
+

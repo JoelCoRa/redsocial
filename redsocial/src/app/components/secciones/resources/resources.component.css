@@ -1,0 +1,10 @@
+.cuerpoRecursos{
+    display: flex;
+    flex-direction: column;
+}
+.tabla{
+    width: 100%;
+}
+.headerTabla{
+    background-color: rgb(178, 136, 217);
+}

@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
+    <div class="contRegresar">
+      <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
+    </div>    
+    <div class="cuerpoForo">
+      <form [formGroup]="crearForoForm" (ngSubmit)="onSubmit()">
+        <mat-card class="example-card">
+            <mat-card-header class="headerCuerpo">
+              <mat-card-title class="tituloCrearForo">Crea un Foro</mat-card-title>
+              <div class="inputs">
+                <div class="inputGroup">
+                  <div class="datosForo">
+                    <input type="text" required="" autocomplete="off" formControlName="titulo" [(ngModel)]="titulo">
+                    <label for="tituloforo">Título del Foro</label>
+                    <span class="instruccion">Ingresa un título para el foro</span>
+                  </div>                  
+                </div>
+                <div class="inputGroup">
+                  <div class="datosforo">
+                    <input type="text" id="etiq" required="" autocomplete="off" [(ngModel)]="etiquetaIngresada" formControlName="etiquetaIngresada">
+                    <label for="etiquetas">Etiquetas</label>
+                    <span class="instruccion">Ingresa una etiqueta para el foro</span>
+                  </div>                  
+                </div>               
+              </div>              
+            </mat-card-header>
+            <mat-card-content>
+                <textarea id="" placeholder="Ingresa el contenido del foro" class="contForo" formControlName="contenido" [(ngModel)]="contenido"></textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="checkbox-wrapper-46">
+                    <input type="checkbox" id="cbx-46" class="inp-cbx" formControlName="anonimo"/>
+                    <label for="cbx-46" class="cbx"
+                      ><span>
+                        <svg viewBox="0 0 12 10" height="10px" width="12px">
+                          <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+                      ><span class="anonimo">Publicar como anónimo</span>
+                    </label>
+                  </div>
+            </mat-card-actions>
+          </mat-card>  
+          <div class="botones">
+            <button class="btnPublicar" type="submit">Publicar</button>
+          </div>         
+        </form>  
+    </div>
+  
+  </div>
+</app-sidebar>
+
+

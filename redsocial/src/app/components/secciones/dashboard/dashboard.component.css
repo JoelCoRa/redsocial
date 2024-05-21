@@ -1,0 +1,346 @@
+
+.tarjeta{
+    border: 3px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.5rem;
+    -webkit-box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+}
+.tituloInicio{
+    font-family: var(--fuentePrimaria);
+    font-size: 1.3rem;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.imgCircular{
+    -webkit-box-shadow: 1px 2px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 11px 0px rgba(0,0,0,0.75);
+}
+
+.accionesHeader{
+    display: flex;
+    flex-direction: row;    
+    text-align: center;
+    /* width: 40%; */
+}
+.accionesHeader p{
+    font-family: var(--fuenteSecundaria);
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.accionesHeader .accion{
+    margin: 0 1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.contenedorInicio{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #000;
+    background-color: #7297ed;
+}
+.acciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media(min-width: 1000px){
+    .tarjeta{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .tituloInicio{
+        font-size: 1.5rem;
+    }
+    .accionesHeader p{
+        margin-bottom: 0;
+    }
+    .accionesHeader .accion:hover{
+        transform: scale(105%);
+        transition: 0.5s ease all;    
+    }
+    .contenedorInicio{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        border: 2px solid #000;
+        background-color: #7297ed;
+    }
+}
+.msgVacio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-vacia{
+    width: 40%;
+}
+.texto-vacio{
+    font-size: 2rem;
+    font-family: var(--fuentePrimaria);
+}
+/* Publicacion */
+.contenedorPublicacion {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+.contenedorPublicacion .cuerpoPublicacion{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    justify-content: center;
+    /* margin: 1rem; */
+}
+.nomUsuario{
+    font-family: var(--fuenteGenerica);
+    margin-top: 0.3rem;
+    font-size: 1.2rem;
+}
+.cuerpoPublicacion p{
+    font-family: var(--fuentePrimaria);
+    font-size: 0.9rem;
+}
+.contenedorPublicacion .acciones{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem 0 0;
+}
+.contenedorPublicacion .accion{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(min-width: 900px){
+    .contenedorPublicacion {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+    }
+    .contenedorPublicacion .cuerpoPublicacion{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2rem;
+        /* margin: 1rem; */
+    }
+    .contenedorPublicacion .acciones{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 1rem 0 0;
+    }
+    .contenedorPublicacion .accion{
+        flex-direction: row;
+    }
+    .contenedorPublicacion .accion span{
+        margin-left: 1rem;
+    }
+    .contenedorPublicacion .accion:hover{
+        transform: scale(110%);
+        cursor: pointer;
+        transition: all 0.5 ease-in-out ;
+    }
+    .contenedorPublicacion .like:hover{
+        filter: drop-shadow(2px 2px 4px rgba(231, 12, 12, 0.5));
+    }
+    .contenedorPublicacion .share:hover{
+        filter: drop-shadow(2px 2px 4px rgba(225, 101, 7, 0.5));
+    }
+    .contenedorPublicacion .broken:hover{
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+}
+.fechaPublicacion{
+    color: rgb(151, 151, 151);
+    margin-left: 1rem;
+}
+/* Comentarios */
+.contComentarios{
+    display: flex;
+    /* width: 94%; */
+    /* border: 1px solid #000; */
+    margin: 0.5rem 1rem;
+    margin-top: 0.2rem;
+}
+.contComentarios .accordion{
+    width: 100%;
+}
+.accordion-body{
+    padding-top: 0;
+}
+.contAddComment{
+    display: flex;
+    flex-direction: column;
+}
+.contAddComment span{
+    font-size: 0.8rem;
+    font-family: var(--fuenteSecundaria);
+}
+.contAddComment .form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0.5rem;
+}
+.contAddComment .form textarea{
+    resize: none;
+    height: 3rem;
+    width: 70%;
+    padding: 0.5rem;
+    font-family: var(--fuentePrimaria);
+}
+.contAddComment .form button{
+    border: none;
+    background-color: #799cee;
+    color: #000000;
+    width: 25%;
+    font-size: 0.7rem;
+    height: 2rem;
+    border-radius: 10px;
+    font-family: var(--fuenteSecundaria);
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+}
+
+.headerComment{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+}
+.headerComment .imgComment{
+    width: 10%;
+    border-radius: 50%;
+}
+.headerComment h3{
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-family: var(--fuentePrimaria);
+
+}
+
+@media(min-width: 900px){
+    .contAddComment span{
+        font-size: 1rem;
+    }
+    .contAddComment .form{
+        justify-content: space-around;
+    }
+    .contAddComment .form textarea{
+        width: 80%;
+    }
+    .contAddComment .form button{
+        width: 12%;
+        font-size: 0.8rem;
+    }
+    .contAddComment .form button:hover{
+        background-color: #15398d;
+        color: #ffffff;
+        -webkit-box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.75);
+        transform: scale(105%);
+        transition: 0.5s ease-in-out all;
+    }
+    .headerComment .imgComment{
+        width: 5%;
+    }
+    .headerComment h3{
+        font-size: 1.2rem;
+
+    }
+}
+.custom-tooltip {
+    background-color: blue !important; 
+    color: white;
+    font-size: 2rem !important;
+}
+
+.tooltip-container {
+    --background-light: #f06363; /* Red */
+    --background-hover: #b34d4d; /* Black */
+    --text-color-light: #ffffff;
+    --text-color-dark: #ffffff;
+    --bubble-size: 12px;
+    --glow-color: rgba(255, 255, 255, 0.5); /* Brighter glow color */  
+    position: relative;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-color-light);
+    border-radius: 8px; 
+    border: none;
+    margin-left: 1rem;
+}
+
+.tooltip {
+    position: absolute;
+    top: -60%; /* Initially hidden above the container */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.6em 1em;
+    opacity: 0;
+    visibility: hidden;
+    width: 9rem;
+    text-align: center;
+    pointer-events: none;
+    font-family: var(--fuentePrimaria);
+    transition: all 0.3s;
+    border: none;
+    border-radius: var(--bubble-size);
+    /* background: var(--background-light); */
+    background: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+  /* Triangle arrow for the bubble tooltip */
+.tooltip::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    border-style: solid;
+    border-width: 8px 8px 0;
+    border-color: #000 transparent transparent;
+    /* background: #000000; */
+
+}  
+ /* Tooltip appearance on hover */
+.tooltip-container:hover {
+    color: var(--text-color-dark);
+    box-shadow: 0 0 20px var(--glow-color); /* Brighter glow effect */
+    transform: scale(105%);
+    transition: 0.5s ease-in-out all;
+}
+  
+.tooltip-container:hover .tooltip {
+    top: -160%; /* Adjusted position for the bubble tooltip */
+    opacity: 1;
+    color: #fff;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+
+

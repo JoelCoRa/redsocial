@@ -1,0 +1,51 @@
+.contLegal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* border: 1px solid #000; */
+    padding: 1rem;
+}
+.contLegal .example-card{
+    width: 40%;
+    -webkit-box-shadow: 5px 2px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 2px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 2px 14px 0px rgba(0,0,0,0.75);
+    position: relative;
+    height: 22rem;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+.titleCardLegal{
+    font-size: 1.8rem;
+    font-family: var(--fuentePrimaria);        
+}
+.descLegal{
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    font-family: var(--fuenteSecundaria);
+    line-height: 1.2;
+    text-align: center;
+}
+.btnVerMas{
+    background-color: rgb(127, 195, 255);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-family: var(--fuenteTitulos);
+    border: none;
+    padding: 0.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 1rem auto;
+    -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.75);
+}
+
+.btnVerMas:hover{
+    transform: scale(105%);
+    transition: 0.5s ease-in all;
+}

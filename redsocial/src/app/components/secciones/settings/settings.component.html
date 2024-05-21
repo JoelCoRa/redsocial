@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Ajustes'"></app-titulo-seccion>
+    <p class="msgRecursos">En esta sección podrás modificar tus datos personales y preferencias</p>
+
+    <div class="contenedor">
+      <div class="row">
+        <div class="col-lg-6 col-md">
+          <mat-card class="example-card">        
+            <mat-card-header>
+              <mat-card-title class="titleCard">Datos Generales</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="cuerpoAjustes">              
+              <div class="inputDG">
+                <label for="nombre" class="labelDG">Nombre</label>
+                <input type="text" name="text" class="input" value="Nombre">
+              </div>
+              <div class="inputDG">
+                <label for="correo" class="labelDG">Correo</label>
+                <input type="email" name="correo" class="input" value="Correo">
+              </div>                         
+              <div class="inputDG">
+                <label for="nombre" class="labelDG">Nuevo Password</label>
+                <input type="text" placeholder="Nuevo Password" name="text" class="input">
+              </div>
+              <div class="inputDG">
+                <label for="nombre"  class="labelDG">Confirma nuevo Password</label>
+                <input type="text" placeholder="Repite el nuevo password" name="text" class="input">
+              </div>             
+            </mat-card-content>            
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md">
+          <mat-card class="example-card">        
+            <mat-card-header>
+              <mat-card-title class="titleCard">Preferencias</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="cuerpoAjustes">
+              <div class="inputPref">
+                <p class="labelPref">Modo Oscuro</p>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+                
+              </div>
+              <div class="inputPref">
+                <p class="labelPref">Notificaciones</p>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+                
+              </div>
+            </mat-card-content>            
+          </mat-card>         
+        </div>
+        <div class="botones">
+          <button class="btnGuardar">Guardar Cambios</button>
+          <button class="btnReestablecer">Reestablecer Cambios</button>
+        </div>
+      </div>
+    </div>
+
+  
+  </div></app-sidebar>
+
+

@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Perfil'"></app-titulo-seccion>  
+    <div class="cuerpoPerfil">
+      <app-headerperfil></app-headerperfil>      
+      <h5 class="tituloPerfil">Cuentas que sigues</h5>
+      <div *ngIf="numSeguidos === 0">
+        <app-mensajevacio class="msgVacioTexto">¡Aun no sigues a nadie, ve a la sección comunidad para buscar cuentas!</app-mensajevacio>                
+        <!-- <app-crearpublicacion></app-crearpublicacion> -->
+      </div>
+      <div class="contCuentas" *ngIf="numSeguidos !== 0">
+        <div></div>
+        <app-cuentas></app-cuentas>
+      </div>      
+    </div>
+  </div> 
+</app-sidebar>

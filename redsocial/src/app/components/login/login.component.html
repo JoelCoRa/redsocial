@@ -1,0 +1,38 @@
+<div class="login-body"*ngIf="!loading">
+    <div class="container" >
+      <app-titulo></app-titulo>
+        <div class="card-container">
+            <img src="../../../assets/iconlogin.png" class="img-login" alt="imglogin">
+            <div class="card-body">
+              <h5 class="card-title">Login</h5>
+              <hr>
+              <div class="mb-2 input-container">
+                <div class="group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                      </svg>
+                  <input class="input" type="text" placeholder="Usuario" [(ngModel)]="nombreUsuario">
+                </div>              </div>
+              <div class="mb-2 input-container">
+                <div class="group">
+                    <svg stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon">
+                    <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" stroke-linejoin="round" stroke-linecap="round"></path>
+                  </svg>
+                  <input class="input" type="password" placeholder="Contraseña" [(ngModel)]="password">
+                </div>
+              </div>
+              <div class="botones">
+                <button class="button" (click)="login()"><span class="button-content" >Entrar</span></button>
+                <p>¿No tienes una cuenta? <span class="buttonRegistrate"><a (click)="tosignIn()">Registrate</a></span></p>
+                <!-- <button class="button" ><span class="button-content">Registrate</span></button> -->
+                <button class="button2" (click)="torecPassword()">¿Olvidaste tu contraseña?</button>
+              </div>             
+            </div>
+        </div>  
+        <app-spinner *ngIf="loading"></app-spinner>     
+    </div>  
+    <app-footer></app-footer>  
+</div>
+

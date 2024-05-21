@@ -1,0 +1,69 @@
+.headerForo{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin-bottom: 1rem;
+}
+
+.btnCrearForo{
+    border: none;
+    background: none;
+}
+.btnCrearForo p{
+    font-size: 0.8rem;
+    line-height: 0.9;
+    font-family: var(--fuenteGenerica);
+    margin-bottom: 0;
+}
+
+.headerCuerpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headerCuerpo p{
+    font-size: 1rem;
+    margin-left: 1rem;
+    font-family: var(--fuenteSecundaria);
+}
+.listaRecomendaciones{
+    margin: 0 auto;
+}
+.tablaResultado{
+    max-width: 100%;
+    margin-top: 1rem;
+}
+.imgUsuario{
+    width: 2rem;
+    border-radius: 50%;
+    height: 2rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+}
+.headerTable{
+    font-size: 1.2rem;
+    font-family: var(--fuenteGenerica);
+    font-weight: bold;
+    background-color: rgb(196, 238, 255) !important;
+}
+table td, table th{
+    text-align: center;
+}
+td{
+    border: 1px solid #eeeeee;
+    font-family: var(--fuenteSecundaria);
+    margin-bottom: 1rem;
+}
+
+
+@media(min-width: 900px){
+    .headerForo{
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+    }
+    .btnCrearForo p{
+        font-size: 1rem;
+    }
+    table td:nth-child(2){
+        text-align: start;
+    }
+    
+}

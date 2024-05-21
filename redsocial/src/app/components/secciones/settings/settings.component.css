@@ -1,0 +1,158 @@
+.example-card{
+    align-items: center;
+    height: 32rem;
+}
+.titleCard{
+    font-size: 1.8rem;
+    font-family: var(--fuentePrimaria);        
+    text-align: center;
+    margin: 1rem;
+}
+.cuerpoAjustes{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.inputDG{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    justify-content: space-around;
+    /* margin-bottom: 1rem; */
+}
+.inputPref{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+    justify-content: space-around;
+}
+
+.labelDG{
+    font-family: var(--fuentePrimaria);
+    margin-bottom: 1rem;
+    max-width: 1rem;
+    margin-right: 3rem;
+    font-size: 1.2em;
+    text-align: center;
+    width: 50%;
+}
+
+.labelPref{
+    font-family: var(--fuentePrimaria);
+    /* margin-bottom: 1rem; */
+    margin-right: 3rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-align: center;
+    width: 50%;
+}
+.inputDG .input {
+    border-radius: 10px;
+    outline: 2px solid #FEBF00;
+    border: 0;
+    width: 50%;
+    height: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #e2e2e2;
+    outline-offset: 3px;
+    padding: 1rem;
+    transition: 0.25s;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+  
+.inputDG  .input:focus {
+    outline-offset: 5px;
+    background-color: #fff
+}
+
+
+.switch {
+    --button-width: 3.5em;
+    --button-height: 2em;
+    --toggle-diameter: 1.5em;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 3em;
+    --color-grey: #cccccc;
+    --color-green: #4296f4;
+    cursor: pointer;
+   }
+   
+   .slider {
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider {
+    background-color: var(--color-green);
+   }
+   
+   .switch input[type="checkbox"]:checked + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+   }
+   
+   .switch input[type="checkbox"] {
+    display: none;
+   }
+   
+   .switch input[type="checkbox"]:active + .slider::after {
+    width: var(--toggle-wider);
+   }
+   
+   .switch input[type="checkbox"]:checked:active + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+   }
+   
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+.botones button{
+    width: 30%;
+    color: #080808;
+    padding: 1rem;
+    border: none;
+    font-size: 1.3rem;
+    font-family: var(--fuentePrimaria);
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 1px 18px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 1px 18px -3px rgba(0,0,0,0.75);
+    box-shadow: 5px 1px 18px -3px rgba(0,0,0,0.75);
+}
+.botones button:hover{
+    transform: scale(105%);
+    color: #fff;
+    filter: invert(10%);
+    transition: 0.5s ease-in-out all;
+}
+.botones .btnGuardar{
+    background-color: #39d03b;
+}
+.botones .btnReestablecer{
+    background-color: #d34b4f;
+}

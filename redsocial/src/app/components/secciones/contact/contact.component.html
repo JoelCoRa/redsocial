@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Contacto'"></app-titulo-seccion>
+    <div class="logosIPN">
+      <img src="../../../../assets/ipnLogo.png" alt="logoIPN" class="logoContactoIpn">
+      <img src="../../../../assets/escomLogo.png" alt="logoESCOM" class="logoContactoEs"> 
+    </div>
+    <div class="contMsgIntro">
+      <p class="msgIntro">Esta red social fue desarrollada como parte del Trabajo Terminal No.  <span> 2024-A134 </span>  dentro de la Escuela Superior de Cómputo del Instituto Politécnico Nacional.</p>
+    </div>
+  <mat-card class="tarjeta">    
+    <div class="row">
+      <div class="col-lg-6 col-md-12 colDesarrolladores">
+        <h5 class="tituloColumna">Desarrolladores</h5>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 columna">
+            <h6 class="nombres">Itzel Ramírez</h6>
+            <p>{{correoItzel}}</p>
+            <p>{{numItzel}}</p>
+          </div>
+          <div class="col-lg-6 col-md-12 columna">
+            <h6 class="nombres">Joel Colín</h6>
+            <p>{{correoJoel}}</p>
+            <p>{{numJoel}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <h5 class="tituloColumna">Asesor</h5>
+        <div class="col-12 columna2">
+          <h6 class="nombres"><span>Dra.</span> Maribel Aragón</h6>
+            <p>{{correoMaribel}}</p>
+            <p>{{numMaribel}}</p>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <div class="cardBtn">
+    <p>Si deseas establecer un contacto más personal o reportar algo técnico, haz click en el botón</p>
+    <button class="btnContactar" [routerLink]="'/contacto/formulario'">
+      <p>Contactar</p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="4">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+      </svg>
+    </button>
+    
+      
+  </div>
+  </div>
+</app-sidebar>
+
+

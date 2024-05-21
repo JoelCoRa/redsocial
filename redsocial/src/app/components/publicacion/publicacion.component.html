@@ -1,0 +1,45 @@
+<mat-card class="contenedorPublicacion">
+    <div class="contenidoPrincipal">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" stroke-width="0" fill="currentColor" />
+                <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" stroke-width="0" fill="currentColor" />
+              </svg>
+            </div>
+            <mat-card-title>{{usuarioSeguido}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="cuerpoPublicacion">
+              <p>{{contenidoPublicacion}}</p>  
+              <p class="fechaPublicacion">{{fechaPublicacion}}</p>            
+          </mat-card-content>
+    </div>
+    
+    <mat-card-actions class="acciones">
+        <div class="accion like">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+            </svg>
+            <span>{{numLikes}}</span>
+        </div>
+        <!-- <div class="accion share">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#ff9300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3" />
+                <path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3" />
+            </svg>
+            <span>{{numComents}}</span>
+        </div> -->
+        <div class="accion broken">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-broken" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                <path d="M12 6l-2 4l4 3l-2 4v3" />
+            </svg>
+            <span>{{numDislikes}}</span>
+        </div>
+    </mat-card-actions>    
+  </mat-card>
+  

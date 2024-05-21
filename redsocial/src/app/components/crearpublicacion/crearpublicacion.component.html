@@ -1,0 +1,7 @@
+<mat-card class="cuerpoCrearPublicacion">
+    <p class="creaprimerpublicacion">Crea una publicación</p>
+    <form class="contenedorCrear" [formGroup]="crearPost">    
+        <textarea middleCursor rows="4" class="mi-textarea" placeholder="Escribe algo" formControlName="contenido" [(ngModel)]="contenido"></textarea>
+        <button class="btnCrear" (click)="createPost()">Crear Publicación</button>
+    </form>
+</mat-card>

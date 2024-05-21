@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Perfil'"></app-titulo-seccion>  
+    <div class="cuerpoPerfil">
+      <app-headerperfil></app-headerperfil>      
+      <h5 class="tituloPerfil">Seguidores</h5>
+      <div *ngIf="numSeguidores === 0">
+        <app-mensajevacio class="msgVacioTexto">¡Aun no tienes seguidores, aqui apareceran cuando te comiencen a seguir!</app-mensajevacio>                
+      </div>
+      <div class="contCuentas" *ngIf="numSeguidores !== 0">
+        <app-cuentas-seguidores></app-cuentas-seguidores>
+      </div>      
+    </div>
+  </div>
+</app-sidebar>
+

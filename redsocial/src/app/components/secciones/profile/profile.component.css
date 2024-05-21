@@ -1,0 +1,154 @@
+
+
+/* Publicacion */
+.contenedorPublicacion {
+    margin: 1rem;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(237, 237, 237);
+    border: 2px solid #767676;
+    -webkit-box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 5px 17px 0px rgba(0,0,0,0.75);
+}
+.cuerpoPublicacion{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    /* margin: 1rem; */
+}
+.cuerpoPublicacion p{
+    font-family: var(--fuenteGenerica);
+}
+.acciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 1rem 0 0;
+}
+.acciones span{
+    font-family: var(--fuenteGenerica);
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+.accion{
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+@media(min-width: 900px){
+    .contenedorPublicacion {
+        margin: 1rem;
+        justify-content: space-between;
+        display: flex;
+    }
+    .cuerpoPublicacion{
+        display: flex;
+        flex-direction: column;
+        /* margin: 1rem; */
+    }
+    .acciones{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 1rem 0 0;
+    }
+    .accion:hover{
+        transform: scale(110%);
+        cursor: pointer;
+        transition: all 0.5 ease-in-out ;
+    }
+    .like:hover{
+        filter: drop-shadow(2px 2px 4px rgba(231, 12, 12, 0.5));
+    }
+    .delete:hover{
+        filter: drop-shadow(2px 2px 4px rgba(23, 88, 44, 0.5));
+    }
+    .broken:hover{
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+    .tooltip-container {
+        --bubble-size: 12px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .tooltip, .tooltip2, .tooltip3{
+        display: block;
+        position: absolute;
+        top: 30%; /* Initially hidden above the container */
+        left: 16%;
+        transform: translateX(-50%);
+        padding: 0.6em 1em;
+        opacity: 0;
+        visibility: hidden;
+        width: 15rem;
+        text-align: center;
+        pointer-events: none;
+        font-family: var(--fuentePrimaria);
+        font-size: 1rem;
+        transition: all 0.3s;
+        border: none;
+        border-radius: var(--bubble-size);
+        /* background: var(--background-light); */
+        background: #000000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+      /* Triangle arrow for the bubble tooltip */
+    .tooltip::before{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%);
+        border-style: solid;
+        border-width: 8px 8px 0;
+        border-color: #000 transparent transparent;
+        /* background: #000000; */
+    
+    }  
+     /* Tooltip appearance on hover */
+    .tooltip-container:hover {
+        transform: scale(105%);
+        transition: 0.5s ease-in-out all;
+    }
+    .tooltip-container:hover .tooltip{
+        top: -10%; /* Adjusted position for the bubble tooltip */
+        width: 8rem;
+        opacity: 1;
+        font-size: 0.7rem;
+        visibility: visible;
+        pointer-events: auto;
+        color: #fff;
+    }   
+}
+.fechaPublicacion{
+    color: rgb(151, 151, 151);
+    margin-left: 1rem;
+}
+.botonesModal{
+    display: flex;
+    justify-content: end;
+    margin-right: 1rem;
+}
+.btnCancelar, .btnEliminar{
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    color: aliceblue;
+    margin: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.botonesModal .btnCancelar{
+    background-color: rgb(95, 141, 205);
+}
+.botonesModal .btnEliminar{
+    background-color: rgb(159, 47, 49);
+}
+

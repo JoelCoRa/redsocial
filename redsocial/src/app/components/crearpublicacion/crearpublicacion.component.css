@@ -1,0 +1,69 @@
+.cuerpoCrearPublicacion{
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+.contenedorCrear{
+    display: flex;
+    flex-direction: column;
+}
+.creaprimerpublicacion{
+    font-size: 1rem;
+    font-family: var(--fuenteSecundaria);
+    color: black;
+    margin-bottom: 1rem;
+}
+.mi-textarea {
+    width: 100%;
+    height: 4rem;
+    font-family: var(--fuentePrimaria);
+    font-size: 12px;
+    border: 2px solid #ccc;
+    background-color: var(--fondoTextArea);
+    overflow: hidden;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    resize: none; /* Para permitir que el textarea sea redimensionable verticalmente */
+}
+.btnCrear{
+    background-color: rgb(37, 133, 178);
+    border: none;
+    margin: 1rem auto;
+    border-radius: 7px;
+    font-family: var(--fuentePrimaria);
+    font-size: 1.2rem;
+    padding: 0.3rem 1rem;
+    color: aliceblue;
+    -webkit-box-shadow: 2px 3px 15px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 15px -3px rgba(0,0,0,0.75);
+    box-shadow: 2px 3px 15px -3px rgba(0,0,0,0.75);
+    /* justify-content: space-evenly; */
+}
+@media(min-width: 900px){
+    .cuerpoCrearPublicacion{
+        width: 80%;
+    }
+    .contenedorCrear{
+        width: 100%;
+    }
+    .mi-textarea{
+        width: 100%;
+        font-size: 16px;
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
+        resize: none; 
+        margin-bottom: 1rem;
+    }
+    .btnCrear{
+        display: block;
+        background-color: rgb(37, 133, 178);
+        border: none;
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+    .btnCrear:hover{
+        transform: scale(105%);
+        transition: 0.5s ease-in all;
+    }
+
+}

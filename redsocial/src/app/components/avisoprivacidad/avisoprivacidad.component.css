@@ -1,0 +1,73 @@
+.login-body{
+    overflow: auto;
+}
+.example-card{
+    margin-top: 0;
+    margin-bottom: 15rem;
+    width: 90%;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.titleAviso{
+    font-size: 1.5rem;
+    font-family: var(--fuentePrimaria);
+    margin-bottom: 1rem;
+}
+.contAviso{
+    margin: 1rem;
+    font-family: var(--fuenteGenerica);
+}
+.introAviso{
+    font-family: var(--fuenteGenerica);
+    font-size: 0.8rem;
+    line-height: 1;
+}
+.spanAviso{
+    font-size: 0.6rem;
+    line-height: 1;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+.contAviso li{
+    list-style: decimal;
+    font-size: 0.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+.contAviso li span{
+    font-weight: bold;
+}
+
+.contBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.btnRegresar{
+    background-color: rgb(230, 125, 134);
+    border: none;
+    padding: 0.6rem;
+    font-family: var(--fuentePrimaria);
+    border-radius: 10px;
+    font-size: 1rem;
+}
+@media(min-width: 900px){
+    .example-card{
+        margin-top: 1rem;
+    }
+    .introAviso{
+        font-size: 1rem;
+        line-height: 1;
+    }
+    .spanAviso{
+        font-size: 0.8rem;
+    }
+    .contAviso li{
+        font-size: 0.9rem;
+    }
+}

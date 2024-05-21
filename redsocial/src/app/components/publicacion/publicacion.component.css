@@ -1,0 +1,65 @@
+/* Publicacion */
+.contenedorPublicacion {
+    margin: 1rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+.cuerpoPublicacion{
+    display: flex;
+    flex-direction: column;
+    /* margin: 1rem; */
+}
+.acciones{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem 0 0;
+}
+.accion{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(min-width: 700px){
+    .contenedorPublicacion {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+    }
+    .cuerpoPublicacion{
+        display: flex;
+        flex-direction: column;
+        /* margin: 1rem; */
+    }
+    .acciones{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 1rem 0 0;
+    }
+    .accion{
+        flex-direction: row;
+    }
+    .accion span{
+        margin-left: 1rem;
+    }
+    .accion:hover{
+        transform: scale(110%);
+        cursor: pointer;
+        transition: all 0.5 ease-in-out ;
+    }
+    .like:hover{
+        filter: drop-shadow(2px 2px 4px rgba(231, 12, 12, 0.5));
+    }
+    .share:hover{
+        filter: drop-shadow(2px 2px 4px rgba(225, 101, 7, 0.5));
+    }
+    .broken:hover{
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    }
+}
+.fechaPublicacion{
+    color: rgb(151, 151, 151);
+    margin-left: 1rem;
+}

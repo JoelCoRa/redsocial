@@ -1,0 +1,35 @@
+
+<div class="cont-chatbot" *ngIf="estaAbiertoElChat === true">
+    <div *ngIf="mostrarChat === false">
+        <button class="btnCerrarChat" (click)="toggleChatBot()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-x" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 10l4 4m0 -4l-4 4" />
+                <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+            </svg>
+        </button>
+        <p class="msgChatbot">{{mensajeChatbot}}</p>
+        <button class="btnChatbot" (click)="toggleChat()">Habla con el chatbot</button>
+    </div>    
+
+    <div *ngIf="mostrarChat" class="chatBot">
+        <button (click)="toggleChat()" class="btnOcultar">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+              </svg>
+        </button>
+        <div class="contenedorChat">
+        <!--Aqui van los mensajes  -->
+        <!-- <iframe width="200" height="200" src="https://embed.wotnot.io/KYi3WCJkk9if101023723428bvMtch1n/bot/cJWQqh5anku8082500522107fJTkw94W?display_header=false&history_retention=false" frameborder="0"></iframe> -->
+        </div>
+        <form action="" class="formChat">
+            <textarea placeholder="Habla con el chatbot" class="inputChat"></textarea>       
+            <div class="botonesChat">
+                <button class="btnChat enviar">Enviar</button>
+                <button class="btnChat limpiar">Limpiar</button>
+            </div>     
+            
+        </form>
+    </div>
+</div>
