@@ -18,7 +18,7 @@ export class PostsService {
   private myAppUrl: string;
   private myApiUrl: string;
 
-  constructor(private http: HttpClient, private router: Router, private error: ErrorService, private sb: MatSnackBar) {
+  constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
     this.myApiUrl = 'api/posts'
   }

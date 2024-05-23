@@ -2,11 +2,13 @@
     display: grid;
     grid-template-columns: 5fr 1fr;
     margin-bottom: 1rem;
+    align-items: start;
 }
 
 .btnCrearForo{
     border: none;
     background: none;
+    margin-top: 0.5rem;
 }
 .btnCrearForo p{
     font-size: 0.8rem;
@@ -52,6 +54,12 @@ td{
     font-family: var(--fuenteSecundaria);
     margin-bottom: 1rem;
 }
+.tituloTD{
+    cursor: pointer;
+}
+.tituloTD:hover{
+    color: aqua;
+}
 
 
 @media(min-width: 900px){
@@ -65,5 +73,207 @@ td{
     table td:nth-child(2){
         text-align: start;
     }
+    .imgUsuario{
+        margin-top: 0;
+    }
     
+}
+.contMsgGeneral{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contMsgGeneral .contImgLupa{
+    padding: 1rem;
+    background-color: bisque;
+    border-radius: 50%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+.contMsgGeneral .imgLupa{
+    width: 90%;
+    height: 90%;
+    
+}
+.contMsgGeneral .msgGeneral{
+    font-family: var(--fuentePrimaria);
+    font-size: 2rem;
+    line-height: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+.buscar{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 1rem auto;
+    /* border: 1px solid #000; */
+}
+.buscar .barra{
+    width: 100%;
+}
+.buscar .btnBuscarCont{
+    display: flex;
+    width: 35%;
+    padding: 0.5rem;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family: var(--fuentePrimaria);
+    font-size: 1rem;
+    margin: 0.5rem auto;
+    border: none;    
+    background: none;
+    background-color: rgb(15, 104, 49);
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+.buscar .btnBuscarCont button{
+    background: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    border: none;
+}
+.buscar .btnBuscarCont span svg{
+    margin-right: 0.2rem;
+    vertical-align: baseline;
+}
+
+@media(min-width: 600px){
+    .buscar .btnBuscarCont{
+        width: 25%;
+        /* margin-top: 0; */
+        font-size: 1.2rem;
+    } 
+    .contMsgGeneral .msgGeneral{
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+    .contMsgGeneral .imgLupa{
+        width: 80%;
+        height: 80%;
+        
+    }
+}
+
+
+@media(min-width: 900px){
+    .buscar{
+        flex-direction: row;
+        /* justify-content: space   -around; */
+    }
+    .buscar .btnBuscarCont{
+        width: 20%;
+        margin-top: 0;
+        font-size: 1.2rem;
+    } 
+    .buscar .btnBuscarCont:hover{
+        color: rgb(0, 0, 0);
+        background-color: rgb(44, 216, 110);
+        transform: scale(105%);
+        transition: 0.5s ease-in all;
+        
+    }
+}
+
+
+/* Barra */
+.form button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
+  /* styling of whole input container */
+.form {
+  --timing: 0.3s;
+  --width-of-input: 200px;
+  --height-of-input: 40px;
+  --border-height: 2px;
+  --input-bg: #fff;
+  --border-color: #2f2ee9;
+  --border-radius: 30px;
+  --after-border-radius: 1px;
+  position: relative;
+  width: 100%;     
+  height: var(--height-of-input);
+  display: flex;
+  /* justify-content: center; */
+  margin: 0;
+  align-items: center;
+  padding-inline: 0.5em;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
+  background: var(--input-bg,#fff);
+}
+/* styling of Input */
+.input2 {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+/* styling of animated border */
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+  border-radius: var(--after-border-radius);
+}
+input:focus {
+  outline: none;
+}
+/* here is code of animated border */
+.form:focus-within:before {
+  transform: scale(1);
+}
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+/* close button shown when typing */
+input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+  width: 17px;
+  margin-top: 3px;
+}
+@media(min-width: 900px){
+  .form{
+    margin: 0 1rem;
+    padding-inline: 0.8em;
+    width: 80%;
+  }
 }

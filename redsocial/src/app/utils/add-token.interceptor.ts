@@ -21,17 +21,11 @@ export const addTokenInterceptor: HttpInterceptorFn = (req, next) => {
         }
       })
     }
-
-    
-
-
-
-
     return next(req).pipe(
       catchError((err: HttpErrorResponse) => {
         if(err.status === 401){
           const error = errorService.msgError(err)
-          router.navigate(['/login'])
+          // router.navigate(['/login'])
         }
         return throwError(() => err);
       })

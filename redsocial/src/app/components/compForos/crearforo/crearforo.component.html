@@ -6,7 +6,7 @@
       <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
     </div>    
     <div class="cuerpoForo">
-      <form [formGroup]="crearForoForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="crearForoForm" (ngSubmit)="crearForo()">
         <mat-card class="example-card">
             <mat-card-header class="headerCuerpo">
               <mat-card-title class="tituloCrearForo">Crea un Foro</mat-card-title>
@@ -21,7 +21,7 @@
                 <div class="inputGroup">
                   <div class="datosforo">
                     <input type="text" id="etiq" required="" autocomplete="off" [(ngModel)]="etiquetaIngresada" formControlName="etiquetaIngresada">
-                    <label for="etiquetas">Etiquetas</label>
+                    <label for="etiquetas">Etiqueta</label>
                     <span class="instruccion">Ingresa una etiqueta para el foro</span>
                   </div>                  
                 </div>               
@@ -32,7 +32,7 @@
             </mat-card-content>
             <mat-card-actions>
                 <div class="checkbox-wrapper-46">
-                    <input type="checkbox" id="cbx-46" class="inp-cbx" formControlName="anonimo"/>
+                    <input type="checkbox" id="cbx-46" class="inp-cbx" formControlName="anonimo" [(ngModel)]="anonimo"/>
                     <label for="cbx-46" class="cbx"
                       ><span>
                         <svg viewBox="0 0 12 10" height="10px" width="12px">

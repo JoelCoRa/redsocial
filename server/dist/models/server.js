@@ -34,6 +34,7 @@ const reporte_model_1 = require("./reporte.model");
 const organizacion_model_1 = require("./organizacion.model");
 const cors_1 = __importDefault(require("cors"));
 const seguidosseguidores_model_1 = require("./seguidosseguidores.model");
+const replicaforo_model_1 = require("./replicaforo.model");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -77,6 +78,7 @@ class Server {
                 yield reporte_model_1.Reporte.sync();
                 yield organizacion_model_1.Organizacion.sync();
                 yield seguidosseguidores_model_1.SeguidoSeguidor.sync();
+                yield replicaforo_model_1.ReplicaForo.sync();
                 yield connection_1.default.authenticate();
                 console.log('Connection has been established successfully.');
             }

@@ -11,6 +11,11 @@ import { RouterModule } from '@angular/router';
 import { BtnRegresarComponent } from '../../btn-regresar/btn-regresar.component';
 import { BtnregresarportalComponent } from '../../btnregresarportal/btnregresarportal.component';
 import { UserService } from '../../../services/user.service';
+import { CrearForo } from '../../../interfaces/foro';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { ErrorService } from '../../../services/error.service';
+import { ForosService } from '../../../services/foros.service';
 
 @Component({
     selector: 'app-crearforo',
@@ -30,7 +35,7 @@ export class CrearforoComponent {
 
     crearForoForm: FormGroup;
 
-    constructor(private user: UserService){
+    constructor(private user: UserService, private sb: MatSnackBar, private error: ErrorService, private foro: ForosService){
         console.log(this.etiquetaIngresada)
         this.crearForoForm = new FormGroup({
             titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(30)]),
@@ -49,28 +54,60 @@ export class CrearforoComponent {
 
 
 
-    manejarKeyPress(event: KeyboardEvent): void {
-        if (event.key == 'Enter' && this.etiquetas.length < 1 && this.etiquetaIngresada.trim() !== '') {
+    // manejarKeyPress(event: KeyboardEvent): void {
+    //     if (event.key == 'Enter' && this.etiquetas.length < 1 && this.etiquetaIngresada.trim() !== '') {
 
-            if (this.etiquetaIngresada.trim() !== '' && this.contador < 1) {
-                this.etiquetas.push(this.etiquetaIngresada);
-                console.log(this.etiquetas)
+    //         if (this.etiquetaIngresada.trim() !== '' && this.contador < 1) {
+    //             this.etiquetas.push(this.etiquetaIngresada);
+    //             console.log(this.etiquetas)
 
-                this.etiquetaIngresada = ''; // Limpiar el campo de entrada
-                this.contador++;                
-              }
-              console.log(this.etiquetaIngresada)
+    //             this.etiquetaIngresada = ''; // Limpiar el campo de entrada
+    //             this.contador++;                
+    //           }
+    //           console.log(this.etiquetaIngresada)
               
-        }
-    }
+    //     }
+    // }
 
-    quitarEtiqueta(index: number): void{
-        this.etiquetas.splice(index, 1);
-        this.contador--;
+    // quitarEtiqueta(index: number): void{
+    //     this.etiquetas.splice(index, 1);
+    //     this.contador--;
+    // }
+    // deshabilitado(): boolean{
+    //     return this.contador === 1;
+    // }
+
+    crearForo(){
+        const userId = Number(this.user.getUserId());  
+        const foro: CrearForo = {
+            titulo: this.titulo,
+            etiqueta: this.etiquetaIngresada,
+            contenido: this.contenido,
+            anonimo: this.anonimo,
+            userId: userId
+        }
+        this.foro.createForo(foro).subscribe({
+            next: (v) => {  
+                this.sb.open(`Foro creado con éxito!`, 'Cerrar', {
+                  duration: 5000,        
+                  horizontalPosition: this.horizontalPosition,
+                  verticalPosition: this.verticalPosition,
+                  panelClass: ['notifExito'],  
+                });
+              },
+              error: (e: HttpErrorResponse) => {
+                this.error.msgError(e)       
+              },
+              complete: () => { 
+                console.info('complete')
+                setTimeout(() => {
+                  window.location.reload();
+                }, 3000);
+              }
+        })
     }
-    deshabilitado(): boolean{
-        return this.contador === 1;
-    }
+    horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
 
 
 

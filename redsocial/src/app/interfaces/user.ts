@@ -32,3 +32,13 @@ export interface SeguidoSeguidor{
 export interface imgPerfilUser{
     imgPerfil: string
 }
+
+export interface UserAjustes{
+    nombreUsuario:string,
+    correo: string,
+    password: string
+}
+export interface UserPassword{   
+   password: string,
+   validatePassword: string
+}

@@ -3,10 +3,10 @@
 <app-sidebar>
   <div class="contenedor">
     <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
-    <div class="headerForo">
-        <app-barrabusqueda placeholderText="Busca el tema de un foro..." class="aver"></app-barrabusqueda>
-       
-      </div>
+    <div class="contRegresar">
+        <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
+    </div>
+    
     <div class="cuerpoForo">
     <div>
         <div class="temaForo">
@@ -22,7 +22,7 @@
                     <img src="../../../../assets/icon.png" alt="iconoUser" class="imgUser">
                     <div class="">
                         <h4 class="tituloForoResult">{{tituloForoResult}}</h4>
-                        <p class="publicadoPor">Publicado por {{usuarioResult}}</p>
+                        <p class="publicadoPor">Publicado por {{this.foroContent.nombreUsuario}}</p>
                     </div>
                     
                 </div>
@@ -46,7 +46,7 @@
             </mat-card-header>
             <mat-card-content>
                 <div class="contenidoForo">
-                    <p>{{contResultForo}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem error minus repellendus optio excepturi! Magnam consectetur unde rerum iusto repellendus saepe dolores nostrum, repellat qui, doloribus esse maxime corporis at? </p>
+                    <p>{{contResultForo}} </p>
                 </div>          
                   
             </mat-card-content>            
@@ -88,4 +88,3 @@
 </app-sidebar>
 
 
-<app-footer></app-footer>

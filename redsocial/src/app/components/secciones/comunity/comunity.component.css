@@ -22,6 +22,8 @@
         font-size: 1.2rem;
     }
 }
+
+
 .buscar{
     display: flex;
     flex-direction: column;

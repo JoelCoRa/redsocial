@@ -18,23 +18,26 @@ export const Foro = sequelize.define('forum', {
         allowNull: true
     },
     contenido:{
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false
     },
     replicas:{
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false,
+        defaultValue: 0
     },
     likes:{
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: false,
+        defaultValue: 0
     },
     reportes:{
         type: DataTypes.INTEGER, 
-        allowNull: true
+        allowNull: false,
+        defaultValue: 0
     },
     etiqueta:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     anonimo:{
@@ -44,4 +47,4 @@ export const Foro = sequelize.define('forum', {
     
 });
 User.hasMany(Foro); // Un usuario puede tener muchos foros
-Foro.belongsTo(User);
+Foro.belongsTo(User, { foreignKey: 'userId'});

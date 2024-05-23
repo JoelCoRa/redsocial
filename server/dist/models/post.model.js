@@ -42,5 +42,5 @@ exports.Post = connection_1.default.define('post', {
 });
 user_model_1.User.hasMany(exports.Post); // Un usuario puede tener muchos posts
 organizacion_model_1.Organizacion.hasMany(exports.Post); // Una organizacion puede tener muchos posts
-exports.Post.belongsTo(user_model_1.User);
-exports.Post.belongsTo(organizacion_model_1.Organizacion);
+exports.Post.belongsTo(user_model_1.User, { foreignKey: 'userId' });
+exports.Post.belongsTo(organizacion_model_1.Organizacion, { foreignKey: 'userId' });

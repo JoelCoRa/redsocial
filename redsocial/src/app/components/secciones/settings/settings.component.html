@@ -7,60 +7,53 @@
 
     <div class="contenedor">
       <div class="row">
-        <div class="col-lg-6 col-md">
+        <div class="col-xl-6 col-lg">
           <mat-card class="example-card">        
             <mat-card-header>
               <mat-card-title class="titleCard">Datos Generales</mat-card-title>
             </mat-card-header>
-            <mat-card-content class="cuerpoAjustes">              
-              <div class="inputDG">
-                <label for="nombre" class="labelDG">Nombre</label>
-                <input type="text" name="text" class="input" value="Nombre">
-              </div>
-              <div class="inputDG">
-                <label for="correo" class="labelDG">Correo</label>
-                <input type="email" name="correo" class="input" value="Correo">
-              </div>                         
-              <div class="inputDG">
-                <label for="nombre" class="labelDG">Nuevo Password</label>
-                <input type="text" placeholder="Nuevo Password" name="text" class="input">
-              </div>
-              <div class="inputDG">
-                <label for="nombre"  class="labelDG">Confirma nuevo Password</label>
-                <input type="text" placeholder="Repite el nuevo password" name="text" class="input">
-              </div>             
+            <mat-card-content class="cuerpoAjustes"> 
+              <form [formGroup]="ajustesForm" (ngSubmit)="openDialog()">
+                <div class="inputDG">
+                  <label for="nombre" class="labelDG">Nombre de Usuario</label>
+                  <input type="text" name="text" class="input" [placeholder]="nombreUsuario" [(ngModel)]="nombreUsuario" formControlName="nombreUsuario">
+                </div>
+                <div class="inputDG">
+                  <label for="correo" class="labelDG">Correo electrónico</label>
+                  <input type="email" name="correo" class="input" [value]="correo" [(ngModel)]="correo" formControlName="correo">
+                </div>   
+                <div class="contBtn">
+                  <button class="btnGuardar">Guardar Ajustes</button>    
+                </div>
+              </form>                             
             </mat-card-content>            
           </mat-card>
         </div>
-        <div class="col-lg-6 col-md">
+        <div class="col-xl-6 col-lg">
           <mat-card class="example-card">        
             <mat-card-header>
-              <mat-card-title class="titleCard">Preferencias</mat-card-title>
+              <mat-card-title class="titleCard">Cambiar Contraseña</mat-card-title>
             </mat-card-header>
             <mat-card-content class="cuerpoAjustes">
-              <div class="inputPref">
-                <p class="labelPref">Modo Oscuro</p>
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider"></span>
-                </label>
-                
-              </div>
-              <div class="inputPref">
-                <p class="labelPref">Notificaciones</p>
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider"></span>
-                </label>
-                
-              </div>
+              <form [formGroup]="ajustesPasswordForm" (ngSubmit)="openDialogPassword()"> 
+                <div class="inputDG">
+                  <label for="password" class="labelDG">Nuevo Password</label>
+                  <input type="password" placeholder="Nuevo Password" name="text" class="input" [(ngModel)]="password" formControlName="password">
+                </div>
+                <div class="inputDG">
+                  <label for="confirmpassword"  class="labelDG">Confirma Password</label>
+                  <input type="password" placeholder="Repite el nuevo password" name="text" class="input" [(ngModel)]="confirmPassword" formControlName="confirmPassword">
+                </div> 
+                <div class="contBtn">
+                  <button class="btnGuardar">Guardar Contraseña</button>
+                </div>
+              </form>
             </mat-card-content>            
           </mat-card>         
         </div>
-        <div class="botones">
-          <button class="btnGuardar">Guardar Cambios</button>
-          <button class="btnReestablecer">Reestablecer Cambios</button>
-        </div>
+        <!-- <div class="botones">
+          <button class="btnReestablecer">Cancelar</button>
+        </div> -->
       </div>
     </div>
 

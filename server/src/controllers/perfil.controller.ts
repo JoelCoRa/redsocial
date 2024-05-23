@@ -276,6 +276,4 @@ export const updateDescripcion = async(req: Request, res: Response) =>{
     res.json({
         msg: `Descripción actualizada exitosamente!`,
     });
-
-
 }

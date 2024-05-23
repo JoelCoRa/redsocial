@@ -35,4 +35,7 @@ export class CuentasService {
   addSeguidor(seguidor: Cuentas): Observable<any>{
     return this.http.post(`${this.myAppUrl}api/perfil/addseguidor`, seguidor); 
   }
+  searchComunidad(query:string): Observable<any[]>{
+    return this.http.get<any[]>(`${this.myAppUrl}api/comunidad/searchcomunidad?q=${query}`)
+  }
 }

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title class="titleModal">Confirmar ajustes</h2>
+<mat-dialog-content>
+  <p class="txtModal">Ingresa tu contraseña para confirmar tus cambios</p>
+  <input type="password" name="password" class="inputModal" placeholder="Tu contraseña" [(ngModel)]="validatePassword">
+
+</mat-dialog-content>
+<mat-dialog-actions class="botonesModal">
+  <button mat-dialog-close class="btnCancelarModal">Cancelar</button>
+  <button [mat-dialog-close]="data.password" cdkFocusInitial (click)="onSubmitAjustes()" class="btnAceptarModal">Aceptar</button>
+</mat-dialog-actions>

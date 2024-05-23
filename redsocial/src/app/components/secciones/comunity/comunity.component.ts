@@ -39,45 +39,32 @@ export class ComunityComponent {
     }
 
     search(){
-        console.log(this.query)
-        console.log(this.query.length)
+        // console.log(this.query)
+        // console.log(this.query.length)
         const userId = Number(this.user.getUserId()); 
 
         if(this.query.length < this.minChars){            
-            this.sb.open(`Porfavor ingresa más caracteres`, 'Cerrar', {
-                duration: 5000,        
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-                panelClass: ['notifError'],  
-              });
-            return;
+          this.sb.open(`Porfavor ingresa más caracteres`, 'Cerrar', {
+            duration: 5000,        
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            panelClass: ['notifError'],  
+          });
+          return;
         }else{
-            this.user.searchComunidad(this.query).subscribe(data =>{
-                this.results = data;
-                this.numResultados = this.results.length;
-                if(this.results.length === 0){
-                    this.numResultados = 0;
-                }else{
-                    console.log(this.results);
-                    this.cuentas.getCuentasSeguidas(userId).subscribe(data =>{
-                        this.seguidos = data;
-                        console.log(this.seguidos);
-                        // for(let item of this.results){
-                        //     for(let item2 of this.seguidos){
-                        //         if(item.id === item2.userIdSeguido && item2.userIdSeguidor === userId){
-                        //             console.log(`El usuario ${item2.userIdSeguidor} sigue al usuario ${item.id}`);
-                        //             this.seguido = true;
-                        //         }else{
-                        //             // console.log(`El usuario ${item2.userIdSeguidor} NO sigue al usuario ${item2.userIdSeguido}`);
-                        //             this.seguido = false
-                        //         }
-                        //     }
-                        // }
-                        // console.log(this.seguidos[1].userIdSeguido)
-                        
-                    })
-                }
-            })
+          this.cuentas.searchComunidad(this.query).subscribe(data =>{
+            this.results = data;
+            this.numResultados = this.results.length;
+            if(this.results.length === 0){
+              this.numResultados = 0;
+            }else{
+              console.log(this.results);
+              this.cuentas.getCuentasSeguidas(userId).subscribe(data =>{
+                this.seguidos = data;
+                console.log(this.seguidos);
+              });
+            }
+          });
         }
         
     }

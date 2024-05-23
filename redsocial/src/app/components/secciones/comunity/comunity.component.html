@@ -1,8 +1,6 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
-
     <app-titulo-seccion [title]="'Comunidad'"></app-titulo-seccion>
     <div class="headerComunidad">
       <p>Busca amigos, organizaciones o cuentas de tu interés</p>
@@ -19,15 +17,8 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
           </button>
-      </form>
-
-
+        </form>
         <div class="btnBuscarCont">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-            <path d="M21 21l-6 -6" />
-          </svg> -->
           <button class="" (click)="search()"><span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -46,12 +37,10 @@
           <img src="../../../../assets/lupa.png" alt="lupa" class="imgLupa">
         </div>
         <h2 class="msgGeneral">¡Aqui apareceran los resultados de tu busqueda!</h2>
-      </div>
-      
+      </div>      
       <!-- <app-mensajevacio class="msgVacioTexto">Hola</app-mensajevacio> -->
     </div>
-
-    <div *ngIf="numResultados !== 0" class="contResultados">
+    <div *ngIf="numResultados > 0" class="contResultados">
       <mat-card class="tarjeta" *ngFor="let item of results">   
         <div class="contTarjeta">
             <img src="../../../../assets/pato.jpg" alt="user" class="imgResultado">
@@ -81,12 +70,9 @@
                 <span class="resp">Seguir tambien</span>  
             </button>
             </div> 
-
         </div>
       </mat-card>
-    </div>   
-    
-  
+    </div>  
   </div>
 </app-sidebar>
 

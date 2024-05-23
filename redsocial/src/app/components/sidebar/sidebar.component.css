@@ -107,6 +107,7 @@
   align-items: center;
   margin-top: 1rem;
   overflow: auto;
+  
   /* margin-left: 3%; */
 }
 
@@ -164,8 +165,12 @@
     margin: 1% 4%;
     margin-bottom: 10rem;
     width: 90%;
-    height: 100%;
-    overflow: hidden;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;    
+  }
+  .example-sidenav-content::-webkit-scrollbar{
+    display: none;
   }
   .sidebar{
     width: 15rem;

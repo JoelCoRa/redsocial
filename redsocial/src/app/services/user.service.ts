@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { User, UserDescripcion, UserPerfil, imgPerfilUser } from '../interfaces/user';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { User, UserAjustes, UserDescripcion, UserPassword, UserPerfil, imgPerfilUser } from '../interfaces/user';
+import { Observable, catchError, throwError } from 'rxjs';
 import { UserLogin } from '../interfaces/user';
 import { jwtDecode } from "jwt-decode";
 import { TotalPosts } from '../interfaces/post';
+import { CrearForo } from '../interfaces/foro';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,27 @@ export class UserService {
   addImgPerfil(id:number, img:imgPerfilUser):Observable<any>{
     return this.http.put<any>(`${this.myAppUrl}api/perfil/addimgperfil/${id}`, img);
   }
+
+  getUserAjuses(id:number):Observable<UserAjustes>{
+    return this.http.get<any>(`${this.myAppUrl}api/ajustes/getuserajustes/${id}`);
+  }
+  updateUserAjustes(id:number, user: UserAjustes):Observable<any>{
+    return this.http.put<any>(`${this.myAppUrl}api/ajustes/updateuser/${id}`, user).pipe(catchError(this.handleError));
+  } 
+  updatePassword(id:number, password: UserPassword):Observable<any>{
+    return this.http.put<any>(`${this.myAppUrl}api/ajustes/updatepassword/${id}`, password);
+  } 
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 401) {
+      // Handle unauthorized error
+      return throwError('Contraseña incorrecta');
+    } else {
+      // Handle other errors
+      return throwError('Ocurrió un error, intenta de nuevo');
+    }
+  }
+  
+  
 
 
 }

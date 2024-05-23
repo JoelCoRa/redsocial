@@ -41,7 +41,7 @@ export const routes: Routes = [
 
     {path: 'foros', component: ForumComponent},
     {path: 'foros/crearforo', component: CrearforoComponent},
-    {path: 'foros/foro', component: ForoComponent},
+    {path: 'foros/foro/:id', component: ForoComponent},
 
     {path: 'recursos', component: ResourcesComponent},
     {path: 'recursos/articulos', component: ArticulosComponent},

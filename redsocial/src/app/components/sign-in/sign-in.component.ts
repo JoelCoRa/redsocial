@@ -17,7 +17,7 @@ import { ErrorService } from '../../services/error.service';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports:[FooterComponent, RouterModule, BtnRegresarComponent, FormsModule, TituloComponent, EnviarComponent, ReactiveFormsModule, MatError,CommonModule, HttpClientModule, SpinnerComponent],
+  imports:[FooterComponent, RouterModule, BtnRegresarComponent, FormsModule, TituloComponent, EnviarComponent, ReactiveFormsModule, MatError,CommonModule, HttpClientModule, SpinnerComponent, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -47,7 +47,7 @@ export class SignInComponent {
       nombre: new FormControl('',[Validators.required, Validators.minLength(2),Validators.maxLength(50)]),
       apellido: new FormControl('',[Validators.required, Validators.minLength(2),Validators.maxLength(50)]),
       correo: new FormControl('',[Validators.required, Validators.email]),
-      nombreUsuario: new FormControl('',[Validators.required, Validators.minLength(8)]),
+      nombreUsuario: new FormControl('',[Validators.required, Validators.minLength(8), Validators.maxLength(30)]),
       password: new FormControl('',[Validators.required, Validators.minLength(8)]),
       confirmPassword: new FormControl('',[Validators.required, Validators.minLength(8)]),
     })    
