@@ -7,6 +7,7 @@ const router = (0, express_1.Router)();
 router.post('/crearforo', foros_controller_1.crearForo);
 router.get('/getforo/:id', foros_controller_1.getForo);
 router.get('/searchforos', foros_controller_1.searchForo);
+router.get('/searchforosaux', foros_controller_1.searchForoAux);
 router.get('/getallforos', foros_controller_1.getAllForos);
 router.get('/getreplicasforo/:id', foros_controller_1.getReplicasForo);
 exports.default = router;

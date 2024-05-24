@@ -109,3 +109,19 @@ export const searchForo = async(req: Request, res: Response) =>{
         res.json(items);
     }
 }
+
+export const searchForoAux = async(req: Request, res: Response) =>{
+    const { query } = req.query;
+  try {
+    const foros = await Foro.findAll({
+      where: {
+        [Op.or]: [
+            { titulo: { [Op.like]: `%${query}%` } } // Búsqueda por nombre
+        ]
+      }
+    });
+    res.json(foros);
+  } catch (error) {
+    res.status(500).json({ error: 'Ocurrió un error al buscar los datos.' });
+  }
+}

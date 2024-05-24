@@ -40,7 +40,7 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             id: id
         },
         attributes: [
-            'id', 'nombreUsuario', 'descripcion', 'cuentasSeguidas', 'seguidores', 'imgPerfil',
+            'id', 'nombreUsuario', 'descripcion', 'cuentasSeguidas', 'seguidores', 'imgPerfil', 'tipoUsuario'
         ]
     });
     res.json(user);

@@ -3,52 +3,42 @@
 <app-sidebar>
   <div class="contenedor">
     <app-titulo-seccion [title]="'Contacto'"></app-titulo-seccion>
-
     <div class="contRegresar">
         <app-btnregresarportal routerLink="/contacto"></app-btnregresarportal>
-    </div>
-
-    
+    </div>   
     <mat-card class="tarjeta">          
         <div class="headerCard">
             <h5>Formulario de Contacto</h5>
             <p>Llena este formulario y te atenderemos lo más pronto posible</p>
-        </div>  
-        
-        <form class="contForm">
+        </div>          
+        <form class="contForm" [formGroup]="contactoForm">
             <div class="filaEntrada">
                 <div class="contLabel">
                     <label for="dirigido">Dirigido a</label>
                 </div>
-                <select name="dirigido" id="dirigido">
-                    <option disabled selected>--Seleccionar--</option>
-                    <option *ngFor="let opcion of opciones" [value]="opcion">{{opcion}}</option>
+                <select name="dirigido" id="dirigido" [(ngModel)]="rol" formControlName="rol">
+                    <option disabled selected value="Seleccionar">--Seleccionar--</option>
+                    <option value="Desarrollador">Desarrolladores</option>
+                    <option value="Asesor">Asesor</option>
+                    <option value="Administrador">Administrador</option>
                 </select>                     
             </div>
             <div class="filaEntrada">
                 <div class="contLabel">
-                    <label for="dirigido">Asunto</label>
+                    <label for="asunto">Asunto</label>
                 </div>
-                <input type="text" name="text" class="input" placeholder="Ingresa el asunto...">             
+                <input type="text" name="asunto" id="asunto" class="input" placeholder="Ingresa el asunto..." [(ngModel)]="asunto" formControlName="asunto">             
             </div>
             <div class="filaEntrada">
                 <div class="contLabel">
-                    <label for="dirigido">Mensaje</label>
+                    <label for="mensaje">Mensaje</label>
                 </div>
-                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje..."></textarea>                   
+                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje..." [(ngModel)]="descripcion" formControlName="descripcion"></textarea>                   
             </div>
-
-        </form>
-        
-            
+        </form>           
     </mat-card>
-
     <div class="botones">
-        <button>
-            <span class="transition"></span>
-            <span class="gradient"></span>
-            <span class="label">Enviar</span>
-        </button>
+        <button (click)="onSubmitContacto()" class="enviar">Enviar Solicitud</button>
     </div>
   
   </div>

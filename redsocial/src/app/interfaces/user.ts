@@ -19,7 +19,8 @@ export interface UserPerfil{
     descripcion: string,
     cuentasSeguidas: number,
     seguidores: number,
-    totalPosts: number
+    totalPosts: number,
+    tipoUsuario: number
 }
 export interface UserDescripcion{
     id:number,

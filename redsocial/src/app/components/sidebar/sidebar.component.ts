@@ -25,7 +25,13 @@ export class SidebarComponent {
   showFiller = false;
   isRotated: boolean = false;
   openDrawer : boolean = false;
-  isAdmin: boolean = true;
+  isAdmin!: boolean;
+
+  tipoUsuario!: number
+
+  ngOnInit(){
+    this.getUser();
+  }
 
 
   rotarImagen() {
@@ -36,6 +42,25 @@ export class SidebarComponent {
   isComponentVisible: boolean = false;
   toggleComponentVisibility() {
     this.isComponentVisible = !this.isComponentVisible;
+  }
+  getUser(){
+    const userId = Number(this.user.getUserId()); 
+    this.user.getUser(userId).subscribe(data =>{
+      console.log(data);
+      if(data.tipoUsuario === 1){
+        this.isAdmin = true;
+        console.log('Es admin')
+      }
+      else if(data.tipoUsuario === 0){
+        this.isAdmin = false;
+        console.log('No es admin')
+
+      }
+      else{
+        console.log('No es ninguno');
+      }
+    })
+
   }
 
 

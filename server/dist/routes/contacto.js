@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const dashboard_controller_1 = require("../controllers/dashboard.controller");
+const contacto_controller_1 = require("../controllers/contacto.controller");
 const router = (0, express_1.Router)();
 // Cambiar por los de contacto
-router.get('/postseg', dashboard_controller_1.getPostsSeg);
+router.post('/createcontact', contacto_controller_1.createContact);
 exports.default = router;

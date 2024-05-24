@@ -44,7 +44,11 @@ export class ForumComponent implements AfterViewInit {
   displayedColumns: string[] = ['titulo', 'nombreUsuario', 'replicas'];
   minChars: number = 4;
   numResultados: number = -1;
+  
+  searchQuery: string = '';
+  forosAux: ForoResultado[] = []
   dataSource2 = new MatTableDataSource<ForoResultado>(this.results);
+  dataSource3 = new MatTableDataSource<ForoResultado>(this.forosAux);
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   base64Image: string ='';
@@ -80,8 +84,7 @@ export class ForumComponent implements AfterViewInit {
       return;
     } else {
       this.foro.searchForos(this.query).subscribe(data => {
-        this.results = data.map(result => {
-          
+        this.results = data.map(result => {          
           return {
             ...result,
             nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
@@ -102,19 +105,26 @@ export class ForumComponent implements AfterViewInit {
   foros!: ForoResultado[];
   getAllForos(){
     this.foro.getAllForos().subscribe( data =>{
-      this.results = data.map(result => {     
-        // console.log(data.values.length);
-     
+      // this.results = data.map(result => {        // console.log(data.values.length);     
+      //   return {
+      //     ...result,
+      //     nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
+      //   };
+        
+      // });
+      // this.dataSource2.data = this.results;
+      // console.log(this.dataSource2.data)
+      this.forosAux = data.map(result => {        // console.log(data.values.length);     
         return {
           ...result,
           nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
         };
         
       });
-      this.dataSource2.data = this.results;
-      console.log(this.dataSource2.data)
+      this.dataSource3.data = this.forosAux;
+      console.log(this.dataSource3.data)
 
-      this.filteredData = this.dataSource2.data
+      this.filteredData = this.dataSource3.data
 
       // this.numResultados = this.dataSource2.data.length
 
@@ -141,6 +151,28 @@ export class ForumComponent implements AfterViewInit {
   //            item.description.toLowerCase().includes(searchTerm);
   //   });
   // }
+
+
+  searchForos():void{
+    if(this.searchQuery.trim() === ''){
+      this.getAllForos();
+    }
+    else{
+      this.foro.searchForos2(this.searchQuery).subscribe((data:any) =>{
+        this.forosAux = data.map((result: { anonimo: boolean; nombreUsuario: string; }) => {     
+          // console.log(data.values.length);
+       
+          return {
+            ...result,
+            nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
+          };
+          
+        });
+        this.dataSource3.data = this.forosAux;
+        this.forosAux = data
+      })
+    }
+  }
 
 
 

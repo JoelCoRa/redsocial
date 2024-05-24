@@ -23,6 +23,7 @@ import { Organizacion } from './organizacion.model';
 import cors from 'cors'
 import { SeguidoSeguidor } from './seguidosseguidores.model';
 import { ReplicaForo } from './replicaforo.model';
+import { Contacto } from './contacto.model';
 
  class Server {
     private app: Application;
@@ -73,6 +74,7 @@ import { ReplicaForo } from './replicaforo.model';
             await Organizacion.sync(); 
             await SeguidoSeguidor.sync(); 
             await ReplicaForo.sync(); 
+            await Contacto.sync(); 
             await sequelize.authenticate();
             console.log('Connection has been established successfully.');
         } catch (error) {

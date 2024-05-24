@@ -31,4 +31,9 @@ export class ForosService {
   searchForos(query: string): Observable<any[]>{
     return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/searchforos?q=${query}`)
   }
+  searchForos2(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.myAppUrl}${this.myApiUrl}/searchforosaux`, {
+      params: { query }
+    });
+  }
 }

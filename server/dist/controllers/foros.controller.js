@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
+exports.searchForoAux = exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
 const connection_1 = __importDefault(require("../db/connection"));
 const sequelize_1 = require("sequelize");
 const user_model_1 = require("../models/user.model");
@@ -120,3 +120,20 @@ const searchForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.searchForo = searchForo;
+const searchForoAux = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { query } = req.query;
+    try {
+        const foros = yield foro_model_1.Foro.findAll({
+            where: {
+                [sequelize_1.Op.or]: [
+                    { titulo: { [sequelize_1.Op.like]: `%${query}%` } } // Búsqueda por nombre
+                ]
+            }
+        });
+        res.json(foros);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Ocurrió un error al buscar los datos.' });
+    }
+});
+exports.searchForoAux = searchForoAux;
