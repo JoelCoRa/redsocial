@@ -18,7 +18,7 @@ const user_model_1 = require("../models/user.model");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const nodemailer = require('nodemailer');
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password, imgPerfil, fechaRegistro, cuentasSeguidas, seguidores, publicaciones, foros, solicitudes, reportes, tipoUsuario, modoOscuro, notificaciones, descripcion } = req.body;
+    const { nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password } = req.body;
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
     // Se valida si el usuario existe en la BD
     const user = yield user_model_1.User.findOne({ where: { nombreUsuario: nombreUsuario } });
@@ -37,18 +37,6 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             correo: correo,
             nombreUsuario: nombreUsuario,
             password: hashedPassword,
-            imgPerfil: imgPerfil,
-            fechaRegistro: fechaRegistro,
-            cuentasSeguidas: cuentasSeguidas,
-            seguidores: seguidores,
-            publicaciones: publicaciones,
-            foros: foros,
-            solicitudes: solicitudes,
-            reportes: reportes,
-            tipoUsuario: tipoUsuario,
-            modoOscuro: modoOscuro,
-            notificaciones: notificaciones,
-            descripcion: descripcion,
         });
     }
     catch (error) {

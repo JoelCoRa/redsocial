@@ -1,3 +1,12 @@
+
+.contSignIn{
+  display: flex;
+  justify-content: center;
+}
+.contTitulo{
+  margin-top: 3rem;
+}
+
 .seccion{
   font-size: 1rem;
   margin-left: 1rem;
@@ -45,20 +54,20 @@
 @media(min-width: 500px){    
   .botones{    
     padding: 0;
+    margin-top: 0;
     flex-direction: row;
-    margin-top: 1rem;
     justify-content: space-around;
   }    
 }
 
-@media(min-width: 800px){
+@media(min-width: 900px){
   .card-container{
-    margin: 2rem 0 1rem 0;
+    margin: 0 0 1rem 0;
     width: 60%;
   }   
   label{
     margin-top: 1rem;
-  }
+  } 
 }
 
 .contCheckbox{

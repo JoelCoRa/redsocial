@@ -47,16 +47,17 @@ export const User = sequelize.define('user', {
     },    
     imgPerfil: {
         type: DataTypes.TEXT('long'),
-        allowNull: false,
+        allowNull: true,
         defaultValue: ''
     },
     fechaRegistro: {
         type: DataTypes.DATE,
+        allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
     cuentasSeguidas: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     seguidores: {
@@ -66,22 +67,22 @@ export const User = sequelize.define('user', {
     },
     publicaciones: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     foros: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     solicitudes: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     reportes: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     tipoUsuario: {
@@ -91,16 +92,18 @@ export const User = sequelize.define('user', {
     },
     modoOscuro: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
     },
     notificaciones: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
     },
     resetToken: {
         type: DataTypes.STRING,
         allowNull: true
     }
+}, {
+    timestamps: false
 })

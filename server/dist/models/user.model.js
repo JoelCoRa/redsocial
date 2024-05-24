@@ -51,16 +51,17 @@ exports.User = connection_1.default.define('user', {
     },
     imgPerfil: {
         type: sequelize_1.DataTypes.TEXT('long'),
-        allowNull: false,
+        allowNull: true,
         defaultValue: ''
     },
     fechaRegistro: {
         type: sequelize_1.DataTypes.DATE,
+        allowNull: true,
         defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     },
     cuentasSeguidas: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     seguidores: {
@@ -70,22 +71,22 @@ exports.User = connection_1.default.define('user', {
     },
     publicaciones: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     foros: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     solicitudes: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     reportes: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 0
     },
     tipoUsuario: {
@@ -95,16 +96,18 @@ exports.User = connection_1.default.define('user', {
     },
     modoOscuro: {
         type: sequelize_1.DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
     },
     notificaciones: {
         type: sequelize_1.DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
     },
     resetToken: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: true
     }
+}, {
+    timestamps: false
 });

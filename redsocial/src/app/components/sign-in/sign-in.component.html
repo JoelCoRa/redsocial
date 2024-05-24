@@ -1,121 +1,117 @@
+<!-- src/app/components/sign-in/sign-in.component.html -->
 <div class="login-body">
-    <div class="container">
-      <app-titulo></app-titulo>
-        <div class="card-container" *ngIf="!loading">
-            <div class="card-body">
-              <h5 class="card-title">Crea una cuenta</h5>
-              <hr>
-              <div class="mb-2 input-container needs-validation">
-                <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()"> 
-                  <!-- Datos generales -->
-                  <p class="seccion">Datos generales</p>
-                  <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Nombre(s) <span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Nombre" type="text" formControlName="nombre" [(ngModel)]="nombre">
-                        <div class="text-danger" *ngIf="signInForm.controls['nombre'].invalid && (isFormSubmitted || signInForm.controls['nombre'].touched)">
-                          <span *ngIf="signInForm.controls['nombre'].errors?.['required']">El nombre no puede quedar vacio.</span>
-                        </div>
-                      </div>                   
-                                           
-                    </div>    
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Apellidos(s) <span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Apellido(s)" required="" type="text" formControlName="apellido" [(ngModel)]="apellido">
-                        <!-- <span class="input-border"></span> -->
-                        <div class="text-danger" *ngIf="signInForm.controls['apellido'].invalid && (isFormSubmitted || signInForm.controls['apellido'].touched)">
-                          <span *ngIf="signInForm.controls['apellido'].errors?.['required']">El apellido no puede quedar vacio.</span>
-                        </div>
-                      </div> 
-
-                      <!-- <div class="campo">
-                        <label for="">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                        <input class="input" required="" type="date" formControlName="fechaNac" min="2010-01-01" max="2024-01-01" [(ngModel)]="fechaNacimiento">
-                        <div class="text- danger" *ngIf="signInForm.controls['fechaNac'].invalid && (isFormSubmitted || signInForm.controls['fechaNac'].touched || signInForm.controls['fechaNac'].dirty )">
-                          <span *ngIf="signInForm.controls['fechaNac'].errors?.['required']">Debes seleccionar tu dia de nacimiento.</span>
-                        </div>
-                      <span class="input-border"></span>
-                      </div>
-                      <div class="campo">
-                        <label for="">Sexo <span class="obligatorio">*</span></label>
-                        <select class="input" formControlName="sexo" placehol>
-                          <option value="" selected disabled>--Seleccionar</option>
-                          <option value="hombre">Hombre</option>
-                          <option value="mujer">Mujer</option>
-                          <option value="otro">Otro</option>
-                          <option value="no responder">Prefiero no responder</option>
-                          <span class="input-border"></span>
-                        </select>    
-                        <div class="text-danger" *ngIf="signInForm.controls['sexo'].invalid && (isFormSubmitted || signInForm.controls['sexo'].touched || signInForm.controls['sexo'].dirty )">
-                          <span *ngIf="signInForm.controls['sexo'].errors?.['required']">Debes seleccionar una opción.</span>
-                        </div>                   
-                      </div>          -->
-                    </div>  
-                    <hr class="mt-3">
+  <div class="contTitulo">
+    <app-titulo></app-titulo>
+  </div>
+  <div class="contSignIn">
+    <div class="card-container" *ngIf="!loading">
+      <div class="card-body">
+        <h5 class="card-title">Crea una cuenta</h5>
+        <hr>
+        <div class="mb-2 input-container needs-validation">
+          <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <!-- Datos generales -->
+            <p class="seccion">Datos generales</p>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="nombre">Nombre(s) <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Nombre" type="text" formControlName="nombre">
+                  <div class="text-danger" *ngIf="signInForm.controls['nombre'].invalid && (isFormSubmitted || signInForm.controls['nombre'].touched)">
+                    <span *ngIf="signInForm.controls['nombre'].errors?.['required']">El nombre no puede quedar vacío.</span>
                   </div>
-                    <!-- Datos de cuenta -->
-                  <p class="seccion">Datos de la cuenta</p>
-                  <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Ingresa un Correo <span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Correo" required="" type="text" formControlName="correo" [(ngModel)]="correo">
-                        <!-- <span class="input-border"></span> -->
-                        <div class="text-danger" *ngIf="signInForm.controls['correo'].invalid && (isFormSubmitted || signInForm.controls['correo'].touched)">
-                          <span *ngIf="signInForm.controls['correo'].errors?.['required']">El correo no puede quedar vacío.</span>
-                          <span *ngIf="signInForm.controls['correo'].errors?.['email']">El correo no es válido.</span>
-                        </div>
-                      </div> 
-                    </div>
-
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Elige un nombre de usuario<span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Nombre de Usuario" required="" type="text" formControlName="nombreUsuario" [(ngModel)]="nombreUsuario">
-                        <div class="text-danger" *ngIf="signInForm.controls['nombreUsuario'].invalid && (isFormSubmitted || signInForm.controls['nombreUsuario'].touched)">
-                          <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['required']">El nombre de usuario no puede quedar vacío.</span>
-                          <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['minlength']">El nombre de usuario debe contener al menos 8 caracteres.</span>
-                        </div>
-                      </div> 
-                    </div>                       
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Crea una contraseña<span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Contraseña" required="" type="password" formControlName="password" [(ngModel)]="password">
-                        <!-- <span class="input-border"></span> -->
-                        <div class="text-danger" *ngIf="signInForm.controls['password'].invalid && (isFormSubmitted || signInForm.controls['password'].touched)">
-                          <span *ngIf="signInForm.controls['password'].errors?.['required']">La contraseña no puede quedar vacía.</span>
-                          <span *ngIf="signInForm.controls['password'].errors?.['minlength']">La contraseña debe contener al menos 8 caracteres.</span>
-                        </div>
-                      </div> 
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                      <div class="campo">
-                        <label for="">Confirma la contraseña<span class="obligatorio">*</span></label>
-                        <input class="input" placeholder="Contraseña" required="" type="password" formControlName="confirmPassword" [(ngModel)]="confirmPassword">
-                        <span class="input-border"></span>
-                        <div class="text-danger" *ngIf="signInForm.controls['confirmPassword'].invalid && (isFormSubmitted || signInForm.controls['confirmPassword'].touched)">
-                          <span *ngIf="signInForm.controls['confirmPassword'].errors?.['required']">Debes repetir la contraseña</span>
-                        </div>
-                      </div>                       
-                    </div>
-                    <div class="col-md-12 contCheckbox">
-                      <p class="aviso">Al dar click en Registrar estas aceptando el <span class="txtCheckbox"><a routerLink="/avisodeprivacidad">Aviso de Privacidad</a></span></p>
-                      
-                    </div>
-                  </div>                                   
-                </form>              
+                </div>
               </div>
-              <div class="botones">
-                <app-enviar (click)="onSubmit()" class="btn"></app-enviar>
-                <app-btn-regresar routerLink="/login" class="btn"></app-btn-regresar>               
-              </div>  
-              <app-spinner *ngIf="loading"></app-spinner>           
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="apellido">Apellido(s) <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Apellido(s)" type="text" formControlName="apellido">
+                  <div class="text-danger" *ngIf="signInForm.controls['apellido'].invalid && (isFormSubmitted || signInForm.controls['apellido'].touched)">
+                    <span *ngIf="signInForm.controls['apellido'].errors?.['required']">El apellido no puede quedar vacío.</span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>       
-    </div>  
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="fechaNacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
+                  <input class="input" type="date" formControlName="fechaNacimiento" min="1960-01-01" max="2024-01-01">
+                  <div class="text-danger" *ngIf="signInForm.controls['fechaNacimiento'].invalid && (isFormSubmitted || signInForm.controls['fechaNacimiento'].touched)">
+                    <span *ngIf="signInForm.controls['fechaNacimiento'].errors?.['required']">Debes seleccionar tu fecha de nacimiento.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="sexo">Sexo <span class="obligatorio">*</span></label>
+                  <select class="input" formControlName="sexo">
+                    <option value="" selected disabled>--Seleccionar--</option>
+                    <option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="signInForm.controls['sexo'].invalid && (isFormSubmitted || signInForm.controls['sexo'].touched)">
+                    <span *ngIf="signInForm.controls['sexo'].errors?.['required']">Debes seleccionar una opción.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="mt-3">
+            <!-- Datos de cuenta -->
+            <p class="seccion">Datos de la cuenta</p>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="correo">Ingresa un Correo <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Correo" type="text" formControlName="correo">
+                  <div class="text-danger" *ngIf="signInForm.controls['correo'].invalid && (isFormSubmitted || signInForm.controls['correo'].touched)">
+                    <span *ngIf="signInForm.controls['correo'].errors?.['required']">El correo no puede quedar vacío.</span>
+                    <span *ngIf="signInForm.controls['correo'].errors?.['email']">El correo no es válido.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="nombreUsuario">Elige un nombre de usuario <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Nombre de Usuario" type="text" formControlName="nombreUsuario">
+                  <div class="text-danger" *ngIf="signInForm.controls['nombreUsuario'].invalid && (isFormSubmitted || signInForm.controls['nombreUsuario'].touched)">
+                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['required']">El nombre de usuario no puede quedar vacío.</span>
+                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['minlength']">El nombre de usuario debe contener al menos 8 caracteres.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="password">Crea una contraseña <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Contraseña" type="password" formControlName="password">
+                  <div class="text-danger" *ngIf="signInForm.controls['password'].invalid && (isFormSubmitted || signInForm.controls['password'].touched)">
+                    <span *ngIf="signInForm.controls['password'].errors?.['required']">La contraseña no puede quedar vacía.</span>
+                    <span *ngIf="signInForm.controls['password'].errors?.['minlength']">La contraseña debe contener al menos 8 caracteres.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="campo">
+                  <label for="confirmPassword">Confirma la contraseña <span class="obligatorio">*</span></label>
+                  <input class="input" placeholder="Confirmar Contraseña" type="password" formControlName="confirmPassword">
+                  <div class="text-danger" *ngIf="signInForm.controls['confirmPassword'].invalid && (isFormSubmitted || signInForm.controls['confirmPassword'].touched)">
+                    <span *ngIf="signInForm.controls['confirmPassword'].errors?.['required']">Debes confirmar la contraseña</span>
+                    <span *ngIf="signInForm.controls['confirmPassword'].errors?.['mustMatch']">Las contraseñas no coinciden</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 contCheckbox">
+                <p class="aviso">Al dar click en Registrar estas aceptando el <span class="txtCheckbox"><a routerLink="/avisodeprivacidad">Aviso de Privacidad</a></span></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="botones">
+          <app-enviar (click)="onSubmit()" class="btn"></app-enviar>
+          <app-btn-regresar routerLink="/login" class="btn"></app-btn-regresar>
+        </div>
+        <app-spinner *ngIf="loading"></app-spinner>
+      </div>
+    </div>
+  </div>
 </div>
-<app-footer></app-footer>  
-
+<app-footer></app-footer>

@@ -7,7 +7,7 @@ import sequelize from '../db/connection';
 const nodemailer = require('nodemailer');
 
 export const newUser = async (req: Request, res: Response) => {
-    const {nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password, imgPerfil, fechaRegistro, cuentasSeguidas, seguidores, publicaciones, foros, solicitudes, reportes, tipoUsuario, modoOscuro, notificaciones, descripcion} = req.body;    
+    const {nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password} = req.body;    
     const hashedPassword = await bcrypt.hash(password, 10);
     // Se valida si el usuario existe en la BD
     const user = await User.findOne({where:{ nombreUsuario: nombreUsuario }});
@@ -26,18 +26,6 @@ export const newUser = async (req: Request, res: Response) => {
             correo: correo,        
             nombreUsuario: nombreUsuario,
             password: hashedPassword,
-            imgPerfil: imgPerfil,
-            fechaRegistro: fechaRegistro,
-            cuentasSeguidas: cuentasSeguidas,
-            seguidores: seguidores,
-            publicaciones: publicaciones,
-            foros: foros,
-            solicitudes: solicitudes,
-            reportes: reportes,
-            tipoUsuario: tipoUsuario,
-            modoOscuro: modoOscuro,
-            notificaciones: notificaciones,
-            descripcion: descripcion,
         });
     } catch(error){
         res.status(400).json({

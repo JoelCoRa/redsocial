@@ -20,7 +20,7 @@ import { Recurso } from './recurso.model';
 import { Solicitud } from './solicitud.model';
 import { Reporte } from './reporte.model';
 import { Organizacion } from './organizacion.model';
-import cors from 'cors'
+import cors from 'cors';
 import { SeguidoSeguidor } from './seguidosseguidores.model';
 import { ReplicaForo } from './replicaforo.model';
 import { Contacto } from './contacto.model';

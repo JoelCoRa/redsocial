@@ -1,6 +1,8 @@
 export interface User{
     nombre: string, 
     apellido: string,
+    fechaNacimiento: string,
+    sexo: string
     correo: string, 
     nombreUsuario: string,
     password: string
