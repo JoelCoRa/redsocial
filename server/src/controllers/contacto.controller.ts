@@ -5,7 +5,7 @@ import { Contacto } from "../models/contacto.model";
 
 
 export const createContact = async(req: Request, res: Response) => {
-    const {rol, asunto, descripcion, userId} = req.body
+    const {rol, asunto, descripcion, userId} = req.body;
 
     try{        
         Contacto.create({
@@ -23,10 +23,4 @@ export const createContact = async(req: Request, res: Response) => {
     res.json({
         msg: `Solicitud de contacto creada exitosamente!`,
     });
-
-
-    
-
-
-
 }

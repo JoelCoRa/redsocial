@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { BtnRegresarComponent } from '../../btn-regresar/btn-regresar.component';
 import { BtnregresarportalComponent } from '../../btnregresarportal/btnregresarportal.component';
 import { UserService } from '../../../services/user.service';
@@ -35,7 +35,7 @@ export class CrearforoComponent {
 
     crearForoForm: FormGroup;
 
-    constructor(private user: UserService, private sb: MatSnackBar, private error: ErrorService, private foro: ForosService){
+    constructor(private user: UserService, private sb: MatSnackBar, private error: ErrorService, private foro: ForosService, private router: Router){
         console.log(this.etiquetaIngresada)
         this.crearForoForm = new FormGroup({
             titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(30)]),
@@ -100,9 +100,7 @@ export class CrearforoComponent {
               },
               complete: () => { 
                 console.info('complete')
-                setTimeout(() => {
-                  window.location.reload();
-                }, 3000);
+                this.router.navigate(['/foros'])
               }
         })
     }

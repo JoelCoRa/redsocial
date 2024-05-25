@@ -2,21 +2,16 @@ import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
 import { User } from "./user.model";
 
-
-export const Contacto = sequelize.define('solicitud-contacto', {
+export const Apoyo = sequelize.define('solicitud-apoyo',{
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    rol:{
+    correo:{
         type: DataTypes.STRING,
         allowNull: false,
     }, 
-    asunto:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     descripcion:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -25,10 +20,9 @@ export const Contacto = sequelize.define('solicitud-contacto', {
         type: DataTypes.DATE,
         allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-    },
+    }
 }, {
     timestamps: false // Desactivar createdAt y updatedAt
-})
-User.hasMany(Contacto); // Un usuario puede tener muchos posts
-Contacto.belongsTo(User, {foreignKey: 'userId'});
-
+});
+User.hasMany(Apoyo); // Un usuario puede tener muchos posts
+Apoyo.belongsTo(User, {foreignKey: 'userId'});

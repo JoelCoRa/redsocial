@@ -46,18 +46,18 @@ export class SidebarComponent {
   getUser(){
     const userId = Number(this.user.getUserId()); 
     this.user.getUser(userId).subscribe(data =>{
-      console.log(data);
+      // console.log(data);
       if(data.tipoUsuario === 1){
         this.isAdmin = true;
-        console.log('Es admin')
+        // console.log('Es admin')
       }
       else if(data.tipoUsuario === 0){
         this.isAdmin = false;
-        console.log('No es admin')
+        // console.log('No es admin')
 
       }
       else{
-        console.log('No es ninguno');
+        // console.log('No es ninguno');
       }
     })
 

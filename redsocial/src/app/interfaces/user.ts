@@ -17,6 +17,7 @@ export interface UserPerfil{
     nombre: string,
     apellido: string,
     nombreUsuario: string,
+    correo: string,
     imgPerfil:string,
     descripcion: string,
     cuentasSeguidas: number,

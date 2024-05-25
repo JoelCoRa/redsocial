@@ -7,7 +7,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { FooterComponent } from "../../footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { BtnregresarportalComponent } from "../../btnregresarportal/btnregresarportal.component";
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { UserService } from '../../../services/user.service';
 import { ContactoService } from '../../../services/contacto.service';
@@ -24,9 +24,9 @@ import { ErrorService } from '../../../services/error.service';
 })
 export class PagcontactoComponent {
   contactoForm!: FormGroup;
-  opciones: string[] = ['Desarrolladores', 'Asesor','Administrador'];
+  opciones = ['Desarrolladores', 'Asesor','Administrador'];
 
-  rol: string = '';
+  rol: string = ''  ;
   asunto: string = '';
   descripcion: string = '';
   
@@ -35,17 +35,16 @@ export class PagcontactoComponent {
   selectedOption: any;
   action: string = "Cerrar"
 
-  constructor(private user: UserService, private contacto: ContactoService, private sb: MatSnackBar, private error: ErrorService){
+  constructor(private user: UserService, private contacto: ContactoService, private sb: MatSnackBar, private error: ErrorService, private router: Router){
     this.contactoForm = new FormGroup({
       rol: new FormControl('', [Validators.required]),
       asunto: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
       descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(200)]),
     })
   }
-  onSubmitContacto(){
-    const userId = Number(this.user.getUserId()); 
-    if(this.rol === '' || this.asunto === '' || this.descripcion === ''){
-      this.sb.open('Los camposno pueden quedar vacios', this.action, {
+  onSubmitContacto(){    
+    if (this.contactoForm.invalid) {
+      this.sb.open('Por favor, completa todos los campos correctamente', this.action, {
         duration: 5000,        
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
@@ -53,35 +52,29 @@ export class PagcontactoComponent {
       });
       return;
     }
-    const solicitud: SolContacto ={
-        rol: this.rol,
-        asunto: this.asunto,
-        descripcion: this.descripcion,
-        userId: userId
-    }
-    console.log(solicitud);
+  
+    const userId = Number(this.user.getUserId());
+    const solicitud: SolContacto = {
+      rol: this.contactoForm.get('rol')!.value,
+      asunto: this.contactoForm.get('asunto')!.value,
+      descripcion: this.contactoForm.get('descripcion')!.value,
+      userId: userId
+    };
+  
     this.contacto.createContact(solicitud).subscribe({
       next: (v) => {
-        // this.loading = false;
         this.sb.open(`Solicitud de contacto creada con éxito!`, this.action, {
           duration: 5000,        
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           panelClass: ['notifExito'],  
         });
-        // this.router.navigate(['/login']);                
+        this.router.navigate(['/contacto']);                
       },
       error: (e: HttpErrorResponse) => {
-        // this.loading = false;
-        this.error.msgError(e)       
+        this.error.msgError(e);      
       },
       complete: () => console.info('complete')
-    })
-
-
-
-
-
-
+    });
   }
 }

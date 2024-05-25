@@ -5,6 +5,7 @@ const foros_controller_1 = require("../controllers/foros.controller");
 const router = (0, express_1.Router)();
 // Cambiar por los de foros
 router.post('/crearforo', foros_controller_1.crearForo);
+router.post('/crearreplica/:id', foros_controller_1.createReplica);
 router.get('/getforo/:id', foros_controller_1.getForo);
 router.get('/searchforos', foros_controller_1.searchForo);
 router.get('/searchforosaux', foros_controller_1.searchForoAux);

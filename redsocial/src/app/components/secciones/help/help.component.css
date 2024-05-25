@@ -19,7 +19,8 @@
     display: flex;
     width: 100%; 
     padding: 1rem;
-    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
     flex-direction: row;
     /* border: 1px solid #000; */
     /* border: 1px solid #000; */
@@ -37,7 +38,7 @@
 }
 .filaEntrada label,
 .filaEntradaMensaje label{
-    font-size: 1.2rem;
+    font-size: 1;
     font-family: var(--fuentePrimaria);
 }
 .filaEntradaMensaje label{
@@ -82,16 +83,12 @@
     resize: none;
     height: 10rem;
 }
-.filaEntrada .input{
-    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-}
-
 /* Input Asunto */
 .filaEntrada .input {
     border: 2px solid transparent;
-    width: 30%;
+    width: 80%;
+    font-family: var(--fuentePrimaria);
+    font-size: 0.9rem;
     height: 2.5em;
     padding-left: 0.8em;
     outline: none;
@@ -99,6 +96,9 @@
     background-color: #F3F3F3;
     border-radius: 10px;
     transition: all 0.5s;
+    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
   }
   
 .filaEntrada .input:hover,
@@ -169,7 +169,7 @@
   /* Tooltip appearance on hover */
   .tooltip-container:hover {
     color: var(--text-color-dark);
-    box-shadow: 0 0 20px var(--glow-color); /* Brighter glow effect */
+    /* box-shadow: 0 0 20px var(--glow-color);  */
     transform: scale(105%);
     transition: 0.5s ease-in-out all;
 }
@@ -208,4 +208,16 @@
     background-color: #32a755;
     transition: 0.5s ease-in all;
     cursor: pointer;
+}
+@media(min-width: 900px){
+    .contLabel{
+        margin: 0;
+    }
+    .filaEntrada .input{
+        width: 90%;
+    }
+    .filaEntrada label,
+    .filaEntradaMensaje label{
+        font-size: 1.2rem;
+    }
 }

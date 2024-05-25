@@ -106,7 +106,7 @@ export class HeaderperfilComponent {
 
   totalPosts!: number;
   getTotalPosts(){
-    const idUser = Number(this.getUserId());
+    const idUser = Number(this.user.getUserId());
     this.post.getTotalPosts(idUser).subscribe(data2 =>{
       this.totalPosts = data2
       // console.log(this.totalPosts);

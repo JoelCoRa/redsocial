@@ -9,12 +9,13 @@
 .cardTema{
     border-radius: 10px;
     display: inline;
+    margin-bottom: 1rem;
     /* width: 10rem; */
 
     border: 1px solid #183cbe;
     /* width: 20%; */
     text-align: center;
-    padding: 1rem;
+    padding: 0.8rem;
     background-color: aliceblue;
     -webkit-box-shadow: 2px 7px 28px -7px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 7px 28px -7px rgba(0,0,0,0.75);
@@ -48,8 +49,8 @@
     font-size: 1rem;
     color: rgb(191, 191, 191);
     font-family: var(--fuentePrimaria);
-    font-style: italic;
-    
+    font-style: italic;   
+    text-wrap: nowrap; 
 }
 .reacciones{
     width: 80%;
@@ -78,6 +79,10 @@
 }
 
 .contenidoForo{
+    border: 1px solid #777676;
+    border-radius: 10px;
+    background-color: #d1dbff;
+    font-family: var(--fuentePrimaria);
     /* border: 1px solid #000; */
     padding: 1rem;
 }
@@ -105,7 +110,7 @@
 }
 
 /* Boton Replicar */
-button {
+.comentarios button {
     --color: #0077ff;
     font-family: var(--fuentePrimaria);
     display: inline-block;
@@ -123,7 +128,7 @@ button {
     position: relative;
   }
   
-  button::before {
+  .comentarios  button::before {
     position: absolute;
     content: "";
     background: var(--color);
@@ -133,17 +138,17 @@ button {
     border-radius: 50%;
   }
   
-  button:hover {
+  .comentarios  button:hover {
     color: white;
   }
   
-  button:before {
+  .comentarios  button:before {
     top: 100%;
     left: 100%;
     transition: 0.3s all;
   }
   
-  button:hover::before {
+  .comentarios button:hover::before {
     top: -30px;
     left: -30px;
   }
@@ -155,6 +160,7 @@ button {
     margin-top: 1rem;
 }
 .contReplicas{
+    background-color: #bde9e3;
     padding: 1rem;
     
 }
@@ -164,7 +170,15 @@ button {
 }
 .cuerpoReplica{
     display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #c9c9c9;
     flex-direction: row;
+    justify-content: space-between;
+}
+.cuerpoReplica:last-child{
+    border-bottom: none;
+
 }
 .infoUserQueReplica{
     display: flex;
@@ -174,24 +188,57 @@ button {
     align-items: center;
     /* border: 1px solid #000; */
 }
-.imgUserReplica{
-    width: 40%;
+.imgPerfil{
+    width: 3rem; /* esto asegura que la imagen ocupe todo el espacio dentro del div */
+    height: 3rem;
+    /* object-fit: cover;  */
+    border-radius: 50%; /* esto hará que los bordes sean redondos */
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    /* margin-right: 1rem; */
 }
 .infoUserQueReplica h4{
     font-size: 0.8rem;
     font-family: var(--fuentePrimaria);
     font-style: italic;
+    text-align: center;
+    margin-bottom: 0;
+}
+.fechaPublicacion{
+    color: #969393;
+    font-size: 0.7rem;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .contenidoReplica{
     border: 1px solid #000;
     background-color: rgb(225, 226, 226);
+    font-family: var(--fuenteGenerica);
     border-radius: 10px;
-    padding: 1rem;
+    width: 90%;
+    padding: 0.8rem;
 }
 @media(min-width: 900px){
-    .cardTema{
-        /* width: 40% */
-
+    .infoUserQueReplica{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        /* margin-right: 1rem;     */
+    }
+    .infoUserQueReplica h4{
+        font-size: 1rem;
+    }
+    .imgPerfil{
+        margin-right: 1rem;
+        width: 3rem; 
+        height: 3rem;
+        object-fit: cover;
+    }
+    .fechaPublicacion{
+        margin-left: 1rem;
     }
 }
 

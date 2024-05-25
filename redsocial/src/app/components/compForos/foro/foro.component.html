@@ -5,8 +5,7 @@
     <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
     <div class="contRegresar">
         <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
-    </div>
-    
+    </div>    
     <div class="cuerpoForo">
     <div>
         <div class="temaForo">
@@ -15,26 +14,16 @@
                 <p class="temaResult">{{temaResultadoForo}}</p>                
             </div>
         </div>
-
         <mat-card class="example-card">
             <mat-card-header class="headerCuerpo">
                 <div class="infoForo">
-                    <img src="../../../../assets/icon.png" alt="iconoUser" class="imgUser">
                     <div class="">
                         <h4 class="tituloForoResult">{{tituloForoResult}}</h4>
-                        <p class="publicadoPor">Publicado por {{this.foroContent.nombreUsuario}}</p>
-                    </div>
-                    
+                        <p class="publicadoPor">Publicado por {{usuarioResult}}</p>
+                    </div>                    
                 </div>
                 <div class="reacciones">
                     <div class="contReacciones">
-                        <div class="likes">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart heartIcon" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                            </svg>
-                            <span class="numLikes">{{numLikes}}</span>
-                        </div>                  
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -47,41 +36,80 @@
             <mat-card-content>
                 <div class="contenidoForo">
                     <p>{{contResultForo}} </p>
-                </div>          
-                  
+                </div>                     
             </mat-card-content>            
           </mat-card>  
-
           <mat-card class="cardComentarios">
-            <p>Escribe una replica...</p>
-            <div class="comentarios">
-                <input type="text" class="inputReplica">
-                <button>Replicar</button>
-            </div>
-
+            <form [formGroup]="replicaForm">
+                <p>Escribe una replica...</p>
+                <div class="comentarios">
+                    <input type="text" class="inputReplica" formControlName="contenidoreplica" [(ngModel)]="contenidoreplica">
+                    <button (click)="createReplica()">Replicar</button>
+                </div>
+            </form>            
           </mat-card>
 
-          <mat-card class="replicas">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Ver Replicas
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <mat-card class="replicas" >
+                    <div class="contReplicas">
+                        <div class="tituloReplicas">
+                            <h4>Replicas</h4>
+                            <div class="cuerpoReplica" *ngFor="let rep of replicas">
+                                <div class="infoUserQueReplica">
+                                    <img *ngIf="rep.user.imgPerfil === ''" src="../../../../assets/avatars/2.jpg" alt="" class="imgPerfil">           
+                                    <img *ngIf="rep.user.imgPerfil !== ''" [src]="getProfileImage(rep)" alt="" class="imgPerfil">
+                                    <div class="nombreFecha">
+                                        <h4>{{rep.user.nombreUsuario}}</h4>
+                                        <p class="fechaPublicacion">{{rep.createdAt | date: 'dd/MMM/yyyy' }}</p> 
+                                    </div>
+                                </div>
+                                <div class="contenidoReplica">
+                                    <p>{{rep.contenidoreplica}}</p>
+                                </div>
+                                <div class="accionesReplica">                            
+                                </div>                        
+                            </div>
+                        </div>
+                    </div> 
+                  </mat-card>
+              </div>
+            </div>            
+          </div>
+
+
+
+
+
+
+          <!-- <mat-card class="replicas" >
             <div class="contReplicas">
                 <div class="tituloReplicas">
                     <h4>Replicas</h4>
-                    <div class="cuerpoReplica">
+                    <div class="cuerpoReplica" *ngFor="let rep of replicas">
                         <div class="infoUserQueReplica">
-                            <img src="../../../../assets/icon.png" alt="iconoUser" class="imgUserReplica">
-                            <h4>{{usuarioQueReplica}}</h4>
+                            <img *ngIf="rep.user.imgPerfil === ''" src="../../../../assets/avatars/2.jpg" alt="" class="imgPerfil">           
+                            <img *ngIf="rep.user.imgPerfil !== ''" [src]="getProfileImage(rep)" alt="" class="imgPerfil">
+                            <div class="nombreFecha">
+                                <h4>{{rep.user.nombreUsuario}}</h4>
+                                <p class="fechaPublicacion">{{rep.createdAt | date: 'dd/MMM/yyyy' }}</p> 
+                            </div>
                         </div>
                         <div class="contenidoReplica">
-                            <p>{{contenidoReplica}}</p>
+                            <p>{{rep.contenidoreplica}}</p>
                         </div>
-                        <div class="accionesReplica">
-                            
-                        </div>
-                        
+                        <div class="accionesReplica">                            
+                        </div>                        
                     </div>
-
                 </div>
             </div> 
-          </mat-card>
+          </mat-card> -->
       </div>  
     </div>  
   </div>

@@ -27,7 +27,7 @@ export const getUser = async (req: Request, res: Response) =>{
             id: id
         },
         attributes: [
-            'id','nombreUsuario','descripcion','cuentasSeguidas', 'seguidores','imgPerfil', 'tipoUsuario'
+            'id','nombreUsuario','descripcion','cuentasSeguidas', 'seguidores','imgPerfil', 'tipoUsuario','correo'
         ]
     });
     res.json(user);
