@@ -19,19 +19,21 @@ import { UserService } from '../../../services/user.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from '../../../services/error.service';
+import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component";
 
 @Component({
     selector: 'app-foro',
     standalone: true,
     templateUrl: './foro.component.html',
     styleUrl: './foro.component.css',
-    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, FooterComponent, BarrabusquedaComponent, MatCardModule, EnviarComponent, BtnregresarportalComponent, RouterModule, CommonModule, FormsModule, ReactiveFormsModule]
+    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, FooterComponent, BarrabusquedaComponent, MatCardModule, EnviarComponent, BtnregresarportalComponent, RouterModule, CommonModule, FormsModule, ReactiveFormsModule, MensajevacioComponent]
 })
 export class ForoComponent {
     temaResultadoForo: string = '';
     tituloForoResult: string = '';
     usuarioResult: string = ''
     numLikes: number = 3;
+    numReplicas: number = -1;
     contResultForo: string = "";
     usuarioQueReplica: string = "";
     contenidoReplica: string = "";
@@ -79,6 +81,7 @@ export class ForoComponent {
         console.log(this.foroId);
         this.forosService.getReplicasForo(this.foroId).subscribe(data =>{
             this.replicas = data;
+            this.numReplicas = this.replicas.length;
             console.log(this.replicas);            
         });
         // this.forosService.getReplicasForo(id).subscribe(data =>

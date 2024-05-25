@@ -1,10 +1,22 @@
-.cuerpoRecursos{
+.contPrincipalRecursos .video{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    /* border: 1px solid #000; */
+    border-radius: 5px;
+    padding: 0.2rem;    
 }
-.tabla{
-    width: 100%;
+.contPrincipalRecursos .video:first-child{
+    margin-bottom: 2rem;
 }
-.headerTabla{
-    background-color: rgb(178, 136, 217);
+.contPrincipalRecursos .video span{
+    font-family: var(--fuentePrimaria);
+    font-size: 1rem;
+    margin-top: 0.6rem;
+}
+.contPrincipalRecursos .video iframe{
+    -webkit-box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 12px 2px rgba(0,0,0,0.75);
 }

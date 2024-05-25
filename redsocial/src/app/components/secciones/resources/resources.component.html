@@ -7,38 +7,52 @@
     
     <div class="cuerpoRecursos">
       <app-menurecursos></app-menurecursos>
-      <div class="mat-elevation-z8 tabla">
-        <table mat-table [dataSource]="dataSource">
-      
-          <!-- Position Column -->
-          <ng-container matColumnDef="plataforma">
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Plataforma </th>
-            <td mat-cell *matCellDef="let element"> {{element.plataforma}} </td>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="titulo" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Titulo </th>
-            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="autor" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Autor </th>
-            <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="link" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Link </th>
-            <td mat-cell *matCellDef="let element"> {{element.link}} </td>
-          </ng-container>      
-               
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+      <div class="contPrincipalRecursos">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/oBWcsQlw-fw?si=n-wBYPOWqM0J9r5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">Prevención de Violencia en el Noviazgo</span>
+            </div>            
+          </div>
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/a3NhJECo3HE?si=-D3LBIufxACOdoF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">Día de la Prevención de la Violencia en el Noviazgo</span>
+            </div>
+          </div>        
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/w_jbIZDtdJs?si=FKax81h6xte-BUlV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">Dependencia emocional - Violencia en las relaciones afectivas</span>
+            </div>            
+          </div>
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/bowVt16XDsQ?si=02KLptVkwUZeGzRX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">¿Cómo prevenir la violencia en el noviazgo?</span>
+            </div>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/FTCkQgRSPvU?si=YeaXe9FC_iTKvVI2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">El amor no duele - Violencia en el noviazgo</span>
+            </div>            
+          </div>
+          <div class="col-lg-6 col-sm-12 mt-2">
+            <div class="video">
+              <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/nGBGgGDdjxA?si=GPybhWuprE3tWIzW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <span class="tituloVideo">Recomendaciones para prevenir la VIOLENCIA EN EL NOVIAZGO</span>
+            </div>
+          </div> 
+        </div>
+        
       </div>
+      
     </div>
   </div>
 </app-sidebar>
