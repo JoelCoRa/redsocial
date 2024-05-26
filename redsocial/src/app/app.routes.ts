@@ -17,11 +17,12 @@ import { CrearforoComponent } from './components/compForos/crearforo/crearforo.c
 import { ForoComponent } from './components/compForos/foro/foro.component';
 import { ArticulosComponent } from './components/compRecursos/articulos/articulos.component';
 import { OrganizacionesComponent } from './components/compRecursos/organizaciones/organizaciones.component';
-import { AppsComponent } from './components/compRecursos/apps/apps.component';
 import { LegalComponent } from './components/compRecursos/legal/legal.component';
 import { PagcontactoComponent } from './components/compContacto/pagcontacto/pagcontacto.component';
 import { AvisoprivacidadComponent } from './components/avisoprivacidad/avisoprivacidad.component';
 import { PaneladminComponent } from './components/paneladmin/paneladmin.component';
+import { AplicacionesComponent } from './components/compRecursos/aplicaciones/aplicaciones.component';
+
 import { authGuard } from './utils/auth.guard';
 
 export const routes: Routes = [
@@ -46,7 +47,7 @@ export const routes: Routes = [
     {path: 'recursos', component: ResourcesComponent},
     {path: 'recursos/articulos', component: ArticulosComponent},
     {path: 'recursos/organizaciones', component: OrganizacionesComponent},
-    {path: 'recursos/apps', component: AppsComponent},
+    {path: 'recursos/aplicaciones', component: AplicacionesComponent},
     {path: 'recursos/legal', component: LegalComponent}, 
 
     {path: 'ajustes', component: SettingsComponent},

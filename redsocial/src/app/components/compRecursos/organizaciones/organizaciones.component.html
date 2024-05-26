@@ -3,41 +3,129 @@
 <app-sidebar>
   <div class="contenedor">
     <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
-    <app-msg-recursos></app-msg-recursos> 
+    <!-- <app-msg-recursos></app-msg-recursos>  -->
     
     <div class="cuerpoRecursos">
-      <app-menurecursos></app-menurecursos>
-      <div class="mat-elevation-z8 tabla">
-        <table mat-table [dataSource]="dataSource">
-      
-          <!-- Position Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Nombre </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="giro" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Giro </th>
-            <td mat-cell *matCellDef="let element"> {{element.giro}} </td>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="paginaweb" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Pagina Web </th>
-            <td mat-cell *matCellDef="let element"> {{element.paginaweb}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="direccion" >
-            <th mat-header-cell *matHeaderCellDef class="headerTabla"> Direccion </th>
-            <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-          </ng-container>      
-               
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+      <app-menurecursos [mensaje]="'Aqui encontrarás algunas organizaciones que pueden ser de tu interés.'"></app-menurecursos>
+      <div class="contPrincipalRecursos">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12">
+            <h5 class="subtituloOrganizacion">Organizaciones públicas</h5>
+            <div class="organizacion publica">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Inmujeres</h4>
+                <span class="nombreOrganizacion">Instituto Nacional de las mujeres</span>
+              </div>              
+              <p class="descOrganizacion">Enfocado en promover y coordinar políticas públicas para la igualdad de género y la erradicación de la violencia contra las mujeres...</p>
+              <a href="https://www.gob.mx/inmujeres" target="_blank">{{this.link}}</a>                     
+            </div> 
+            <div class="organizacion publica">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Conavim</h4>
+                <span class="nombreOrganizacion">Comisión Nacional para Prevenir y Erradicar la Violencia contra las Mujeres</span>
+              </div>              
+              <p class="descOrganizacion">Trabaja en la creación y supervisión de políticas y programas para prevenir y erradicar la violencia de género en México...</p>
+              <a href="https://www.gob.mx/conavim" target="_blank">{{this.link}}</a>
+            </div> 
+            <div class="organizacion publica">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Fevimtra</h4>
+                <span class="nombreOrganizacion">Fiscalías Especializadas en Delitos de Violencia contra las Mujeres y Trata de Personas</span>
+              </div>              
+              <p class="descOrganizacion">Parte de la Procuraduría General de la República, se enfoca en la investigación y persecución de delitos de violencia de género y trata de personas...</p>
+              <a href="https://fgr.org.mx/swb/FGR/FEVIMTRA" target="_blank">{{this.link}}</a>
+            </div> 
+            <div class="organizacion publica">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Cejum</h4>
+                <span class="nombreOrganizacion">Centro de Justicia para las Mujeres</span>
+              </div>              
+              <p class="descOrganizacion">Brinda atención integral a mujeres víctimas de violencia, proporcionando servicios legales, psicológicos y sociales...</p>
+              <a href="https://www.gob.mx/conavim/documentos/centros-de-justicia-para-las-mujeres-23094?state=published" target="_blank">{{this.link}}</a>
+            </div> 
+            
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <h5 class="subtituloOrganizacion">Organizaciones privadas</h5>
+            <div class="organizacion privada">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Rnr</h4>
+                <span class="nombreOrganizacion">Red Nacional de Refugios</span>
+              </div>              
+              <p class="descOrganizacion">Una red de refugios que ofrece apoyo y protección a mujeres y niños víctimas de violencia doméstica...</p>
+              <a href="https://rednacionalderefugios.org.mx/" target="_blank">{{this.link}}</a>
+            </div>  
+            <div class="organizacion privada">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Fundación Origen</h4>
+                <!-- <span class="nombreOrganizacion">Red Nacional de Refugios</span> -->
+              </div>              
+              <p class="descOrganizacion">Proporciona asistencia psicológica, legal y de salud a mujeres en situación de violencia, además de programas de empoderamiento....</p>
+              <a href="https://rutasparafortalecer.org/osc/fundacion-origen/" target="_blank">{{this.link}}</a>
+            </div>     
+            <div class="organizacion privada">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Gire</h4>
+                <span class="nombreOrganizacion">Grupo de Información en Reproducción Elegida</span>
+              </div>              
+              <p class="descOrganizacion">Aborda la violencia de género desde una perspectiva de derechos reproductivos y sexuales...</p>
+              <a href="https://gire.org.mx/" target="_blank">{{this.link}}</a>
+            </div>   
+            <div class="organizacion privada">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Casa Gaviota A.C.</h4>
+                <!-- <span class="nombreOrganizacion">Grupo de Información en Reproducción Elegida</span> -->
+              </div>              
+              <p class="descOrganizacion">Organización dedicada a la atención de mujeres víctimas de violencia familiar y de género, proporcionando refugio y servicios integrales...</p>
+              <a href="https://www.casagaviota.org/" target="_blank">{{this.link}}</a>
+            </div>  
+            <div class="organizacion privada">
+              <div class="contNombre">
+                <h4 class="siglasOrganizacion">Centro de Apoyo a la Mujer Margarita Magón A.C.</h4>
+                <!-- <span class="nombreOrganizacion">Grupo de Información en Reproducción Elegida</span> -->
+              </div>              
+              <p class="descOrganizacion">Ofrece asistencia legal, psicológica y social a mujeres víctimas de violencia y promueve la educación en derechos humanos y género...</p>
+              <a href="https://puedjs.unam.mx/portfolio-item/centro-de-apoyo-a-la-mujer-margarita-magon/" target="_blank">{{this.link}}</a>
+            </div>     
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5 class="subtituloOrganizacion">Organizaciones internacionales</h5>
+              <div class="organizacion internacional">
+                <div class="contNombre">
+                  <h4 class="siglasOrganizacion">ONU Mujeres</h4>
+                  <span class="nombreOrganizacion">UN Women</span>
+                </div>              
+                <p class="descOrganizacion">Promueve la igualdad de género y empodera a las mujeres en todo el mundo. En México, trabajan en programas específicos para erradicar la violencia de género...</p>
+                <a href="https://www.unwomen.org/en/digital-library/publications/2024/01/gender-alert-the-gendered-impact-of-the-crisis-in-gaza?gad_source=1&gclid=Cj0KCQjwmMayBhDuARIsAM9HM8e8D_wEBGNCglNjWrqppKoQbsyhLcWeTDmsw8bHfGlWZ2R6g_uv4NEaAlGJEALw_wcB" target="_blank">{{this.link}}</a>
+              </div>
+              <div class="organizacion internacional">
+                <div class="contNombre">
+                  <h4 class="siglasOrganizacion">UNFPA</h4>
+                  <span class="nombreOrganizacion">Fondo de Población de las Naciones Unidas</span>
+                </div>              
+                <p class="descOrganizacion">Enfocado en la salud sexual y reproductiva, también trabaja en México en programas de prevención de la violencia de género...</p>
+                <a href="https://www.unfpa.org/es" target="_blank">{{this.link}}</a>
+              </div>
+              <div class="organizacion internacional">
+                <div class="contNombre">
+                  <h4 class="siglasOrganizacion">Amnistía Internacional</h4>
+                  <span class="nombreOrganizacion">Amnesty International</span>
+                </div>              
+                <p class="descOrganizacion">Aboga por los derechos humanos y realiza campañas para combatir la violencia de género en México...</p>
+                <a href="https://www.amnesty.org/es/" target="_blank">{{this.link}}</a>
+              </div>
+              <div class="organizacion internacional">
+                <div class="contNombre">
+                  <h4 class="siglasOrganizacion">Oxfam Internacional</h4>
+                  <!-- <span class="nombreOrganizacion">Amnesty International</span> -->
+                </div>              
+                <p class="descOrganizacion">Implementa programas en México para prevenir la violencia de género y promover la igualdad de género a través de campañas y apoyo comunitario...</p>
+                <a href="https://www.oxfam.org/es" target="_blank">{{this.link}}</a>
+              </div>
+            </div>            
+          </div>
+        </div>
       </div>
     </div>
   </div>

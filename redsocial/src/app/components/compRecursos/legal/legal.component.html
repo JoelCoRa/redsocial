@@ -1,42 +1,70 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
     <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
-    <app-msg-recursos></app-msg-recursos> 
-    
+    <!-- <app-msg-recursos></app-msg-recursos>      -->
     <div class="cuerpoRecursos">
-      <app-menurecursos></app-menurecursos>
+      <app-menurecursos [mensaje]="'Aqui encontrarás algunas definiciones y leyes que pueden ser de tu interés.'"></app-menurecursos>
+      <div class="row">
+        <div class="col-lg-6 col-sm-12 mt-2">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Definiciones
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <mat-card class="example-card">        
+                  <mat-card-header>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descLegal">Aqui encontrarás algunas definiciones o información legal que te puede ser de utilidad.</p>
+                    <div class="contDefinicion" *ngFor="let def of definiciones">
+                      <h5 class="nombreDefinicion">{{def.nombreDefinicion}}</h5>
+                      <p class="descDefinicion">{{def.descDefinicion}}</p>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="col-lg-6 col-sm-12 mt-2">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Leyes
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <mat-card class="example-card">        
+                  <mat-card-header>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descLegal">Aqui encontraras algunas leyes en contra de la violencia en pareja y como prevenirla/tratarla.</p>
+                    <div class="contLey" *ngFor="let ley of leyes">
+                      <h5 class="nombreLey">{{ley.nombreLey}}</h5>
+                      <p class="descLey">{{ley.descLey}}</p>
+                      <a [href]="ley.linkLey" class="btnLey">{{this.link}}</a>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+            
+          </div>
 
-      <div class="contLegal">
-        <mat-card class="example-card">        
-          <mat-card-header>
-            <mat-card-title class="titleCardLegal">Definiciones</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="descLegal">Aqui encontrarás algunas definiciones o información legal que te puede ser de utilidad</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button class="btnVerMas">Ver más</button>
-          </mat-card-actions>
-        </mat-card>
 
-        <mat-card class="example-card">        
-          <mat-card-header>
-            <mat-card-title class="titleCardLegal">Leyes</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="descLegal">Aqui encontraras algunas leyes en contra de la violencia</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button class="btnVerMas">Ver más</button>
-          </mat-card-actions>
-        </mat-card>
+
+
+          
+        </div>
       </div>
-
-      
-      
-      
+  
     </div>
   </div>
 </app-sidebar>

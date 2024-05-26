@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Router, RouterModule } from '@angular/router';
@@ -11,6 +11,8 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './menurecursos.component.css'
 })
 export class MenurecursosComponent {
+
+  @Input() mensaje!: string;
 
   constructor(private router: Router){ }
   

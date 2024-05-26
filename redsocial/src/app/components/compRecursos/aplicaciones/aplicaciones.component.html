@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<app-sidebar>
+  <div class="contenedor">
+    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
+    <!-- <app-msg-recursos></app-msg-recursos>  -->
+    
+    <div class="cuerpoRecursos">
+      <app-menurecursos [mensaje]="'Aqui encontrarás aplicaciones que pueden ser de tu interés.'"></app-menurecursos>
+      <div class="contPrinciplRecursos">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12" *ngFor="let app of apps">
+            <div class="app">
+              <div class="contNombre">
+                <h4 class="nombreApp">{{app.nombreApp}}</h4>
+              </div>              
+              <p class="descApp">{{app.descApp}}</p>
+              <span>Disponible en:</span>
+              <div class="links">
+                <a [href]="app.linkAppStore" target="_blank"><img src="../../../../assets/ios3.png" alt="" class="imgStore">App Store</a>
+                <a [href]="app.linkPlayStore" target="_blank"><img src="../../../../assets/android.png" alt="" class="imgStore">Play Store</a>
+              </div>              
+            </div>  
+          </div>        
+        </div>
+      </div>
+    </div>
+    <p class="msgFinal">Estas solo son algunas apps que te pueden ser útiles.</p>
+    <p class="msgFinal">Si conoces otra app que sea de apoyo, puedes compartirla en la sección <span [routerLink]="['/contacto/formulario']">Contacto</span></p>
+  </div>
+</app-sidebar>
+
+
+
+
