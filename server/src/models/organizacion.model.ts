@@ -14,29 +14,41 @@ export const Organizacion = sequelize.define('organization', {
     nombre:{
         type: DataTypes.STRING,
         allowNull: false
+    },    
+    razonSocial: {
+        type: DataTypes.STRING,
+        allowNull: false
     }, 
-    estado: {
+    sector:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    rfc:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    direccion:{
+        type: DataTypes.STRING,
+        allowNull: false
+    }, 
+    telefono:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    correo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false
     },
     fechaRegistro: {
-        type: DataTypes.DATE,
-        allowNull: true
-    },
-    correo: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    publicaciones: {
         type: DataTypes.INTEGER,
-        allowNull: true
-    },
-    recursos: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
+        allowNull: false,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    }
+}, {
+    timestamps: false
 });

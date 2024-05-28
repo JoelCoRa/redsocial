@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { SolApoyo, SolContacto } from '../interfaces/contacto';
+import { SolApoyo, SolContacto, SolContactoPortal } from '../interfaces/contacto';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +23,7 @@ export class ContactoService {
   createSolApoyo(solicitudApoyo: SolApoyo): Observable<any>{
     return this.http.post(`${this.myAppUrl}api/ayuda/createsolapoyo`, solicitudApoyo);
   }
+  createContactPortal(solContacto: SolContactoPortal): Observable<any>{
+    return this.http.post(`${this.myAppUrl}${this.myApiUrl}/createcontactportal`, solContacto);
+   }
 }

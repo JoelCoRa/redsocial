@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { ReportesComponent } from "../compAdmin/reportes/reportes.component";
 import { SolicitudesComponent } from "../compAdmin/solicitudes/solicitudes.component";
 import { UsuariosComponent } from "../compAdmin/usuarios/usuarios.component";
+import { UserService } from '../../services/user.service';
+import { ErrorService } from '../../services/error.service';
+import { UserPerfil } from '../../interfaces/user';
 
 @Component({
     selector: 'app-paneladmin',
@@ -18,5 +21,23 @@ import { UsuariosComponent } from "../compAdmin/usuarios/usuarios.component";
 })
 export class PaneladminComponent {
   opcionSeleccionada: string = '';
-  adminUser: string = 'Alfred'
+  adminUser: string = '';
+  usuario!: UserPerfil;
+
+  constructor(private user: UserService, private error: ErrorService){}
+
+  ngOnInit(){
+    this.getUser();
+  }
+
+  getUser(){
+    const userId = Number(this.user.getUserId());    
+    this.user.getUser(userId).subscribe(data => {
+      this.usuario = data;
+      this.adminUser = this.usuario.nombreUsuario;
+    });
+  }
+  
+
+
 }

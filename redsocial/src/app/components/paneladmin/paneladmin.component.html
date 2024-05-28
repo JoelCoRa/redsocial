@@ -11,60 +11,7 @@
     </mat-card>
     <div class="contPanel">
         <div class="row">
-            <div class="col-lg-6 col-md-12 contColumna">
-                <h3 class="titulo">Agregar Organización</h3>
-                <form class="form">
-                   <p class="message">Ingresa los datos de la organización/empresa para registrala.</p> 
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Nombre</span>
-                    </label>            
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Razón Social</span>
-                    </label>
-                    <div class="radioGroup">
-                        <span class="sectorLabel">Sector</span>
-                        <div class="opciones">
-                            <label class="radio-button">
-                                <input type="radio" name="example-radio" value="publico">
-                                <span class="radio">Público</span>                            
-                            </label>
-                              
-                            <label class="radio-button">
-                                <input type="radio" name="example-radio" value="privado">
-                                <span class="radio">Privado</span>
-                            </label>
-                        </div>                        
-                    </div>
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>RFC</span>
-                    </label>
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Dirección</span>
-                    </label>
-                    <label>
-                        <input class="input" type="text" placeholder="" required="">
-                        <span>Teléfono</span>
-                    </label>                            
-                    <label>
-                        <input class="input" type="email" placeholder="" required="">
-                        <span>Email</span>
-                    </label>                        
-                    <label>
-                        <input class="input" type="password" placeholder="" required="">
-                        <span>Contraseña</span>
-                    </label>
-                    <label>
-                        <input class="input" type="password" placeholder="" required="">
-                        <span>Confirma la contraseña</span>
-                    </label>
-                    <button class="submit">Registrar</button>
-                </form>
-            </div>
-            <div class="col-lg-6 col-md-12 contColumna">
+            <div class="col-12 contColumna">
                 <h3 class="titulo">Revisar Incidencias</h3>
                 <div class="contIncidencias">
                     <p>Aqui puedes revisar reportes, solicitudes o preguntas de los usuarios</p>
@@ -78,10 +25,7 @@
                     <div class="contTablaIncidencias" [ngSwitch]="opcionSeleccionada">
                         <app-reportes *ngSwitchCase="'Reportes'"></app-reportes>
                         <app-solicitudes *ngSwitchCase="'Solicitudes'"></app-solicitudes>
-
                     </div>
-
-
                 </div>
             </div>
         </div>

@@ -24,11 +24,23 @@ import { PaneladminComponent } from './components/paneladmin/paneladmin.componen
 import { AplicacionesComponent } from './components/compRecursos/aplicaciones/aplicaciones.component';
 
 import { authGuard } from './utils/auth.guard';
+import { SigninorgComponent } from './components/signinorg/signinorg.component';
+import { LoginOrgComponent } from './components/login-org/login-org.component';
+import { ContactoportalComponent } from './components/contactoportal/contactoportal.component';
+import { RecursosportalComponent } from './components/recursosportal/recursosportal.component';
 
 export const routes: Routes = [
     {path: '', redirectTo:'login', pathMatch:'full'},
     {path: 'login', component: LoginComponent},
+    {path: 'loginorg', component: LoginOrgComponent},
+
+    {path: 'contactoportal', component: ContactoportalComponent},
+    {path: 'recursosportal', component: RecursosportalComponent},
+
+
     {path: 'signin', component: SignInComponent},
+    {path: 'signinorg', component: SigninorgComponent},
+
     {path: 'avisodeprivacidad', component: AvisoprivacidadComponent},
     {path: 'recpassword', component: RecuperarPasswordComponent},
 

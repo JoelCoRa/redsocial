@@ -37,6 +37,7 @@ const seguidosseguidores_model_1 = require("./seguidosseguidores.model");
 const replicaforo_model_1 = require("./replicaforo.model");
 const contacto_model_1 = require("./contacto.model");
 const apoyo_model_1 = require("./apoyo.model");
+const contactoportal_model_1 = require("./contactoportal.model");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -82,6 +83,7 @@ class Server {
                 yield seguidosseguidores_model_1.SeguidoSeguidor.sync();
                 yield replicaforo_model_1.ReplicaForo.sync();
                 yield contacto_model_1.Contacto.sync();
+                yield contactoportal_model_1.ContactoGeneral.sync();
                 yield apoyo_model_1.Apoyo.sync();
                 yield connection_1.default.authenticate();
                 console.log('Connection has been established successfully.');

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Cambiar foto de perfil</h2>
+<mat-dialog-content>
+    <div class="contentModal">
+        <span>¿Deseas eliminar al usuario {{data.nombre}} con el id {{data.id}}?</span>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="botonesModal">
+    <button class="btnCancelar" mat-dialog-close (click)="cancelar()">Cancelar</button>
+    <button class="btnConfirmar" mat-dialog-action  cdkFocusInitial (click)="deleteUser()">Confirmar</button>
+</mat-dialog-actions>  

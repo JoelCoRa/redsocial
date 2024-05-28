@@ -1,8 +1,32 @@
 
 .img-login{
-    align-self: center;
-    width: 50%;
+  align-self: center;
+  width: 50%;
 } 
+.card-container{
+  position: relative;
+}
+.contBtnUser{
+  width: 2rem;
+  border: none;
+  background: none;
+
+}
+.btn-user-org{
+  position: absolute;
+  -webkit-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  width: 2.5rem;
+  right: 2rem;
+  padding: 0.3rem;
+  top: 1rem;
+  border-radius: 50%;
+  z-index: 9000;
+  background-color: #536DFE;
+  /* top: -50; */
+
+}
 .card-container{
   margin-bottom: 15rem;
 }
@@ -186,7 +210,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 3%;
     overflow: hidden;
   }
   .card-container{

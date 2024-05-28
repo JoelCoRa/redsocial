@@ -16,5 +16,5 @@ import { FooterComponent } from "../../footer/footer.component";
     imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, MsgRecursosComponent, MenurecursosComponent, MatPaginator, FooterComponent, MatTableModule]
 })
 export class OrganizacionesComponent {
-  link: string = 'Visitar'
+  link: string = 'Visitar';
 }

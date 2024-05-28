@@ -26,6 +26,7 @@ export class SidebarComponent {
   isRotated: boolean = false;
   openDrawer : boolean = false;
   isAdmin!: boolean;
+  isOrg!: boolean;
 
   tipoUsuario!: number
 
@@ -55,6 +56,9 @@ export class SidebarComponent {
         this.isAdmin = false;
         // console.log('No es admin')
 
+      }
+      else if(data.tipoUsuario === 2){
+        this.isOrg = true;
       }
       else{
         // console.log('No es ninguno');

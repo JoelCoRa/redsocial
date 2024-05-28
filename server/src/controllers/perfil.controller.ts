@@ -4,6 +4,7 @@ import { QueryTypes, Sequelize } from "sequelize";
 import { Post } from "../models/post.model";
 import { User } from "../models/user.model";
 import { SeguidoSeguidor } from "../models/seguidosseguidores.model";
+import { Organizacion } from "../models/organizacion.model";
 
 export const getPosts = async (req: Request, res: Response) =>{    
     const { id } = req.params;
@@ -31,6 +32,16 @@ export const getUser = async (req: Request, res: Response) =>{
         ]
     });
     res.json(user);
+}
+export const getOrg = async (req:Request, res: Response) =>{
+    const {id} = req.params
+    const user = await Organizacion.findOne({
+        where: {
+            id: id
+        }        
+    });
+    res.json(user);
+
 }
 export const countPosts = async(req: Request, res: Response) => {
     const { id } = req.params;

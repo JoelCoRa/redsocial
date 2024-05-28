@@ -1,12 +1,17 @@
-<footer class="footer-body">    
-    <div class="logos">
-        <a href="https://www.ipn.mx/"><img class="logo-footerIPN" src="../../../assets/ipn.png" alt="logo ipn" href="https://www.escom.ipn.mx/"></a>
-        <a href="https://www.escom.ipn.mx/"><img class="logo-footerESCOM" src="../../../assets/EscudoESCOM.png" alt="logo escom"></a>
-    </div>
-    <div class="row">
+<footer class="footer-body">
+    <div class="contFooter">
         <div class="columna">            
-            <h3>2024 Derechos reservados Escom&reg;</h3>
-            <h5> TT 2024-A134 </h5> 
-        </div>    
-    </div>            
+            <h5 class="tt"> TT 2024-A134 </h5>
+        </div>  
+        <div class="columna contLinks">            
+            <h3 [routerLink]="['/contactoportal']" class="links">Contacto</h3>
+            <h3 [routerLink]="['/avisodeprivacidad']" class="links">Privacidad</h3> 
+            <h3 [routerLink]="['/recursosportal']" class="links">Recursos</h3> 
+        </div>                
+    </div>   
+    <div class="columna">
+        <h3 class="derechos">2024 Derechos reservados Escom&reg;</h3>         
+    </div>  
+
+           
 </footer>

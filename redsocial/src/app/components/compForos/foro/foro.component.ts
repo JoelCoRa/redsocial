@@ -3,7 +3,6 @@ import { NavbarComponent } from "../../navbar/navbar.component";
 import { SidebarComponent } from "../../sidebar/sidebar.component";
 import { TituloSeccionComponent } from "../../titulo-seccion/titulo-seccion.component";
 import { FooterComponent } from "../../footer/footer.component";
-import { BarrabusquedaComponent } from "../../barrabusqueda/barrabusqueda.component";
 import { MatCardModule } from '@angular/material/card';
 import { EnviarComponent } from "../../enviar/enviar.component";
 import { ActivatedRoute } from '@angular/router';
@@ -26,7 +25,7 @@ import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component
     standalone: true,
     templateUrl: './foro.component.html',
     styleUrl: './foro.component.css',
-    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, FooterComponent, BarrabusquedaComponent, MatCardModule, EnviarComponent, BtnregresarportalComponent, RouterModule, CommonModule, FormsModule, ReactiveFormsModule, MensajevacioComponent]
+    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, FooterComponent, MatCardModule, EnviarComponent, BtnregresarportalComponent, RouterModule, CommonModule, FormsModule, ReactiveFormsModule, MensajevacioComponent]
 })
 export class ForoComponent {
     temaResultadoForo: string = '';

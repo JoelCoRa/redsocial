@@ -16,28 +16,40 @@ exports.Organizacion = connection_1.default.define('organization', {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
     },
-    estado: {
+    razonSocial: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    sector: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    rfc: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    direccion: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    telefono: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    correo: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    password: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
     },
     fechaRegistro: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true
-    },
-    correo: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    },
-    password: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    },
-    publicaciones: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true
-    },
-    recursos: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true
-    },
+        allowNull: false,
+        defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
+    }
+}, {
+    timestamps: false
 });

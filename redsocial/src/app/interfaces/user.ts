@@ -46,3 +46,25 @@ export interface UserPassword{
    password: string,
    validatePassword: string
 }
+export interface UsersAdmin{
+    id: number,
+    nombre: string,
+    correo: string,
+    nombreUsuario: string,
+    cuentasSeguidas: number,
+    seguidores: number,
+    publicaciones: number,
+    foros: number,
+    solicitudes: number,
+    reportes: number,
+    tipoUsuario: number,
+    isBlocked: number
+}
+export interface UserIsAdmin{
+    id: number,
+    tipoUsuario: boolean
+}
+export interface UserIsBlocked{
+    id: number,
+    isBlocked: boolean
+}

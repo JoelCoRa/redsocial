@@ -1,0 +1,248 @@
+.img-login{
+    align-self: center;
+    width: 50%;
+} 
+.card-container{
+    position: relative;
+
+}
+.contCard{
+    background-color: #3e464b;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    color: #D6D6E7;
+    position: relative;
+    margin-top: 2rem;
+}
+.contBtnUser{
+    width: 2rem;
+    border: none;
+    background: none;
+}
+.btn-user-org{
+    position: absolute;
+    -webkit-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+    width: 2.5rem;
+    height: 2.5rem;
+    right: 2rem;
+    padding: 0.2rem;
+    top: 1rem;
+    border-radius: 50%;
+    z-index: 9000;
+    background-color: #dedee1;
+    /* top: -50; */  
+}
+.btn-user-org:hover{
+    transform: scale(105%);
+    transition: 0.5s ease all;
+}
+.card-container{
+    margin-bottom: 15rem;
+}
+.card-title{
+    font-size: 1.7rem;
+    font-family: var(--fuentePrimaria);
+}
+.input {    
+    padding: 0 5rem;
+    padding-left: 3rem;    
+} 
+.input:focus, input:hover {
+    border-color: rgb(35, 200, 76);
+    background-color: #fff;
+    box-shadow: 0 0 0 5px rgba(129, 248, 157, 0.3);
+}
+.icon {
+    position: absolute;
+    left: 1rem;
+    fill: none;
+    width: 1rem;
+    height: 1rem;
+}
+.botones{
+  margin-top: 1rem;
+}
+.buttonRegistrate{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.buttonRegistrate:hover{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0. 8 ease-in;
+}
+
+.button {
+  align-items: center;
+  appearance: none;
+  background-color: #EEF2FF;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #536DFE;
+  box-shadow: rgba(83, 109, 254, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #536DFE;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 3rem;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  /* margin: 0 auto; */
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 20px;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(83, 109, 254, 0.4) 0 2px 4px, rgba(83, 109, 254, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button:hover {
+  box-shadow: rgba(83, 109, 254, 0.3) 0 4px 8px, rgba(83, 109, 254, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.button2 {
+  position: relative;
+  /* margin-top: 1rem; */
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--fuenteGenerica);
+  font-weight: bold;
+  background-color: #2a9ce8;
+  transition: all 0.2s ease;
+}
+
+.button2:active {
+  transform: scale(0.96);
+}
+
+.button2:before,
+.button2:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.button2:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.button2:hover::after {
+  bottom: -70%;
+background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+  radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+  radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+  
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+
+@media(min-width: 300px){
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    overflow: hidden;
+  }
+  .card-container{
+    align-items: center;
+    width: 80%;
+  }
+  .img-login{
+    width: 30%;
+  }      
+}
+@media(min-width: 1000px){
+  .card-container{
+    align-items: center;
+    margin: 2rem 0;
+    width: 50%;
+  }
+}
+.card-title{
+  font-size: 2rem;
+}

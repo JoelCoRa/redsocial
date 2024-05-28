@@ -7,7 +7,6 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.component';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { BarrabusquedaComponent } from "../../barrabusqueda/barrabusqueda.component";
 import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component";
 import { UserService } from '../../../services/user.service';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     standalone: true,
     templateUrl: './comunity.component.html',
     styleUrl: './comunity.component.css',
-    imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, CommonModule, BarrabusquedaComponent, MensajevacioComponent, FormsModule]
+    imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, CommonModule, MensajevacioComponent, FormsModule]
 })
 export class ComunityComponent {
     numResultados: number = -1;

@@ -25,6 +25,7 @@ import { SeguidoSeguidor } from './seguidosseguidores.model';
 import { ReplicaForo } from './replicaforo.model';
 import { Contacto } from './contacto.model';
 import { Apoyo } from './apoyo.model';
+import { ContactoGeneral } from './contactoportal.model';
 
  class Server {
     private app: Application;
@@ -76,6 +77,7 @@ import { Apoyo } from './apoyo.model';
             await SeguidoSeguidor.sync(); 
             await ReplicaForo.sync(); 
             await Contacto.sync(); 
+            await ContactoGeneral.sync(); 
             await Apoyo.sync(); 
             await sequelize.authenticate();
             console.log('Connection has been established successfully.');

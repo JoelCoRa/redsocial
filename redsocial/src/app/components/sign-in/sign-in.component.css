@@ -92,3 +92,9 @@
 .txtCheckbox a{
   color: #506eec;
 }
+.card-body span{
+  font-family: var(--fuentePrimaria);
+}
+.card-body .aux{
+  margin-top: 0.4rem;
+}

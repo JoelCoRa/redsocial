@@ -4,6 +4,11 @@ export interface SolContacto{
     descripcion: string,
     userId: number
 }
+export interface SolContactoPortal{
+    correo: string,
+    asunto: string,
+    descripcion: string,
+}
 export interface SolApoyo{
     correo: string,
     descripcion: string,

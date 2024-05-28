@@ -12,6 +12,7 @@ router.put('/addimgperfil/:id', perfil_controller_1.addImgPerfil);
 // router.put('/adddislike/:id', addDislike);
 router.get('/postpropio/:id', perfil_controller_1.getPosts);
 router.get('/getuser/:id', perfil_controller_2.getUser);
+router.get('/getorg/:id', perfil_controller_1.getOrg);
 router.get('/getuser/totalposts/:id', perfil_controller_1.countPosts);
 router.get('/getseguidos/:id', perfil_controller_1.cuentasSeguidas);
 router.get('/getseguidores/:id', perfil_controller_1.cuentasSeguidores);

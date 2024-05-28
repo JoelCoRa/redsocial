@@ -1,0 +1,69 @@
+<div class="login-body">
+    <div class="container">
+      <app-titulo></app-titulo> 
+      <div class="cuerpoRecursos">
+        <!-- <app-menurecursos [mensaje]="'Aqui encontrarás videos que pueden ser de tu interés.'"></app-menurecursos> -->
+        <div class="contPrincipalRecursos">
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 mt-2">
+              <div class="video">
+                <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/oBWcsQlw-fw?si=n-wBYPOWqM0J9r5Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <span class="tituloVideo">Prevención de Violencia en el Noviazgo</span>
+              </div>            
+            </div>
+            <div class="col-lg-6 col-sm-12 mt-2">
+              <div class="video">
+                <iframe [width]="this.width" [height]="this.height" src="https://www.youtube.com/embed/a3NhJECo3HE?si=-D3LBIufxACOdoF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <span class="tituloVideo">Día de la Prevención de la Violencia en el Noviazgo</span>
+              </div>
+            </div>        
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 mt-2">
+                <div class="organizacion">
+                    <div class="contNombre">
+                        <h4 class="siglasOrganizacion">Conavim</h4>
+                        <span class="nombreOrganizacion">Comisión Nacional para Prevenir y Erradicar la Violencia contra las Mujeres</span>
+                    </div>
+                    <p class="descOrganizacion">Enfocado en promover y coordinar políticas públicas para la igualdad de género y la erradicación de la violencia contra las mujeres...</p>
+                    <a href="https://www.gob.mx/inmujeres" target="_blank">{{this.link2}}</a>
+                </div>                              
+            </div>
+            <div class="col-lg-6 col-sm-12 mt-2">
+                <div class="organizacion">
+                    <div class="contNombre">
+                        <h4 class="siglasOrganizacion">Inmujeres</h4>
+                        <span class="nombreOrganizacion">Instituto Nacional de las mujeres</span>
+                    </div> 
+                    <p class="descOrganizacion">Trabaja en la creación y supervisión de políticas y programas para prevenir y erradicar la violencia de género en México...</p>
+                    <a href="https://www.gob.mx/conavim" target="_blank">{{this.link2}}</a>
+                </div>
+                
+            </div> 
+          </div>
+          <div class="contMsg">
+            <h4>Si quieres ver más recursos, <span [routerLink]="['/signin']">crea una cuenta.</span></h4>
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-6 col-sm-12 mt-2">
+                <div class="articulo">
+                    <h4>Severidad de la violencia de pareja y reacciones emocionales en mujeres</h4>
+                    <p>Una de las formas más comunes de violencia contra la mujer es la ocasionada por la pareja; esta puede ser física, psicológica, sexual, económica y social...</p>
+                    <a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S2007-59362022000100104">{{this.link}}</a>
+                </div>            
+            </div>
+            <div class="col-lg-6 col-sm-12 mt-2">
+                <div class="articulo">
+                    <h4>Violencia en el noviazgo: no es amor, no es amistad</h4>
+                    <p>Para ponerle un alto a la violencia en el noviazgo, es importante entender cómo se desarrolla dentro de las relaciones de pareja...</p>
+                    <a href="https://www.gob.mx/sipinna/articulos/violencia-en-el-noviazgo-no-es-amor-no-es-amistad?idiom=es">{{this.link}}</a>                     
+                </div>
+          </div>
+          
+          </div> -->
+        
+    </div> 
+    </div>  
+    <app-footer></app-footer>  
+</div>
+

@@ -51,7 +51,8 @@ export class SignInComponent implements OnInit {
       correo: ['', [Validators.required, Validators.email]],
       nombreUsuario: ['', [Validators.required, Validators.minLength(8)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+
     }, {
       validator: this.mustMatch('password', 'confirmPassword')
     });
@@ -101,6 +102,9 @@ export class SignInComponent implements OnInit {
     } else {
       console.log('Formulario inválido');
     }
+  }
+  tosignInOrg(){
+    this.router.navigate(['/signinorg'])
   }
 }
 

@@ -6,7 +6,6 @@ import { Router, RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.component';
 import { MatCardModule } from '@angular/material/card';
-import { BarrabusquedaComponent } from '../../barrabusqueda/barrabusqueda.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -39,7 +38,6 @@ export interface ForoResultado {
     SidebarComponent,
     TituloSeccionComponent,
     MatCardModule,
-    BarrabusquedaComponent,
     MatCardModule,
     MatChipsModule,
     MatTableModule,

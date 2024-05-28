@@ -103,6 +103,10 @@ export const User = sequelize.define('user', {
     resetToken: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    isBlocked: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     timestamps: false

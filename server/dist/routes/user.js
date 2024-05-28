@@ -5,6 +5,8 @@ const user_controller_1 = require("../controllers/user.controller");
 const router = (0, express_1.Router)();
 router.post('/', user_controller_1.newUser);
 router.post('/login', user_controller_1.loginUser);
+router.post('/regorg', user_controller_1.newOrganizacion);
+router.post('/loginorg', user_controller_1.loginOrganizacion);
 // router.post('/req-reset-password', reqRecoverPassword);
 // router.post('/reset-password', recoverPassword);
 // router.get('/getuser', getUser);

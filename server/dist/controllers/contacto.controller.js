@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createContact = void 0;
+exports.createContactPortal = exports.createContact = void 0;
 const contacto_model_1 = require("../models/contacto.model");
+const contactoportal_model_1 = require("../models/contactoportal.model");
 const createContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { rol, asunto, descripcion, userId } = req.body;
     try {
@@ -32,3 +33,23 @@ const createContact = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     });
 });
 exports.createContact = createContact;
+const createContactPortal = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo, asunto, descripcion } = req.body;
+    try {
+        contactoportal_model_1.ContactoGeneral.create({
+            correo: correo,
+            asunto: asunto,
+            descripcion: descripcion,
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+    res.json({
+        msg: `Solicitud de contacto creada exitosamente, te contactearemos lo más pronto posible!`,
+    });
+});
+exports.createContactPortal = createContactPortal;

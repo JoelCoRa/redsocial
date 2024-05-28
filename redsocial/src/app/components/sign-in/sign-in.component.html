@@ -6,7 +6,9 @@
   <div class="contSignIn">
     <div class="card-container" *ngIf="!loading">
       <div class="card-body">
-        <h5 class="card-title">Crea una cuenta</h5>
+        <h5 class="card-title">Crea una cuenta personal</h5>
+      <!-- <span class="aux">O</span>
+      <span>¿Quieres registrar a una <a class="buttonRegistrate" (click)="tosignInOrg()">Organización</a>?</span> -->
         <hr>
         <div class="mb-2 input-container needs-validation">
           <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">

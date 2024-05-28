@@ -32,6 +32,9 @@ export class LoginComponent {
   tosignIn(){
     this.router.navigate(['/signin']);
   }
+  tologInOrg(){
+    this.router.navigate(['/loginorg']);
+  }
   torecPassword(){
     this.router.navigate(['/recpassword']);
   }

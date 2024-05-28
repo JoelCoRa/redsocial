@@ -107,6 +107,10 @@ exports.User = connection_1.default.define('user', {
     resetToken: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: true
+    },
+    isBlocked: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     timestamps: false

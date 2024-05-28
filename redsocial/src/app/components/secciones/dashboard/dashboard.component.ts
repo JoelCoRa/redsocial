@@ -33,7 +33,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class DashboardComponent {
 
-  usuarioPropio: string = "Usuario";
+  usuarioPropio: string = "";
+  organizacionNombre: string = "";
   numPublicaciones: number = 1;
   usuarioSeguido: string = "";
   contenido: string = ""
@@ -59,6 +60,8 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.getUserId();
     this.getPostSeg();
+    // this.getOrg();
+    this.getUser();
 
   }
 
@@ -81,13 +84,26 @@ export class DashboardComponent {
     }
     return null;
   }  
+  getUser(){
+    const userId = Number(this.user.getUserId()); 
+    this.user.getUser(userId).subscribe(data =>{
+      this.usuarioPropio = data.nombreUsuario
+    });
+  }
+  // getOrg(){
+  //   const userId = Number(this.user.getUserId()); 
+  //   this.user.getOrg(userId).subscribe(data =>{
+  //     console.log(data)
+  //     this.organizacionNombre = data.nombre
+  //   });
+  // }
 
   getPostSeg() {    
     const userId = Number(this.user.getUserId()); 
     this.posts.getPostSeg(userId).subscribe(data => {    
       this.listPostSeg = data;
       console.log(this.listPostSeg)
-      console.log()
+      console.log();
       
 
     });

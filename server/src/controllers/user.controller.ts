@@ -4,6 +4,7 @@ import { User } from '../models/user.model';
 import jwt from 'jsonwebtoken';
 import { QueryTypes, Sequelize } from 'sequelize';
 import sequelize from '../db/connection';
+import { Organizacion } from '../models/organizacion.model';
 const nodemailer = require('nodemailer');
 
 export const newUser = async (req: Request, res: Response) => {
@@ -11,11 +12,17 @@ export const newUser = async (req: Request, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     // Se valida si el usuario existe en la BD
     const user = await User.findOne({where:{ nombreUsuario: nombreUsuario }});
+    const org = await Organizacion.findOne({where:{ correo: correo }});
     if(user){
         return res.status(400).json({
             msg: `Ya existe un usuario con el username ${nombreUsuario}`            
         });
     } 
+    if(org){
+        return res.status(400).json({
+            msg: `Ya existe una organización registrada con ese correo.`
+        });
+    }
     try{
         // Se guarda el Usuario en la BD
         await User.create({
@@ -37,6 +44,42 @@ export const newUser = async (req: Request, res: Response) => {
         msg: `Usuario ${nombreUsuario} creado exitosamente!`,
     })
 }
+
+export const newOrganizacion = async (req: Request, res: Response) => {
+    const {nombre, razonSocial, rfc, direccion, telefono, sector, correo,password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    try {
+        const org = await Organizacion.findOne({ where: { correo: correo } });
+        const user = await User.findOne({where: {correo: correo}})
+        if (org || user) {
+            return res.status(400).json({
+                msg: `Ya existe un usuario/organización, registrado con ese correo.`
+            });
+        } 
+
+        // Se guarda el Usuario en la BD
+        await Organizacion.create({
+            nombre: nombre,
+            rfc: rfc,
+            razonSocial: razonSocial,
+            direccion: direccion,
+            correo: correo,        
+            telefono: telefono,
+            sector: sector,
+            password: hashedPassword,
+        });
+
+        return res.json({
+            msg: `Organizacion ${nombre} registrada exitosamente!`,
+        });
+    } catch (error) {
+        return res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+};
 export const loginUser = async (req: Request, res: Response) => {
     const {nombreUsuario, password} = req.body;
     console.log(nombreUsuario);
@@ -44,7 +87,12 @@ export const loginUser = async (req: Request, res: Response) => {
     const user:any = await User.findOne({where: {nombreUsuario: nombreUsuario}});
     if(!user){
         return res.status(400).json({
-            msg: `No existe un usuario con el nombre ${nombreUsuario} en la BD`
+            msg: `Parece que el usuario ${nombreUsuario} aun no se encuentra registrado`
+        });
+    }
+    if(user && user.isBlocked === true){
+        return res.status(400).json({
+            msg: `Parece que el usuario ${nombreUsuario} se encuentra bloqueado, ponte en contacto con el Administrador`
         });
     }
     // Se valida el password
@@ -65,6 +113,33 @@ export const loginUser = async (req: Request, res: Response) => {
 }
 
 
+export const loginOrganizacion = async (req: Request, res: Response) => {
+    const {correo, password} = req.body;
+    console.log(correo);
+
+    const org:any = await Organizacion.findOne({where: {correo: correo}});
+    if(!org){
+        return res.status(400).json({
+            msg: `Parece que no se ha registrado esa organización`
+        });
+    }
+    // Se valida el password
+    const passwordValid = await bcrypt.compare(password, org.password);
+
+    if(!passwordValid){
+        return res.status(400).json({
+            msg: `La contraseña es incorrecta!`
+        })
+    }
+    // Se genera el token
+    const token =  jwt.sign({
+        correo: correo,
+        idOrg: org.id,
+        // tipo: user.tipoUsuario
+    }, process.env.SECRET_KEY || 'pepito123');
+    // console.log(token);
+    res.json(token);   
+}
 
 
 

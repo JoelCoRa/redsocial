@@ -12,19 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginUser = exports.newUser = void 0;
+exports.loginOrganizacion = exports.loginUser = exports.newOrganizacion = exports.newUser = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_model_1 = require("../models/user.model");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const organizacion_model_1 = require("../models/organizacion.model");
 const nodemailer = require('nodemailer');
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password } = req.body;
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
     // Se valida si el usuario existe en la BD
     const user = yield user_model_1.User.findOne({ where: { nombreUsuario: nombreUsuario } });
+    const org = yield organizacion_model_1.Organizacion.findOne({ where: { correo: correo } });
     if (user) {
         return res.status(400).json({
             msg: `Ya existe un usuario con el username ${nombreUsuario}`
+        });
+    }
+    if (org) {
+        return res.status(400).json({
+            msg: `Ya existe una organización registrada con ese correo.`
         });
     }
     try {
@@ -50,13 +57,52 @@ const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 exports.newUser = newUser;
+const newOrganizacion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { nombre, razonSocial, rfc, direccion, telefono, sector, correo, password } = req.body;
+    const hashedPassword = yield bcrypt_1.default.hash(password, 10);
+    try {
+        const org = yield organizacion_model_1.Organizacion.findOne({ where: { correo: correo } });
+        const user = yield user_model_1.User.findOne({ where: { correo: correo } });
+        if (org || user) {
+            return res.status(400).json({
+                msg: `Ya existe un usuario/organización, registrado con ese correo.`
+            });
+        }
+        // Se guarda el Usuario en la BD
+        yield organizacion_model_1.Organizacion.create({
+            nombre: nombre,
+            rfc: rfc,
+            razonSocial: razonSocial,
+            direccion: direccion,
+            correo: correo,
+            telefono: telefono,
+            sector: sector,
+            password: hashedPassword,
+        });
+        return res.json({
+            msg: `Organizacion ${nombre} registrada exitosamente!`,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.newOrganizacion = newOrganizacion;
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { nombreUsuario, password } = req.body;
     console.log(nombreUsuario);
     const user = yield user_model_1.User.findOne({ where: { nombreUsuario: nombreUsuario } });
     if (!user) {
         return res.status(400).json({
-            msg: `No existe un usuario con el nombre ${nombreUsuario} en la BD`
+            msg: `Parece que el usuario ${nombreUsuario} aun no se encuentra registrado`
+        });
+    }
+    if (user && user.isBlocked === true) {
+        return res.status(400).json({
+            msg: `Parece que el usuario ${nombreUsuario} se encuentra bloqueado, ponte en contacto con el Administrador`
         });
     }
     // Se valida el password
@@ -76,6 +122,32 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.json(token);
 });
 exports.loginUser = loginUser;
+const loginOrganizacion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { correo, password } = req.body;
+    console.log(correo);
+    const org = yield organizacion_model_1.Organizacion.findOne({ where: { correo: correo } });
+    if (!org) {
+        return res.status(400).json({
+            msg: `Parece que no se ha registrado esa organización`
+        });
+    }
+    // Se valida el password
+    const passwordValid = yield bcrypt_1.default.compare(password, org.password);
+    if (!passwordValid) {
+        return res.status(400).json({
+            msg: `La contraseña es incorrecta!`
+        });
+    }
+    // Se genera el token
+    const token = jsonwebtoken_1.default.sign({
+        correo: correo,
+        idOrg: org.id,
+        // tipo: user.tipoUsuario
+    }, process.env.SECRET_KEY || 'pepito123');
+    // console.log(token);
+    res.json(token);
+});
+exports.loginOrganizacion = loginOrganizacion;
 // const transporter = nodemailer.createTransport({
 //     service: 'Gmail',
 //     auth: {

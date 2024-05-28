@@ -366,3 +366,7 @@ input::placeholder{
     -moz-box-shadow: 2px 2px 12px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 12px 0px rgba(0,0,0,0.75);
 }
+.mat-sort-header-container {
+    text-align: center;
+    justify-content: center;
+  }

@@ -1,0 +1,51 @@
+<div class="login-body">
+    <div class="container mt-5">
+        <app-titulo></app-titulo> 
+        <div class="contRegresar">
+            <!-- <app-btnregresarportal routerLink="/contacto"></app-btnregresarportal> -->
+        </div>   
+        <mat-card class="tarjeta">          
+            <div class="headerCard">
+                <h5>Formulario de Contacto</h5>
+                <p>Llena este formulario y te atenderemos lo más pronto posible</p>
+            </div>          
+            <form class="contForm" [formGroup]="contactoForm">
+                <div class="filaEntrada">
+                    <div class="contLabel">
+                        <label for="asunto">Correo de contacto</label>
+                    </div>
+                    <input type="email" name="correo" id="correo" class="input" placeholder="Ingresa el correo..." [(ngModel)]="correo" formControlName="correo">             
+
+                </div>
+                <!-- <div class="filaEntrada">
+                    <div class="contLabel">
+                        <label for="dirigido">Dirigido a</label>
+                    </div>
+                    
+                    <select class="input" formControlName="rol">
+                        <option value="" selected disabled>--Seleccionar--</option>
+                        <option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</option>
+                    </select>                    
+                </div> -->
+                <div class="filaEntrada">
+                    <div class="contLabel">
+                        <label for="asunto">Asunto</label>
+                    </div>
+                    <input type="text" name="asunto" id="asunto" class="input" placeholder="Ingresa el asunto..." [(ngModel)]="asunto" formControlName="asunto">             
+                </div>
+                <div class="filaEntrada">
+                    <div class="contLabel">
+                        <label for="mensaje">Mensaje</label>
+                    </div>
+                    <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje..." [(ngModel)]="descripcion" formControlName="descripcion"></textarea>                   
+                </div>
+            </form>           
+        </mat-card>
+        <div class="botones">
+            <button (click)="onSubmitContacto()" class="enviar">Enviar</button>
+            <button [routerLink]="['/login']" class="regresar">Cancelar</button>
+        </div>      
+    </div>
+    <app-footer></app-footer>  
+
+</div>

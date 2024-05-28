@@ -1,12 +1,107 @@
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+  background-color: rgb(173, 190, 208);
+}
+
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
   
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+  
+td, th {
+  width: 25%;
+  font-family: var(--fuentePrimaria);
+}
+th{
+  text-align: center;
+  font-family: var(--fuenteGenerica);
+}
+td{
+  text-align: center;
+  font-family: var(--fuentePrimaria);
+  z-index: 1;
+}
+button{
+  background: none;
+  border: none;
+  padding: 1;
+}
+.tooltip, .tooltip2, .tooltip3{
+  display: none;
+}
+@media(min-width: 900px){
+  .tooltip-container {
+    --bubble-size: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tooltip, .tooltip2, .tooltip3 {
+    display: block;
+    position: absolute;
+    top: -100%; /* Initially hidden above the container */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.6em 1em;
+    opacity: 0;
+    visibility: hidden;
+    width: 8.5rem;
+    text-align: center;
+    pointer-events: none;
+    font-family: var(--fuentePrimaria);
+    transition: all 0.3s;
+    border: none;
+    border-radius: var(--bubble-size);
+    background: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10000; /* Ensure tooltips are above all other elements */
+  }
   .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
+  } 
+  .tooltip{
+    background: #7da8e0;
+    z-index: 100;
   }
-  
-  td, th {
-    width: 25%;
+
+  .tooltip2 {
+    font-size: 0.8rem;
+    background: #ec7d71;
+    z-index: 100;
   }
+  .tooltip3{
+    background: #349b42;
+  }
+
+  .tooltip-container:hover {
+    transform: scale(105%);
+    transition: 0.5s ease-in-out all;
+  }
+  .tooltip-container:hover .tooltip {
+    top: -20%; /* Adjusted position for the bubble tooltip */
+    opacity: 1;
+    color: #fff;
+    visibility: visible;
+    
+    pointer-events: auto;
+  }
+  .tooltip-container:hover .tooltip2 {
+    top: -20%; /* Adjusted position for the bubble tooltip */
+    opacity: 1;
+    color: #fff;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .tooltip-container:hover .tooltip3 {
+    top: -20%; /* Adjusted position for the bubble tooltip */
+    opacity: 1;
+    color: #fff;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
