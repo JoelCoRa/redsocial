@@ -7,155 +7,140 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.component';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component";
+import { MensajevacioComponent } from '../../mensajevacio/mensajevacio.component';
 import { UserService } from '../../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { ErrorService } from '../../../services/error.service';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { Cuentas } from '../../../interfaces/cuentas';
+
+import { Cuentas, CuentasResult } from '../../../interfaces/cuentas';
 import { CuentasService } from '../../../services/cuentas.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { debounceTime, Subject } from 'rxjs';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
-    selector: 'app-comunity',
-    standalone: true,
-    templateUrl: './comunity.component.html',
-    styleUrl: './comunity.component.css',
-    imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, CommonModule, MensajevacioComponent, FormsModule]
+  selector: 'app-comunity',
+  standalone: true,
+  templateUrl: './comunity.component.html',
+  styleUrls: ['./comunity.component.css'],
+  imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, CommonModule, MensajevacioComponent, FormsModule]
 })
 export class ComunityComponent {
-    numResultados: number = -1;
-    query: string = '';
-    results: any[] = [];
-    minChars: number = 4;
-    seguido: boolean = false;
-    data: any;
+  numResultados: number = -1;
+  query: string = '';
+  results: any[] = [];
+  minChars: number = 4;
+  data: any;
+  seguidos: Cuentas[] = [];
+  searchSubject: Subject<string> = new Subject();
+  base64Image: string = '';
 
-    constructor(private user:UserService, private error: ErrorService, private sb: MatSnackBar, private cuentas: CuentasService){ }
-    ngOnInit(): void {
-        this.getSeguidos();
+  constructor(
+    private user: UserService, 
+    private error: ErrorService, 
+    private sb: MatSnackBar, 
+    private cuentas: CuentasService
+  ) { }
+
+  ngOnInit(): void {
+    this.getSeguidos();
+    this.searchSubject.pipe(
+      debounceTime(300) // Wait for 300ms pause in events
+    ).subscribe(searchTextValue => {
+      this.search(searchTextValue);
+    });
+  }
+
+  onSearchInputChange() {
+    if (this.query.length >= this.minChars) {
+      this.searchSubject.next(this.query);
+    } else {
+      this.results = [];
+      this.numResultados = -1;
     }
+  }
 
-    search(){
-        // console.log(this.query)
-        // console.log(this.query.length)
-        const userId = Number(this.user.getUserId()); 
+  search(query: string) {
+    const userId = Number(this.user.getUserId());
+    this.cuentas.searchComunidad(userId, query).subscribe(data => {
+      this.results = data;
+      this.numResultados = this.results.length;
+      console.log()
+      // this.base64Image = `data:image/png;base64,${this.results.imgPerfil}`;
+      if (this.results.length === 0) {
+        this.numResultados = 0;
+      } else {
+        this.cuentas.getCuentasSeguidas(userId).subscribe(seguidos => {
+          this.seguidos = seguidos;
+          this.results.forEach(result => {
+            result.seguido = this.seguidos.some(seguido => seguido.userIdSeguido === result.id);
+          });
+        });
+      }
+    });
+  }
+  getProfileImage(user: any): string {
+    return user.imgPerfil ? `data:image/png;base64,${user.imgPerfil}` : '../../../../assets/avatars/2.jpg';
+  }
 
-        if(this.query.length < this.minChars){            
-          this.sb.open(`Porfavor ingresa más caracteres`, 'Cerrar', {
-            duration: 5000,        
+  addSeguidor(id: number, usuario: string) {
+    const userId = Number(this.user.getUserId());
+    this.user.getUser(userId).subscribe(data => {
+      const nombreSeguidor = data.nombreUsuario;
+      const seguidor: Cuentas = {
+        userIdSeguido: id,
+        userIdSeguidor: userId,
+        nombreUserSeguido: usuario,
+        nombreUserSeguidor: nombreSeguidor
+      };
+      this.cuentas.addSeguidor(seguidor).subscribe({
+        next: () => {
+          this.results.find(item => item.id === id).seguido = true;
+          this.sb.open(`Has seguido al usuario ${seguidor.nombreUserSeguido}`, 'Cerrar', {
+            duration: 5000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            panelClass: ['notifError'],  
+            panelClass: ['notifExito'],
           });
-          return;
-        }else{
-          this.cuentas.searchComunidad(this.query).subscribe(data =>{
-            this.results = data;
-            this.numResultados = this.results.length;
-            if(this.results.length === 0){
-              this.numResultados = 0;
-            }else{
-              console.log(this.results);
-              this.cuentas.getCuentasSeguidas(userId).subscribe(data =>{
-                this.seguidos = data;
-                console.log(this.seguidos);
-              });
-            }
-          });
+        },
+        error: (e: HttpErrorResponse) => {
+          this.error.msgError(e);
+        },
+        complete: () => {
+          console.info('complete');
         }
-        
-    }
-    addSeguidor(id:number, usuario: string){
-        const userId = Number(this.user.getUserId()); 
-        let nombreSeguidor;
-        console.log(id)
-    
-        this.user.getUser(userId).subscribe(data =>{
-          nombreSeguidor = data.nombreUsuario
-          console.log(nombreSeguidor);
-          console.log(usuario)
-          const seguidor : Cuentas = {
-            userIdSeguido: id,
-            userIdSeguidor: userId,
-            nombreUserSeguido: usuario,
-            nombreUserSeguidor: nombreSeguidor
-          }
-          // console.log(seguidor)
-          this.cuentas.addSeguidor(seguidor).subscribe({
-            next: (v) => {  
-              this.seguido = true;
-              this.sb.open(`Has seguido al usuario ${seguidor.nombreUserSeguido}`, 'Cerrar', {
-                duration: 5000,        
-                horizontalPosition: this.horizontalPosition,
-                verticalPosition: this.verticalPosition,
-                panelClass: ['notifExito'],  
-              });
-              // console.log(`El usuario ${seguidor.nombreUserSeguidor} va a seguir al usuario ${seguidor.nombreUserSeguido}` )
-    
-            },
-            error: (e: HttpErrorResponse) => {
-              this.error.msgError(e)       
-            },
-            complete: () => { 
-              console.info('complete')
-              setTimeout(() => {
-                window.location.reload();
-              }, 3000);
-            }
-          })
-        }); 
-    }
-    
-    deleteSeguido(idSeguido: number){
-        const userId = Number(this.user.getUserId());     
-        console.log('Yano vas a seguir al usuario con esta id ' + idSeguido);
-        
-        this.cuentas.deleteSeguido(idSeguido, userId).subscribe({
-          next: (v) => {  
-            this.sb.open(`Ya no sigues esta cuenta!`, 'Cerrar', {
-              duration: 5000,        
-              horizontalPosition: this.horizontalPosition,
-              verticalPosition: this.verticalPosition,
-              panelClass: ['notifExito'],  
-            });
-            
-          },
-          error: (e: HttpErrorResponse) => {
-            this.error.msgError(e)       
-          },
-          complete: () => {
-            console.info('complete') 
-            setTimeout(() => {
-              window.location.reload();
-            }, 1000);
-          }
+      });
+    });
+  }
+
+  deleteSeguido(idSeguido: number) {
+    const userId = Number(this.user.getUserId());
+    this.cuentas.deleteSeguido(idSeguido, userId).subscribe({
+      next: () => {
+        this.results.find(item => item.id === idSeguido).seguido = false;
+        this.sb.open(`Ya no sigues esta cuenta!`, 'Cerrar', {
+          duration: 5000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],
         });
-    }
-    seguidos!: Cuentas[];
-    // getSeguidos(){
-    //     const userId = Number(this.user.getUserId()); 
-    //     this.cuentas.getCuentasSeguidas(userId).subscribe(data =>{
-    //         this.seguidos = data;
-    //         console.log(data)
-    //     })              
-    // }
+      },
+      error: (e: HttpErrorResponse) => {
+        this.error.msgError(e);
+      },
+      complete: () => {
+        console.info('complete');
+      }
+    });
+  }
 
-    getSeguidos(){
-        const userId = Number(this.user.getUserId()); 
+  getSeguidos() {
+    const userId = Number(this.user.getUserId());
+    this.cuentas.getCuentasSeguidas(userId).subscribe(data => {
+      this.seguidos = data;
+    });
+  }
 
-        this.cuentas.getCuentasSeguidas(userId).subscribe(data =>{
-            this.seguidos = data
-        })
-    }
-    
-
-    
-
-
-    horizontalPosition: MatSnackBarHorizontalPosition = 'right';
-    verticalPosition: MatSnackBarVerticalPosition = 'top';
-
-
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 }

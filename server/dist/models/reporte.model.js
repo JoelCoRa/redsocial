@@ -7,27 +7,23 @@ exports.Reporte = void 0;
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
 const user_model_1 = require("./user.model");
-const post_model_1 = require("./post.model");
+const foro_model_1 = require("./foro.model");
 exports.Reporte = connection_1.default.define('report', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
-    fechaContacto: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false
+    descripcion: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
-    fechaSolicitud: {
+    fechaReporte: {
         type: sequelize_1.DataTypes.DATE,
-        allowNull: false
-    },
-    fechaRespuesta: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true
+        defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     }
-});
+}, { timestamps: false });
 user_model_1.User.hasMany(exports.Reporte); // Un usuario puede tener muchos posts
-post_model_1.Post.hasMany(exports.Reporte);
-exports.Reporte.belongsTo(user_model_1.User);
-exports.Reporte.belongsTo(post_model_1.Post);
+foro_model_1.Foro.hasMany(exports.Reporte);
+exports.Reporte.belongsTo(user_model_1.User, { foreignKey: 'userId' });
+exports.Reporte.belongsTo(foro_model_1.Foro, { foreignKey: 'forumId' });

@@ -9,9 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateBlocked = exports.updateAdmin = exports.deleteUser = exports.getAllUsers = void 0;
+exports.getAllReportes = exports.getAllSolicitudes = exports.getAllContactos = exports.updateBlocked = exports.updateAdmin = exports.deleteUser = exports.getAllUsers = void 0;
 const user_model_1 = require("../models/user.model");
 const sequelize_1 = require("sequelize");
+const contacto_model_1 = require("../models/contacto.model");
+const apoyo_model_1 = require("../models/apoyo.model");
+const reporte_model_1 = require("../models/reporte.model");
 const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const excludedId = id;
@@ -23,7 +26,7 @@ const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 }
             },
             attributes: [
-                'id', 'nombre', 'correo', 'nombreUsuario', 'cuentasSeguidas', 'seguidores', 'publicaciones', 'foros', 'solicitudes', 'reportes', 'tipoUsuario', 'isBlocked'
+                'id', 'nombre', 'correo', 'nombreUsuario', 'tipoUsuario', 'isBlocked'
             ]
         });
         res.json(users);
@@ -91,3 +94,43 @@ const updateBlocked = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     });
 });
 exports.updateBlocked = updateBlocked;
+const getAllContactos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const contactos = yield contacto_model_1.Contacto.findAll({});
+        res.json(contactos);
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.getAllContactos = getAllContactos;
+const getAllSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const solicitudes = yield apoyo_model_1.Apoyo.findAll({});
+        res.json(solicitudes);
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.getAllSolicitudes = getAllSolicitudes;
+const getAllReportes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const reportes = yield reporte_model_1.Reporte.findAll({});
+        res.json(reportes);
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.getAllReportes = getAllReportes;

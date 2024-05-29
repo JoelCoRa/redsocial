@@ -19,26 +19,10 @@ exports.Foro = connection_1.default.define('forum', {
     },
     ultimaActividad: {
         type: sequelize_1.DataTypes.DATE,
-        allowNull: true
     },
     contenido: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
-    },
-    replicas: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    likes: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    reportes: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
     },
     etiqueta: {
         type: sequelize_1.DataTypes.STRING,
@@ -47,7 +31,11 @@ exports.Foro = connection_1.default.define('forum', {
     anonimo: {
         type: sequelize_1.DataTypes.BOOLEAN,
         allowNull: false
+    },
+    fechaCreacion: {
+        type: sequelize_1.DataTypes.DATE,
+        defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     }
-});
+}, { timestamps: false });
 user_model_1.User.hasMany(exports.Foro); // Un usuario puede tener muchos foros
 exports.Foro.belongsTo(user_model_1.User, { foreignKey: 'userId' });

@@ -1,7 +1,7 @@
 <div class="headerPerfil">
     <div class="contImg">
-        <img *ngIf="imagenPerfil === ''" src="../../../../assets/avatars/1.jpg" alt="fotoDePerfil" class="avatarPerfil">
-        <img *ngIf="imagenPerfil !== ''" [src]="base64Image" alt="fotoDePerfil" class="avatarPerfil">
+        <img *ngIf="imagenPerfil === null" src="../../../../assets/avatars/user.png" alt="fotoDePerfil" class="avatarPerfil">
+        <img *ngIf="imagenPerfil !== null" [src]="base64Image" alt="fotoDePerfil" class="avatarPerfil">
         <form class="accionesImg" [formGroup]="form">
             <div class="contBotonesAvatar">                
                 <div class="file-upload-wrapper tooltip-container">

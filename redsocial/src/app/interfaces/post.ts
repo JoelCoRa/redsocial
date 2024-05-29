@@ -4,7 +4,7 @@ export interface PostSeg{
     contenido: string,
     fechaPublicacion: string,
     likes: number,
-    dislikes: number,
+    // dislikes: number,
     imgPerfil: string
     idUserSeguidor: number,
     nombreUserSeguido: string,
@@ -16,7 +16,7 @@ export interface PostPropio{
     contenido: string,
     fechaPublicacion: string,
     likes: number,
-    dislikes: number,
+    // dislikes: number,
     // imgUsuario: string
 }
 export interface TotalPosts{
@@ -30,9 +30,4 @@ export interface postCreado{
 export interface PostLiked{
     id: number,
     likes: number,
-}
-export interface PostDisliked{
-    id: number,
-    dislikes: number,
-    userId: number,
 }

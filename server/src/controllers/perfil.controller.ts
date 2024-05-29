@@ -4,7 +4,6 @@ import { QueryTypes, Sequelize } from "sequelize";
 import { Post } from "../models/post.model";
 import { User } from "../models/user.model";
 import { SeguidoSeguidor } from "../models/seguidosseguidores.model";
-import { Organizacion } from "../models/organizacion.model";
 
 export const getPosts = async (req: Request, res: Response) =>{    
     const { id } = req.params;
@@ -13,7 +12,7 @@ export const getPosts = async (req: Request, res: Response) =>{
             userId: id
         },
         attributes: [
-            'id','contenido','fechaPublicacion','likes','dislikes'
+            'id','contenido','fechaPublicacion','likes'
         ],
         order: [['fechaPublicacion', 'DESC']]
     });
@@ -28,21 +27,21 @@ export const getUser = async (req: Request, res: Response) =>{
             id: id
         },
         attributes: [
-            'id','nombreUsuario','descripcion','cuentasSeguidas', 'seguidores','imgPerfil', 'tipoUsuario','correo'
+            'id','nombreUsuario','descripcion','imgPerfil', 'tipoUsuario','correo'
         ]
     });
     res.json(user);
 }
-export const getOrg = async (req:Request, res: Response) =>{
-    const {id} = req.params
-    const user = await Organizacion.findOne({
-        where: {
-            id: id
-        }        
-    });
-    res.json(user);
+// export const getOrg = async (req:Request, res: Response) =>{
+//     const {id} = req.params
+//     const user = await Organizacion.findOne({
+//         where: {
+//             id: id
+//         }        
+//     });
+//     res.json(user);
 
-}
+// }
 export const countPosts = async(req: Request, res: Response) => {
     const { id } = req.params;
     const totalPosts = await Post.count({

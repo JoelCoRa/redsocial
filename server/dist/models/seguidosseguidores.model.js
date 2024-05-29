@@ -19,17 +19,11 @@ exports.SeguidoSeguidor = connection_1.default.define('seguidosseguidores', {
         type: sequelize_1.DataTypes.INTEGER,
     },
     nombreUserSeguido: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
     },
     nombreUserSeguidor: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
     },
-    createdAt: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true
-    },
-    updatedAt: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true
-    }
+}, {
+    timestamps: false
 });

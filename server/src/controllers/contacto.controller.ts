@@ -7,7 +7,6 @@ import { ContactoGeneral } from "../models/contactoportal.model";
 
 export const createContact = async(req: Request, res: Response) => {
     const {rol, asunto, descripcion, userId} = req.body;
-
     try{        
         Contacto.create({
             rol: rol,
@@ -28,7 +27,6 @@ export const createContact = async(req: Request, res: Response) => {
 
 export const createContactPortal = async(req:Request, res: Response)=>{
     const {correo, asunto, descripcion} = req.body;
-
     try{        
         ContactoGeneral.create({
             correo: correo,

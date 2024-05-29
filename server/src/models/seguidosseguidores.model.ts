@@ -15,17 +15,12 @@ export const SeguidoSeguidor = sequelize.define('seguidosseguidores',{
         type: DataTypes.INTEGER,
     },
     nombreUserSeguido:{
-        type: DataTypes.INTEGER,    
+        type: DataTypes.STRING,    
     },
     nombreUserSeguidor:{
-        type: DataTypes.INTEGER,    
+        type: DataTypes.STRING,    
     },
-    createdAt:{
-        type: DataTypes.DATE,
-        allowNull: true 
-    },
-    updatedAt:{
-        type: DataTypes.DATE,
-        allowNull: true 
-    }
+},
+{
+    timestamps: false
 })

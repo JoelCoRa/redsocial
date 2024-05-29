@@ -13,15 +13,22 @@ exports.searchComunidad = void 0;
 const user_model_1 = require("../models/user.model");
 const { Op } = require('sequelize');
 const searchComunidad = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
     const query = req.query.q;
+    const excludeId = id;
     if (query) {
         const results = yield user_model_1.User.findAll({
             where: {
-                [Op.or]: [
-                    { id: { [Op.like]: `%${query}%` } }, // Búsqueda por nombre
-                    { nombreUsuario: { [Op.like]: `%${query}%` } } // Búsqueda por descripción
+                [Op.and]: [
+                    { id: { [Op.ne]: excludeId } }, // Exclusión por ID
+                    {
+                        [Op.or]: [
+                            { nombreUsuario: { [Op.like]: `%${query}%` } }, // Búsqueda por nombre de usuario
+                        ]
+                    }
                 ]
-            }
+            },
+            attributes: ['id', 'nombreUsuario', 'descripcion', 'imgPerfil']
         });
         res.json(results);
     }

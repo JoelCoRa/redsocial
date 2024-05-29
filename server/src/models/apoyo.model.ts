@@ -18,7 +18,6 @@ export const Apoyo = sequelize.define('solicitud-apoyo',{
     },
     fechaSolicitud: {
         type: DataTypes.DATE,
-        allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
 }, {

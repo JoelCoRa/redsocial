@@ -3,11 +3,12 @@ import sequelize from "../db/connection";
 import  bcrypt  from 'bcrypt'
 import { User } from "../models/user.model";
 import { Sequelize, Op } from "sequelize";
-
+import { Contacto } from "../models/contacto.model";
+import { Apoyo } from "../models/apoyo.model";
+import { Reporte } from "../models/reporte.model";
 
 export const getAllUsers = async(req:Request, res: Response)=>{
     const { id } = req.params;
-
     const excludedId = id;
 
     try {
@@ -18,7 +19,7 @@ export const getAllUsers = async(req:Request, res: Response)=>{
                 }
             },
             attributes: [
-                'id','nombre','correo','nombreUsuario','cuentasSeguidas','seguidores','publicaciones','foros','solicitudes','reportes','tipoUsuario', 'isBlocked'
+                'id','nombre','correo','nombreUsuario','tipoUsuario', 'isBlocked'
             ]
         });
         res.json(users)
@@ -29,8 +30,6 @@ export const getAllUsers = async(req:Request, res: Response)=>{
         });
     } 
 }
-
-
 export const deleteUser = async(req: Request, res: Response) =>{
     const { id } = req.params;
     console.log(req.params)
@@ -50,7 +49,6 @@ export const deleteUser = async(req: Request, res: Response) =>{
         msg: `Usuario eliminado exitosamente!`,
     });
 }
-
 export const updateAdmin = async(req: Request, res: Response) =>{
     const { id } = req.params;
     const { tipoUsuario } = req.body;
@@ -88,4 +86,47 @@ export const updateBlocked = async(req:Request, res: Response) =>{
     res.json({
         msg: `Usuario actualizado exitosamente!`,
     });
+}
+
+export const getAllContactos = async(req:Request, res: Response) =>{
+    const { id } = req.params;
+
+    try {
+        const contactos =  await Contacto.findAll({         
+            
+        });
+        res.json(contactos)
+    }  catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+
+}
+
+export const getAllSolicitudes = async(req:Request, res: Response) =>{
+    try {
+        const solicitudes =  await Apoyo.findAll({
+            
+        });
+        res.json(solicitudes)
+    }  catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+}
+export const getAllReportes = async(req:Request, res: Response)=>{
+    try {
+        const reportes =  await Reporte.findAll({            
+        });
+        res.json(reportes)
+    }  catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
 }

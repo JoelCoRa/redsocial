@@ -10,16 +10,13 @@ import routesAyuda from '../routes/ayuda';
 import routesComunidad from '../routes/comunidad';
 import routesContacto from '../routes/contacto';
 import routesForos from '../routes/foros';
-import routesRecursos from '../routes/recursos';
 
 import sequelize from '../db/connection';
 import { User } from './user.model';
 import { Post } from './post.model';
 import { Foro } from './foro.model';
-import { Recurso } from './recurso.model';
 import { Solicitud } from './solicitud.model';
 import { Reporte } from './reporte.model';
-import { Organizacion } from './organizacion.model';
 import cors from 'cors';
 import { SeguidoSeguidor } from './seguidosseguidores.model';
 import { ReplicaForo } from './replicaforo.model';
@@ -56,7 +53,6 @@ import { ContactoGeneral } from './contactoportal.model';
         this.app.use('/api/comunidad', routesComunidad);
         this.app.use('/api/contacto', routesContacto);
         this.app.use('/api/foros', routesForos);
-        this.app.use('/api/recursos', routesRecursos);
     }
 
     middlewares(){
@@ -70,10 +66,8 @@ import { ContactoGeneral } from './contactoportal.model';
             await User.sync();
             await Post.sync();
             await Foro.sync();
-            await Recurso.sync(); // Cambiar usuario por organizacion en FK
             await Solicitud.sync(); 
-            await Reporte.sync(); 
-            await Organizacion.sync(); 
+            await Reporte.sync();             
             await SeguidoSeguidor.sync(); 
             await ReplicaForo.sync(); 
             await Contacto.sync(); 

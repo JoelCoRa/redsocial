@@ -8,7 +8,7 @@ export interface CrearForo {
 export interface ForoResultado {
     titulo: string,
     nombreUsuario: string, 
-    replicas: number,
+    // replicas: number,
     etiqueta: string,
     anonimo: boolean
 }
@@ -16,7 +16,7 @@ export interface ForoResultado {
 export interface Foro{
     id: number,
     titulo: string,
-    updatedAt: string,
+    fechaCreacion: string,
     anonimo: boolean,
     etiqueta: string,
     contenido: string,
@@ -29,7 +29,7 @@ export interface Foro{
 export interface ReplicaForo{
     id: string, 
     contenidoreplica: string,
-    createdAt: string,
+    fechaCreado: string,
     userId: number,
     forumId: number,
     user: {

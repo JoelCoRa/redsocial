@@ -19,16 +19,10 @@ exports.Solicitud = connection_1.default.define('request', {
     },
     fechaContacto: {
         type: sequelize_1.DataTypes.DATE,
-        allowNull: false
+        defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     },
-    fechaSolicitud: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false
-    },
-    fechaRespuesta: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: true
-    }
+}, {
+    timestamps: false
 });
 user_model_1.User.hasMany(exports.Solicitud); // Un usuario puede tener muchos posts
 exports.Solicitud.belongsTo(user_model_1.User);

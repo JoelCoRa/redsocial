@@ -46,71 +46,24 @@ exports.User = connection_1.default.define('user', {
     },
     descripcion: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: true,
         defaultValue: 'Este usuario no tiene descripción!'
     },
     imgPerfil: {
         type: sequelize_1.DataTypes.TEXT('long'),
-        allowNull: true,
-        defaultValue: ''
     },
     fechaRegistro: {
         type: sequelize_1.DataTypes.DATE,
-        allowNull: true,
         defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
-    },
-    cuentasSeguidas: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    seguidores: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    publicaciones: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    foros: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    solicitudes: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    reportes: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
     },
     tipoUsuario: {
         type: sequelize_1.DataTypes.TINYINT,
         allowNull: false,
         defaultValue: 0
     },
-    modoOscuro: {
-        type: sequelize_1.DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-    },
-    notificaciones: {
-        type: sequelize_1.DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-    },
-    resetToken: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    },
     isBlocked: {
         type: sequelize_1.DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false
     }
 }, {
     timestamps: false

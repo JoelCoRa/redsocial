@@ -16,3 +16,9 @@ export interface MostrarCuentas{
 export interface Seguidos{
     totalseguidores?: number
 }
+export interface CuentasResult{
+    id: number,
+    nombreUsuario: string,
+    descripcion: string,
+    imgPerfil: string
+}

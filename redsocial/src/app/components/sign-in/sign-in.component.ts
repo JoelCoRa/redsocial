@@ -85,7 +85,7 @@ export class SignInComponent implements OnInit {
       this.user.signIn(user).subscribe({
         next: (v) => {
           this.loading = false;
-          this.sb.open(`Usuario registrado con éxito!`, this.action, {
+          this.sb.open(`Usuario ${user.nombreUsuario} registrado con éxito!`, this.action, {
             duration: 5000,        
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,

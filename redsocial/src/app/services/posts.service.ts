@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders, HttpRequest } 
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, catchError, throwError } from 'rxjs';
-import { PostDisliked, PostLiked, PostPropio, PostSeg, postCreado } from '../interfaces/post';
+import { PostLiked, PostPropio, PostSeg, postCreado } from '../interfaces/post';
 import { Token } from '@angular/compiler';
 import { Router, RouterModule } from '@angular/router';
 import { ErrorService } from './error.service';

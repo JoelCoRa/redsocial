@@ -15,16 +15,10 @@ export const Solicitud = sequelize.define('request', {
     }, 
     fechaContacto:{
         type: DataTypes.DATE,
-        allowNull: false
-    }, 
-    fechaSolicitud: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-    fechaRespuesta: {
-        type: DataTypes.DATE,
-        allowNull: true
-    }
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')     }, 
+},
+{
+    timestamps: false
 });
 
 User.hasMany(Solicitud); // Un usuario puede tener muchos posts

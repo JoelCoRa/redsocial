@@ -1,5 +1,5 @@
 button {
-    padding: 12.5px 30px;
+    padding: 0.5rem 2rem ;
     border: 0;
     margin-top: 1rem;
     border-radius: 100px;
@@ -21,7 +21,7 @@ button {
 
   
 button:active{
-    background-color: #3d94cf;
+    background-color: #cc4e5b;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     box-shadow: none;
@@ -32,7 +32,7 @@ button:active{
         margin-top: 0;
     }
     button:hover {
-        background-color: #40444d;
+        background-color: #d78d95;
         color: #E2E2E2;
         box-shadow: 0 0 20px #6fc5ff50;
         transform: scale(1.1);

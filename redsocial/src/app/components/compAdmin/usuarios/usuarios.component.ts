@@ -51,11 +51,14 @@ export class UsuariosComponent implements AfterViewInit {
   getAllUsers() {
     const userId = Number(this.user.getUserId());
     this.user.getAllUsers(userId).subscribe(
+      
       data => {
         this.dataSource2.data = data;
         this.dataSource2.paginator = this.paginator;
         this.dataSource2.sort = this.sort;
+        console.log(data)
       }
+      
       
     );
   }

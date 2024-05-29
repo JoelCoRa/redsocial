@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { User, UserAjustes, UserDescripcion, UserIsAdmin, UserIsBlocked, UserPassword, UserPerfil, UsersAdmin, imgPerfilUser } from '../interfaces/user';
+import { CorreoReset, User, UserAjustes, UserDescripcion, UserIsAdmin, UserIsBlocked, UserPassword, UserPerfil, UsersAdmin, imgPerfilUser } from '../interfaces/user';
 import { Observable, catchError, throwError } from 'rxjs';
 import { UserLogin } from '../interfaces/user';
 import { jwtDecode } from "jwt-decode";
 import { TotalPosts } from '../interfaces/post';
 import { CrearForo } from '../interfaces/foro';
-import { Organizacion, OrganizacionLogin } from '../interfaces/organizacion';
 
 @Injectable({
   providedIn: 'root'
@@ -49,12 +48,12 @@ export class UserService {
     return this.http.post<string>(`${this.myAppUrl}${this.myApiURL}/login`, user);
   }
 
-  signInOrg(org: Organizacion): Observable<any>{
-    return this.http.post(`${this.myAppUrl}${this.myApiURL}/regorg`, org);
-  }
-  loginOrg(org: OrganizacionLogin):Observable<string>{
-    return this.http.post<string>(`${this.myAppUrl}${this.myApiURL}/loginorg`, org);
-  }
+  // signInOrg(org: Organizacion): Observable<any>{
+  //   return this.http.post(`${this.myAppUrl}${this.myApiURL}/regorg`, org);
+  // }
+  // loginOrg(org: OrganizacionLogin):Observable<string>{
+  //   return this.http.post<string>(`${this.myAppUrl}${this.myApiURL}/loginorg`, org);
+  // }
 
 
   // Perfil
@@ -62,9 +61,9 @@ export class UserService {
     return this.http.get<any>(`${this.myAppUrl}api/perfil/getuser/${id}`);
   }
 
-  getOrg(id: number): Observable<Organizacion>{
-    return this.http.get<any>(`${this.myAppUrl}api/perfil/getorg/${id}`);
-  }
+  // getOrg(id: number): Observable<Organizacion>{
+  //   return this.http.get<any>(`${this.myAppUrl}api/perfil/getorg/${id}`);
+  // }
   getTotalPosts(id: number): Observable<number>{
     return this.http.get<number>(`${this.myAppUrl}api/perfil/getuser/totalposts/${id}`);
   }  
@@ -113,6 +112,11 @@ export class UserService {
   }
   updateBlocked(id:number, user: UserIsBlocked): Observable<any>{
     return this.http.put<any>(`${this.myAppUrl}api/admin/unblockuser/${id}`, user);
+  }
+
+  sendMailToReset(correo: CorreoReset): Observable<any>{
+  
+    return this.http.post(`${this.myAppUrl}${this.myApiURL}/resetpassword`, correo);
   }
   
 

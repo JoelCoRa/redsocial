@@ -24,6 +24,9 @@ const crearForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             anonimo: anonimo,
             userId: userId
         });
+        res.json({
+            msg: `Foro creado exitosamente!`,
+        });
     }
     catch (error) {
         res.status(400).json({
@@ -31,9 +34,6 @@ const crearForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             error
         });
     }
-    res.json({
-        msg: `Foro creado exitosamente!`,
-    });
 });
 exports.crearForo = crearForo;
 const deleteForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -48,7 +48,7 @@ const getForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             id: id
         },
         attributes: [
-            'id', 'titulo', 'etiqueta', 'contenido', 'anonimo', 'userId', 'likes'
+            'id', 'titulo', 'etiqueta', 'contenido', 'anonimo', 'userId'
         ],
         include: [
             {
@@ -75,7 +75,7 @@ const getReplicasForo = (req, res) => __awaiter(void 0, void 0, void 0, function
             required: true
         },
         order: [
-            ['createdAt', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
+            ['fechaCreado', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
         ]
     });
     // const replicas = await sequelize.query('Select replicaforos.id, replicaforos.contenidoreplica, replicaforos.createdAt, replicaforos.userId, replicaforos.forumId, users.nombreUsuario, users.imgPerfil FROM replicaforos INNER JOIN users ON replicaforos.userId = users.id where replicaforos.forumId = ?', {type: QueryTypes.SELECT, replacements: [id]})
@@ -89,8 +89,9 @@ const getAllForos = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             attributes: ['nombreUsuario'],
             required: true
         },
+        attributes: ['id', 'titulo', 'contenido', 'etiqueta', 'anonimo', 'fechaCreacion', 'userId'],
         order: [
-            ['updatedAt', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
+            ['fechaCreacion', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
         ]
     });
     res.json(foros);

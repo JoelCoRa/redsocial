@@ -91,7 +91,7 @@ export class HeaderperfilComponent {
       this.nombreUsuario = this.usuario.nombreUsuario;     
       this.descripcionUsuario = this.usuario.descripcion; 
       this.imagenPerfil = this.usuario.imgPerfil;
-      this.numSeguidores = this.usuario.seguidores;      
+      // this.numSeguidores = this.usuario.seguidores;      
       // this.sanitizedImage = this.sanitizer.bypassSecurityTrustUrl(this.imagenPerfil);
       // console.log(this.sanitizedImage)
       this.base64Image = `data:image/png;base64,${this.imagenPerfil}`;

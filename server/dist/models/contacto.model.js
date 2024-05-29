@@ -27,7 +27,6 @@ exports.Contacto = connection_1.default.define('solicitud-contacto', {
     },
     fechaSolicitud: {
         type: sequelize_1.DataTypes.DATE,
-        allowNull: true,
         defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     },
 }, {

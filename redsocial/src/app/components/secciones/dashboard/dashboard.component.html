@@ -44,8 +44,8 @@
               <div class="contenidoPrincipal">
                   <mat-card-header>
                     <div mat-card-avatar class="example-header-image">
-                      <img *ngIf="item.imgPerfil === ''" src="../../../../assets/avatars/2.jpg" alt="imgPerfil" class="imgCircular">
-                      <img *ngIf="item.imgPerfil !== ''" [src]="getProfileImage(item.imgPerfil)" alt="imgPerfil" class="imgCircular">
+                      <img *ngIf="item.imgPerfil === null" src="../../../../assets/avatars/user.png" alt="imgPerfil" class="imgCircular">
+                      <img *ngIf="item.imgPerfil !== null" [src]="getProfileImage(item.imgPerfil)" alt="imgPerfil" class="imgCircular">
                     </div>
                       <mat-card-title class="nomUsuario">{{item.nombreUserSeguido}}</mat-card-title>
                     </mat-card-header>

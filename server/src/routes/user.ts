@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { newUser, loginUser, newOrganizacion, loginOrganizacion, } from '../controllers/user.controller';
+import { newUser, loginUser, resetPassword, } from '../controllers/user.controller';
 import validateToken from './validateToken';
 
 const router = Router();
@@ -8,8 +8,17 @@ const router = Router();
 router.post('/', newUser);
 router.post('/login', loginUser);
 
-router.post('/regorg', newOrganizacion);
-router.post('/loginorg', loginOrganizacion);
+// router.post('/regorg', newOrganizacion);
+// router.post('/loginorg', loginOrganizacion);
+
+
+
+
+router.post('/resetpassword', resetPassword);
+
+
+
+
 
 
 // router.post('/req-reset-password', reqRecoverPassword);

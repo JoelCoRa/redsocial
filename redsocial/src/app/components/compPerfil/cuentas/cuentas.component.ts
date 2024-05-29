@@ -21,8 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class CuentasComponent {
   cuenta: string = "";
-  seguido: boolean = true;
-  imagenPerfil: string = '';
+  cuentasSeguidos!: any[];
+  usuario!: UserPerfil;
   base64Image: string ='';
 
   constructor(private user: UserService, private cuentas: CuentasService, private sb: MatSnackBar,private error: ErrorService, public dialog: MatDialog){}
@@ -31,7 +31,6 @@ export class CuentasComponent {
     this.getSeguidos();
   }
 
-  usuario!: UserPerfil;
   getUser(){
     const userId = Number(this.user.getUserId());  
     this.user.getUser(userId).subscribe(data =>{
@@ -39,93 +38,82 @@ export class CuentasComponent {
       console.log(this.usuario)
     });  
   }
-  cuentasSeguidos!: MostrarCuentas[];
+
   getSeguidos(){
     const userId = Number(this.user.getUserId());    
     this.cuentas.getCuentasSeguidas(userId).subscribe(data => {
       this.cuentasSeguidos = data;
-      // this.imagenPerfil = this.cuentasSeguidos;
-      this.base64Image = `data:image/png;base64,${this.cuentasSeguidos}`;
-
-       console.log(this.cuentasSeguidos);
-     // this.idUsuario = `${this.listPostPropio[0].id.toString()}`;
-      // this.contenidoPublicacion = this.listPostPropio[0].contenido
+      this.cuentasSeguidos.forEach((cuenta: any) => {
+        cuenta.seguido = true; // Inicialmente, todos los usuarios en la lista son seguidos
+      });
     });
-  }
-  getProfileImage(user: any): string {
-    return this.base64Image = `data:image/png;base64,${user.imgPerfil}`;
   }
 
   addSeguidor(id:number, usuario: string){
     const userId = Number(this.user.getUserId()); 
     let nombreSeguidor;
-    console.log(id)
 
     this.user.getUser(userId).subscribe(data =>{
-      nombreSeguidor = data.nombreUsuario
-      console.log(nombreSeguidor);
-      console.log(usuario)
+      nombreSeguidor = data.nombreUsuario;
       const seguidor : Cuentas = {
         userIdSeguido: id,
         userIdSeguidor: userId,
         nombreUserSeguido: usuario,
         nombreUserSeguidor: nombreSeguidor,
-      }
-      // console.log(seguidor)
+      };
+      console.log(seguidor)
+
       this.cuentas.addSeguidor(seguidor).subscribe({
         next: (v) => {  
-          this.seguido = true;
+          const cuentaSeguida = this.cuentasSeguidos.find(cuenta => cuenta.userIdSeguido === id);
+          if (cuentaSeguida) {
+            cuentaSeguida.seguido = true; // Actualiza el estado a "seguido"
+          }
           this.sb.open(`Has seguido al usuario ${seguidor.nombreUserSeguido}`, 'Cerrar', {
             duration: 5000,        
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
             panelClass: ['notifExito'],  
           });
-          // console.log(`El usuario ${seguidor.nombreUserSeguidor} va a seguir al usuario ${seguidor.nombreUserSeguido}` )
-
         },
         error: (e: HttpErrorResponse) => {
-          this.error.msgError(e)       
+          this.error.msgError(e);      
         },
         complete: () => { 
-          console.info('complete')
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
+          console.info('complete');
+          
         }
       })
     }); 
   }
 
-
   deleteSeguido(idSeguido: number){
     const userId = Number(this.user.getUserId());     
-    console.log('Yano vas a seguir al usuario con esta id ' + idSeguido);
-    
     this.cuentas.deleteSeguido(idSeguido, userId).subscribe({
-      next: (v) => {  
+      next: () => {  
+        const cuentaSeguida = this.cuentasSeguidos.find(cuenta => cuenta.userIdSeguido === idSeguido);
+        if (cuentaSeguida) {
+          cuentaSeguida.seguido = false; // Actualiza el estado a "no seguido"
+        }
         this.sb.open(`Ya no sigues esta cuenta!`, 'Cerrar', {
           duration: 5000,        
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
           panelClass: ['notifExito'],  
         });
-        
       },
       error: (e: HttpErrorResponse) => {
-        this.error.msgError(e)       
+        this.error.msgError(e);      
       },
       complete: () => {
-        console.info('complete') 
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        console.info('complete');
+       
       }
     });
   }
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-
 
   openDialog(id:number) {
     this.dialog.open(DialogElementsExampleDialog, {
@@ -134,12 +122,11 @@ export class CuentasComponent {
     });
   } 
 
-  
-
-
-
-
+  getProfileImage(user: any): string {
+    return this.base64Image = `data:image/png;base64,${user.imgPerfil}`;
+  }
 }
+
 @Component({
   selector: 'dialog-elements-example-dialog-seguidos',
   templateUrl: 'dialog-elements-example-dialog-seguidos.html',
@@ -154,7 +141,8 @@ export class DialogElementsExampleDialog {
     this.getUser();
   }
   nombreUsuario!: string;
-  descripcion!: string;
+  descripcion!: string
+
   base64Image: string = '';
   imagenPerfil: string = '';
 

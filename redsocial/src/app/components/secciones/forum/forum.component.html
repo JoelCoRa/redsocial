@@ -3,17 +3,15 @@
   <div class="contenedor">
     <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
     <div class="headerForo">
-      
-      <div class="buscar">        <!-- <app-barrabusqueda placeholderText="Ingresa un nombre de usuario o un userID..." class="barra"></app-barrabusqueda> -->
+      <div class="buscar">
         <form class="form barra">
           <button (click)="search()">
               <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                   <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
           </button>
-          <input class="input2" placeholder="Ingresa el nombre de un foro..." required="" type="text" [(ngModel)]="query"  [ngModelOptions]="{standalone: true}">
-          <!-- <input class="input2" placeholder="Ingresa el nombre de un foro..." required="" type="text" [(ngModel)]="query" [ngModelOptions]="{standalone: true}"> -->
-          <button class="reset" type="reset" >
+          <input class="input2" placeholder="Ingresa el nombre de un foro..." required="" type="text" [(ngModel)]="query" (keyup)="applyFilter($event)" [ngModelOptions]="{standalone: true}">
+          <button class="reset" type="reset">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -28,49 +26,18 @@
          </div>
       </div>
 
-
-
       <button class="btnCrearForo" [routerLink]="['/foros/crearforo']">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-plus-filled" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M12 2l.324 .001l.318 .004l.616 .017l.299 .013l.579 .034l.553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553l.034 .579c.005 .098 .01 .198 .013 .299l.017 .616l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046l-.579 .034c-.098 .005 -.198 .01 -.299 .013l-.616 .017l-.642 .005l-.642 -.005l-.616 -.017l-.299 -.013l-.579 -.034l-.553 -.046c-4.785 -.464 -6.732 -2.411 -7.196 -7.196l-.046 -.553l-.034 -.579a28.058 28.058 0 0 1 -.013 -.299l-.017 -.616c-.003 -.21 -.005 -.424 -.005 -.642l.001 -.324l.004 -.318l.017 -.616l.013 -.299l.034 -.579l.046 -.553c.464 -4.785 2.411 -6.732 7.196 -7.196l.553 -.046l.579 -.034c.098 -.005 .198 -.01 .299 -.013l.616 -.017c.21 -.003 .424 -.005 .642 -.005zm0 6a1 1 0 0 0 -1 1v2h-2l-.117 .007a1 1 0 0 0 .117 1.993h2v2l.007 .117a1 1 0 0 0 1.993 -.117v-2h2l.117 -.007a1 1 0 0 0 -.117 -1.993h-2v-2l-.007 -.117a1 1 0 0 0 -.993 -.883z" fill="currentColor" stroke-width="0" />
+        <path d="M12 2l.324 .001l.318 .004l.616 .017l.299 .013l.579 .034l.553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553l.034 .579c.005 .098 .01 .198 .013 .299l.017 .616l.005 .642l-.005 .642l-.017 .616l-.013 .299l-.034 .579l-.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046l-.579 .034c-.098 .005 -.198 .01 -.299 .013l-.616 .017c-.21 -.003 -.424 -.005 -.642 -.005l-.324 -.001l-.318 -.004l-.616 -.017a25.23 25.23 0 0 1 -.299 -.013l-.579 -.034a25.786 25.786 0 0 1 -.553 -.046c-4.785 -.464 -6.732 -2.411 -7.196 -7.196l-.046 -.553a26.292 26.292 0 0 1 -.034 -.579a28.058 28.058 0 0 1 -.013 -.299l-.017 -.616a26.81 26.81 0 0 1 -.005 -.642l.005 -.642l.017 -.616l.013 -.299a25.786 25.786 0 0 1 .034 -.579a26.292 26.292 0 0 1 .046 -.553c.464 -4.785 2.411 -6.732 7.196 -7.196l.553 -.046a25.786 25.786 0 0 1 .579 -.034a28.058 28.058 0 0 1 .299 -.013l.616 -.017a26.81 26.81 0 0 1 .642 -.005l.324 -.001l.318 .004l.616 .017a25.23 25.23 0 0 1 .299 .013l.579 .034a25.786 25.786 0 0 1 .553 .046c4.785 .464 6.732 2.411 7.196 7.196l.046 .553a26.292 26.292 0 0 1 .034 .579a28.058 28.058 0 0 1 .013 .299l.017 .616a26.81 26.81 0 0 1 .005 .642l-.005 .642l-.017 .616a28.058 28.058 0 0 1 -.013 .299a26.292 26.292 0 0 1 -.034 .579a25.786 25.786 0 0 1 -.046 .553c-.464 4.785 -2.411 6.732 -7.196 7.196l-.553 .046a25.786 25.786 0 0 1 -.579 .034a28.058 28.058 0 0 1 -.299 .013l-.616 .017c-.21 .003 -.424 .005 -.642 .005zm0 6a1 1 0 0 0 -1 1v2h-2l-.117 .007a1 1 0 0 0 .117 1.993h2v2l.007 .117a1 1 0 0 0 1.993 -.117v-2h2l.117 -.007a1 1 0 0 0 -.117 -1.993h-2v-2l-.007 -.117a1 1 0 0 0 -.993 -.883z" fill="currentColor" stroke-width="0" />
         </svg>
         <p>Crear Foro</p>
       </button>
     </div>
     <div class="cuerpoForo">
-       <!-- Colores: 
-            primary = gris
-            accent = rosa
-            warn = rojo
-            basic = gris
-            default = azul
-          -->
-      <!-- <div class="headerCuerpo">
-        <p>Temas Populares</p>
-        <mat-chip-listbox class="listaRecomendaciones">
-         
-          <mat-chip-option color="accent">{{masPopular}}</mat-chip-option> 
-          <mat-chip-option>{{temas[0]}}</mat-chip-option>
-          <mat-chip-option color="warn">{{temas[1]}}</mat-chip-option>
-          <mat-chip-option>{{temas[2]}}</mat-chip-option>
-          <mat-chip-option>{{temas[3]}}</mat-chip-option>
-          <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
-          <mat-chip-option color="warn">Warn fish</mat-chip-option>
-        </mat-chip-listbox>
-      </div> -->
-
       <div *ngIf="numResultados === 0">
         <app-mensajevacio class="msgVacioTexto">¡No hay resultados para tu búsqueda!</app-mensajevacio>
       </div>
-      <!-- <div *ngIf="numResultados === -1">
-        <div class="contMsgGeneral">
-          <div class="contImgLupa">
-            <img src="../../../../assets/lupa.png" alt="lupa" class="imgLupa">
-          </div>
-          <h2 class="msgGeneral">¡Aqui apareceran los resultados de tu busqueda!</h2>
-        </div>      
-      </div> -->
 
       <div class="mat-elevation-z8" *ngIf="numResultados !== 0">
         <table mat-table [dataSource]="dataSource2" class="tablaResultado">      
@@ -85,14 +52,11 @@
             <th mat-header-cell *matHeaderCellDef class="headerTable">Usuario</th>            
             <td mat-cell *matCellDef="let element" class="usuarioQuePublica"> 
               <div *ngIf="element.anonimo">
-                <!-- <img src="../../../../assets/pato.jpg" alt="" class="imgUsuario"> -->
                 {{element.nombreUsuario}} 
               </div>
               <div *ngIf="!element.anonimo" >
-                <!-- <img [src]="getProfileImage(element.user.imgPerfil)" alt="" class="imgUsuario"> -->
                 {{element.user.nombreUsuario}} 
               </div>
-              
             </td>
           </ng-container>     
                
@@ -105,14 +69,9 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10]"
-                       showFirstLastButtons
-                       aria-label="Select page of periodic elements">
-        </mat-paginator>
-      </div>      
+        <mat-paginator [length]="dataSource2.data.length" [pageSize]="5"></mat-paginator>
+      </div>
     </div>
   </div>
 </app-sidebar>
-
-
+<!-- <app-footer></app-footer> -->

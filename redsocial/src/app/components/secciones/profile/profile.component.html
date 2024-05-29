@@ -17,7 +17,8 @@
             <div class="contenidoPrincipal">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image">
-                        <img src="../../../../assets/avatars/2.jpg" alt="imgPerfil" class="imgCircular">
+                        <img *ngIf="base64Image === ''" src="../../../../assets/avatars/user.png" alt="imgPerfil" class="imgCircular">
+                        <img *ngIf="base64Image!== ''" [src]="this.base64Image" alt="imgPerfil" class="imgCircular">
                     </div>
                     <mat-card-title>{{nombreUsuario}}</mat-card-title>
                   </mat-card-header>

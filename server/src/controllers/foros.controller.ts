@@ -8,8 +8,7 @@ import { ReplicaForo } from "../models/replicaforo.model";
 
 
 export const crearForo = async(req: Request, res: Response) =>{
-    const {titulo, etiqueta, contenido, userId, anonimo } = req.body;
-
+    const {titulo, etiqueta, contenido, userId, anonimo} = req.body;
     try {
         Foro.create({
             titulo: titulo,
@@ -17,16 +16,16 @@ export const crearForo = async(req: Request, res: Response) =>{
             contenido: contenido,
             anonimo: anonimo,
             userId: userId
-        })
+        });
+        res.json({
+            msg: `Foro creado exitosamente!`,
+        });
     } catch(error){
         res.status(400).json({
             msg: "Oops ocurrio un error!",
             error
         });
-    } 
-    res.json({
-        msg: `Foro creado exitosamente!`,
-    });
+    }     
 }
 export const deleteForo = async(req:Request, res: Response) =>{
     const{ id } = req.params
@@ -40,7 +39,7 @@ export const getForo = async(req:Request, res: Response)=> {
             id: id
         },
         attributes: [
-            'id','titulo','etiqueta','contenido', 'anonimo','userId','likes'
+            'id','titulo','etiqueta','contenido', 'anonimo','userId'
         ],
         include: [ 
             {
@@ -67,7 +66,7 @@ export const getReplicasForo = async(req: Request, res: Response)=>{
             required: true
         },
         order: [
-            ['createdAt', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
+            ['fechaCreado', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
         ]
     })
     // const replicas = await sequelize.query('Select replicaforos.id, replicaforos.contenidoreplica, replicaforos.createdAt, replicaforos.userId, replicaforos.forumId, users.nombreUsuario, users.imgPerfil FROM replicaforos INNER JOIN users ON replicaforos.userId = users.id where replicaforos.forumId = ?', {type: QueryTypes.SELECT, replacements: [id]})
@@ -80,8 +79,9 @@ export const getAllForos = async(req:Request, res: Response)=>{
             attributes: ['nombreUsuario'],
             required: true
         },
+        attributes:['id','titulo','contenido','etiqueta','anonimo','fechaCreacion','userId'],
         order: [
-            ['updatedAt', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
+            ['fechaCreacion', 'DESC'] // Ordena los resultados por el campo `fecha` en orden descendente
         ]
     })
     res.json(foros);
@@ -136,15 +136,16 @@ export const createReplica = async(req: Request, res: Response) =>{
             forumId: id,
             contenidoreplica: contenidoreplica,
             userId: userId
-        })
+        });
+        
     } catch(error){
         res.status(400).json({
             msg: "Oops ocurrio un error!",
             error
         });
-    } 
-    res.json({
+    } res.json({
         msg: `Replica agregada exitosamente!`,
     });
+    
 
 }

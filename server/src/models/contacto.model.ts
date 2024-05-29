@@ -22,7 +22,6 @@ export const Contacto = sequelize.define('solicitud-contacto', {
     },
     fechaSolicitud: {
         type: DataTypes.DATE,
-        allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
 }, {

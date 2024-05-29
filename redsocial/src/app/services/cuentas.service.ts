@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ErrorService } from './error.service';
 import { Observable } from 'rxjs';
-import { Cuentas, MostrarCuentas, Seguidos } from '../interfaces/cuentas';
+import { Cuentas, CuentasResult, MostrarCuentas, Seguidos } from '../interfaces/cuentas';
 import { environment } from '../../environments/environment';
 import { CuentasComponent } from '../components/compPerfil/cuentas/cuentas.component';
 
@@ -35,7 +35,7 @@ export class CuentasService {
   addSeguidor(seguidor: Cuentas): Observable<any>{
     return this.http.post(`${this.myAppUrl}api/perfil/addseguidor`, seguidor); 
   }
-  searchComunidad(query:string): Observable<any[]>{
-    return this.http.get<any[]>(`${this.myAppUrl}api/comunidad/searchcomunidad?q=${query}`)
+  searchComunidad(id:number, query:string): Observable<any[]>{
+    return this.http.get<any[]>(`${this.myAppUrl}api/comunidad/searchcomunidad/${id}?q=${query}`)
   }
 }

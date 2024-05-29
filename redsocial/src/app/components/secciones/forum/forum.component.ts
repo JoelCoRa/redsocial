@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { FooterComponent } from '../../footer/footer.component';
 import { MensajeSidebarComponent } from '../../mensaje-sidebar/mensaje-sidebar.component';
@@ -7,7 +7,7 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
@@ -15,6 +15,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { ForosService } from '../../../services/foros.service';
 import { CommonModule } from '@angular/common';
 import { MensajevacioComponent } from '../../mensajevacio/mensajevacio.component';
+
 
 export interface ForoResultado {
   titulo: string;
@@ -38,18 +39,15 @@ export interface ForoResultado {
     SidebarComponent,
     TituloSeccionComponent,
     MatCardModule,
-    MatCardModule,
     MatChipsModule,
     MatTableModule,
-    MatPaginator,
     FormsModule,
     CommonModule,
-    MensajevacioComponent
+    MensajevacioComponent,
+    MatPaginatorModule
   ]
 })
-
-
-export class ForumComponent implements AfterViewInit {
+export class ForumComponent implements OnInit, AfterViewInit {
   query: string = '';
   results: ForoResultado[] = [];
   displayedColumns: string[] = ['titulo', 'nombreUsuario', 'replicas'];
@@ -62,13 +60,13 @@ export class ForumComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   constructor(
-    private user: UserService, 
-    private sb: MatSnackBar, 
+    private user: UserService,
+    private sb: MatSnackBar,
     private foro: ForosService,
     private router: Router
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.getAllForos();
   }
 
@@ -87,7 +85,7 @@ export class ForumComponent implements AfterViewInit {
       return;
     }
     this.foro.searchForos(this.query).subscribe(data => {
-      this.results = data.map(result => {          
+      this.results = data.map(result => {
         return {
           ...result,
           nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
@@ -99,12 +97,12 @@ export class ForumComponent implements AfterViewInit {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource2.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource2.filter = filterValue;
     this.numResultados = this.dataSource2.filteredData.length;
   }
 
-  getAllForos(){
+  getAllForos() {
     this.foro.getAllForos().subscribe(data => {
       this.results = data.map(result => {
         return {
@@ -113,6 +111,8 @@ export class ForumComponent implements AfterViewInit {
         };
       });
       this.dataSource2.data = this.results;
+      this.numResultados = this.results.length;
+
       this.dataSource2.filterPredicate = (data: ForoResultado, filter: string) => {
         const dataStr = data.titulo.toLowerCase() + ' ' + data.nombreUsuario.toLowerCase();
         return dataStr.indexOf(filter) !== -1;

@@ -46,8 +46,7 @@ exports.Organizacion = connection_1.default.define('organization', {
         allowNull: false
     },
     fechaRegistro: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        type: sequelize_1.DataTypes.DATE,
         defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     }
 }, {

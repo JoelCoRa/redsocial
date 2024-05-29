@@ -42,71 +42,24 @@ export const User = sequelize.define('user', {
     },
     descripcion: {
         type: DataTypes.STRING,
-        allowNull: true,
         defaultValue: 'Este usuario no tiene descripción!'
     },    
     imgPerfil: {
-        type: DataTypes.TEXT('long'),
-        allowNull: true,
-        defaultValue: ''
+        type: DataTypes.TEXT('long'),        
     },
     fechaRegistro: {
         type: DataTypes.DATE,
-        allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-    },
-    cuentasSeguidas: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    seguidores: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    publicaciones: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    foros: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    solicitudes: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
-    },
-    reportes: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0
     },
     tipoUsuario: {
         type: DataTypes.TINYINT,
         allowNull: false,
         defaultValue: 0
     },
-    modoOscuro: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-    },
-    notificaciones: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-    },
-    resetToken: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     isBlocked: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false
     }
 }, {
     timestamps: false

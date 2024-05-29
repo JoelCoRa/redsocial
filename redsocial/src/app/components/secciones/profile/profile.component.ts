@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderperfilComponent } from "../../compPerfil/headerperfil/headerperfil.component";
 import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component";
 import { PostsService } from '../../../services/posts.service';
-import { PostDisliked, PostLiked, PostPropio, postCreado } from '../../../interfaces/post';
+import {  PostLiked, PostPropio, postCreado } from '../../../interfaces/post';
 import { UserService } from '../../../services/user.service';
 import { User, UserDescripcion, UserPerfil } from '../../../interfaces/user';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -60,6 +60,7 @@ export class ProfileComponent {
   post!: postCreado;
   likesActualizados!: number;
   dislikesActualizados!: number;
+  base64Image: string ='';
 
   constructor(private router: Router, public posts: PostsService, private user2: UserService, private sb: MatSnackBar, private error: ErrorService, public dialog: MatDialog) { } 
 
@@ -79,9 +80,15 @@ export class ProfileComponent {
     const userId = Number(this.user2.getUserId());    
     this.user2.getUser(userId).subscribe(data => {
       this.usuario = data;
+      // console.log(this.usuario)
       this.nombreUsuario = this.usuario.nombreUsuario;
+      this.base64Image = `data:image/png;base64,${this.usuario.imgPerfil}`
     });
   }
+
+  // getProfileImage(user: any): string {
+  //   return this.base64Image = `data:image/png;base64,${user.imgPerfil}`;
+  // }
 
   
 
@@ -120,8 +127,8 @@ export class DialogElementsExampleDialog {
 
   deletePost2(){    
     const postId = this.data.id
-    console.log(postId)
-    console.log("Se va a borrar el post con el id", postId);
+    // console.log(postId)
+    // console.log("Se va a borrar el post con el id", postId);
     this.posts.deletePost(postId).subscribe({
       next: (v) => {  
         this.sb.open(`Publicación eliminada con éxito!`, 'Cerrar', {

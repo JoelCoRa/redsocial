@@ -4,28 +4,25 @@ import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
 import { User } from "./user.model";
 import { Post } from "./post.model";
+import { Foro } from "./foro.model";
 
 export const Reporte = sequelize.define('report', {
     id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
-    fechaContacto:{
-        type: DataTypes.DATE,
-        allowNull: false
-    }, 
-    fechaSolicitud: {
-        type: DataTypes.DATE,
-        allowNull: false
+    descripcion: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    fechaRespuesta: {
+    fechaReporte:{
         type: DataTypes.DATE,
-        allowNull: true
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP') 
     }
-});
+},{timestamps:false});
 
 User.hasMany(Reporte); // Un usuario puede tener muchos posts
-Post.hasMany(Reporte)
-Reporte.belongsTo(User);
-Reporte.belongsTo(Post);
+Foro.hasMany(Reporte)
+Reporte.belongsTo(User,{foreignKey: 'userId'});
+Reporte.belongsTo(Foro, { foreignKey: 'forumId'});

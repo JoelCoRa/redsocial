@@ -7,7 +7,6 @@ exports.Post = void 0;
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
 const user_model_1 = require("./user.model");
-const organizacion_model_1 = require("./organizacion.model");
 exports.Post = connection_1.default.define('post', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
@@ -16,31 +15,22 @@ exports.Post = connection_1.default.define('post', {
     },
     contenido: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
         defaultValue: ""
     },
     fechaPublicacion: {
-        type: sequelize_1.DataTypes.DATEONLY,
-        allowNull: false,
+        type: sequelize_1.DataTypes.DATE,
         defaultValue: connection_1.default.literal('CURRENT_TIMESTAMP')
     },
     likes: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    dislikes: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0
     },
     comentarios: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0
     },
-});
+}, { timestamps: false });
 user_model_1.User.hasMany(exports.Post); // Un usuario puede tener muchos posts
-organizacion_model_1.Organizacion.hasMany(exports.Post); // Una organizacion puede tener muchos posts
+// Organizacion.hasMany(Post); // Una organizacion puede tener muchos posts
 exports.Post.belongsTo(user_model_1.User, { foreignKey: 'userId' });
-exports.Post.belongsTo(organizacion_model_1.Organizacion, { foreignKey: 'userId' });
+// Post.belongsTo(Organizacion, {foreignKey: 'orgId'});

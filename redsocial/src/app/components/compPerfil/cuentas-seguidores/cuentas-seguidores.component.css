@@ -26,6 +26,22 @@
     font-weight: bold;
     margin: 0.5rem;
 }
+.contAccion{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: none;
+    border: none;
+}
+.contAccion span{
+    color: #000;
+    width: 3rem;
+    font-size: 0.7rem;
+    font-style: italic;
+    text-wrap: wrap;
+    font-family: var(--fuenteSecundaria);
+}
+
 .imgPerfil{
     width: 4rem; /* esto asegura que la imagen ocupe todo el espacio dentro del div */
     height: 4rem;
@@ -47,6 +63,8 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     background: none;
     border: none;
 }
@@ -137,7 +155,8 @@
         border-style: solid;
         border-width: 8px 8px 0;
         border-color: #000 transparent transparent;
-        /* background: #000000; */    
+        /* background: #000000; */
+    
     }  
      /* Tooltip appearance on hover */
     .tooltip-container:hover {
@@ -159,15 +178,18 @@
         width: 4rem;        
     }
     .tooltip-container:hover .tooltip2 {
-        top: -140%; /* Adjusted position for the bubble tooltip */
+        top: -90%; /* Adjusted position for the bubble tooltip */
         width: 4rem;
-        line-height: 1.2;
     }
     .tooltip-container:hover .tooltip3 {
         top: -140%; /* Adjusted position for the bubble tooltip */
         width: 6rem;
         line-height: 1.1;
     }
+    
+}
+.liked{
+    fill: aqua;
 }
 
 /* Modal */
@@ -189,8 +211,8 @@
 }
 .imgPerfilModal{
     margin-top: 1rem;
-    width: 35%;
-    height: 35%;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     -webkit-box-shadow: 3px 2px 13px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: 3px 2px 13px -3px rgba(0,0,0,0.75);

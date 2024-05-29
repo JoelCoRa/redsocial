@@ -1,6 +1,6 @@
 import { Router } from "express";
 import validateToken from "./validateToken";
-import { addImgPerfil, addSeguidor, countPosts, countSeguidores, countSeguidos, createPost, cuentasSeguidas, cuentasSeguidores, deletePost, deleteSeguidor, getLikes, getOrg, getPosts, getSeguidores, getSeguidos, updateDescripcion} from "../controllers/perfil.controller";
+import { addImgPerfil, addSeguidor, countPosts, countSeguidores, countSeguidos, createPost, cuentasSeguidas, cuentasSeguidores, deletePost, deleteSeguidor, getLikes, getPosts, getSeguidores, getSeguidos, updateDescripcion} from "../controllers/perfil.controller";
 import { getUser } from "../controllers/perfil.controller";
 
 const router = Router();
@@ -17,7 +17,7 @@ router.put('/addimgperfil/:id', addImgPerfil);
 
 router.get('/postpropio/:id', getPosts);
 router.get('/getuser/:id', getUser);
-router.get('/getorg/:id', getOrg);
+// router.get('/getorg/:id', getOrg);
 router.get('/getuser/totalposts/:id', countPosts);
 router.get('/getseguidos/:id', cuentasSeguidas);
 router.get('/getseguidores/:id', cuentasSeguidores);

@@ -15,26 +15,10 @@ export const Foro = sequelize.define('forum', {
     }, 
     ultimaActividad:{
         type: DataTypes.DATE,
-        allowNull: true
     },
     contenido:{
         type: DataTypes.STRING,
         allowNull: false
-    },
-    replicas:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    likes:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    reportes:{
-        type: DataTypes.INTEGER, 
-        allowNull: false,
-        defaultValue: 0
     },
     etiqueta:{
         type: DataTypes.STRING,
@@ -43,8 +27,11 @@ export const Foro = sequelize.define('forum', {
     anonimo:{
         type: DataTypes.BOOLEAN,
         allowNull: false
-    }
-    
-});
+    },
+    fechaCreacion:{
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    }    
+},{timestamps: false});
 User.hasMany(Foro); // Un usuario puede tener muchos foros
 Foro.belongsTo(User, { foreignKey: 'userId'});

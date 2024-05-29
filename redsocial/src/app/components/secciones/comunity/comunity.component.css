@@ -201,7 +201,7 @@ input:not(:placeholder-shown) ~ .reset {
 .contTarjeta{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
 }
 .imgResultado{
@@ -280,7 +280,9 @@ input:not(:placeholder-shown) ~ .reset {
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: start;
     background: none;
+    margin-bottom: 2rem;
     border: none;
 }
 .contAccion span{
@@ -317,6 +319,9 @@ input:not(:placeholder-shown) ~ .reset {
     .accionesCuentas{
         flex-direction: column;
         width: 10%;
+    }
+    .contAccion{
+        margin-bottom: 1rem;
     }
     .contAccion .resp{        
         display: none;

@@ -12,13 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateDescripcion = exports.getLikes = exports.addImgPerfil = exports.getSeguidores = exports.getSeguidos = exports.addSeguidor = exports.deleteSeguidor = exports.deletePost = exports.createPost = exports.cuentasSeguidores = exports.cuentasSeguidas = exports.countSeguidores = exports.countSeguidos = exports.countPosts = exports.getOrg = exports.getUser = exports.getPosts = void 0;
+exports.updateDescripcion = exports.getLikes = exports.addImgPerfil = exports.getSeguidores = exports.getSeguidos = exports.addSeguidor = exports.deleteSeguidor = exports.deletePost = exports.createPost = exports.cuentasSeguidores = exports.cuentasSeguidas = exports.countSeguidores = exports.countSeguidos = exports.countPosts = exports.getUser = exports.getPosts = void 0;
 const connection_1 = __importDefault(require("../db/connection"));
 const sequelize_1 = require("sequelize");
 const post_model_1 = require("../models/post.model");
 const user_model_1 = require("../models/user.model");
 const seguidosseguidores_model_1 = require("../models/seguidosseguidores.model");
-const organizacion_model_1 = require("../models/organizacion.model");
 const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const listPosts = yield post_model_1.Post.findAll({
@@ -26,7 +25,7 @@ const getPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             userId: id
         },
         attributes: [
-            'id', 'contenido', 'fechaPublicacion', 'likes', 'dislikes'
+            'id', 'contenido', 'fechaPublicacion', 'likes'
         ],
         order: [['fechaPublicacion', 'DESC']]
     });
@@ -41,22 +40,21 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             id: id
         },
         attributes: [
-            'id', 'nombreUsuario', 'descripcion', 'cuentasSeguidas', 'seguidores', 'imgPerfil', 'tipoUsuario', 'correo'
+            'id', 'nombreUsuario', 'descripcion', 'imgPerfil', 'tipoUsuario', 'correo'
         ]
     });
     res.json(user);
 });
 exports.getUser = getUser;
-const getOrg = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const user = yield organizacion_model_1.Organizacion.findOne({
-        where: {
-            id: id
-        }
-    });
-    res.json(user);
-});
-exports.getOrg = getOrg;
+// export const getOrg = async (req:Request, res: Response) =>{
+//     const {id} = req.params
+//     const user = await Organizacion.findOne({
+//         where: {
+//             id: id
+//         }        
+//     });
+//     res.json(user);
+// }
 const countPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const totalPosts = yield post_model_1.Post.count({

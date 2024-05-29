@@ -108,8 +108,8 @@
           </form>
         </div>
         <div class="botones">
-          <app-enviar (click)="onSubmit()" class="btn"></app-enviar>
           <app-btn-regresar routerLink="/login" class="btn"></app-btn-regresar>
+          <app-enviar (click)="onSubmit()" class="btn"></app-enviar>          
         </div>
         <app-spinner *ngIf="loading"></app-spinner>
       </div>
