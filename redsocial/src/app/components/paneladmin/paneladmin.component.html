@@ -10,7 +10,7 @@
     </mat-card>
     <div class="contPanel">
         <div class="row">
-            <div class="col-12 contColumna">
+            <div class="col-12 colUsuarios">        
                 <h3 class="titulo">Revisar Incidencias</h3>
                 <div class="contIncidencias">
                     <p>Aqui puedes revisar reportes, solicitudes o preguntas de los usuarios</p>
@@ -20,7 +20,6 @@
                         <option value="Reportes" selected>Reportes</option>
                         <option value="Solicitudes">Solicitudes</option>
                     </select>
-
                     <div class="contTablaIncidencias" [ngSwitch]="opcionSeleccionada">
                         <app-reportes *ngSwitchCase="'Reportes'"></app-reportes>
                         <app-solicitudes *ngSwitchCase="'Solicitudes'"></app-solicitudes>

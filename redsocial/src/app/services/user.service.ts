@@ -114,8 +114,7 @@ export class UserService {
     return this.http.put<any>(`${this.myAppUrl}api/admin/unblockuser/${id}`, user);
   }
 
-  sendMailToReset(correo: CorreoReset): Observable<any>{
-  
+  sendMailToReset(correo: CorreoReset): Observable<any>{  
     return this.http.post(`${this.myAppUrl}${this.myApiURL}/resetpassword`, correo);
   }
   

@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders, HttpRequest } 
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, catchError, throwError } from 'rxjs';
-import { PostLiked, PostPropio, PostSeg, postCreado } from '../interfaces/post';
+import { Liked, PostLiked, PostPropio, PostSeg, postCreado } from '../interfaces/post';
 import { Token } from '@angular/compiler';
 import { Router, RouterModule } from '@angular/router';
 import { ErrorService } from './error.service';
@@ -40,6 +40,20 @@ export class PostsService {
   }
   deletePost(postId: number): Observable<any>{
     return this.http.delete(`${this.myAppUrl}api/perfil/deletepost/${postId}`);
+  }
+
+  addLike(postLike: Liked): Observable<any>{
+    return this.http.post(`${this.myAppUrl}api/dashboard/addlike`, postLike);
+  }
+  deleteLike(postId: number, userId: number):Observable<any>{
+    return this.http.delete(`${this.myAppUrl}api/dashboard/deletelikes/${postId}/${userId}`);
+  }
+
+  getLikesCurrentUser(userId:number): Observable<Liked[]>{
+    return this.http.get<Liked[]>(`${this.myAppUrl}api/dashboard/getlikesuser/${userId}`);
+  }
+  countLikes(postId: number): Observable<number>{
+    return this.http.get<number>(`${this.myAppUrl}api/dashboard/countLikes/${postId}`);
   }
 
 }

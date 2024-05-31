@@ -1,81 +1,60 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { FooterComponent } from '../../footer/footer.component';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MensajeSidebarComponent } from '../../mensaje-sidebar/mensaje-sidebar.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.component';
 import { ChatbotComponent } from '../../chatbot/chatbot.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { UserService } from '../../../services/user.service';
-import { PublicacionComponent } from "../../publicacion/publicacion.component";
-import { MensajevacioComponent } from "../../mensajevacio/mensajevacio.component";
-import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { MensajevacioComponent } from '../../mensajevacio/mensajevacio.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { PostsService } from '../../../services/posts.service';
-import { PostSeg } from '../../../interfaces/post';
-import { inject, OnInit } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { Liked, PostSeg } from '../../../interfaces/post';
+import { HttpErrorResponse } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
-import { FormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
-    selector: 'app-dashboard',
-    standalone: true,
-    templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.css',
-    imports: [NavbarComponent, FooterComponent, RouterModule, MensajeSidebarComponent, MatButtonModule, MatFormFieldModule, MatSelectModule, MatSidenavModule, SidebarComponent, MatCardModule, TituloSeccionComponent, ChatbotComponent, CommonModule, MensajevacioComponent, MatTooltipModule],
-    providers:[DatePipe]
+  selector: 'app-dashboard',
+  standalone: true,
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
+  imports: [NavbarComponent, FooterComponent, RouterModule, MensajeSidebarComponent, MatButtonModule, MatFormFieldModule, MatSelectModule, MatSidenavModule, SidebarComponent, MatCardModule, TituloSeccionComponent, ChatbotComponent, CommonModule, MensajevacioComponent, MatTooltipModule],
+  providers: [DatePipe]
 })
-export class DashboardComponent {
-
+export class DashboardComponent{
   usuarioPropio: string = "";
-  organizacionNombre: string = "";
-  numPublicaciones: number = 1;
-  usuarioSeguido: string = "";
-  contenido: string = ""
-  fechaPublicacion: string = "";
-  likes: number = 0;
-  dislikes: number = 0;
-  above: TooltipPosition = 'above';
+  numPublicaciones: number = 0;
+  listPostSeg: PostSeg[] = [];
+  likedPosts: { [key: number]: boolean } = {}; // Estado de likes
+  likesMap: { [key: number]: number } = {}; // Mapeo de likes por postId
 
-  constructor (private datePipe: DatePipe, private user: UserService, private posts:PostsService){ }
-  showFiller = false;
-  isRotated: boolean = false;
-  isSelected: boolean = true;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  rotarImagen() {
-    this.isRotated = !this.isRotated;
-  }
-
-  chatbot = new ChatbotComponent();
-  toggleChat() {
-    this.chatbot.isFullSize = true;
-  }
+  constructor(
+    private userService: UserService,
+    private postsService: PostsService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.getUserId();
-    this.getPostSeg();
-    // this.getOrg();
     this.getUser();
-
+    this.getPostSeg();
   }
 
-  listPostSeg: PostSeg[] = []
-  fechasPublicacion: string | null = '';
-  base64Image: string ='';
-
-
-  getUserId(): string | null{    
-    const token = localStorage.getItem('token')
+  getUserId(): string | null {
+    const token = localStorage.getItem('token');
     if (token) {
       try {
         const decodedToken: any = jwtDecode(token);
-        // console.log(decodedToken.idUser)
         return decodedToken.id;
       } catch (error) {
         console.error('Error decodificando el token:', error);
@@ -83,45 +62,88 @@ export class DashboardComponent {
       }
     }
     return null;
-  }  
-  getUser(){
-    const userId = Number(this.user.getUserId()); 
-    this.user.getUser(userId).subscribe(data =>{
-      this.usuarioPropio = data.nombreUsuario
+  }
+
+  getUser() {
+    const userId = Number(this.userService.getUserId());
+    this.userService.getUser(userId).subscribe(data => {
+      this.usuarioPropio = data.nombreUsuario;
     });
   }
-  // getOrg(){
-  //   const userId = Number(this.user.getUserId()); 
-  //   this.user.getOrg(userId).subscribe(data =>{
-  //     console.log(data)
-  //     this.organizacionNombre = data.nombre
-  //   });
-  // }
 
-  getPostSeg() {    
-    const userId = Number(this.user.getUserId()); 
-    this.posts.getPostSeg(userId).subscribe(data => {    
-      this.listPostSeg = data;
-      console.log(this.listPostSeg)
-      console.log();
-      
-
+  getPostSeg() {
+    const userId = Number(this.userService.getUserId());
+    this.postsService.getPostSeg(userId).subscribe(posts => {
+      this.listPostSeg = posts;
+      this.numPublicaciones = posts.length;
+      this.listPostSeg.forEach(post => {
+        this.countLikes(post.id); // Obtener la cantidad de likes para cada post
+      });
+      this.getUserLikes(userId); // Obtener los likes del usuario actual
     });
   }
+
+  getUserLikes(userId: number) {
+    this.postsService.getLikesCurrentUser(userId).subscribe(likes => {
+      // console.log(likes.length);
+      likes.forEach(like => {
+        this.likedPosts[like.postId] = true;
+      });
+    });
+  }
+
+  addLike(postId: number) {
+    const userId = Number(this.userService.getUserId());
+    const like: Liked = {
+      postId: postId,
+      userId: userId
+    };
+
+    this.postsService.addLike(like).subscribe({
+      next: () => {
+        this.likedPosts[postId] = true;
+        this.likesMap[postId] = (this.likesMap[postId] || 0) + 1; // Incrementar el contador de likes
+        this.snackBar.open(`Publicación likeada con éxito!`, 'Cerrar', {
+          duration: 5000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],
+        });
+      },
+      error: (e: HttpErrorResponse) => {
+        console.error('Error likeando la publicación:', e);
+      }
+    });
+  }
+
+  deleteLike(postId: number) {
+    const userId = Number(this.userService.getUserId());
+    // console.log(postId, userId)
+    this.postsService.deleteLike(postId, userId).subscribe({
+      next: () => {
+        this.likedPosts[postId] = false;
+        this.likesMap[postId] = (this.likesMap[postId] || 1) - 1; // Decrementar el contador de likes
+        this.snackBar.open(`Publicación deslikeada con éxito!`, 'Cerrar', {
+          duration: 5000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],
+        });
+      },
+      error: (e: HttpErrorResponse) => {
+        console.error('Error deslikeando la publicación:', e);
+      }
+    });
+  }
+
   getProfileImage(user: any): string {
-
-    return this.base64Image = `data:image/png;base64,${user}`;
+    return `data:image/png;base64,${user}`;
   }
-
-  // transformarFecha(fechaOriginal: string): string {
-  //   let dateTime = new Date(fechaOriginal);
-  //   return this.date.transform(dateTime, 'dd \'de\' MMMM \'de\' yyyy')|| '';
-  // }
-
-
-
-
-
-
-
+  
+  countLikes(id: number) {
+    this.postsService.countLikes(id).subscribe(data => {
+      this.likesMap[id] = data;
+      // console.log(this.likesMap);
+    });
+  }
 }

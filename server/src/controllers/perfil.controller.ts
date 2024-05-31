@@ -60,7 +60,7 @@ export const countSeguidos = async(req:Request, res:Response)=>{
             userIdSeguidor: id
         }
     })
-    console.log(totSeguidos)
+    // console.log(totSeguidos)
     res.json(totSeguidos);
 }
 export const countSeguidores = async(req:Request, res:Response)=>{
@@ -126,7 +126,7 @@ export const createPost = async(req: Request, res: Response) =>{
 }
 export const deletePost = async(req: Request, res: Response) =>{
     const { id } = req.params;
-    console.log(req.params)
+    // console.log(req.params)
     try{        
         Post.destroy({
             where: {

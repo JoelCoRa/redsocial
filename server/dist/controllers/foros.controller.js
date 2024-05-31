@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createReplica = exports.searchForoAux = exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
+exports.addReporte = exports.countReplicasForo = exports.createReplica = exports.searchForoAux = exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
 const sequelize_1 = require("sequelize");
 const user_model_1 = require("../models/user.model");
 const foro_model_1 = require("../models/foro.model");
 const replicaforo_model_1 = require("../models/replicaforo.model");
+const reporte_model_1 = require("../models/reporte.model");
 const crearForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { titulo, etiqueta, contenido, userId, anonimo } = req.body;
     try {
@@ -160,3 +161,31 @@ const createReplica = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     });
 });
 exports.createReplica = createReplica;
+const countReplicasForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { forumId } = req.params;
+    const totReplicas = yield replicaforo_model_1.ReplicaForo.count({
+        where: { forumId: forumId }
+    });
+    res.json(totReplicas);
+});
+exports.countReplicasForo = countReplicasForo;
+const addReporte = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { descripcion, userId, forumId } = req.body;
+    try {
+        reporte_model_1.Reporte.create({
+            descripcion: descripcion,
+            userId: userId,
+            forumId: forumId
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+    res.json({
+        msg: `Reporte generado exitosamente!`,
+    });
+});
+exports.addReporte = addReporte;

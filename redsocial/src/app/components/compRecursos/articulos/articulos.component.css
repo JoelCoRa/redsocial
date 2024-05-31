@@ -1,5 +1,24 @@
-.row{
-    margin: 0 auto;
+.contPrincipalRecursos{
+    display: flex;
+    justify-content: center;   
+    width: 50%;
+    margin: 0 auto; 
+}
+.contContactos{
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    justify-content: center;
+    align-items: center;
+}
+@media(min-width: 1000px){
+    .contPrincipalRecursos{
+        width: 80%;
+    }
+    .contContactos{
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }
 }
 .articulo{
     background-color: rgb(195, 218, 226);
@@ -8,16 +27,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-between;
+    width: 20rem;
     border-radius: 10px;
-    height: 12rem;
+    height: 6rem;
     margin-top: 1rem;
+}
+.articulo span{
+    color: rgb(32, 108, 184);
+    font-family: var(--fuentePrimaria);
+    cursor: pointer;
+    text-decoration: underline;
+    justify-content: end;
+}
+.articulo span:hover{
+    color: rgb(42, 49, 52);
+
 }
 .articulo h4{
     font-family: var(--fuenteGenerica);
     font-size: 1rem;
     text-align: center;
+    line-height: 1;
 }
 .articulo p{
     font-size: 0.8rem;

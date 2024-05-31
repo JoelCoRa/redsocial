@@ -1,6 +1,6 @@
 export interface PostSeg{
     idUsuarioSeguido: number,
-    idPost: number,
+    id: number,
     contenido: string,
     fechaPublicacion: string,
     likes: number,
@@ -30,4 +30,8 @@ export interface postCreado{
 export interface PostLiked{
     id: number,
     likes: number,
+}
+export interface Liked{
+    postId: number,
+    userId: number
 }

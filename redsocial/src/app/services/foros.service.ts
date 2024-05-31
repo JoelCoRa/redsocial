@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CrearForo, CrearReplica, Foro, ForoResultado } from '../interfaces/foro';
+import { CrearForo, CrearReplica, Foro, ForoResultado, ReporteForo } from '../interfaces/foro';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { ReplicaForo } from '../interfaces/foro';
@@ -33,7 +33,14 @@ export class ForosService {
   }
   createReplica(id: number, replica: CrearReplica): Observable<any>{
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}/crearreplica/${id}`, replica);
+  }
+  createReporteForo(reporte: ReporteForo): Observable<any>{
+    return this.http.post(`${this.myAppUrl}${this.myApiUrl}/crearreporte`, reporte);
+  }
+  countReplicasForo(forumId: number): Observable<number>{
+    return this.http.get<number>(`${this.myAppUrl}${this.myApiUrl}/countreplicas/${forumId}`);
 
   }
+
 
 }

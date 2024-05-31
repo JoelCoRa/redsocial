@@ -73,7 +73,7 @@ const countSeguidos = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             userIdSeguidor: id
         }
     });
-    console.log(totSeguidos);
+    // console.log(totSeguidos)
     res.json(totSeguidos);
 });
 exports.countSeguidos = countSeguidos;
@@ -133,7 +133,7 @@ const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.createPost = createPost;
 const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    console.log(req.params);
+    // console.log(req.params)
     try {
         post_model_1.Post.destroy({
             where: {

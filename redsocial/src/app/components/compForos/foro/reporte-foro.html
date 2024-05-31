@@ -1,12 +1,11 @@
 <h2 mat-dialog-title>Reportar foro</h2>
 <mat-dialog-content>
   <p>Escribe un breve mensaje para tu reporte</p>
-  <mat-form-field>
-    <mat-label>Reporte</mat-label>
-    <textarea name="descripcion" id="descripcion" matInput [(ngModel)]="descripcion" class="inputDescripcion"></textarea>
-  </mat-form-field>
+  <div>
+    <textarea name="descripcion" id="descripcion" [(ngModel)]="descripcion" class="inputDescripcion" placeholder="Escribe aqui..."></textarea>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions class="botones">
   <button (click)="onNoClick()" class="cancelar">Cancelar</button>
-  <button cdkFocusInitial class="enviar">Enviar</button>
+  <button cdkFocusInitial (click)="addReporte(data.id)" class="enviar">Enviar</button>
 </mat-dialog-actions>

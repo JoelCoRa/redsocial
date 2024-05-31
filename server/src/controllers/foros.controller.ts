@@ -5,6 +5,7 @@ import { Post } from "../models/post.model";
 import { User } from "../models/user.model";
 import { Foro } from "../models/foro.model";
 import { ReplicaForo } from "../models/replicaforo.model";
+import { Reporte } from "../models/reporte.model";
 
 
 export const crearForo = async(req: Request, res: Response) =>{
@@ -146,6 +147,32 @@ export const createReplica = async(req: Request, res: Response) =>{
     } res.json({
         msg: `Replica agregada exitosamente!`,
     });
-    
+}
+export const countReplicasForo = async(req: Request, res: Response)=>{
+    const { forumId } = req.params
 
+    const totReplicas = await ReplicaForo.count({
+        where: {forumId: forumId}
+    });
+    res.json(totReplicas);
+}
+
+export const addReporte = async(req: Request, res: Response) =>{
+     const {descripcion, userId, forumId} = req.body
+
+    try {
+        Reporte.create({
+            descripcion: descripcion,
+            userId: userId,
+            forumId: forumId
+        });
+        
+    } catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } res.json({
+        msg: `Reporte generado exitosamente!`,
+    });
 }

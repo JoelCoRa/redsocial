@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FooterComponent } from '../../footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { MensajeSidebarComponent } from '../../mensaje-sidebar/mensaje-sidebar.component';
@@ -15,6 +15,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { SolApoyo } from '../../../interfaces/contacto';
 import { ContactoService } from '../../../services/contacto.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-help',
@@ -31,7 +33,7 @@ export class HelpComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private user: UserService, private error: ErrorService, private sb: MatSnackBar, private contacto: ContactoService, private router: Router){
+  constructor(private user: UserService, private error: ErrorService, private sb: MatSnackBar, private contacto: ContactoService, private router: Router, private dialog: MatDialog){
     this.apoyoForm = new FormGroup({
       correo: new FormControl('', [Validators.email]),
       descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(254)])
@@ -85,7 +87,31 @@ export class HelpComponent {
       },
       complete: () => console.info('complete')
     });
-
   }
+
+  openDialog(id: number) {
+    this.dialog.open(DialogElementsExampleDialog,{
+      data: {id: id},
+      width: '800px'
+    });
+  }
+}
+@Component({
+  selector: 'dialogInicio',
+  templateUrl: 'dialogInicio.html',
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+  styleUrl: './help.component.css'
+})
+export class DialogElementsExampleDialog {
+
+  opcion!: number
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>,@Inject(MAT_DIALOG_DATA) public data: {id: number}){
+    this.opcion = data.id
+
+    console.log(this.opcion)
+   }
+
+
 
 }

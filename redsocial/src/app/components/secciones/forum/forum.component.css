@@ -51,16 +51,15 @@ table td, table th{
 }
 td{
     border: 1px solid #eeeeee;
-    font-family: var(--fuenteSecundaria);
+    font-family: var(--fuenteGenerica);
     margin-bottom: 1rem;
 }
 .tituloTD{
     cursor: pointer;
 }
 .tituloTD:hover{
-    color: aqua;
+    color: rgb(110, 177, 206);
 }
-
 
 @media(min-width: 900px){
     .headerForo{
@@ -71,7 +70,8 @@ td{
         font-size: 1rem;
     }
     table td:nth-child(2){
-        text-align: start;
+        text-align: center;
+        /* margin-left: 1.5rem; */
     }
     .imgUsuario{
         margin-top: 0;

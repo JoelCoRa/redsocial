@@ -23,6 +23,7 @@ import { ReplicaForo } from './replicaforo.model';
 import { Contacto } from './contacto.model';
 import { Apoyo } from './apoyo.model';
 import { ContactoGeneral } from './contactoportal.model';
+import { Like } from './likes.model';
 
  class Server {
     private app: Application;
@@ -73,6 +74,7 @@ import { ContactoGeneral } from './contactoportal.model';
             await Contacto.sync(); 
             await ContactoGeneral.sync(); 
             await Apoyo.sync(); 
+            await Like.sync(); 
             await sequelize.authenticate();
             console.log('Connection has been established successfully.');
         } catch (error) {

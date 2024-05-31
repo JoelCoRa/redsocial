@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EnviarComponent } from "../../enviar/enviar.component";
 import { ActivatedRoute } from '@angular/router';
 import { ForosService } from '../../../services/foros.service';
-import { CrearReplica, ReplicaForo } from '../../../interfaces/foro';
+import { CrearReplica, ReplicaForo, ReporteForo } from '../../../interfaces/foro';
 import { RouterModule } from '@angular/router';
 
 import { BtnregresarportalComponent } from "../../btnregresarportal/btnregresarportal.component";
@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { User } from '../../../interfaces/user';
 
 @Component({
     selector: 'app-foro',
@@ -155,11 +156,49 @@ export class ForoComponent {
 export class DialogOverviewExampleDialog {
 
   descripcion!: string;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: {id: number},
+    private user: UserService, private foro: ForosService, private sb: MatSnackBar, private error: ErrorService
   ) {}
+
+  addReporte(id:number){
+    const userId = Number(this.user.getUserId());
+    const reporte: ReporteForo = {
+      descripcion: this.descripcion,
+      userId: userId,
+      forumId: id
+    }
+    console.log(reporte);
+    this.foro.createReporteForo(reporte).subscribe({
+      next: (v) => {              
+        this.sb.open(`Reporte generado con éxito!`, "Cerrar", {
+          duration: 5000,        
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],  
+        });
+      },
+      error: (e: HttpErrorResponse) => {
+        this.error.msgError(e)       
+      },
+      complete: () => {
+        console.info('complete')
+      }
+    });
+    this.dialogRef.close();
+
+
+
+
+
+  }
+
+
+
 
   onNoClick(): void {
     this.dialogRef.close();

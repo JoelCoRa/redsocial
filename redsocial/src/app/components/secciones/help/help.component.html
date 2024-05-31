@@ -3,10 +3,146 @@
   <div class="contenedor">
     <app-titulo-seccion [title]="'Ayuda'"></app-titulo-seccion>
     <div class="contHeader">
-      <p class="msgHeader">Llena el siguiente formulario si te encuentras en necesidad de apoyo. Tus datos no serán compartidos a terceros.</p>
-      <p class="msgHeader">Tu solicitud será procesada y atendida a la brevedad.</p>
+      <p class="msgHeader">Selecciona la sección para desplegar el tutorial.</p>
+      <!-- <p class="msgHeader">Tu solicitud será procesada y atendida a la brevedad.</p> -->
     </div>
-    <mat-card class="tarjeta">
+    <div class="btns">
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+          </svg>
+          <span class="span">Inicio</span>
+        </button>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(1)" class="opcion">Bienvenida</li>
+              <li (click)="openDialog(2)" class="opcion">Links</li>
+              <li (click)="openDialog(3)" class="opcion">Publicaciones</li>
+            </ul>
+          </div>
+        </div>            
+      </div>      
+
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-square-rounded" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z" />
+            <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+            <path d="M6 20.05v-.05a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v.05" />
+          </svg>
+          <span class="span">Perfil</span>
+        </button>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(4)" class="opcion">Cambiar foto</li>
+              <li (click)="openDialog(5)" class="opcion">Publicaciones</li>
+              <li (click)="openDialog(6)" class="opcion">Seguidos</li>
+              <li (click)="openDialog(7)" class="opcion">Seguidores</li>
+            </ul>
+          </div>
+        </div>            
+      </div>
+
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+          </svg>
+          <span class="span">Comunidad</span>
+        </button>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(8)" class="opcion">Búsqueda</li>
+              <li (click)="openDialog(9)" class="opcion">Cuentas</li>
+            </ul>
+          </div>
+        </div>            
+      </div>
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+            <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+          </svg>
+          <span class="span">Foros</span>
+        </button>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(10)" class="opcion">Búsqueda</li>
+              <li (click)="openDialog(11)" class="opcion">Crear Foro</li>
+              <li (click)="openDialog(12)" class="opcion">Foro</li>
+            </ul>
+          </div>
+        </div>            
+      </div>
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-library" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M7 3m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+            <path d="M4.012 7.26a2.005 2.005 0 0 0 -1.012 1.737v10c0 1.1 .9 2 2 2h10c.75 0 1.158 -.385 1.5 -1" />
+            <path d="M11 7h5" />
+            <path d="M11 10h6" />
+            <path d="M11 13h3" />
+          </svg>
+          <span class="span">Recursos</span>
+        </button>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(13)" class="opcion">Ver Recursos</li>
+            </ul>
+          </div>
+        </div>            
+      </div>
+      <div class="accordion" id="accordionExample">
+        <button class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+          </svg>
+          <span class="span">Ajustes</span>
+        </button>
+        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordio-body">
+            <ul class="opcionesLista">
+              <li (click)="openDialog(14)" class="opcion">Datos Personales</li>
+              <li (click)="openDialog(15)" class="opcion">Cambiar Contraseña</li>
+            </ul>
+          </div>
+        </div>            
+      </div>
+
+<!--       
+      <button class="boton">
+        <div class="iconoResponsive">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+          </svg>
+          <span class="span">Ajustes</span>
+        </div> 
+      </button>       -->
+    </div>
+    
+
+    <!-- <mat-card class="tarjeta">
       <div class="headerCard">
         <h5>Solicitud de Apoyo</h5>
         <p>Llena este formulario y te atenderemos lo más pronto posible.</p>
@@ -37,7 +173,7 @@
   <div class="botones">
     <button (click)="createApoyo()">Enviar</button>
   </div>    
-  </mat-card>
+  </mat-card> -->
   </div>
 </app-sidebar>
 

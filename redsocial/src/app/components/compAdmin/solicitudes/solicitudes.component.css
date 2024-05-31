@@ -1,4 +1,28 @@
-
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+  background-color: rgb(177, 208, 173);
+}
+table {
+  width: 100%;
+}
+  
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+  
+td, th {
+  width: 25%;
+  font-family: var(--fuentePrimaria);
+}
+th{
+  text-align: center;
+  font-family: var(--fuenteGenerica);
+}
+td{
+  text-align: center;
+  font-family: var(--fuentePrimaria);
+  z-index: 1;
+}
 .titulo{
   display: flex;
   background-color: rgb(215, 243, 250);

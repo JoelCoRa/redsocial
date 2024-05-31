@@ -6,218 +6,128 @@
     font-family: var(--fuentePrimaria);
     text-align: center;
 }
-
-.tarjeta{
+.btns{
+    display: grid;
+    margin: 2rem auto;
+    grid-template-columns: 1fr;
     padding: 1rem;
-    margin: 2rem 0;
-    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    background-color: #7fb0de;
-}
-.filaEntrada{
-    display: flex;
-    width: 100%; 
-    padding: 1rem;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    /* border: 1px solid #000; */
-    /* border: 1px solid #000; */
-}
-.filaEntradaMensaje{
-    padding: 1rem;
-}
-.contLabel{
-    display: flex;
-    /* border: 1px solid #000; */
-    justify-content: start;
-    align-items: start;
-    width: 20%;
-    margin-right: 1rem;
-}
-.filaEntrada label,
-.filaEntradaMensaje label{
-    font-size: 1;
-    font-family: var(--fuentePrimaria);
-}
-.filaEntradaMensaje label{
-    margin-bottom: 1rem;
-    width: 100%;
-}
-.filaEntrada select{
-    width: 30%;
-    font-family: var(--fuenteSecundaria);
-    font-weight: bold;
-    background: #D3CCE3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: none;
+    background-color: rgb(243, 248, 250);
     border-radius: 10px;
-    padding: 0.5rem;
-    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
 }
-.filaEntrada select:after{
-    border: 1px solid #000;
-    content: '\25BC'; /* Unicode para la flecha hacia abajo */  
-}
-.filaEntrada option{
-    font-size: 1rem;
-    background-color: #D3CCE3;
-    border: 1px solid #000;
-}
-.filaEntrada option:hover{
-    background-color: #000;
-    color: aliceblue;
-    transform: scale(105%);
-}
-.filaEntradaMensaje textarea{
-    width: 100%;
-    font-family: var(--fuentePrimaria);
-    background-color: var(--fondoTextArea);
-    padding: 1rem;
-    font-size: 1.2rem;
-    line-height: 1;
-    resize: none;
-    height: 10rem;
-}
-/* Input Asunto */
-.filaEntrada .input {
-    border: 2px solid transparent;
-    width: 80%;
-    font-family: var(--fuentePrimaria);
-    font-size: 0.9rem;
-    height: 2.5em;
-    padding-left: 0.8em;
-    outline: none;
-    overflow: hidden;
-    background-color: #F3F3F3;
-    border-radius: 10px;
-    transition: all 0.5s;
-    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-  }
-  
-.filaEntrada .input:hover,
-.filaEntrada .input:focus,
-.filaEntrada textarea:focus,
-.filaEntrada textarea:hover{
-    border: 2px solid #4aec7b;
-    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
-    background-color: white;
-}
-.iconInfo{
-    margin-left: 1rem;
-}
-/* Style for the tooltip container */
-.tooltip-container {
-    --background-light: #f06363; /* Red */
-    --background-hover: #b34d4d; /* Black */
-    --text-color-light: #ffffff;
-    --text-color-dark: #ffffff;
-    --bubble-size: 12px;
-    --glow-color: rgba(255, 255, 255, 0.5); /* Brighter glow color */
-  
-    position: relative;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 17px;
-    /* padding: 0.5rem; */
-    color: var(--text-color-light);
-    border-radius: 8px; /* Rounded edges */
-    border: none;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Style for the bubble tooltip */
-  .tooltip {
-    position: absolute;
-    top: -100%; /* Initially hidden above the container */
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.6em 1em;
-    opacity: 0;
-    visibility: hidden;
-    width: 8rem;
-    text-align: center;
-    pointer-events: none;
-    font-family: var(--fuentePrimaria);
-    transition: all 0.3s;
-    border: none;
-    border-radius: var(--bubble-size);
-    background: var(--background-light);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Triangle arrow for the bubble tooltip */
-  .tooltip::before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%);
-    border-style: solid;
-    border-width: 8px 8px 0;
-    border-color: var(--background-light) transparent transparent;
-  }
-  
-  /* Tooltip appearance on hover */
-  .tooltip-container:hover {
-    color: var(--text-color-dark);
-    /* box-shadow: 0 0 20px var(--glow-color);  */
-    transform: scale(105%);
-    transition: 0.5s ease-in-out all;
-}
-  
-.tooltip-container:hover .tooltip {
-    top: -300%; /* Adjusted position for the bubble tooltip */
-    opacity: 1;
-    color: #fff;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.botones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4aec7b;
-    padding: 1rem;
-    margin: 0 auto;
-    width: 20%;
-    border-radius: 10px;
-    -webkit-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-    box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
-}  
-.botones button{
-    font-size: 1.2rem;
-    border: none;
-    width: 100%;
+.boton{
     background: none;
-    font-family: var(--fuentePrimaria);
+    border: none;
+    width: 80%;
+    padding: 1rem;
+    background-color: rgb(168, 152, 217);
+    border-radius: 10px;
+    margin: 1rem;
+    -webkit-box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 8px 0px rgba(0,0,0,0.75);
 }
-.botones:hover, .botones button:hover{
-    transform: scale(105%);
-    color: #fff;
-    background-color: #32a755;
-    transition: 0.5s ease-in all;
-    cursor: pointer;
+
+.accordion span{
+    font-family: var(--fuentePrimaria);
+    font-size: 1.2rem;
+}
+@media(min-width: 500px){
+    .btns{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 @media(min-width: 900px){
-    .contLabel{
-        margin: 0;
+    .btns{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 5rem;
     }
-    .filaEntrada .input{
-        width: 90%;
+    .boton{
+        margin: 1rem 1rem;
+        width: 80%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
     }
-    .filaEntrada label,
-    .filaEntradaMensaje label{
-        font-size: 1.2rem;
-    }
+}
+.accordion{
+    /* background-color: azure; */
+}
+
+.opcionesLista{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    width: 80%;
+    margin: 16px;
+
+    background-color: rgb(205, 219, 215);
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    
+    /* padding: rem; */
+}
+.opcion{
+    font-family: var(--fuentePrimaria);
+    color: rgb(30, 30, 32);
+    margin-bottom: 0.5rem;
+    /* width: 80%; */
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    text-decoration: underline;
+    border-bottom: 1px dotted #aeaeae;
+}
+.opcion:last-child{
+    padding-bottom: 0;
+
+    border-bottom: none;
+
+}
+.opcion:hover{
+    color: rgb(108, 146, 207);
+    cursor: pointer;
+
+}
+
+
+/* Slides */
+.tit{
+    font-family: var(--fuenteGenerica);
+    font-size: 1.4rem;
+}
+.tituloSlide{
+    font-family: var(--fuentePrimaria);
+    /* font-size: 1.5rem; */
+    color: black;
+}
+.descSlide{
+    font-family: var(--fuentePrimaria);
+    color: black;
+    font-size: 1.5rem;
+}
+.contBtn{
+    display: flex;
+    justify-content: center;
+}
+
+.btnCerrar{
+    background: none;
+    border: none;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: var(--fuentePrimaria);
+    border-radius: 10px;
+    background-color: rgb(245, 193, 167);
+    -webkit-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+}
+.btnCerrar:hover{
+    transform: scale(105%);
+    transition: 0.5s ease-in all;
 }

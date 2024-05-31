@@ -18,6 +18,7 @@ import { MensajevacioComponent } from '../../mensajevacio/mensajevacio.component
 
 
 export interface ForoResultado {
+  id: number;
   titulo: string;
   nombreUsuario: string;
   replicas: number;
@@ -68,7 +69,7 @@ export class ForumComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getAllForos();
-  }
+  } 
 
   ngAfterViewInit() {
     this.dataSource2.paginator = this.paginator;
@@ -105,22 +106,40 @@ export class ForumComponent implements OnInit, AfterViewInit {
   getAllForos() {
     this.foro.getAllForos().subscribe(data => {
       this.results = data.map(result => {
+        const nombreUsuario = result.anonimo ? 'Anónimo' : result.nombreUsuario;
         return {
           ...result,
-          nombreUsuario: result.anonimo ? 'Anónimo' : result.nombreUsuario
+          nombreUsuario: nombreUsuario,
+          replicas: 0 // Inicializamos el número de réplicas en 0
         };
       });
       this.dataSource2.data = this.results;
       this.numResultados = this.results.length;
-
+  
+      // Configurar el filtro de búsqueda
       this.dataSource2.filterPredicate = (data: ForoResultado, filter: string) => {
         const dataStr = data.titulo.toLowerCase() + ' ' + data.nombreUsuario.toLowerCase();
         return dataStr.indexOf(filter) !== -1;
       };
+  
+      // Obtener el número de réplicas para cada foro
+      this.results.forEach(foro => this.countReplicas(foro.id));
     });
   }
 
   goToForumContent(id: number) {
     this.router.navigate(['/foros/foro', id]);
+  }
+
+  numReplicas: number = 0;
+
+  countReplicas(id: number) {
+    this.foro.countReplicasForo(id).subscribe(data => {
+      const foroIndex = this.results.findIndex(f => f.id === id);
+      if (foroIndex !== -1) {
+        this.results[foroIndex].replicas = data; // Asigna el número de réplicas
+        this.dataSource2.data = [...this.results]; // Actualiza el dataSource para reflejar los cambios en la UI
+      }
+    });
   }
 }

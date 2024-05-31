@@ -6,6 +6,7 @@ export interface CrearForo {
     userId: number
 }
 export interface ForoResultado {
+    id: number,
     titulo: string,
     nombreUsuario: string, 
     // replicas: number,
@@ -40,4 +41,9 @@ export interface ReplicaForo{
 export interface CrearReplica{
     contenidoreplica:string,
     userId: number
+}
+export interface ReporteForo{
+    descripcion: string,
+    userId: number,
+    forumId: number
 }

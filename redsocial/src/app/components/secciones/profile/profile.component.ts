@@ -86,31 +86,10 @@ export class ProfileComponent {
     });
   }
 
-  // getProfileImage(user: any): string {
-  //   return this.base64Image = `data:image/png;base64,${user.imgPerfil}`;
-  // }
-
-  
-
-
-
-
-  reloadPage() {
-    this.router.navigateByUrl(this.router.url); // Navigate to the current URL
-  }
- 
-
   openDialog(id: number) {
     const dialogoRef = this.dialog.open(DialogElementsExampleDialog, {
       data: {id}
-    });    
-
-    // dialogoRef.afterClosed().subscribe(result =>{
-    //   if(result){
-    //     this.deletePost2(item)
-    //     this.router.navigate(['/inicio'])
-    //   }
-    // })
+    });   
   }
 }
 @Component({

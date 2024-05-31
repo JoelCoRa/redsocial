@@ -11,7 +11,6 @@ router.post('/addseguidor', addSeguidor);
 router.put('/adddescripcion/:id', updateDescripcion);
 router.put('/addimgperfil/:id', addImgPerfil);
 
-
 // router.put('/addlike/:id', addLike);
 // router.put('/adddislike/:id', addDislike);
 

@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPostsSeg = void 0;
+exports.countLikesPost = exports.getLikesCurrentUser = exports.deleteLikes = exports.getLikes = exports.addLike = exports.getPostsSeg = void 0;
 const connection_1 = __importDefault(require("../db/connection"));
 const sequelize_1 = require("sequelize");
+const likes_model_1 = require("../models/likes.model");
 const getPostsSeg = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     // const listPostsSeguidos = Post.findAll({
@@ -39,3 +40,73 @@ const getPostsSeg = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     res.json(listPostsSeguidos);
 });
 exports.getPostsSeg = getPostsSeg;
+const addLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { postId, userId } = req.body;
+    try {
+        yield likes_model_1.Like.create({
+            postId: postId,
+            userId: userId
+        });
+        res.json({
+            msg: `Likeado exitosamente!`,
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.addLike = addLike;
+const getLikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const likes = yield likes_model_1.Like.findAll({
+        where: {
+            postId: id
+        }
+    });
+    res.json(likes);
+});
+exports.getLikes = getLikes;
+const deleteLikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { postId, userId } = req.params;
+    console.log(req.params);
+    try {
+        likes_model_1.Like.destroy({
+            where: {
+                postId: postId,
+                userId: userId
+            }
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+    res.json({
+        msg: `Publicación deslikeada exitosamente!`,
+    });
+});
+exports.deleteLikes = deleteLikes;
+const getLikesCurrentUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const likesUser = yield likes_model_1.Like.findAll({
+        where: {
+            useriD: id
+        }
+    });
+    res.json(likesUser);
+});
+exports.getLikesCurrentUser = getLikesCurrentUser;
+const countLikesPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { postId } = req.params;
+    const totLikes = yield likes_model_1.Like.count({
+        where: { postId: postId }
+    });
+    res.json(totLikes);
+});
+exports.countLikesPost = countLikesPost;
