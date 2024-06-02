@@ -54,9 +54,6 @@
         align-items: center;
     }
 }
-.accordion{
-    /* background-color: azure; */
-}
 
 .opcionesLista{
     list-style: none;
@@ -109,6 +106,13 @@
     color: black;
     font-size: 1.5rem;
 }
+.marginAux{
+    margin-bottom: 14rem;
+}
+.colorAux{
+    color: aliceblue;
+}
+
 .contBtn{
     display: flex;
     justify-content: center;

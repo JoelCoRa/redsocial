@@ -1,55 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { TituloComponent } from '../titulo/titulo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {  MatSnackBar,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
-import { MatError } from '@angular/material/form-field';
-import { UserService } from '../../services/user.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
 import { UserLogin } from '../../interfaces/user';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { ErrorService } from '../../services/error.service';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FooterComponent,RouterModule, TituloComponent, FormsModule,HttpClientModule, SpinnerComponent, CommonModule],
+  imports: [FooterComponent, RouterModule, TituloComponent, FormsModule, HttpClientModule, SpinnerComponent, CommonModule, MatDialogModule, MatButtonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   nombreUsuario: string = '';
   password: string = '';
-  idUser: string= ''
+  idUser: string = ''
   loading: boolean = false;
 
-  constructor(private router: Router, private sb: MatSnackBar, private user:UserService, private error: ErrorService ){ }
+  constructor(private router: Router, private sb: MatSnackBar, private user: UserService, private error: ErrorService, private dialog: MatDialog) { }
 
-  tosignIn(){
+  tosignIn() {
     this.router.navigate(['/signin']);
   }
-  tologInOrg(){
+  tologInOrg() {
     this.router.navigate(['/loginorg']);
   }
-  torecPassword(){
+  torecPassword() {
     this.router.navigate(['/recpassword']);
   }
   action: string = 'Cerrar';
-  
-  login(){   
-    //Se valida que el usuario ingrese datos
-    if(this.nombreUsuario == '' || this.password == ''){
+
+  login() {
+    // Se valida que el usuario ingrese datos
+    if (this.nombreUsuario === '' || this.password === '') {
       this.sb.open('Ingresa datos por favor', this.action, {
-        duration: 5000,        
+        duration: 5000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
-        panelClass: ['notifError'],  
+        panelClass: ['notifError'],
       });
-    } 
+    }
     // Se crea el objeto
     const user: UserLogin = {
       nombreUsuario: this.nombreUsuario,
@@ -57,24 +57,22 @@ export class LoginComponent {
     }
     this.loading = true;
     this.user.login(user).subscribe({
-       next: (token) => {
-        // console.log(user)
+      next: (token) => {
         localStorage.setItem('token', token);
         this.router.navigate(['/inicio']);
-       },
-       error: (e: HttpErrorResponse) =>{
-         this.error.msgError(e)       
-         this.loading = false;
-
-       }
+      },
+      error: (e: HttpErrorResponse) => {
+        this.error.msgError(e)
+        this.loading = false;
+      }
     })
   }
-  getUserId(): string | null{
+
+  getUserId(): string | null {
     const token = localStorage.getItem('token')
     if (token) {
       try {
         const decodedToken: any = jwtDecode(token);
-        console.log(decodedToken.id)
         return decodedToken.id;
       } catch (error) {
         console.error('Error decodificando el token:', error);
@@ -83,8 +81,31 @@ export class LoginComponent {
     }
     return null;
   }
-  
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+      data: { id: 1 } // Puedes pasar datos aquí si es necesario
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'dialogLogin.html',
+  styleUrls: ['./login.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+
+  opcion!: number
+
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
+    this.opcion = data.id
+    console.log(this.opcion)
+  }
 }

@@ -13,7 +13,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CuentasService } from '../../../services/cuentas.service';
 import { Seguidos } from '../../../interfaces/cuentas';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -219,7 +219,7 @@ export class DialogElementsExampleDialog {
   usuario!: UserPerfil;
   imagenPerfil!: string;
 
-  constructor(private user: UserService,private sb: MatSnackBar, private error: ErrorService,  @Inject(MAT_DIALOG_DATA) private data: { imagen: string}){}
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>,private user: UserService,private sb: MatSnackBar, private error: ErrorService,  @Inject(MAT_DIALOG_DATA) private data: { imagen: string}){}
 
   auxImg = this.data.imagen;
 
@@ -259,7 +259,8 @@ export class DialogElementsExampleDialog {
           window.location.reload();
         }, 1000);
       }
-    })
+    });
+    this.dialogRef.close();
   }
   cancelar(){
     window.location.reload();

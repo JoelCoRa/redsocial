@@ -157,12 +157,16 @@ export class DialogElementsExampleDialog {
       this.usuario = data;
       this.nombreUsuario = this.usuario.nombreUsuario;      
       this.descripcion = this.usuario.descripcion;
-      // console.log(this.usuario)
-      if(this.usuario.imgPerfil === ""){
-        console.log('no hay foto');
-      }else{
-        this.base64Image = `data:image/png;base64,${this.usuario.imgPerfil}`;
+
+      if (data.imgPerfil) {
+        this.base64Image = `data:image/png;base64,${data.imgPerfil}`;
       }
+      // console.log(this.usuario)
+      // if(this.usuario.imgPerfil === ""){
+      //   console.log('no hay foto');
+      // }else{
+      //   this.base64Image = `data:image/png;base64,${this.usuario.imgPerfil}`;
+      // }
       // console.log(this.base64Image);
       // this.base64Image = `data:image/png;base64,${this.imagenPerfil}`;
 

@@ -1,4 +1,31 @@
-
+.card-container{
+  position: relative;
+}
+.contBtnUser{
+  width: 2rem;
+  border: none;
+  background: none;
+  -webkit-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+}
+.btn-user-org{
+  position: absolute;
+  -webkit-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.75);
+  width: 2.5rem;
+  right: 2rem;
+  padding: 0.3rem;
+  top: 1rem;
+  border-radius: 50%;
+  z-index: 9;
+  background-color: #a1a9d6;
+}
+.btn-user-org:hover{
+  transform: scale(105%);
+  transition: 0.5s ease-in all;
+}
 .contSignIn{
   display: flex;
   justify-content: center;
@@ -98,3 +125,49 @@
 .card-body .aux{
   margin-top: 0.4rem;
 }
+
+/* Slides */
+.tit{
+  font-family: var(--fuenteGenerica);
+  font-size: 1.4rem;
+}
+.tituloSlide{
+  font-family: var(--fuentePrimaria);
+  /* font-size: 1.5rem; */
+  color: black;
+}
+.descSlide{
+  font-family: var(--fuentePrimaria);
+  color: black;
+  font-size: 1.5rem;
+}
+.marginAux{
+  margin-bottom: 14rem;
+}
+.colorAux{
+  color: aliceblue;
+}
+
+.contBtn{
+  display: flex;
+  justify-content: center;
+}
+
+.btnCerrar{
+  background: none;
+  border: none;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-family: var(--fuentePrimaria);
+  border-radius: 10px;
+  background-color: rgb(245, 193, 167);
+  -webkit-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+  box-shadow: 2px 5px 8px -1px rgba(0,0,0,0.75);
+}
+.btnCerrar:hover{
+  transform: scale(105%);
+  transition: 0.5s ease-in all;
+}
+

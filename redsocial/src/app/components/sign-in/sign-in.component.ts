@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
 import { BtnRegresarComponent } from '../btn-regresar/btn-regresar.component';
@@ -13,6 +13,8 @@ import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { ErrorService } from '../../services/error.service';
 import { TituloComponent } from '../titulo/titulo.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -40,7 +42,7 @@ export class SignInComponent implements OnInit {
   action: string = 'Cerrar'; 
 
 
-  constructor(private fb: FormBuilder, private user: UserService, private sb: MatSnackBar, private router: Router, private error: ErrorService) {}
+  constructor(private fb: FormBuilder, private user: UserService, private sb: MatSnackBar, private router: Router, private error: ErrorService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -105,6 +107,29 @@ export class SignInComponent implements OnInit {
   }
   tosignInOrg(){
     this.router.navigate(['/signinorg'])
+  }
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+      data: { id: 1 } // Puedes pasar datos aquí si es necesario
+    });
+  }
+}
+
+@Component({
+  selector: 'dialogSignIn',
+  templateUrl: 'dialogSignIn.html',
+  styleUrls: ['./sign-in.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+
+  opcion!: number
+
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
+    this.opcion = data.id
+    console.log(this.opcion)
   }
 }
 

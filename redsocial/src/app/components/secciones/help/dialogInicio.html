@@ -1,5 +1,4 @@
 <h2 mat-dialog-title class="tit">Ayuda - Inicio</h2>
-
 <!-- Slides Inicio -->
 <mat-dialog-content *ngIf="opcion === 1">
     <div id="carouselExampleCaptions" class="carousel slide">
@@ -68,7 +67,6 @@
 </mat-dialog-content>
 
 <mat-dialog-content *ngIf="opcion === 3">
-
   <div id="carouselExampleCaptions" class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -98,63 +96,539 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
-
-
-  
+  </div>  
 </mat-dialog-content>
 <!-- Slides Inicio -->
 
 
 <!-- Slides Perfil -->
 <mat-dialog-content *ngIf="opcion === 4">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/perfil/perfil1.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Cambiar Foto</h5>
+          <p class="descSlide">Puedes cambiar tu foto desde la seccion perfil en el boton</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil2.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide colorAux">Cambiar Foto</h5>
+          <p class="descSlide colorAux">Selecciona la foto en tu sistema de archivos</p>
+        </div>
+      </div>   
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil3.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Cambiar Foto</h5>
+          <p class="descSlide">Confirma la operacion.</p>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <img src="../../../../assets/capturas/perfil/perfil14.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide colorAux">Actualizar Descripción</h5> 
+          <p class="descSlide mb-4 colorAux">Tambien puedes actualizar tu descripción desde desde el ícono.</p>
+        </div>
+      </div>  
+      <div class="carousel-item ">
+        <img src="../../../../assets/capturas/perfil/perfil16.png" class="d-block w-100" alt="slide5">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide colorAux">Actualizar Descripción</h5>
+          <p class="descSlide mb-10 colorAux">Ingresa tu descripción</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 5">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/perfil/perfil5.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Publicaciones</h5>
+          <p class="descSlide marginAux">Aqui te aparecerá el número de publicaciones que has hecho</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil9.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Publicaciones</h5>
+          <p class="descSlide mb-4">Puedes crear una publicación desde tu perfil</p>
+        </div>
+      </div>   
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil6.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Publicaciones</h5>
+          <p class="descSlide">Tambien puedes eliminar tus publicaciones desde el ícono del bote de basura.</p>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <img src="../../../../assets/capturas/perfil/perfil7.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Publicaciones</h5>
+          <p class="descSlide">Deberás confirmar en el modal emergente.</p>
+        </div>
+      </div>         
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 6">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/perfil/perfil10.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidos</h5>
+          <p class="descSlide marginAux">Aqui te aparecerá el número de cuentas que sigues.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil11.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidos</h5>
+          <p class="descSlide mb-4">Puedes dejar de seguirlos desde el ícono.</p>
+        </div>
+      </div>   
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil12.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidos</h5>
+          <p class="descSlide">Puedes acceder a un modal con la información del usuario.</p>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <img src="../../../../assets/capturas/perfil/perfil12-1.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidos</h5>
+          <p class="descSlide">Se te abrirá el modal.</p>
+        </div>
+      </div>         
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 7">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/perfil/perfil15.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidores</h5>
+          <p class="descSlide marginAux">Aqui te aparecerá el número de seguidores que tienes.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil13.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidores</h5>
+          <p class="descSlide mb-4">Puedes seguirlos tambien o bien dejar de seguirlos con el ícono.</p>
+        </div>
+      </div>   
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/perfil/perfil17.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidores</h5>
+          <p class="descSlide">Puedes acceder a un modal con la información del usuario.</p>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <img src="../../../../assets/capturas/perfil/perfil17-1.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Seguidores</h5>
+          <p class="descSlide">Se te abrirá el modal.</p>
+        </div>
+      </div>         
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </mat-dialog-content>
 <!-- Slides Perfil -->
 
+
+
+
 <!-- Slides Comunidad -->
-<mat-dialog-content *ngIf="opcion === 8">
-  hola
+<mat-dialog-content *ngIf="opcion === 8">  
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/comunidad/comunidad1.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Búsqueda</h5>
+          <p class="descSlide">Puedes buscar cuentas através de la barra de búsqueda.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/comunidad/comunidad4.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide colorAux">Búsqueda</h5>
+          <p class="descSlide colorAux">Si no hay coincidencias con tu búsqueda aparecerá la pantalla vacía.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 9">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/comunidad/comunidad2.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Cuentas</h5>
+          <p class="descSlide">Te aparecerán las cuentas resultado de tu búsqueda.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/comunidad/comunidad3.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Cuentas</h5>
+          <p class="descSlide">Puedes seguirlas o dejarlas de seguir con el ícono.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <!-- Slides Comunidad -->
 
 
 <!-- Slides Foros -->
 <mat-dialog-content *ngIf="opcion === 10">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/foros/foros1.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Búsqueda</h5>
+          <p class="descSlide">Puedes buscar foros através de la barra de búsqueda.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros2.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide colorAux">Búsqueda</h5>
+          <p class="descSlide colorAux">Si no hay coincidencias con tu búsqueda aparecerá la pantalla vacía.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 11">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/foros/foros4.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Crear Foro</h5>
+          <p class="descSlide">Puedes crear un foro desde el botón.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros5.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Crear Foro</h5>
+          <p class="descSlide">Solo debes llenar los campos requeridos y dar click en Publicar.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros6.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Crear Foro</h5>
+          <p class="descSlide">Nota: Puedes publicar el foro de forma anónima.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
+</mat-dialog-content>
+<mat-dialog-content *ngIf="opcion === 12">
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/foros/foros7.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Foro</h5>
+          <p class="descSlide">Cuando accedas a un foro te aparecerá su información.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros8.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Foro</h5>
+          <p class="descSlide">Puedes reportarlo si asi lo consideras pertinente.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros9.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Foro</h5>
+          <p class="descSlide">Solo debes ingresar una breve descripción y se atenderá a la brevedad.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros10.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Foro</h5>
+          <p class="descSlide">Tambien puedes replicar el foro, unicamente ingresa tu replica y da click en el botón respectivo.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/foros/foros11.png" class="d-block w-100" alt="slide5">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Foro</h5>
+          <p class="descSlide">Aparecerá tu replica junto con tu nombre de usuario e imágen de perfil.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <!-- Slides Foros -->
 
 <!-- Slides Recursos -->
-<mat-dialog-content *ngIf="opcion === 12">
-  hola
-</mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 13">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/recursos/recursos1.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Recursos</h5>
+          <p class="descSlide">Puedes acceder a algunos videos informativos.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/recursos/recursos2.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Recursos</h5>
+          <p class="descSlide">Puedes acceder a algunos contactos de emergencia.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/recursos/recursos3.png" class="d-block w-100" alt="slide3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Recursos</h5>
+          <p class="descSlide">Puedes acceder a la información sobre Organizaciones públicas, privadas e internacionales que trabajan en la prevención y erradicación de la violencia.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/recursos/recursos4.png" class="d-block w-100" alt="slide4">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Recursos</h5>
+          <p class="descSlide">Puedes acceder a la información de algunas apps para iOS y Android, dedicadas a mitigar parte de esta problemática.</p>
+        </div>
+      </div>  
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/recursos/recursos5.png" class="d-block w-100" alt="slide5">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Recursos</h5>
+          <p class="descSlide">Tambien puedes acceder a la información de algunas definiciones y leyes pertinentes.</p>
+        </div>
+      </div>  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <!-- Slides Recursos -->
 
 <!-- Slides Ajustes -->
 <mat-dialog-content *ngIf="opcion === 14">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/ajustes/ajustes1.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Ajustes</h5>
+          <p class="descSlide">Puedes cambiar tu nombre de usuario o correo desde la sección Ajustes.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/ajustes/ajustes3.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Ajustes</h5>
+          <p class="descSlide">Deberás colocar tu contraseña actual, para confirmar los cambios.</p>
+        </div>
+      </div>      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <mat-dialog-content *ngIf="opcion === 15">
-  hola
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../../assets/capturas/ajustes/ajustes2.png" class="d-block w-100" alt="slide1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Ajustes</h5>
+          <p class="descSlide">Puedes cambiar tu contraseña desde la sección Ajustes.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../../assets/capturas/ajustes/ajustes3.png" class="d-block w-100" alt="slide2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="tituloSlide">Ajustes</h5>
+          <p class="descSlide">Deberás colocar tu contraseña actual, para confirmar los cambios.</p>
+        </div>
+      </div>      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> 
 </mat-dialog-content>
 <!-- Slides Ajustes -->
 
