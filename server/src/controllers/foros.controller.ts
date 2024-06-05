@@ -29,7 +29,23 @@ export const crearForo = async(req: Request, res: Response) =>{
     }     
 }
 export const deleteForo = async(req:Request, res: Response) =>{
-    const{ id } = req.params
+    const{ id } = req.params;
+
+    try{        
+        Foro.destroy({
+            where: {
+                id: id
+            }
+        });
+    }catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+    res.json({
+        msg: `Foro eliminado exitosamente!`,
+    });
 }
 export const getForo = async(req:Request, res: Response)=> {
     const { id } = req.params

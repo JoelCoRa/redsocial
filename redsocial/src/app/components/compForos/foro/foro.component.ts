@@ -5,7 +5,7 @@ import { TituloSeccionComponent } from "../../titulo-seccion/titulo-seccion.comp
 import { FooterComponent } from "../../footer/footer.component";
 import { MatCardModule } from '@angular/material/card';
 import { EnviarComponent } from "../../enviar/enviar.component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ForosService } from '../../../services/foros.service';
 import { CrearReplica, ReplicaForo, ReporteForo } from '../../../interfaces/foro';
 import { RouterModule } from '@angular/router';
@@ -26,7 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { User } from '../../../interfaces/user';
+import { User, UserPerfil } from '../../../interfaces/user';
 
 @Component({
     selector: 'app-foro',
@@ -38,14 +38,15 @@ import { User } from '../../../interfaces/user';
 export class ForoComponent {
     temaResultadoForo: string = '';
     tituloForoResult: string = '';
-    usuarioResult: string = ''
-    // numLikes: number = 3;
+    usuarioResult: string = '' ;
+    isAdmin: boolean = false;
     numReplicas: number = -1;
     contResultForo: string = "";
     usuarioQueReplica: string = "";
     contenidoReplica: string = "";
     foroId!: number;
     contenidoreplica: string = '';
+    usuario!: UserPerfil;
     // foroContent!: Foro;
     foro!:Foro
     replicaForm: FormGroup;
@@ -61,23 +62,34 @@ export class ForoComponent {
         })
      }
     ngOnInit(): void {
+      this.getUser();
         this.route.paramMap.subscribe(params => {
           this.foroId = Number(params.get('id'));
           this.getForo();
           this.getReplicasForo();
         });
+        // this.getUser();
         // this.getReplicasForo();
     }
+    getUser(){
+      const idUser = Number(this.user.getUserId());
+      this.user.getUser(idUser).subscribe(data => {
+        this.usuario = data;
+        if(this.usuario.tipoUsuario === 1){
+          this.isAdmin = true;
+        }
+      })
+    }
     getForo() {
-        console.log(this.foroId)
+        // console.log(this.foroId)
         this.forosService.getForo(this.foroId).subscribe(data => {
           this.foro = data
-          console.log(this.foro);
+          // console.log(this.foro);
           this.temaResultadoForo = this.foro.etiqueta; // Etiqueta
           this.contResultForo = this.foro.contenido;   // Contenido
           this.tituloForoResult = this.foro.titulo;    // Titulo
           this.usuarioResult = this.foro.user.nombreUsuario; // Publicado
-          console.log(this.usuarioResult)
+          // console.log(this.usuarioResult)
         //   this.numLikes = this.foroContent.likes; // Publicado
         //   this.contenidoReplica = this.foroContent.replicaforos.contenidoreplica;
 
@@ -85,11 +97,11 @@ export class ForoComponent {
         });
     }
     getReplicasForo(){
-        console.log(this.foroId);
+        // console.log(this.foroId);
         this.forosService.getReplicasForo(this.foroId).subscribe(data =>{
             this.replicas = data;
             this.numReplicas = this.replicas.length;
-            console.log(this.replicas);            
+            // console.log(this.replicas);            
         });
         // this.forosService.getReplicasForo(id).subscribe(data =>
         // })
@@ -104,7 +116,7 @@ export class ForoComponent {
         contenidoreplica: this.contenidoreplica,
         userId: idUser
       }
-      console.log(replica)
+      // console.log(replica)
       this.forosService.createReplica(this.foroId, replica).subscribe({
         next: (v) => {
           this.sb.open(`Replica agregada con éxito!`, "Cerrar", {
@@ -129,12 +141,14 @@ export class ForoComponent {
       const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         data: {id: this.foroId},
         width: '500px'
-      });    
-
+      });  
     }
-
-
-
+    openDialogBorrar(){
+      const dialogRef2 = this.dialog.open(DialogOverviewExampleDialogBorrar, {
+        data: {id: this.foroId},
+        width: '500px'
+      }); 
+    }
 }
 @Component({
   selector: 'reporte-foro',
@@ -190,15 +204,63 @@ export class DialogOverviewExampleDialog {
       }
     });
     this.dialogRef.close();
-
-
-
-
-
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
 
+@Component({
+  selector: 'reporte-foro-borrar',
+  templateUrl: 'reporte-foro-borrar.html',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+  ],
+  styleUrl: './foro.component.css',
+})
 
+export class DialogOverviewExampleDialogBorrar {
+
+  descripcion!: string;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: {id: number},
+    private user: UserService, private foro: ForosService, private sb: MatSnackBar, private error: ErrorService, private router: Router
+  ) {}
+
+  deleteForo(id:number){    
+    console.log(id)
+    this.foro.deleteForo(id).subscribe({
+      next: (v) => {              
+        this.sb.open(`Foro eliminado con éxito!`, "Cerrar", {
+          duration: 5000,        
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],  
+        });
+        this.router.navigate(['/foros'])
+      },
+      error: (e: HttpErrorResponse) => {
+        this.error.msgError(e)       
+      },
+      complete: () => {
+        console.info('complete')
+      }
+    });
+    this.dialogRef.close();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

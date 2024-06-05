@@ -58,7 +58,7 @@ export class SidebarComponent {
 
       }
       else if(data.tipoUsuario === 2){
-        this.isOrg = true;
+        this.isAdmin = true;
       }
       else{
         // console.log('No es ninguno');

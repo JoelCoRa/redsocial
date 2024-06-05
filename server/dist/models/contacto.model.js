@@ -13,10 +13,6 @@ exports.Contacto = connection_1.default.define('solicitud-contacto', {
         primaryKey: true,
         autoIncrement: true
     },
-    rol: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
-    },
     asunto: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,

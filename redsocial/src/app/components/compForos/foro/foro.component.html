@@ -33,6 +33,10 @@
                           <mat-icon>report</mat-icon>
                           <span>Reportar</span>
                         </button>
+                        <button mat-menu-item (click)="openDialogBorrar()" *ngIf="isAdmin">
+                          <mat-icon>delete</mat-icon>
+                          <span>Eliminar</span>
+                        </button>
                         
                       </mat-menu>
                       

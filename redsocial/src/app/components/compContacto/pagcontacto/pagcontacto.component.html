@@ -12,22 +12,7 @@
             <p>Llena este formulario y te atenderemos lo más pronto posible</p>
         </div>          
         <form class="contForm" [formGroup]="contactoForm">
-            <div class="filaEntrada">
-                <div class="contLabel">
-                    <label for="dirigido">Dirigido a</label>
-                </div>
-                <!-- <select name="dirigido" id="dirigido" [(ngModel)]="rol" formControlName="rol">
-                    <option disabled selected value="Seleccionar">--Seleccionar--</option>
-                    <option value="Desarrollador">Desarrolladores</option>
-                    <option value="Asesor">Asesor</option>
-                    <option value="Administrador">Administrador</option>
-                </select>  -->
-                <select class="input" formControlName="rol">
-                    <option value="" selected disabled>--Seleccionar--</option>
-                    <option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</option>
-                  </select>                    
-            </div>
-            <div class="filaEntrada">
+           <div class="filaEntrada">
                 <div class="contLabel">
                     <label for="asunto">Asunto</label>
                 </div>

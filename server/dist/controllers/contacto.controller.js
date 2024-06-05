@@ -13,10 +13,9 @@ exports.createContactPortal = exports.createContact = void 0;
 const contacto_model_1 = require("../models/contacto.model");
 const contactoportal_model_1 = require("../models/contactoportal.model");
 const createContact = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { rol, asunto, descripcion, userId } = req.body;
+    const { asunto, descripcion, userId } = req.body;
     try {
         contacto_model_1.Contacto.create({
-            rol: rol,
             asunto: asunto,
             descripcion: descripcion,
             userId: userId

@@ -60,6 +60,12 @@ export class LoginComponent {
       next: (token) => {
         localStorage.setItem('token', token);
         this.router.navigate(['/inicio']);
+        this.sb.open(`Bienvenido ${user.nombreUsuario}!`, 'Cerrar', {
+          duration: 5000,        
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],  
+        });
       },
       error: (e: HttpErrorResponse) => {
         this.error.msgError(e)

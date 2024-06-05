@@ -39,7 +39,9 @@ export class ForosService {
   }
   countReplicasForo(forumId: number): Observable<number>{
     return this.http.get<number>(`${this.myAppUrl}${this.myApiUrl}/countreplicas/${forumId}`);
-
+  }
+  deleteForo(id: number): Observable<any>{
+    return this.http.delete<number>(`${this.myAppUrl}${this.myApiUrl}/deleteforo/${id}`);
   }
 
 

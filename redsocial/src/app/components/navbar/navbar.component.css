@@ -18,8 +18,8 @@
     transition: max-height 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
 }
 .logo{
-    width: 8%;
-    filter: invert(100%);
+    width: 10%;
+        /* filter: invert(100%); */
     margin: 0 1rem 0 1rem;
 }
 .titulo-navbar{
@@ -68,7 +68,7 @@
         font-size: 1.5rem;
     }   
     .logo{
-        width: 5%;
+        width: 8%;
     }
     
     .navbar-collapse{
@@ -110,7 +110,7 @@
       }
     .logo{
         margin: 0;
-        width: 2.5%;
+        width: 4%;
     }
     .logo:hover{
         cursor: pointer;

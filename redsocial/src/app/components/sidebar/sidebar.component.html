@@ -53,7 +53,7 @@
           </div>          
           <a>Foros</a>
         </li>
-        <li class="seccion" [routerLink]="['/recursos']" routerLinkActive="selected" *ngIf="!isOrg">
+        <li class="seccion" [routerLink]="['/recursos']" routerLinkActive="selected" >
           <div class="iconoResponsive">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-library" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -67,7 +67,7 @@
           </div>          
           <a>Recursos</a>
         </li>
-        <li class="seccion" [routerLink]="['/ajustes']" routerLinkActive="selected" *ngIf="!isOrg">
+        <li class="seccion" [routerLink]="['/ajustes']" routerLinkActive="selected">
           <div class="iconoResponsive">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -78,7 +78,7 @@
           </div>          
           <a>Ajustes</a>
         </li>
-        <li class="seccion" [routerLink]="['/contacto']" routerLinkActive="selected">
+        <li class="seccion" [routerLink]="['/contacto']" routerLinkActive="selected" *ngIf="!isAdmin">
           <div class="iconoResponsive">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -88,7 +88,7 @@
           </div>          
           <a>Acerca De</a>
         </li>
-        <li class="seccion" [routerLink]="['/ayuda']" routerLinkActive="selected" *ngIf="!isOrg">
+        <li class="seccion" [routerLink]="['/ayuda']" routerLinkActive="selected">
           <div class="iconoResponsive">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

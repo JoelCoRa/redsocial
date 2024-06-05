@@ -39,6 +39,22 @@ const crearForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.crearForo = crearForo;
 const deleteForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
+    try {
+        foro_model_1.Foro.destroy({
+            where: {
+                id: id
+            }
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+    res.json({
+        msg: `Foro eliminado exitosamente!`,
+    });
 });
 exports.deleteForo = deleteForo;
 const getForo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

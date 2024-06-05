@@ -95,15 +95,15 @@
 
 .botones{
     display: flex;
-    width: 20%;
+    width: 40%;
     justify-content: center;
     margin: 1rem auto;
 }
 /* Boton Enviar */
 .enviar {
     font-family: var(--fuentePrimaria);
-    padding: 1rem;
-    font-size: 17px;
+    padding: 0.6rem;
+    font-size: 12px;
     font-weight: 500;
     background: #1f2937;
     color: white;    
@@ -114,12 +114,7 @@
     box-shadow: 5px 5px 25px -7px rgba(0,0,0,0.75);
     margin: 1.5rem;
 }
-.enviar:hover{
-    transform: 105%;
-    transition: 0.5s ease-in-out all;
-    background-color: #4A9DEC;
-    color: #000;
-}
+
 
   
 @media(min-width: 900px){
@@ -135,5 +130,19 @@
     }
     .filaEntrada .input, .filaEntrada select{
         width: 40%;
+    }
+    .botones{
+        width: 20%;
+    }
+    .enviar{
+        padding: 1rem;
+        font-size: 17px;
+    }
+    .enviar:hover{
+        transform: 105%;
+        transition: 0.5s ease-in-out all;
+        background-color: #4A9DEC;
+        color: #000;
+        margin: 1.5rem;
     }
 }

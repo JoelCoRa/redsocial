@@ -71,7 +71,7 @@ import { Like } from './likes.model';
             await Reporte.sync();             
             await SeguidoSeguidor.sync(); 
             await ReplicaForo.sync(); 
-            await Contacto.sync(); 
+            await Contacto.sync({alter: true});  
             await ContactoGeneral.sync(); 
             await Apoyo.sync(); 
             await Like.sync(); 

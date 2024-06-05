@@ -103,7 +103,7 @@ export class DashboardComponent{
       next: () => {
         this.likedPosts[postId] = true;
         this.likesMap[postId] = (this.likesMap[postId] || 0) + 1; // Incrementar el contador de likes
-        this.snackBar.open(`Publicación likeada con éxito!`, 'Cerrar', {
+        this.snackBar.open(`Te gusta esta publicación !`, 'Cerrar', {
           duration: 5000,
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
@@ -123,7 +123,7 @@ export class DashboardComponent{
       next: () => {
         this.likedPosts[postId] = false;
         this.likesMap[postId] = (this.likesMap[postId] || 1) - 1; // Decrementar el contador de likes
-        this.snackBar.open(`Publicación deslikeada con éxito!`, 'Cerrar', {
+        this.snackBar.open(`Ya no te gusta esta publicación!`, 'Cerrar', {
           duration: 5000,
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,

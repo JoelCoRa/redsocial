@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  constructor (private router: Router){ }
+  constructor (private router: Router, private sb: MatSnackBar){ }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   tologin(){
     this.router.navigate(['/inicio']);
@@ -43,6 +47,12 @@ export class NavbarComponent {
   logOut(){
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+    this.sb.open(`Sesión cerrada correctamente, vuelve pronto!`, 'Cerrar', {
+      duration: 5000,        
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      panelClass: ['notifExito'],  
+    });
   }
 
 }

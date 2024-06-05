@@ -26,7 +26,6 @@ export class PagcontactoComponent {
   contactoForm!: FormGroup;
   opciones = ['Desarrolladores', 'Asesor','Administrador'];
 
-  rol: string = ''  ;
   asunto: string = '';
   descripcion: string = '';
   
@@ -37,7 +36,6 @@ export class PagcontactoComponent {
 
   constructor(private user: UserService, private contacto: ContactoService, private sb: MatSnackBar, private error: ErrorService, private router: Router){
     this.contactoForm = new FormGroup({
-      rol: new FormControl('', [Validators.required]),
       asunto: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
       descripcion: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(200)]),
     })
@@ -55,7 +53,6 @@ export class PagcontactoComponent {
   
     const userId = Number(this.user.getUserId());
     const solicitud: SolContacto = {
-      rol: this.contactoForm.get('rol')!.value,
       asunto: this.contactoForm.get('asunto')!.value,
       descripcion: this.contactoForm.get('descripcion')!.value,
       userId: userId

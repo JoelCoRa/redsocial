@@ -9,7 +9,6 @@ import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-import { PublicacionpropiaComponent } from "../../compPerfil/publicacionpropia/publicacionpropia.component";
 import { CrearpublicacionComponent } from "../../crearpublicacion/crearpublicacion.component";
 import { CommonModule } from '@angular/common';
 import { HeaderperfilComponent } from "../../compPerfil/headerperfil/headerperfil.component";
@@ -41,7 +40,7 @@ import { Dialog } from '@angular/cdk/dialog';
     standalone: true,
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.css',
-    imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, MatCardModule, TituloSeccionComponent, MatButtonToggleModule, FormsModule, ReactiveFormsModule, PublicacionpropiaComponent, CrearpublicacionComponent, CommonModule, HeaderperfilComponent, MensajevacioComponent, MatButtonModule],
+    imports: [FooterComponent, RouterModule, MensajeSidebarComponent, NavbarComponent, SidebarComponent, MatCardModule, TituloSeccionComponent, MatButtonToggleModule, FormsModule, ReactiveFormsModule, CrearpublicacionComponent, CommonModule, HeaderperfilComponent, MensajevacioComponent, MatButtonModule],
     providers:[DatePipe]
 })
 export class ProfileComponent {

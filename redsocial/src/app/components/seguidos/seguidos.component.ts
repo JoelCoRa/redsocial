@@ -7,7 +7,6 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderperfilComponent } from "../compPerfil/headerperfil/headerperfil.component";
 import { CrearpublicacionComponent } from "../crearpublicacion/crearpublicacion.component";
-import { PublicacionpropiaComponent } from "../compPerfil/publicacionpropia/publicacionpropia.component";
 import { CommonModule } from '@angular/common';
 import { CuentasComponent } from "../compPerfil/cuentas/cuentas.component";
 import { MensajevacioComponent } from "../mensajevacio/mensajevacio.component";
@@ -21,7 +20,7 @@ import { CuentasService } from '../../services/cuentas.service';
     standalone: true,
     templateUrl: './seguidos.component.html',
     styleUrl: './seguidos.component.css',
-    imports: [MatButtonToggleModule, TituloSeccionComponent, NavbarComponent, SidebarComponent, FooterComponent, HeaderperfilComponent, CrearpublicacionComponent, PublicacionpropiaComponent, CommonModule, CuentasComponent, MensajevacioComponent]
+    imports: [MatButtonToggleModule, TituloSeccionComponent, NavbarComponent, SidebarComponent, FooterComponent, HeaderperfilComponent, CrearpublicacionComponent, CommonModule, CuentasComponent, MensajevacioComponent]
 })
 export class SeguidosComponent {
   nombreUsuario: string = "Usuario";

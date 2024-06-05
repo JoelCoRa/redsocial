@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Eliminar foro</h2>
+<mat-dialog-content>
+  <p>¿Estas seguro de eliminar este foro? Una vez borrado no se podrá recuperar!</p>
+</mat-dialog-content>
+<mat-dialog-actions class="botones">
+  <button (click)="onNoClick()" class="cancelar2">Cancelar</button>
+  <button cdkFocusInitial (click)="deleteForo(data.id)" class="borrar">Eliminar</button>
+</mat-dialog-actions>

@@ -8,10 +8,7 @@ export const Contacto = sequelize.define('solicitud-contacto', {
         primaryKey: true,
         autoIncrement: true
     },
-    rol:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    }, 
+
     asunto:{
         type: DataTypes.STRING,
         allowNull: false,
