@@ -192,3 +192,22 @@ export const addReporte = async(req: Request, res: Response) =>{
         msg: `Reporte generado exitosamente!`,
     });
 }
+export const deleteReplica = async(req: Request, res: Response)=>{
+    const{ id } = req.params;
+
+    try{        
+        ReplicaForo.destroy({
+            where: {
+                id: id
+            }
+        });
+    }catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+    res.json({
+        msg: `Foro eliminado exitosamente!`,
+    });
+}

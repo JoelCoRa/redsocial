@@ -120,7 +120,13 @@ export const getAllSolicitudes = async(req:Request, res: Response) =>{
 }
 export const getAllReportes = async(req:Request, res: Response)=>{
     try {
-        const reportes =  await Reporte.findAll({            
+        const reportes =  await Reporte.findAll({    
+            include: {
+                model: User,
+                attributes: ['nombreUsuario'],
+                required: true
+            }        
+        
         });
         res.json(reportes)
     }  catch(error){

@@ -37,14 +37,18 @@ td{
   margin-bottom: 0;
 }
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
   
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
   
-  td, th {
-    width: 25%;
-  }
+td, th {
+  width: 25%;
+}
+.filaId:hover{
+  color: rgb(61, 129, 201);
+  cursor: pointer;
+}

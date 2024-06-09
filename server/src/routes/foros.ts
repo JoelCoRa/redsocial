@@ -1,7 +1,7 @@
 import { Router } from "express";
 import validateToken from "./validateToken";
 import { getPostsSeg } from "../controllers/dashboard.controller";
-import { addReporte, countReplicasForo, crearForo, createReplica, deleteForo, getAllForos, getForo, getReplicasForo, searchForo, searchForoAux } from "../controllers/foros.controller";
+import { addReporte, countReplicasForo, crearForo, createReplica, deleteForo, deleteReplica, getAllForos, getForo, getReplicasForo, searchForo, searchForoAux } from "../controllers/foros.controller";
 
 const router = Router();
 // Cambiar por los de foros
@@ -19,6 +19,7 @@ router.get('/getreplicasforo/:id', getReplicasForo);
 
 
 router.delete('/deleteforo/:id', deleteForo); 
+router.delete('/deletereplica/:id', deleteReplica); 
 
 
 export default router;

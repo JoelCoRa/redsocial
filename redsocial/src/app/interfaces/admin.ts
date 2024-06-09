@@ -3,7 +3,10 @@ export interface ReporteAdmin{
     descripcion: string,
     fechaReporte: string,
     userId: number,
-    forumId: number
+    forumId: number,
+    user: {
+        nombreUsuario: string
+    }
 }
 export interface ContactoAdmin{
     id: number,

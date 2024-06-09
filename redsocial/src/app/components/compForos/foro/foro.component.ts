@@ -47,6 +47,9 @@ export class ForoComponent {
     foroId!: number;
     contenidoreplica: string = '';
     usuario!: UserPerfil;
+    isOwner: boolean = false;
+    userOwner!: number;
+    isOwnerReplica: boolean = false;
     // foroContent!: Foro;
     foro!:Foro
     replicaForm: FormGroup;
@@ -63,13 +66,11 @@ export class ForoComponent {
      }
     ngOnInit(): void {
       this.getUser();
-        this.route.paramMap.subscribe(params => {
-          this.foroId = Number(params.get('id'));
-          this.getForo();
-          this.getReplicasForo();
-        });
-        // this.getUser();
-        // this.getReplicasForo();
+      this.route.paramMap.subscribe(params => {
+        this.foroId = Number(params.get('id'));
+        this.getForo();
+        this.getReplicasForo();
+      });
     }
     getUser(){
       const idUser = Number(this.user.getUserId());
@@ -77,46 +78,54 @@ export class ForoComponent {
         this.usuario = data;
         if(this.usuario.tipoUsuario === 1){
           this.isAdmin = true;
-        }
+        }        
       })
     }
     getForo() {
-        // console.log(this.foroId)
-        this.forosService.getForo(this.foroId).subscribe(data => {
-          this.foro = data
-          // console.log(this.foro);
-          this.temaResultadoForo = this.foro.etiqueta; // Etiqueta
-          this.contResultForo = this.foro.contenido;   // Contenido
-          this.tituloForoResult = this.foro.titulo;    // Titulo
-          this.usuarioResult = this.foro.user.nombreUsuario; // Publicado
-          // console.log(this.usuarioResult)
-        //   this.numLikes = this.foroContent.likes; // Publicado
-        //   this.contenidoReplica = this.foroContent.replicaforos.contenidoreplica;
+      this.forosService.getForo(this.foroId).subscribe(data => {
+        this.foro = data
+        this.temaResultadoForo = this.foro.etiqueta; // Etiqueta
+        this.contResultForo = this.foro.contenido;   // Contenido
+        this.tituloForoResult = this.foro.titulo;    // Titulo
+        // this.usuarioResult = this.foro.user.nombreUsuario; // Publicado
+        if(this.foro.anonimo === true){
+          this.usuarioResult = 'Usuario anónimo';
+        }else{
+          this.usuarioResult = this.foro.user.nombreUsuario;
+        }
 
-        //   console.log(this.foroContent.nombreUsuario);
-        });
+        this.userOwner = this.foro.userId;
+        if(this.usuario.id === this.userOwner){
+          this.isOwner = true;
+        }
+      });
     }
     getReplicasForo(){
-        // console.log(this.foroId);
-        this.forosService.getReplicasForo(this.foroId).subscribe(data =>{
-            this.replicas = data;
-            this.numReplicas = this.replicas.length;
-            // console.log(this.replicas);            
-        });
-        // this.forosService.getReplicasForo(id).subscribe(data =>
-        // })
+      const idUser = Number(this.user.getUserId());
+      this.forosService.getReplicasForo(this.foroId).subscribe(data =>{
+        this.replicas = data;
+        this.numReplicas = this.replicas.length;
+        console.log(this.replicas);
+      });
     }
-
     getProfileImage(user: any): string {
       return this.base64Image = `data:image/png;base64,${user.user.imgPerfil}`;
     }
     createReplica(){
       const idUser = Number(this.user.getUserId());
+      if(this.contenidoreplica === ''){
+        this.sb.open(`Porfavor ingresa contenido para la replica!`, "Cerrar", {
+          duration: 5000,        
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifError'],  
+        });
+        return;
+      }
       const replica: CrearReplica = {
         contenidoreplica: this.contenidoreplica,
         userId: idUser
       }
-      // console.log(replica)
       this.forosService.createReplica(this.foroId, replica).subscribe({
         next: (v) => {
           this.sb.open(`Replica agregada con éxito!`, "Cerrar", {
@@ -146,6 +155,12 @@ export class ForoComponent {
     openDialogBorrar(){
       const dialogRef2 = this.dialog.open(DialogOverviewExampleDialogBorrar, {
         data: {id: this.foroId},
+        width: '500px'
+      }); 
+    }
+    openDialogBorrarReplica(id: number){
+      const dialogRef2 = this.dialog.open(DialogOverviewExampleDialogBorrarReplica, {
+        data: {id: id}, 
         width: '500px'
       }); 
     }
@@ -257,6 +272,64 @@ export class DialogOverviewExampleDialogBorrar {
       },
       complete: () => {
         console.info('complete')
+      }
+    });
+    this.dialogRef.close();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'reporte-foro-borrar-replica',
+  templateUrl: 'reporte-foro-borrar-replica.html',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+  ],
+  styleUrl: './foro.component.css',
+})
+
+export class DialogOverviewExampleDialogBorrarReplica {
+
+  descripcion!: string;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: {id: number},
+    private user: UserService, private foro: ForosService, private sb: MatSnackBar, private error: ErrorService, private router: Router
+  ) {}
+
+  deleteReplica(){    
+    console.log(this.data.id);
+    this.foro.deleteReplica(this.data.id).subscribe({
+      next: (v) => {              
+        this.sb.open(`Replica eliminada con éxito!`, "Cerrar", {
+          duration: 5000,        
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+          panelClass: ['notifExito'],  
+        });
+      },
+      error: (e: HttpErrorResponse) => {
+        this.error.msgError(e)       
+      },
+      complete: () => {
+        console.info('complete');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     });
     this.dialogRef.close();

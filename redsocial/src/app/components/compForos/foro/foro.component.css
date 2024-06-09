@@ -23,6 +23,7 @@
 }
 .temaResult{
     margin: 0;
+    margin-bottom: 1rem;
     display: inline-block;
     font-size: 1rem;
     font-family: var(--fuenteGenerica);
@@ -58,8 +59,8 @@
     justify-content: end;
     text-align: center;
     /* border: 1px solid #000; */
-
 }
+
 .contReacciones{
     display: flex;
     /* border: 1px solid #000; */
@@ -238,9 +239,6 @@
     }
     .fechaPublicacion{
         margin-left: 1rem;
-    }
-    .contenidoReplica{
-        margin-left: 0;
     }
 }
 

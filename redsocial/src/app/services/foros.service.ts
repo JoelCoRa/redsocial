@@ -43,6 +43,9 @@ export class ForosService {
   deleteForo(id: number): Observable<any>{
     return this.http.delete<number>(`${this.myAppUrl}${this.myApiUrl}/deleteforo/${id}`);
   }
+  deleteReplica(id: number): Observable<any>{
+    return this.http.delete<number>(`${this.myAppUrl}${this.myApiUrl}/deletereplica/${id}`);
+  }
 
 
 }

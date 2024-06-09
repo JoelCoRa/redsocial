@@ -1,4 +1,4 @@
-<footer class="footer-body">    
+<!-- <footer class="footer-body">    
     <div class="logos">
         <a href="https://www.ipn.mx/"><img class="logo-footerIPN" src="../../../assets/ipn.png" alt="logo ipn" href="https://www.escom.ipn.mx/"></a>
         <a href="https://www.escom.ipn.mx/"><img class="logo-footerESCOM" src="../../../assets/EscudoESCOM.png" alt="logo escom"></a>
@@ -9,4 +9,20 @@
             <h5> TT 2024-A134 </h5> 
         </div>    
     </div>            
+</footer> -->
+
+<footer class="footer-body">
+    <div class="contFooter">
+        <div class="columna">            
+            <h5 class="tt"> TT 2024-A134 </h5>
+        </div>  
+        <div class="columna contLinks">            
+            <h3 [routerLink]="['/contacto']" class="links">Contacto</h3>
+            <h3 [routerLink]="['/recursos']" class="links">Recursos</h3> 
+            <h3 [routerLink]="['/normas']" class="links">Normas</h3> 
+        </div>                
+    </div>   
+    <div class="columna">
+        <h3 class="derechos">2024 Derechos reservados Escom&reg;</h3>         
+    </div>             
 </footer>

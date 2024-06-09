@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
     <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
@@ -23,8 +22,7 @@
                     </div>                    
                 </div>
                 <div class="reacciones">
-                    <div class="contReacciones">
-                      
+                    <div class="contReacciones">                      
                       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
                       </button>
@@ -36,10 +34,8 @@
                         <button mat-menu-item (click)="openDialogBorrar()" *ngIf="isAdmin">
                           <mat-icon>delete</mat-icon>
                           <span>Eliminar</span>
-                        </button>
-                        
-                      </mat-menu>
-                      
+                        </button>                        
+                      </mat-menu>                      
                     </div>                    
                 </div>                   
             </mat-card-header>
@@ -60,9 +56,7 @@
           </mat-card>
           <div *ngIf="numReplicas === 0">
             <app-mensajevacio class="msgVacioTexto">¡Este foro aun no tiene replicas, puedes escribir la primera!</app-mensajevacio>                
-            <!-- <app-crearpublicacion></app-crearpublicacion> -->
           </div>
-
           <div class="accordion" id="accordionExample" *ngIf="numReplicas > 0">
             <div class="accordion-item">
               <h2 class="accordion-header">
@@ -87,8 +81,19 @@
                                 <div class="contenidoReplica">
                                     <p>{{rep.contenidoreplica}}</p>
                                 </div>
-                                <div class="accionesReplica">                            
-                                </div>                        
+                                <div class="reaccionesReplicas" *ngIf="isOwner">
+                                  <div class="contReacciones">                      
+                                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                      <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                      <button mat-menu-item (click)="openDialogBorrarReplica(rep.id)" *ngIf="isAdmin || isOwnerReplica">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Eliminar Replica</span>
+                                      </button>                        
+                                    </mat-menu>                      
+                                  </div>                    
+                              </div>                        
                             </div>
                         </div>
                     </div> 

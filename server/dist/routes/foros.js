@@ -14,4 +14,5 @@ router.get('/countreplicas/:forumId', foros_controller_1.countReplicasForo);
 router.get('/getallforos', foros_controller_1.getAllForos);
 router.get('/getreplicasforo/:id', foros_controller_1.getReplicasForo);
 router.delete('/deleteforo/:id', foros_controller_1.deleteForo);
+router.delete('/deletereplica/:id', foros_controller_1.deleteReplica);
 exports.default = router;

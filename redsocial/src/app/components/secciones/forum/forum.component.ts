@@ -106,11 +106,11 @@ export class ForumComponent implements OnInit, AfterViewInit {
   getAllForos() {
     this.foro.getAllForos().subscribe(data => {
       this.results = data.map(result => {
-        const nombreUsuario = result.anonimo ? 'Anónimo' : result.nombreUsuario;
+        const nombreUsuario = result.anonimo ? 'Usuario Anónimo' : result.nombreUsuario;
         return {
           ...result,
           nombreUsuario: nombreUsuario,
-          replicas: 0 // Inicializamos el número de réplicas en 0
+          replicas: 0 
         };
       });
       this.dataSource2.data = this.results;

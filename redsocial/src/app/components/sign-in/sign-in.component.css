@@ -1,3 +1,4 @@
+
 .card-container{
   position: relative;
 }
@@ -89,7 +90,7 @@
 
 @media(min-width: 900px){
   .card-container{
-    margin: 0 0 1rem 0;
+    margin: 0 0 8rem 0;
     width: 60%;
   }   
   label{
@@ -106,6 +107,11 @@
   margin-top: 2rem;
   font-size: 0.8rem;
   margin-left: 0.5rem;
+}
+@media(min-width: 900px){
+  .contCheckbox{
+    margin-top: 1rem;
+  }
 }
 .contCheckbox .aviso{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

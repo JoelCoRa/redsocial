@@ -123,7 +123,13 @@ const getAllSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, functi
 exports.getAllSolicitudes = getAllSolicitudes;
 const getAllReportes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const reportes = yield reporte_model_1.Reporte.findAll({});
+        const reportes = yield reporte_model_1.Reporte.findAll({
+            include: {
+                model: user_model_1.User,
+                attributes: ['nombreUsuario'],
+                required: true
+            }
+        });
         res.json(reportes);
     }
     catch (error) {

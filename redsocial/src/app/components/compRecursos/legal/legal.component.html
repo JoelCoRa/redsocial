@@ -49,22 +49,15 @@
                     <div class="contLey" *ngFor="let ley of leyes">
                       <h5 class="nombreLey">{{ley.nombreLey}}</h5>
                       <p class="descLey">{{ley.descLey}}</p>
-                      <a [href]="ley.linkLey" class="btnLey">{{this.link}}</a>
+                      <a [href]="ley.linkLey" class="btnLey" target="_blank">{{this.link}}</a>
                     </div>
                   </mat-card-content>
                 </mat-card>
               </div>
-            </div>
-            
-          </div>
-
-
-
-
-          
+            </div>            
+          </div>          
         </div>
-      </div>
-  
+      </div>  
     </div>
   </div>
 </app-sidebar>

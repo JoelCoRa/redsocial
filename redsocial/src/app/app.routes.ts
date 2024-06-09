@@ -26,6 +26,7 @@ import { AplicacionesComponent } from './components/compRecursos/aplicaciones/ap
 import { authGuard } from './utils/auth.guard';
 import { ContactoportalComponent } from './components/contactoportal/contactoportal.component';
 import { RecursosportalComponent } from './components/recursosportal/recursosportal.component';
+import { NormasComponent } from './components/normas/normas.component';
 
 export const routes: Routes = [
     {path: '', redirectTo:'login', pathMatch:'full'},
@@ -66,6 +67,8 @@ export const routes: Routes = [
     {path: 'ayuda', component: HelpComponent},
 
     {path: 'paneladministrador', component: PaneladminComponent},
+
+    {path: 'normas', component: NormasComponent},
     
     
            

@@ -28,7 +28,7 @@ export interface Foro{
     }    
 }
 export interface ReplicaForo{
-    id: string, 
+    id: number, 
     contenidoreplica: string,
     fechaCreado: string,
     userId: number,

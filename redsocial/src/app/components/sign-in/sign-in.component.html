@@ -1,4 +1,3 @@
-<!-- src/app/components/sign-in/sign-in.component.html -->
 <div class="login-body">
   <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
 
@@ -9,8 +8,6 @@
     <div class="card-container" *ngIf="!loading">
       <div class="card-body">
         <h5 class="card-title">Crea una cuenta personal</h5>
-      <!-- <span class="aux">O</span>
-      <span>¿Quieres registrar a una <a class="buttonRegistrate" (click)="tosignInOrg()">Organización</a>?</span> -->
         <hr>
         <div class="mb-2 input-container needs-validation">
           <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
@@ -88,8 +85,14 @@
                   <label for="password">Crea una contraseña <span class="obligatorio">*</span></label>
                   <input class="input" placeholder="Contraseña" type="password" formControlName="password">
                   <div class="text-danger" *ngIf="signInForm.controls['password'].invalid && (isFormSubmitted || signInForm.controls['password'].touched)">
-                    <span *ngIf="signInForm.controls['password'].errors?.['required']">La contraseña no puede quedar vacía.</span>
-                    <span *ngIf="signInForm.controls['password'].errors?.['minlength']">La contraseña debe contener al menos 8 caracteres.</span>
+                    <span *ngIf="signInForm.controls['password'].errors?.['required']">La contraseña no puede quedar vacía. <br> </span>
+                    <span *ngIf="signInForm.controls['password'].errors?.['minlength']">La contraseña debe contener al menos 8 caracteres.<br> </span>
+                    <span *ngIf="signInForm.controls['password'].errors?.['passwordInvalid']">
+                      <span *ngIf="signInForm.controls['password'].errors?.['hasUpperCase']">La contraseña debe contener al menos una mayúscula. <br> </span>
+                      <span *ngIf="signInForm.controls['password'].errors?.['hasLowerCase']">La contraseña debe contener al menos una minúscula.<br>  </span>
+                      <span *ngIf="signInForm.controls['password'].errors?.['hasNumeric']">La contraseña debe contener al menos un número. <br>  </span>
+                      <span *ngIf="signInForm.controls['password'].errors?.['hasSpecialChar']">La contraseña debe contener al menos un carácter especial. <br> </span>
+                    </span>
                   </div>
                 </div>
               </div>

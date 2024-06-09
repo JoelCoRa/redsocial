@@ -8,12 +8,12 @@ import { postCreado } from '../../interfaces/post';
 import { ErrorService } from '../../services/error.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-crearpublicacion',
   standalone: true,
-  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, FormsModule],
+  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, FormsModule, RouterModule],
   templateUrl: './crearpublicacion.component.html',
   styleUrl: './crearpublicacion.component.css'
 })

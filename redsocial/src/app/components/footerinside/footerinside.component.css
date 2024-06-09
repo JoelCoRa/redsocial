@@ -19,26 +19,23 @@
     -moz-box-shadow: 3px -2px 20px -5px rgba(0,0,0,0.75);
     box-shadow: 3px -2px 20px -5px rgba(0,0,0,0.75);
 }
-
-.logos{
-    display: flex;
-    justify-content: space-around;
-    width: 70%;
-    /* border: 1px solid #000; */
-    margin: 0;
-    align-items: center;
+.derechos{
+    font-size: 0.7rem;
+    line-height: 1;
+    margin-top: 1rem;
 }
-.logos a{
-    border: none;
-    background: none;
-    text-align: center;
-    width: 50%;
+.tt{
+    font-size: 0.9rem;
 }
-.logo-footerIPN{
-    width: 3rem;
+.links{
+    text-decoration: underline;
+    margin-bottom: 0;
+    line-height: 1.4rem;
+    font-size: 0.8rem;
 }
-.logo-footerESCOM{
-    width: 4rem;
+.links:hover{
+    cursor: pointer;
+    color: rgb(127, 193, 255);
 }
 
 .columna{
@@ -46,49 +43,57 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0 0 0;
+    margin: 0.5rem 0 0 0;
     text-align: center;
 }
 .columna:nth-child(2){
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0;
 }
 
 .columna h5, .columna h3{
     text-align: center;
     font-family: var(--fuenteSecundaria);
 }
-.columna h3{
+/* .columna h3{
     font-size: 1rem;
 }
 .columna h5{
     font-size: 0.8rem;
+} */
+.contFooter{
+    display: flex;
+    width: 70%;
+    
+    justify-content: space-between;
 }
-
-@media(min-width: 400px){
-    .logo-footerIPN{
-        width: 3rem;
-    }
-    .logo-footerESCOM{
-        width: 4rem;
-    }
-}
-
-@media(min-width: 800px){
+@media(min-width: 900px){
     .footer-body{
-        height: 6rem;
+        height: 7rem;
     }
-    .logos{
-        position: absolute;
-
-        /* border: 1px solid #000; */
+    .contFooter{
+        margin-top: 1rem;
+        margin: 0 auto;
+        width: 50%;
     }
-    .logo-footerIPN{
-        margin-right: 6rem;
-        /* width: ; */
+    .contLinks{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
-    .logo-footerESCOM{
-        /* width: 15%; */
-        margin-left: 6rem;
+    .derechos{
+        font-size: 0.8rem;
+        line-height: 1;
+    }
+    .tt{
+        margin: 0 4rem;
+        font-size: 1rem;
+    }
+    .links{
+        text-decoration: underline;
+        margin-bottom: 0;
+        margin: 1rem 0.5rem;
+        line-height: 1.4rem;
+        font-size: 0.8rem;
     }
     .titulo2{
         margin-top: 1rem;
@@ -97,6 +102,7 @@
         margin: 0;
     }  
 }
+
 
 
 

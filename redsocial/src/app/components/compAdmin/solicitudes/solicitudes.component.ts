@@ -19,7 +19,7 @@ import { CommonModule, DatePipe } from '@angular/common';
   styleUrl: './solicitudes.component.css'
 })
 export class SolicitudesComponent {
-  displayedColumns2: string[] = ['id', 'rol', 'asunto', 'fecha','userId'];
+  displayedColumns2: string[] = ['id', 'asunto', 'fecha','userId'];
   dataSource2 = new MatTableDataSource<ContactoAdmin>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

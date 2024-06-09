@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addReporte = exports.countReplicasForo = exports.createReplica = exports.searchForoAux = exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
+exports.deleteReplica = exports.addReporte = exports.countReplicasForo = exports.createReplica = exports.searchForoAux = exports.searchForo = exports.getAllForos = exports.getReplicasForo = exports.getForo = exports.deleteForo = exports.crearForo = void 0;
 const sequelize_1 = require("sequelize");
 const user_model_1 = require("../models/user.model");
 const foro_model_1 = require("../models/foro.model");
@@ -205,3 +205,23 @@ const addReporte = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     });
 });
 exports.addReporte = addReporte;
+const deleteReplica = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        replicaforo_model_1.ReplicaForo.destroy({
+            where: {
+                id: id
+            }
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+    res.json({
+        msg: `Foro eliminado exitosamente!`,
+    });
+});
+exports.deleteReplica = deleteReplica;

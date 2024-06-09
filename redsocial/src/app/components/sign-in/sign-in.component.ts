@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { BtnRegresarComponent } from '../btn-regresar/btn-regresar.component';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EnviarComponent } from '../enviar/enviar.component';
-import {  MatSnackBar,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatError } from '@angular/material/form-field';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
@@ -16,11 +16,10 @@ import { TituloComponent } from '../titulo/titulo.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports:[FooterComponent, RouterModule, BtnRegresarComponent, FormsModule, TituloComponent, EnviarComponent, ReactiveFormsModule, MatError,CommonModule, HttpClientModule, SpinnerComponent, ReactiveFormsModule],
+  imports: [FooterComponent, RouterModule, BtnRegresarComponent, FormsModule, TituloComponent, EnviarComponent, ReactiveFormsModule, MatError, CommonModule, HttpClientModule, SpinnerComponent, ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
@@ -34,13 +33,12 @@ export class SignInComponent implements OnInit {
   correo: string = '';
   nombreUsuario: string = ''
   password: string = '';
-  confirmPassword: string = '';  
+  confirmPassword: string = '';
   fechaNacimiento: string = '';
   sexo: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  action: string = 'Cerrar'; 
-
+  action: string = 'Cerrar';
 
   constructor(private fb: FormBuilder, private user: UserService, private sb: MatSnackBar, private router: Router, private error: ErrorService, private dialog: MatDialog) {}
 
@@ -52,12 +50,31 @@ export class SignInComponent implements OnInit {
       sexo: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
       nombreUsuario: ['', [Validators.required, Validators.minLength(8)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
       confirmPassword: ['', Validators.required],
-
     }, {
       validator: this.mustMatch('password', 'confirmPassword')
     });
+  }
+
+  passwordValidator(control: FormControl): { [key: string]: boolean } | null {
+    const value = control.value;
+    if (!value) {
+      return null;
+    }
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumeric = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const isValid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar;
+
+    return isValid ? null : { 
+      passwordInvalid: true,
+      hasUpperCase: !hasUpperCase,
+      hasLowerCase: !hasLowerCase,
+      hasNumeric: !hasNumeric,
+      hasSpecialChar: !hasSpecialChar
+    };
   }
 
   mustMatch(password: string, confirmPassword: string) {
@@ -80,38 +97,39 @@ export class SignInComponent implements OnInit {
   onSubmit(): void {
     this.isFormSubmitted = true;
     const user: User = this.signInForm.value;
-    
-    console.log(user)
+
     if (this.signInForm.valid) {
       this.loading = true;
       this.user.signIn(user).subscribe({
         next: (v) => {
           this.loading = false;
           this.sb.open(`Usuario ${user.nombreUsuario} registrado con éxito!`, this.action, {
-            duration: 5000,        
+            duration: 5000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            panelClass: ['notifExito'],  
+            panelClass: ['notifExito'],
           });
-          this.router.navigate(['/login']);                
+          this.router.navigate(['/login']);
         },
         error: (e: HttpErrorResponse) => {
           this.loading = false;
-          this.error.msgError(e)       
+          this.error.msgError(e)
         },
         complete: () => console.info('complete')
-      });       // Aquí va la lógica para enviar los datos del formulario al backend
+      });
     } else {
       console.log('Formulario inválido');
     }
   }
-  tosignInOrg(){
+
+  tosignInOrg() {
     this.router.navigate(['/signinorg'])
   }
+
   openDialog() {
     this.dialog.open(DialogElementsExampleDialog, {
       width: '800px',
-      data: { id: 1 } // Puedes pasar datos aquí si es necesario
+      data: { id: 1 }
     });
   }
 }
@@ -124,7 +142,6 @@ export class SignInComponent implements OnInit {
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
 })
 export class DialogElementsExampleDialog {
-
   opcion!: number
 
   constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
@@ -132,4 +149,3 @@ export class DialogElementsExampleDialog {
     console.log(this.opcion)
   }
 }
-

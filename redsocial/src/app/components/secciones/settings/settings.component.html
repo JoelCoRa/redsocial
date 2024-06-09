@@ -10,14 +10,14 @@
         <div class="col-xl-6 col-lg">
           <mat-card class="example-card">        
             <mat-card-header>
-              <mat-card-title class="titleCard">Datos Generales</mat-card-title>
+              <mat-card-title class="titleCard">Cambiar Correo</mat-card-title>
             </mat-card-header>
             <mat-card-content class="cuerpoAjustes"> 
               <form [formGroup]="ajustesForm" (ngSubmit)="openDialog()">
-                <div class="inputDG">
+                <!-- <div class="inputDG">
                   <label for="nombre" class="labelDG">Nombre de Usuario</label>
                   <input type="text" name="text" class="input" [placeholder]="nombreUsuario" [(ngModel)]="nombreUsuario" formControlName="nombreUsuario">
-                </div>
+                </div> -->
                 <div class="inputDG">
                   <label for="correo" class="labelDG">Correo electrónico</label>
                   <input type="email" name="correo" class="input" [value]="correo" [(ngModel)]="correo" formControlName="correo">

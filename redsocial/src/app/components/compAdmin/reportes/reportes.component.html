@@ -12,13 +12,13 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <td mat-cell *matCellDef="let row" (click)="goToForumContent(row.forumId)" class="filaId"> {{row.id}} </td>
       </ng-container>
   
       <!-- Descruiption Column -->
       <ng-container matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
-        <td mat-cell *matCellDef="let row"> {{row.descripcion}} </td>
+        <td mat-cell *matCellDef="let row" > {{row.descripcion}} </td>
       </ng-container>
         
       <!-- Fecha Column -->
@@ -30,14 +30,14 @@
       <!-- Foro Column -->
       <ng-container matColumnDef="userId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
-        <td mat-cell *matCellDef="let row"> {{row.userId}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.user.nombreUsuario}} </td>
       </ng-container> 
       
 
       <!-- Foro Column -->
       <ng-container matColumnDef="forumId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Foro </th>
-        <td mat-cell *matCellDef="let row"> {{row.forumId}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.forumId || 'Eliminado'}} </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>

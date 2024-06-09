@@ -10,6 +10,8 @@ import { ErrorService } from '../../../services/error.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from '../../../services/admin.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reportes',
@@ -22,11 +24,12 @@ import { CommonModule, DatePipe } from '@angular/common';
 export class ReportesComponent {
   displayedColumns2: string[] = ['id', 'descripcion', 'fecha', 'userId','forumId'];
   dataSource2 = new MatTableDataSource<ReporteAdmin>();
+  isDeleted: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private user: UserService, private error: ErrorService, public dialog: MatDialog, public admin: AdminService) {}
+  constructor(private user: UserService, private error: ErrorService, public dialog: MatDialog, public admin: AdminService, private router: Router, private sb: MatSnackBar) {}
 
   ngAfterViewInit() {
     this.dataSource2.paginator = this.paginator;
@@ -54,8 +57,19 @@ export class ReportesComponent {
         this.dataSource2.paginator = this.paginator;
         this.dataSource2.sort = this.sort;
         console.log(data);
-      }    
-      
+      }          
     );
+  }
+  goToForumContent(id: number) {
+    if(id === null){
+      this.sb.open(`El foro ya se ha eliminado`, 'Cerrar', {
+        duration: 5000,        
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: ['notifError'],  
+      });
+    }else{
+      this.router.navigate(['/foros/foro', id]);
+    }
   }
 }
