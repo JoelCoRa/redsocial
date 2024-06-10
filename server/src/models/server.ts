@@ -32,7 +32,6 @@ import { Like } from './likes.model';
     constructor() {
         this.app = express();
         this.port = process.env.PORT || '3001';
-        // this.ten();
         this.middlewares();
         this.routes();
         this.dbConnect();

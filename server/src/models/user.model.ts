@@ -1,4 +1,3 @@
-
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
 
@@ -19,12 +18,10 @@ export const User = sequelize.define('user', {
     fechaNacimiento: {
         type: DataTypes.DATEONLY,
         allowNull: true,
-        // defaultValue: '2000-01-01'
     },
     sexo: {
         type: DataTypes.STRING,
         allowNull: true,
-        // defaultValue: 'Otro'
     },
     correo: {
         type: DataTypes.STRING,

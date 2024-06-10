@@ -1,4 +1,3 @@
-
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
 import { User } from "./user.model"; 
@@ -27,6 +26,4 @@ export const Post = sequelize.define('post', {
     },
 },{timestamps: false});
 User.hasMany(Post); // Un usuario puede tener muchos posts
-// Organizacion.hasMany(Post); // Una organizacion puede tener muchos posts
 Post.belongsTo(User, {foreignKey: 'userId'});
-// Post.belongsTo(Organizacion, {foreignKey: 'orgId'});

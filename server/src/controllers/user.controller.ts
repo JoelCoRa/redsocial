@@ -2,27 +2,18 @@ import {Request, Response} from 'express';
 import  bcrypt  from 'bcrypt'
 import { User } from '../models/user.model';
 import jwt from 'jsonwebtoken';
-import { QueryTypes, Sequelize } from 'sequelize';
-import sequelize from '../db/connection';
 import { transporter } from '../config/mailer';
 const nodemailer = require('nodemailer');
 
 export const newUser = async (req: Request, res: Response) => {
     const {nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password} = req.body;    
     const hashedPassword = await bcrypt.hash(password, 10);
-    // Se valida si el usuario existe en la BD
     const user = await User.findOne({where:{ nombreUsuario: nombreUsuario }});
-    // const org = await Organizacion.findOne({where:{ correo: correo }});
     if(user){
         return res.status(400).json({
             msg: `Ya existe un usuario con el username ${nombreUsuario}`            
         });
     } 
-    // if(org){
-    //     return res.status(400).json({
-    //         msg: `Ya existe una organización registrada con ese correo.`
-    //     });
-    // }
     try{
         // Se guarda el Usuario en la BD
         await User.create({
@@ -44,7 +35,6 @@ export const newUser = async (req: Request, res: Response) => {
         });
         console.log(error)
     }    
-    
 }
 export const loginUser = async (req: Request, res: Response) => {
     const {nombreUsuario, password} = req.body;

@@ -1,9 +1,5 @@
 
-
-
 const nodemailer = require('nodemailer');
-
-
 export const transporter = nodemailer.createTransport({
     service: "Gmail",
     host:"smtp.gmail.com",
@@ -17,7 +13,6 @@ export const transporter = nodemailer.createTransport({
         rejectUnauthorized: false,
     },
 });
-
 transporter.verify().then(()=>{
     console.log('Ready to send mails');
 })

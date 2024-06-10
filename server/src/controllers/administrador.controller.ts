@@ -1,8 +1,6 @@
 import { Request, Response } from "express"
-import sequelize from "../db/connection";
-import  bcrypt  from 'bcrypt'
 import { User } from "../models/user.model";
-import { Sequelize, Op } from "sequelize";
+import { Op } from "sequelize";
 import { Contacto } from "../models/contacto.model";
 import { Apoyo } from "../models/apoyo.model";
 import { Reporte } from "../models/reporte.model";
@@ -10,7 +8,6 @@ import { Reporte } from "../models/reporte.model";
 export const getAllUsers = async(req:Request, res: Response)=>{
     const { id } = req.params;
     const excludedId = id;
-
     try {
         const users =  await User.findAll({
             where: {
@@ -87,7 +84,6 @@ export const updateBlocked = async(req:Request, res: Response) =>{
         msg: `Usuario actualizado exitosamente!`,
     });
 }
-
 export const getAllContactos = async(req:Request, res: Response) =>{
     const { id } = req.params;
 
