@@ -23,12 +23,10 @@ exports.User = connection_1.default.define('user', {
     fechaNacimiento: {
         type: sequelize_1.DataTypes.DATEONLY,
         allowNull: true,
-        // defaultValue: '2000-01-01'
     },
     sexo: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: true,
-        // defaultValue: 'Otro'
     },
     correo: {
         type: sequelize_1.DataTypes.STRING,

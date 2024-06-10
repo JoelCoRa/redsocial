@@ -68,8 +68,7 @@ export const routes: Routes = [
 
     {path: 'paneladministrador', component: PaneladminComponent},
 
-    {path: 'normas', component: NormasComponent},
-    
+    {path: 'normas', component: NormasComponent},  
     
            
     {path: '**', redirectTo:'login', pathMatch:'full'}

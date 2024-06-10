@@ -49,23 +49,24 @@ export class CuentasComponent {
     });
   }
 
-  addSeguidor(id:number, usuario: string){
-    const userId = Number(this.user.getUserId()); 
+  addSeguidor(identificador:number, usuario: string){
+    const userId = Number(this.user.getUserId()); // ID DEL USUARIO LOGGEADO
     let nombreSeguidor;
 
     this.user.getUser(userId).subscribe(data =>{
       nombreSeguidor = data.nombreUsuario;
+      // console.log(data)
       const seguidor : Cuentas = {
-        userIdSeguido: id,
-        userIdSeguidor: userId,
-        nombreUserSeguido: usuario,
-        nombreUserSeguidor: nombreSeguidor,
+        userIdSeguido: identificador, // ID DEL USUARIO A SEGUIR
+        userIdSeguidor: userId, // ID DEL USUARIO LOGGEADO QUE SEGUIRA AL OTRO
+        nombreUserSeguido: usuario, // Nombre DEL USUARIO A SEGUIR
+        nombreUserSeguidor: nombreSeguidor, // nombre DEL USUARIO A SEGUIR
       };
-      console.log(seguidor)
+      // console.log(seguidor)
 
       this.cuentas.addSeguidor(seguidor).subscribe({
         next: (v) => {  
-          const cuentaSeguida = this.cuentasSeguidos.find(cuenta => cuenta.userIdSeguido === id);
+          const cuentaSeguida = this.cuentasSeguidos.find(cuenta => cuenta.userIdSeguido === identificador);
           if (cuentaSeguida) {
             cuentaSeguida.seguido = true; // Actualiza el estado a "seguido"
           }
@@ -80,8 +81,7 @@ export class CuentasComponent {
           this.error.msgError(e);      
         },
         complete: () => { 
-          console.info('complete');
-          
+          console.info('complete');          
         }
       })
     }); 
@@ -157,19 +157,9 @@ export class DialogElementsExampleDialog {
       this.usuario = data;
       this.nombreUsuario = this.usuario.nombreUsuario;      
       this.descripcion = this.usuario.descripcion;
-
       if (data.imgPerfil) {
         this.base64Image = `data:image/png;base64,${data.imgPerfil}`;
       }
-      // console.log(this.usuario)
-      // if(this.usuario.imgPerfil === ""){
-      //   console.log('no hay foto');
-      // }else{
-      //   this.base64Image = `data:image/png;base64,${this.usuario.imgPerfil}`;
-      // }
-      // console.log(this.base64Image);
-      // this.base64Image = `data:image/png;base64,${this.imagenPerfil}`;
-
     })
   }
 }

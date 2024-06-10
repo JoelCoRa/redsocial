@@ -11,13 +11,14 @@ import { UsuariosComponent } from "../compAdmin/usuarios/usuarios.component";
 import { UserService } from '../../services/user.service';
 import { ErrorService } from '../../services/error.service';
 import { UserPerfil } from '../../interfaces/user';
+import { ContactoComponent } from "../compAdmin/contacto/contacto.component";
 
 @Component({
     selector: 'app-paneladmin',
     standalone: true,
     templateUrl: './paneladmin.component.html',
     styleUrl: './paneladmin.component.css',
-    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, FormsModule, CommonModule, ReportesComponent, SolicitudesComponent, UsuariosComponent]
+    imports: [NavbarComponent, SidebarComponent, TituloSeccionComponent, MatCardModule, FormsModule, CommonModule, ReportesComponent, SolicitudesComponent, UsuariosComponent, ContactoComponent]
 })
 export class PaneladminComponent {
   opcionSeleccionada: string = '';

@@ -40,7 +40,6 @@ class Server {
     constructor() {
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '3001';
-        // this.ten();
         this.middlewares();
         this.routes();
         this.dbConnect();

@@ -13,8 +13,6 @@ import { MensajevacioComponent } from "../mensajevacio/mensajevacio.component";
 import { UserService } from '../../services/user.service';
 import { CuentasService } from '../../services/cuentas.service';
 
-
-
 @Component({
     selector: 'app-seguidos',
     standalone: true,
@@ -33,9 +31,7 @@ export class SeguidosComponent {
 
   ngOnInit(){
     this.countSeguidos();
-  }
-
-  
+  }  
 
   toPerfil(){
     this.router.navigate(['/perfil']);

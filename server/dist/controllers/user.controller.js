@@ -21,19 +21,12 @@ const nodemailer = require('nodemailer');
 const newUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { nombre, apellido, fechaNacimiento, sexo, correo, nombreUsuario, password } = req.body;
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-    // Se valida si el usuario existe en la BD
     const user = yield user_model_1.User.findOne({ where: { nombreUsuario: nombreUsuario } });
-    // const org = await Organizacion.findOne({where:{ correo: correo }});
     if (user) {
         return res.status(400).json({
             msg: `Ya existe un usuario con el username ${nombreUsuario}`
         });
     }
-    // if(org){
-    //     return res.status(400).json({
-    //         msg: `Ya existe una organización registrada con ese correo.`
-    //     });
-    // }
     try {
         // Se guarda el Usuario en la BD
         yield user_model_1.User.create({
@@ -95,7 +88,7 @@ const resetPassword = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const user = user_model_1.User.findOne({ where: { correo: correo } });
     if (!user) {
         return res.status(404).json({
-            msg: 'No digasmamadas'
+            msg: 'Ese correo no está registrado, intentalo de nuevo!'
         });
     }
     const newPassword = genRandomPass();
@@ -104,7 +97,8 @@ const resetPassword = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const mailData = {
         to: correo,
         subject: "Recuperacion de Contraseña",
-        html: `Hola, tu nueva contraseña es <strong>${newPassword}</strong>. Te recomendamos cambiarla en la sección Ajustes. De otra forma, conserva esta contraseña.`,
+        html: `Hola, tu nueva contraseña es <strong>${newPassword}</strong>. Te recomendamos cambiarla en la sección Ajustes. De otra forma, conserva esta contraseña. <br>
+      Si no lo solciitaste ignora este correo.`,
     };
     try {
         yield user_model_1.User.update({ password: hashedPassword }, { where: { correo: correo } });
@@ -126,7 +120,7 @@ const resetPassword = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     });
 });
 exports.resetPassword = resetPassword;
-/**Funcion para generar una contrasenia random */
+/**Funcion para generar una contraseña random */
 const genRandomPass = () => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let randomStr = "";
@@ -136,60 +130,3 @@ const genRandomPass = () => {
     }
     return randomStr;
 };
-// export const loginOrganizacion = async (req: Request, res: Response) => {
-//     const {correo, password} = req.body;
-//     console.log(correo);
-//     const org:any = await Organizacion.findOne({where: {correo: correo}});
-//     if(!org){
-//         return res.status(400).json({
-//             msg: `Parece que no se ha registrado esa organización`
-//         });
-//     }
-//     // Se valida el password
-//     const passwordValid = await bcrypt.compare(password, org.password);
-//     if(!passwordValid){
-//         return res.status(400).json({
-//             msg: `La contraseña es incorrecta!`
-//         })
-//     }
-//     // Se genera el token
-//     const token =  jwt.sign({
-//         correo: correo,
-//         idOrg: org.id,
-//         // tipo: user.tipoUsuario
-//     }, process.env.SECRET_KEY || 'pepito123');
-//     // console.log(token);
-//     res.json(token);   
-// }
-// export const newOrganizacion = async (req: Request, res: Response) => {
-//     const {nombre, razonSocial, rfc, direccion, telefono, sector, correo,password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     try {
-//         const org = await Organizacion.findOne({ where: { correo: correo } });
-//         const user = await User.findOne({where: {correo: correo}})
-//         if (org || user) {
-//             return res.status(400).json({
-//                 msg: `Ya existe un usuario/organización, registrado con ese correo.`
-//             });
-//         } 
-//         // Se guarda el Usuario en la BD
-//         await Organizacion.create({
-//             nombre: nombre,
-//             rfc: rfc,
-//             razonSocial: razonSocial,
-//             direccion: direccion,
-//             correo: correo,        
-//             telefono: telefono,
-//             sector: sector,
-//             password: hashedPassword,
-//         });
-//         return res.json({
-//             msg: `Organizacion ${nombre} registrada exitosamente!`,
-//         });
-//     } catch (error) {
-//         return res.status(400).json({
-//             msg: "Oops ocurrio un error!",
-//             error
-//         });
-//     }
-// };

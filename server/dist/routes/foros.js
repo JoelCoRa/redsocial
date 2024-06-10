@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+// import validateToken from "./validateToken";
 const foros_controller_1 = require("../controllers/foros.controller");
 const router = (0, express_1.Router)();
-// Cambiar por los de foros
 router.post('/crearforo', foros_controller_1.crearForo);
 router.post('/crearreplica/:id', foros_controller_1.createReplica);
 router.post('/crearreporte', foros_controller_1.addReporte);

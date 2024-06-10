@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllReportes = exports.getAllSolicitudes = exports.getAllContactos = exports.updateBlocked = exports.updateAdmin = exports.deleteUser = exports.getAllUsers = void 0;
+exports.getSolicitud = exports.getContacto = exports.getAllReportes = exports.getAllSolicitudes = exports.getAllContactos = exports.updateBlocked = exports.updateAdmin = exports.deleteUser = exports.getAllUsers = void 0;
 const user_model_1 = require("../models/user.model");
 const sequelize_1 = require("sequelize");
 const contacto_model_1 = require("../models/contacto.model");
-const apoyo_model_1 = require("../models/apoyo.model");
 const reporte_model_1 = require("../models/reporte.model");
+const contactoportal_model_1 = require("../models/contactoportal.model");
 const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const excludedId = id;
@@ -110,8 +110,8 @@ const getAllContactos = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.getAllContactos = getAllContactos;
 const getAllSolicitudes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const solicitudes = yield apoyo_model_1.Apoyo.findAll({});
-        res.json(solicitudes);
+        const solicitudesPortal = yield contactoportal_model_1.ContactoGeneral.findAll({});
+        res.json(solicitudesPortal);
     }
     catch (error) {
         res.status(400).json({
@@ -140,3 +140,40 @@ const getAllReportes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getAllReportes = getAllReportes;
+const getContacto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const solicitud = yield contacto_model_1.Contacto.findOne({
+            include: {
+                model: user_model_1.User,
+                required: true,
+                attributes: ['nombreUsuario']
+            },
+            where: { id: id }
+        });
+        res.json(solicitud);
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.getContacto = getContacto;
+const getSolicitud = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const solicitud = yield contactoportal_model_1.ContactoGeneral.findOne({
+            where: { id: id }
+        });
+        res.json(solicitud);
+    }
+    catch (error) {
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    }
+});
+exports.getSolicitud = getSolicitud;

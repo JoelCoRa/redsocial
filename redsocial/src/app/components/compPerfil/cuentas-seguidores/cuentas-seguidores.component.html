@@ -1,42 +1,42 @@
 <mat-card class="contenedorCuentas" *ngFor="let item of cuentasSeguidores">
     <mat-card-content class="cuentas">
-        <div class="info">
-            <img [src]="item.imgPerfil ? getProfileImage(item) : '../../../../assets/avatars/user.png'" alt="" class="imgPerfil">           
-            <p class="nombreCuenta">{{item.nombreUserSeguidor}}</p>
-        </div>
-        
-        <div class="accionesCuentas">
-            <button class="contAccion tooltip-container"  (click)="deleteSeguido(item.userIdSeguido)" *ngIf="item.seguido">
-                <span class="tooltip">Dejar de Seguir</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-minus" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4c.348 0 .686 .045 1.009 .128" />
-                    <path d="M16 19h6" />
-                  </svg>
-                <span class="resp">Dejar de Seguir</span>
-            </button>
-                    <button class="contAccion tooltip-container" *ngIf="!item.seguido" (click)="addSeguidor(item.userIdSeguidor, item.nombreUserSeguidor)">
-                <span class="tooltip2">Seguir</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M16 19h6" />
-                    <path d="M19 16v6" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-                  </svg>
-                <span class="resp">Seguir</span>  
-            </button>
-            <button class="contAccion tooltip-container" (click)="openDialog(item.userIdSeguidor)">
-                <span class="tooltip3">Información de cuenta</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle accion" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                    <path d="M12 9h.01" />
-                    <path d="M11 12h1v4h1" />
-                </svg>
-                <span class="resp">Info de Cuenta</span>
-            </button>           
-        </div>
+      <div class="info">
+        <img [src]="getProfileImage(item)" alt="" class="imgPerfil">
+        <p class="nombreCuenta">{{ item.nombreUserSeguidor }}</p>
+      </div>
+      <div class="accionesCuentas">
+        <button class="contAccion tooltip-container" *ngIf="item.seguido" (click)="deleteSeguido(item.userIdSeguido)">
+          <span class="tooltip">Dejar de Seguir</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-minus" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4c.348 0 .686 .045 1.009 .128" />
+            <path d="M16 19h6" />
+          </svg>
+          <span class="resp">Dejar de Seguir</span>
+        </button>
+        <button class="contAccion tooltip-container" *ngIf="!item.seguido" (click)="addSeguidor(item.userIdSeguidor, item.nombreUserSeguidor)">
+          <span class="tooltip2">Seguir</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+          </svg>
+          <span class="resp">Seguir</span>
+        </button>
+        <button class="contAccion tooltip-container" (click)="openDialog(item.userIdSeguidor)">
+          <span class="tooltip3">Información de cuenta</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle accion" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path d="M12 9h.01" />
+            <path d="M11 12h1v4h1" />
+          </svg>
+          <span class="resp">Info de Cuenta</span>
+        </button>
+      </div>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+  

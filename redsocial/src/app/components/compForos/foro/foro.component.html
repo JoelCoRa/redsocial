@@ -81,13 +81,13 @@
                                 <div class="contenidoReplica">
                                     <p>{{rep.contenidoreplica}}</p>
                                 </div>
-                                <div class="reaccionesReplicas" *ngIf="isOwner">
+                                <div class="reaccionesReplicas" *ngIf="isOwner || isOwnerReplica">
                                   <div class="contReacciones">                      
                                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                                       <mat-icon>more_vert</mat-icon>
                                     </button>
                                     <mat-menu #menu="matMenu">
-                                      <button mat-menu-item (click)="openDialogBorrarReplica(rep.id)" *ngIf="isAdmin || isOwnerReplica">
+                                      <button mat-menu-item (click)="openDialogBorrarReplica(rep.id)">
                                         <mat-icon>delete</mat-icon>
                                         <span>Eliminar Replica</span>
                                       </button>                        

@@ -271,6 +271,13 @@
   font-family: var(--fuenteGenerica);
   font-style: italic;
 }
+.normas{
+  background: none;
+  border: none;
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+}
 
 @media(min-width: 900px){
   .etiquetaAgregada{
@@ -287,6 +294,57 @@
     width: 10%;
     height: 3rem;
     margin: 1rem;
-
   }
+  .tooltip-container {
+    --bubble-size: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .tooltip{
+      display: block;
+      position: absolute;      
+      transform: translate(503%, -120%);
+      top: 10%; /* Initially hidden above the container */
+      left: 16%;
+      padding: 0.6em 1em;
+      opacity: 0;
+      visibility: hidden;
+      width: 15rem;
+      text-align: center;
+      pointer-events: none;
+      font-family: var(--fuentePrimaria);
+      font-size: 1rem;
+      transition: all 0.3s;
+      border: none;
+      border-radius: var(--bubble-size);
+      /* background: var(--background-light); */
+      background: #d2995d;
+      box-shadow: 0 4px 8px rgba(223, 111, 41, 0.1);
+  }
+    /* Triangle arrow for the bubble tooltip */
+  .tooltip::before{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%);
+      border-style: solid;
+      border-width: 8px 8px 0;
+      border-color: #d2995d transparent transparent;
+      /* background: #000000; */
+
+  }  
+  /* Tooltip appearance on hover */
+  .tooltip-container:hover .tooltip{         
+      /* left: 90%; */
+      width: 8rem;
+      top: -70%;
+      opacity: 1;
+      font-size: 0.7rem;
+      visibility: visible;
+      pointer-events: auto;
+      color: #fff;
+  } 
 }

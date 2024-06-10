@@ -10,9 +10,18 @@ export interface ReporteAdmin{
 }
 export interface ContactoAdmin{
     id: number,
-    rol: string,
     asunto: string,
     descripcion: string,
     fechaSolicitud: string,
     userId: number,
+    user:{
+        nombreUsuario: string
+    }
+}
+export interface ContactoAdminPortal{
+    id: number,
+    correo: string,
+    asunto: string,
+    descripcion: string,
+    fechaSolicitud: string,
 }

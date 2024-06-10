@@ -1,6 +1,6 @@
 
 <div class="titulo">
-  <h3>Solicitudes</h3>
+  <h3>Contactos Inside</h3>
 </div>
 
 <mat-form-field>
@@ -14,7 +14,7 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <td mat-cell *matCellDef="let row" class="idSolicitud" (click)="openDialog(row.id)"> {{row.id}} </td>
       </ng-container>
     
       <!-- Name Column -->

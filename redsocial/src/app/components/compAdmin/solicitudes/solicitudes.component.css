@@ -44,6 +44,61 @@ table {
     width: 100%;
   }
   
-  td, th {
-    width: 25%;
-  }
+td, th {
+  width: 25%;
+}
+
+.idSolicitud:hover{
+  cursor: pointer;
+  color: rgb(53, 154, 208);
+}
+.contModal{
+  padding-bottom: 0;
+}
+
+.bodyModal{
+  padding: 1rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: rgb(177, 208, 173); 
+  -webkit-box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+}
+.bodyModal p{
+  color: #000;
+  font-family: var(--fuenteGenerica);
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+.bodyModal span{
+  font-weight: bold;
+  font-family: var(--fuentePrimaria);
+}
+.contDesc{
+  padding: 1rem;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+}
+.contDesc p{
+  font-size: 0.8rem;
+}
+.contBoton{
+  display: flex;
+  justify-content: center;
+}
+.btnCerrar{
+  border: none;
+  font-size: 1rem;
+  font-family: var(--fuentePrimaria);
+  background-color: rgb(49, 120, 207);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.5rem;
+  margin-right: 1rem;  
+}
+
+.btnCerrar:hover{
+  transform: scale(105%);
+  transition: 0.5s ease-in all;
+}

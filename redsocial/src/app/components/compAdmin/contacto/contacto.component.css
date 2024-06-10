@@ -1,0 +1,103 @@
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+  background-color: rgb(208, 199, 173);
+}
+table {
+  width: 100%;
+}
+  
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+  
+td, th {
+  width: 25%;
+  font-family: var(--fuentePrimaria);
+}
+th{
+  text-align: center;
+  font-family: var(--fuenteGenerica);
+}
+td{
+  text-align: center;
+  font-family: var(--fuentePrimaria);
+  z-index: 1;
+}
+.titulo{
+  display: flex;
+  background-color: rgb(215, 243, 250);
+  justify-content: center;
+  padding: 0.5rem;
+}
+.titulo h3{
+  text-align: center;
+  font-family: var(--fuenteGenerica);
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+table {
+  width: 100%;
+}    
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}    
+td, th {
+  width: 25%;
+}
+
+
+.idSolicitud:hover{
+  cursor: pointer;
+  color: rgb(53, 154, 208);
+}
+.contModal{
+  padding-bottom: 0;
+}
+
+.bodyModal{
+  padding: 1rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: rgb(208, 199, 173);
+  -webkit-box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.75);
+}
+.bodyModal p{
+  color: #000;
+  font-family: var(--fuenteGenerica);
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+.bodyModal span{
+  font-weight: bold;
+  font-family: var(--fuentePrimaria);
+}
+.contDesc{
+  padding: 1rem;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+}
+.contDesc p{
+  font-size: 0.8rem;
+}
+.contBoton{
+  display: flex;
+  justify-content: center;
+}
+.btnCerrar{
+  border: none;
+  font-size: 1rem;
+  font-family: var(--fuentePrimaria);
+  background-color: rgb(49, 120, 207);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.5rem;
+  margin-right: 1rem;  
+}
+
+.btnCerrar:hover{
+  transform: scale(105%);
+  transition: 0.5s ease-in all;
+}

@@ -4,6 +4,8 @@ import { Op } from "sequelize";
 import { Contacto } from "../models/contacto.model";
 import { Apoyo } from "../models/apoyo.model";
 import { Reporte } from "../models/reporte.model";
+import { Solicitud } from "../models/solicitud.model";
+import { ContactoGeneral } from "../models/contactoportal.model";
 
 export const getAllUsers = async(req:Request, res: Response)=>{
     const { id } = req.params;
@@ -103,10 +105,10 @@ export const getAllContactos = async(req:Request, res: Response) =>{
 
 export const getAllSolicitudes = async(req:Request, res: Response) =>{
     try {
-        const solicitudes =  await Apoyo.findAll({
-            
+        const solicitudesPortal =  await ContactoGeneral.findAll({   
+      
         });
-        res.json(solicitudes)
+        res.json(solicitudesPortal)
     }  catch(error){
         res.status(400).json({
             msg: "Oops ocurrio un error!",
@@ -125,6 +127,39 @@ export const getAllReportes = async(req:Request, res: Response)=>{
         
         });
         res.json(reportes)
+    }  catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+}
+export const getContacto = async(req: Request, res: Response)=>{
+    const { id } = req.params
+    try {
+        const solicitud =  await Contacto.findOne({                
+            include: {
+                model: User,
+                required: true,
+                attributes: ['nombreUsuario']
+            },
+            where:{id: id}     
+        });
+        res.json(solicitud)
+    }  catch(error){
+        res.status(400).json({
+            msg: "Oops ocurrio un error!",
+            error
+        });
+    } 
+}
+export const getSolicitud = async(req: Request, res: Response)=>{
+    const { id } = req.params
+    try {
+        const solicitud =  await ContactoGeneral.findOne({    
+            where:{id: id}       
+        });
+        res.json(solicitud)
     }  catch(error){
         res.status(400).json({
             msg: "Oops ocurrio un error!",

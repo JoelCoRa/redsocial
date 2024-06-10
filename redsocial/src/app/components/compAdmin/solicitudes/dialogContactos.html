@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="tituloModal">Mensaje de contacto inside</h2>
+<mat-dialog-content class="contModal">
+    <div class="bodyModal">
+        <p>Asunto: <span>{{asunto}}</span></p>
+        <p>ID del usuario: <span>{{idUsuario}}</span></p>
+        <p>Nombre del usuario: <span>{{nombreUsuario}}</span></p>
+        <div class="contDesc">
+            <p>{{descripcion}}</p>
+        </div>
+        <p>Fecha de creación: <span>{{fecha | date: 'dd / MMM / yyyy'}}</span></p>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="contBoton">
+    <button mat-dialog-close class="btnCerrar">Cerrar</button>
+</mat-dialog-actions>
