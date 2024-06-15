@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
-    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
-    <!-- <app-msg-recursos></app-msg-recursos>  -->
-    
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+
+    <app-titulo-seccion [title]="'Organizaciones'"></app-titulo-seccion>   
     <div class="cuerpoRecursos">
-      <app-menurecursos [mensaje]="'Aqui encontrarás algunas organizaciones que pueden ser de tu interés.'"></app-menurecursos>
+      <span class="msgSeccion">Aqui encontrarás algunas organizaciones que pueden ser de tu interés.</span>
       <div class="contPrincipalRecursos">
         <div class="row">
           <div class="col-lg-6 col-sm-12">
@@ -17,7 +16,6 @@
                 <span class="nombreOrganizacion">Instituto Nacional de las mujeres</span>
               </div>              
               <p class="descOrganizacion">Enfocado en promover y coordinar políticas públicas para la igualdad de género y la erradicación de la violencia contra las mujeres...</p>
-              <span>55 5322 4200</span>
               <a href="https://www.gob.mx/inmujeres" target="_blank">{{this.link}}</a>                     
             </div> 
             <div class="organizacion publica">

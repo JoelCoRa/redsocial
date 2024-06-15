@@ -17,6 +17,8 @@ import { CuentasService } from '../../../services/cuentas.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { debounceTime, Subject } from 'rxjs';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-comunity',
@@ -39,7 +41,8 @@ export class ComunityComponent {
     private user: UserService, 
     private error: ErrorService, 
     private sb: MatSnackBar, 
-    private cuentas: CuentasService
+    private cuentas: CuentasService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +64,17 @@ export class ComunityComponent {
   }
 
   search(query: string) {
+    if(this.query === ''){
+      this.sb.open(`Porfavor ingresa datos en la barra de búsqueda!`, 'Cerrar', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['notifError'],
+      });
+      return;
+    }
     const userId = Number(this.user.getUserId());
+    
     this.cuentas.searchComunidad(userId, query).subscribe(data => {
       this.results = data;
       this.numResultados = this.results.length;
@@ -143,4 +156,21 @@ export class ComunityComponent {
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+    });
+  }
+}
+@Component({
+  selector: 'dialogComunidad',
+  templateUrl: 'dialogComunidad.html',
+  styleUrls: ['./comunity.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {}
 }

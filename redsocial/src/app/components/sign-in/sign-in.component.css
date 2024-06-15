@@ -78,6 +78,11 @@
   margin: 0;
   margin-bottom: 15rem;
 }
+.oblig{
+  font-family: var(--fuentePrimaria);
+  color: rgb(16, 16, 16);
+  text-align: end;
+}
 
 @media(min-width: 500px){    
   .botones{    

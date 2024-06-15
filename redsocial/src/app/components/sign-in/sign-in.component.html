@@ -7,28 +7,33 @@
   <div class="contSignIn">
     <div class="card-container" *ngIf="!loading">
       <div class="card-body">
-        <h5 class="card-title">Crea una cuenta personal</h5>
+        <h5 class="card-title">Únete a nuestra comunidad segura y solidaria.</h5>
         <hr>
         <div class="mb-2 input-container needs-validation">
           <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <!-- Datos generales -->
             <p class="seccion">Datos generales</p>
+            <p class="oblig">Los campos con este símbolo son obligatorios <span class="obligatorio">*</span> </p> 
             <div class="row">
               <div class="col-sm-12 col-md-6">
                 <div class="campo">
                   <label for="nombre">Nombre(s) <span class="obligatorio">*</span></label>
-                  <input class="input" placeholder="Nombre" type="text" formControlName="nombre">
+                  <input class="input" placeholder="Nombre" type="text" formControlName="nombre" maxlength="60">
                   <div class="text-danger" *ngIf="signInForm.controls['nombre'].invalid && (isFormSubmitted || signInForm.controls['nombre'].touched)">
                     <span *ngIf="signInForm.controls['nombre'].errors?.['required']">El nombre no puede quedar vacío.</span>
+                    <span *ngIf="signInForm.controls['nombre'].errors?.['pattern']">El nombre solo puede contener letras y espacios.</span>
+                    <span *ngIf="signInForm.controls['nombre'].errors?.['maxLength']">El nombre no puede tener más de 60 caracteres.</span>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
                 <div class="campo">
                   <label for="apellido">Apellido(s) <span class="obligatorio">*</span></label>
-                  <input class="input" placeholder="Apellido(s)" type="text" formControlName="apellido">
+                  <input class="input" placeholder="Apellido(s)" type="text" formControlName="apellido" maxlength="60">
                   <div class="text-danger" *ngIf="signInForm.controls['apellido'].invalid && (isFormSubmitted || signInForm.controls['apellido'].touched)">
                     <span *ngIf="signInForm.controls['apellido'].errors?.['required']">El apellido no puede quedar vacío.</span>
+                    <span *ngIf="signInForm.controls['apellido'].errors?.['pattern']">El apellido solo puede contener letras y espacios.</span>
+                    <span *ngIf="signInForm.controls['apellido'].errors?.['maxLength']">El apellido no puede tener más de 0 caracteres.</span>
                   </div>
                 </div>
               </div>
@@ -37,7 +42,7 @@
               <div class="col-sm-12 col-md-6">
                 <div class="campo">
                   <label for="fechaNacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                  <input class="input" type="date" formControlName="fechaNacimiento" min="1960-01-01" max="2024-01-01">
+                  <input class="input" type="date" formControlName="fechaNacimiento" min="1970-01-01" max="2012-12-31">
                   <div class="text-danger" *ngIf="signInForm.controls['fechaNacimiento'].invalid && (isFormSubmitted || signInForm.controls['fechaNacimiento'].touched)">
                     <span *ngIf="signInForm.controls['fechaNacimiento'].errors?.['required']">Debes seleccionar tu fecha de nacimiento.</span>
                   </div>
@@ -73,10 +78,12 @@
               <div class="col-sm-12 col-md-6">
                 <div class="campo">
                   <label for="nombreUsuario">Elige un nombre de usuario <span class="obligatorio">*</span></label>
-                  <input class="input" placeholder="Nombre de Usuario" type="text" formControlName="nombreUsuario">
+                  <input class="input" placeholder="Nombre de Usuario" type="text" formControlName="nombreUsuario" maxlength="30">
                   <div class="text-danger" *ngIf="signInForm.controls['nombreUsuario'].invalid && (isFormSubmitted || signInForm.controls['nombreUsuario'].touched)">
                     <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['required']">El nombre de usuario no puede quedar vacío.</span>
-                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['minlength']">El nombre de usuario debe contener al menos 8 caracteres.</span>
+                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['minlength']">El nombre de usuario debe tener al menos 8 caracteres.</span>
+                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['maxLength']">El nombre de usuario no puede tener más de 60 caracteres.</span>
+                    <span *ngIf="signInForm.controls['nombreUsuario'].errors?.['pattern']">El nombre de usuario solo puede contener letras, números y los caracteres $ % # &.</span>
                   </div>
                 </div>
               </div>
@@ -91,7 +98,7 @@
                       <span *ngIf="signInForm.controls['password'].errors?.['hasUpperCase']">La contraseña debe contener al menos una mayúscula. <br> </span>
                       <span *ngIf="signInForm.controls['password'].errors?.['hasLowerCase']">La contraseña debe contener al menos una minúscula.<br>  </span>
                       <span *ngIf="signInForm.controls['password'].errors?.['hasNumeric']">La contraseña debe contener al menos un número. <br>  </span>
-                      <span *ngIf="signInForm.controls['password'].errors?.['hasSpecialChar']">La contraseña debe contener al menos un carácter especial. <br> </span>
+                      <span *ngIf="signInForm.controls['password'].errors?.['hasSpecialChar']">La contraseña debe contener al menos un carácter especial ($,#, &#64;, %, *). <br> </span>
                     </span>
                   </div>
                 </div>

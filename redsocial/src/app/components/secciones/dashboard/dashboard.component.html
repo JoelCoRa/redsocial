@@ -1,12 +1,11 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
-    <app-titulo-seccion [title]="'Inicio'"></app-titulo-seccion>
-
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+    <app-titulo-seccion [title]="'Inicio'"></app-titulo-seccion>  
     <mat-card class="tarjeta">
       <div>
-        <h3 class="tituloInicio">Bienvenido a tu portal {{usuarioPropio}}</h3>
+        <h3 class="tituloInicio">Bienvenid&#64; a Koba. {{fraseAleatoria}}</h3>
       </div>
       <div class="accionesHeader">
         <button class="accion tooltip-container" [routerLink]="['/comunidad']">
@@ -34,10 +33,10 @@
         </button>
       </div>     
     </mat-card>
-    <div class="contenedor">
+    <div class="contenedo">
       <mat-card class="contenedorInicio">
         <div class="msgVacio" *ngIf="numPublicaciones === 0">          
-          <app-mensajevacio class="msgVacioTexto">¡No hay publicaciones para mostrar!</app-mensajevacio>
+          <app-mensajevacio class="msgVacioTexto">¡No hay publicaciones para mostrar, sigue a más usuarios   para ver lo que publican.</app-mensajevacio>
         </div>
         <div class="publicaciones" *ngIf="numPublicaciones !== 0">
           <div *ngFor="let item of listPostSeg"> 

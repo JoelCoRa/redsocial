@@ -16,6 +16,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialog
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
@@ -28,7 +29,6 @@ export class SettingsComponent {
 
   ajustesForm!: FormGroup;
   ajustesPasswordForm!: FormGroup;
-  nombreUsuario: string = '';
   correo: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -38,7 +38,6 @@ export class SettingsComponent {
 
   constructor(private user: UserService, private sb: MatSnackBar, private error: ErrorService,public dialog: MatDialog){
     this.ajustesForm = new FormGroup({
-      nombreUsuario: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]),
       correo: new FormControl('', [Validators.required, Validators.email])      
     });
     this.ajustesPasswordForm = new FormGroup({
@@ -51,78 +50,19 @@ export class SettingsComponent {
     this.getUserAjustes();
   }
 
-  // onSubmitAjustesPassword(){
-  //   const userId = Number(this.user.getUserId());
-  //   if (this.ajustesPasswordForm.get('password')?.value !== this.ajustesPasswordForm.get('confirmPassword')?.value) {
-  //     this.sb.open('Las contraseñas no coinciden', 'Cerrar', {
-  //       duration: 5000,        
-  //       horizontalPosition: this.horizontalPosition,
-  //       verticalPosition: this.verticalPosition,
-  //       panelClass: ['notifError'],  
-  //     });
-  //     return; // Detener el envío del formulario si las contraseñas no coinciden
-  //   }
-  //   if(this.password === ''){
-  //     this.sb.open('El campo no puede quedar vacio', "Cerrar", {
-  //       duration: 5000,        
-  //       horizontalPosition: this.horizontalPosition,
-  //       verticalPosition: this.verticalPosition,
-  //       panelClass: ['notifError'],  
-  //     });
-  //     return; 
-  //   }
-  //   const password: UserPassword = {
-  //     password: this.password
-  //   } 
-  //   console.log(userId);
-  //   this.user.updatePassword(userId, password).subscribe({
-  //     next: (v) => {
-  //       this.sb.open(`Contraseña actualizada con éxito!`, "Cerrar", {
-  //         duration: 5000,        
-  //         horizontalPosition: this.horizontalPosition,
-  //         verticalPosition: this.verticalPosition,
-  //         panelClass: ['notifExito'],  
-  //       });
-  //     },
-  //     error: (e: HttpErrorResponse) => {
-  //       this.error.msgError(e)       
-  //     },
-  //     complete: () => {
-  //       console.info('complete')
-  //       setTimeout(() => {
-  //         window.location.reload();
-  //       }, 1000);
-  //     }
-  //   })
-
-  // }
-
   getUserAjustes(){
     const userId = Number(this.user.getUserId());  
     this.user.getUserAjuses(userId).subscribe(data =>{
       console.log(data);
       this.usuario = data;
-      this.nombreUsuario = this.usuario.nombreUsuario,
       this.correo = this.usuario.correo;
     });
   }
 
 
   openDialog(): void{
-    // if(this.nombreUsuario === this.usuario.nombreUsuario || this.correo === this.usuario.correo){
-    //   this.sb.open('No has modificado nada', "Cerrar", {
-    //     duration: 5000,        
-    //     horizontalPosition: this.horizontalPosition,
-    //     verticalPosition: this.verticalPosition,
-    //     panelClass: ['notifError'],  
-    //   });
-    //   setTimeout(() => {
-    //       window.location.reload();
-    //     }, 1000);
-    //   return; 
-    // }
-    if(this.nombreUsuario === '' || this.correo === ''){
-      this.sb.open('El campo no puede quedar vacio', "Cerrar", {
+    if(this.correo === ''){
+      this.sb.open('El correo no puede quedar vacio', "Cerrar", {
         duration: 5000,        
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
@@ -131,7 +71,7 @@ export class SettingsComponent {
       return; 
     }
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {nombreUsuario: this.nombreUsuario, correo: this.correo, validatePassword: this.validatePassword},
+      data: {correo: this.correo, validatePassword: this.validatePassword},
       width: '500px'  
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -167,6 +107,11 @@ export class SettingsComponent {
       console.log('The dialog was closed');
       // console.log(result);
       this.validatePassword = result;
+    });
+  }
+  openDialog3() {
+    this.dialog.open(DialogElementsExampleDialogHelp, {
+      width: '800px',
     });
   }
 
@@ -292,4 +237,14 @@ export class DialogOverviewExampleDialogPassword {
   }  
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+}
+@Component({
+  selector: 'dialogAjuses',
+  templateUrl: 'dialogAjuses.html',
+  styleUrls: ['./settings.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialogHelp {
+  constructor() {}
 }

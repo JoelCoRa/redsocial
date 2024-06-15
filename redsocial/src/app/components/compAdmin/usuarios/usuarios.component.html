@@ -22,11 +22,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
         <td mat-cell *matCellDef="let row"> {{row.nombreUsuario}} </td>
       </ng-container>
-  
-
-  
-      <!-- Fruit Column -->
-      
+     
 
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
@@ -40,14 +36,13 @@
               <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
             </svg>
           </button>
-          <button mat-button (click)="openDialogAdmin(row.id, row.nombreUsuario, row.tipoUsuario)" *ngIf="row.tipoUsuario === 1" class="tooltip-container">
-            <span class="tooltip">Quitar Admin</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-down" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <button mat-button (click)="msgYaEsAdmin()" *ngIf="row.tipoUsuario === 1">
+            <!-- <span class="">Quitar Admin</span> -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-star" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-              <path d="M6 21v-2a4 4 0 0 1 4 -4h4c.342 0 .674 .043 .99 .124" />
-              <path d="M19 16v6" />
-              <path d="M22 19l-3 3l-3 -3" />
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h.5" />
+              <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
             </svg>
           </button>
           <button mat-button (click)="openDialog(row.id, row.nombreUsuario)" class="tooltip-container">

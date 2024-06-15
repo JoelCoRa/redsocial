@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <app-sidebar>
   <div class="contenedor">
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+
     <app-titulo-seccion [title]="'Comunidad'"></app-titulo-seccion>
     <div class="headerComunidad">
       <p>Busca amigos o cuentas de tu interés</p>
@@ -11,7 +13,7 @@
                   <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
           </button>
-          <input class="input2" placeholder="Ingresa un nombre de usuario o un userID..." required type="text" [(ngModel)]="query" (input)="onSearchInputChange()" [ngModelOptions]="{standalone: true}">
+          <input class="input2" placeholder="Ingresa el nombre de usuario de alguna cuenta..." required type="text" [(ngModel)]="query" (input)="onSearchInputChange()" [ngModelOptions]="{standalone: true}">
           <button class="reset" type="reset">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>

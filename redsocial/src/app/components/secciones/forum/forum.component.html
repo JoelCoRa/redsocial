@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <app-sidebar>
   <div class="contenedor">
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+
     <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
     <div class="headerForo">
       <div class="buscar">
@@ -69,6 +71,8 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"></tr>
         </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10]" aria-label="Select page of users"></mat-paginator>
       </div>
     </div>
   </div>

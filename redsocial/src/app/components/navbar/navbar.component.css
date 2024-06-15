@@ -3,8 +3,10 @@
     top: 0;
     left: 0;
     width: 100%; 
-    background: #232526;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     z-index: 1000;
 }
 .navbar-toggler{
@@ -25,7 +27,7 @@
 .titulo-navbar{
     /* margin-top: 0.5rem; */
     font-size: 1rem;
-    color: rgb(217, 223, 223);
+    color: rgb(240, 240, 240);
     text-align: center;
     font-family: var(--fuenteGenerica);
 }
@@ -51,7 +53,7 @@
 }
 .icono .cont-span span{    
     align-items: center;
-    color: #fff;
+    color: #f1f1f1;
     font-size: 1.2rem;
     line-height: 1;
     align-items: center;
@@ -115,8 +117,9 @@
     .logo:hover{
         cursor: pointer;
     }.titulo-navbar{
-        font-size: 1rem;
+        font-size: 1.7rem;
         margin-bottom: 0;
+        margin-left: 1rem;
     }  
     .iconos{
         width: 45%;
@@ -138,6 +141,7 @@
         font-size: 0.7rem;
         text-align: center;
         line-height: 0.2rem;
+        font-weight: bold;
     }
     .icono:hover{
         cursor: pointer;  

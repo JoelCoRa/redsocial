@@ -1,0 +1,552 @@
+palabra,tipo,nivel
+Inseguridades,Psicoemocional,1
+Críticas constantes,Psicoemocional,1
+"Burlas ""inofensivas""",Psicoemocional,1
+Chismes y difamación,Psicoemocional,1
+Intimidación sutil,Psicoemocional,1
+Ridiculización en público,Psicoemocional,1
+Desvalorización de opiniones,Psicoemocional,1
+Desatención de necesidades emocionales,Psicoemocional,1
+Descalificaciones ocasionales,Psicoemocional,1
+Celos excesivos,Psicoemocional,1
+Sentimientos de inferioridad,Psicoemocional,1
+Gastos no justificados,Económica,1
+Ocultamiento de ingresos,Económica,1
+Control de pequeñas compras,Económica,1
+Restricción en la compra de ropa,Económica,1
+Uso excesivo de tarjetas de crédito,Económica,1
+Desempleo controlado,Económica,1
+Negativa a contribuir en gastos comunes,Económica,1
+Gastar en exceso en actividades propias,Económica,1
+Robo de dinero,Económica,1
+Quitar dinero,Económica,1
+Negar acceso a fondos compartidos,Económica,1
+Empujones ligeros,Física,1
+Agarrones de muñeca,Física,1
+Tirar objetos,Física,1
+Bloquear puertas,Física,1
+Paredes encerrando,Física,1
+Restringir movimiento,Física,1
+Desorden intencional,Física,1
+Ruptura de objetos simbólicos,Física,1
+Uso de gestos agresivos,Física,1
+Agresiones en momentos de ira,Física,1
+Negativa a pagar deudas compartidas,Patrimonial,1
+Control de bienes comunes,Patrimonial,1
+Impedir el uso de coche familiar,Patrimonial,1
+Restringir acceso a cuentas bancarias,Patrimonial,1
+Vender bienes compartidos sin consentimiento,Patrimonial,1
+Amenazar con destruir posesiones,Patrimonial,1
+Negarse a contribuir a la hipoteca,Patrimonial,1
+Controlar acceso a documentos importantes,Patrimonial,1
+Restringir el uso de la vivienda,Patrimonial,1
+No permitir adquisición de bienes personales,Patrimonial,1
+Comentarios inapropiados,Sexual,1
+No respetar los límites en el sexo,Sexual,1
+Forzar caricias no deseadas,Sexual,1
+Ignorar el consentimiento,Sexual,1
+Burlarse de preferencias sexuales,Sexual,1
+Utilizar el sexo como arma emocional,Sexual,1
+Presionar para realizar actos no deseados,Sexual,1
+Amenazar con infidelidad,Sexual,1
+Hacer sentir culpable por no querer sexo,Sexual,1
+Insultos,Psicoemocional,2
+Culpar,Psicoemocional,2
+Impedir trabajo,Económica,2
+Empujar,Física,2
+Impedir estudios,Económica,2
+Presión sexual,Sexual,2
+Forzar aborto,Derechos Reproductivos,2
+Burla,Violencia simbólica,2
+Infringir la ley,Patrimonial,2
+Ignorar opiniones,Psicoemocional,2
+Acusaciones falsas,Psicoemocional,2
+Control de apariencia,Psicoemocional,2
+Restricción médica,Patrimonial,2
+Obligar intimidad,Sexual,2
+Despojo de bienes,Patrimonial,2
+Pornografía forzada,Sexual,2
+Control de redes sociales,Violencia simbólica,2
+Aislamiento familiar,Psicoemocional,2
+Desprecio público,Psicoemocional,2
+Control de dietas,Psicoemocional,2
+Control de embarazo,Derechos Reproductivos,2
+Celular escondido,Violencia simbólica,2
+Descalificar logros,Psicoemocional,2
+Restricción social,Psicoemocional,2
+Amenazas de daño,Psicoemocional,2
+Boicot laboral,Económica,2
+Patrimonio usado,Patrimonial,2
+Sobornos,Económica,2
+Ofensas verbales,Psicoemocional,2
+Desvalorización,Psicoemocional,2
+Desvío de ingresos,Económica,2
+Empeoramiento de salud por estrés,Psicoemocional,2
+Intimidación psicológica,Psicoemocional,2
+Restricción de comunicación,Psicoemocional,2
+Monitoreo constante,Psicoemocional,2
+Amenazas de revelar secretos,Psicoemocional,2
+Amenazas de abandono,Psicoemocional,2
+Control de amigos,Psicoemocional,2
+Rechazo sexual,Psicoemocional,2
+Amenazas a familiares,Psicoemocional,2
+Limitación de movimientos,Patrimonial,2
+Exhibicionismo,Sexual,2
+Espionaje,Violencia simbólica,2
+Humillaciones públicas,Psicoemocional,2
+Descalificación laboral,Económica,2
+Monitoreo en línea,Violencia simbólica,2
+Exclusión social,Psicoemocional,2
+Ignorar emociones,Psicoemocional,2
+Control de actividades,Psicoemocional,2
+Negación de responsabilidades,Psicoemocional,2
+Aislamiento emocional,Psicoemocional,2
+Control de horarios,Psicoemocional,2
+Manipulación emocional,Psicoemocional,2
+Desvalorización de logros,Psicoemocional,2
+Amenazas de desheredar,Patrimonial,2
+Burlas en público,Psicoemocional,2
+Control de decisiones,Psicoemocional,2
+Desconocimiento médico,Derechos Reproductivos,2
+Violación de privacidad,Violencia simbólica,2
+Aislamiento sexual,Sexual,2
+Restricción de ocio,Psicoemocional,2
+Amenazas de dejar el hogar,Psicoemocional,2
+Control de relaciones,Psicoemocional,2
+Boicot a actividades sociales,Psicoemocional,2
+Rechazo afectivo,Psicoemocional,2
+Control de salidas,Psicoemocional,2
+Culpar a la víctima,Psicoemocional,2
+Invasión de privacidad,Violencia simbólica,2
+Vergüenza pública,Psicoemocional,2
+Restricción de vestimenta,Psicoemocional,2
+Amenazas de lastimar a otros,Psicoemocional,2
+Boicot a aficiones,Psicoemocional,2
+Control de mascotas,Psicoemocional,2
+Chantaje emocional,Psicoemocional,3
+Control de redes sociales,Psicoemocional,3
+Acoso laboral,Económica,3
+Restricción de libertades,Patrimonial,3
+Amenazas de suicidio,Psicoemocional,3
+Presión psicológica,Psicoemocional,3
+Vigilancia constante,Psicoemocional,3
+Amenazas de daño físico,Psicoemocional,3
+Intimidación verbal,Psicoemocional,3
+Manipulación sexual,Sexual,3
+Control de localización,Patrimonial,3
+Control de documentos,Patrimonial,3
+Coerción sexual,Sexual,3
+Presión emocional,Psicoemocional,3
+Cambio de apariencia,Psicoemocional,3
+Control de embarazo/aborto,Derechos Reproductivos,3
+Restricción de movimiento,Patrimonial,3
+Restricción de alimentación,Patrimonial,3
+Hostigamiento,Psicoemocional,3
+Imposición de relaciones,Psicoemocional,3
+Chantaje financiero,Económica,3
+Separación de hijos,Patrimonial,3
+Sabotaje económico,Económica,3
+Control de tareas domésticas,Patrimonial,3
+Amenazas de abandono económico,Económica,3
+Boicot de tratamiento médico,Derechos Reproductivos,3
+Manipulación reproductiva,Derechos Reproductivos,3
+Control de anticonceptivos,Derechos Reproductivos,3
+Control de actividades de ocio,Psicoemocional,3
+Control de comunicación,Psicoemocional,3
+Intimidación física,Física,3
+Acoso psicológico,Psicoemocional,3
+Hostigamiento sexual,Sexual,3
+Restricción de contacto social,Psicoemocional,3
+Cambio de personalidad,Psicoemocional,3
+Control de vivienda,Patrimonial,3
+Control de medicación,Patrimonial,3
+Control de consumo de alcohol/drogas,Patrimonial,3
+Control de gastos,Económica,3
+Bloqueo de acceso a recursos,Económica,3
+Amenazas de destrucción de objetos,Psicoemocional,3
+Restricción de sueño,Psicoemocional,3
+Control de actividades laborales,Económica,3
+Intimidación económica,Económica,3
+Control de decisiones médicas,Derechos Reproductivos,3
+Restricción de contacto familiar,Psicoemocional,3
+Control de dispositivos electrónicos,Violencia simbólica,3
+Imposición de actividades humillantes,Psicoemocional,3
+Restricción de libertad de expresión,Psicoemocional,3
+Control de apariencia pública,Psicoemocional,3
+Control de higiene personal,Psicoemocional,3
+Restricción de contacto íntimo,Psicoemocional,3
+Restricción de actividades religiosas,Psicoemocional,3
+Control de acceso a servicios,Patrimonial,3
+Control de citas/relaciones previas,Psicoemocional,3
+Boicot a tratamiento psicológico,Psicoemocional,3
+Hostigamiento en línea,Violencia simbólica,3
+Hostigamiento en el trabajo,Económica,3
+Control de identidad,Psicoemocional,3
+Control de adicciones,Psicoemocional,3
+Restricción de acceso a alimentos,Patrimonial,3
+Restricción de expresiones emocionales,Psicoemocional,3
+Manipulación afectiva,Psicoemocional,3
+Control de transporte,Patrimonial,3
+Boicot a actividades recreativas,Psicoemocional,3
+Hostigamiento en eventos sociales,Psicoemocional,3
+Amenazas de abuso físico,Psicoemocional,3
+Restricción de visitas médicas,Patrimonial,3
+Restricción de libertad religiosa,Psicoemocional,3
+Control de búsqueda de empleo,Económica,3
+Control de acceso a terapia,Psicoemocional,3
+Boicot a acceso a grupos de apoyo,Psicoemocional,3
+Control de gastos médicos,Económica,3
+Restricción de acceso a recursos legales,Patrimonial,3
+Hostigamiento público,Psicoemocional,3
+Control de tiempo libre,Psicoemocional,3
+Restricción de participación en eventos,Psicoemocional,3
+Control de tiempo con amigos,Psicoemocional,3
+Boicot a hobbies/intereses,Psicoemocional,3
+Hostigamiento sexual en público,Sexual,3
+Manipulación de contactos,Psicoemocional,3
+Boicot a proyectos personales,Psicoemocional,3
+Hostigamiento emocional,Psicoemocional,3
+Restricción de acceso a transporte,Patrimonial,3
+Control de asistencia a eventos,Psicoemocional,3
+Restricción de contactos familiares,Psicoemocional,3
+Manipulación de relaciones sociales,Psicoemocional,3
+Boicot a redes de apoyo,Psicoemocional,3
+Control de uso de anticonceptivos,Derechos Reproductivos,3
+Restricción de contactos laborales,Económica,3
+Manipulación de metas personales,Psicoemocional,3
+Control de asuntos legales,Patrimonial,3
+Restricción de acceso a educación,Económica,3
+Manipulación de decisiones económicas,Económica,3
+Restricción de contactos médicos,Patrimonial,3
+Boicot a actividades de salud,Psicoemocional,3
+Hostigamiento en actividades diarias,Psicoemocional,3
+Manipulación de búsqueda de empleo,Económica,3
+Control de consumo de medicamentos,Patrimonial,3
+Boicot a relaciones anteriores,Psicoemocional,3
+Control de sueño,Psicoemocional,3
+Restricción de contactos religiosos,Psicoemocional,3
+Manipulación de responsabilidades,Psicoemocional,3
+Boicot a tiempo personal,Psicoemocional,3
+Hostigamiento en espacios públicos,Psicoemocional,3
+Manipulación de interacciones familiares,Psicoemocional,3
+Control de actividad física,Psicoemocional,3
+Restricción de expresiones artísticas,Psicoemocional,3
+Boicot a actividades espirituales,Psicoemocional,3
+Hostigamiento en entornos sociales,Psicoemocional,3
+Control de cuidado médico,Patrimonial,3
+Restricción de acceso a servicios básicos,Económica,3
+Manipulación de actividades sociales,Psicoemocional,3
+Boicot a relaciones laborales,Económica,3
+Control de decisiones educativas,Económica,3
+Restricción de interacciones sociales,Psicoemocional,3
+Manipulación de acceso a recursos legales,Patrimonial,3
+Control de actividades espirituales,Psicoemocional,3
+Restricción de asistencia a eventos sociales,Psicoemocional,3
+Manipulación de contactos de apoyo,Psicoemocional,3
+Boicot a participación en actividades,Psicoemocional,3
+Hostigamiento en espacios laborales,Económica,3
+Manipulación de relaciones íntimas,Psicoemocional,3
+Restricción de actividad física,Psicoemocional,3
+Control de expresiones emocionales,Psicoemocional,3
+Manipulación de redes de apoyo,Psicoemocional,3
+Boicot a tiempo de descanso,Psicoemocional,3
+Hostigamiento en actividades de ocio,Psicoemocional,3
+Manipulación de tiempo libre,Psicoemocional,3
+Restricción de acceso a transporte público,Patrimonial,3
+Control de interacciones familiares,Psicoemocional,3
+Manipulación de actividades de salud,Psicoemocional,3
+Boicot a contactos de apoyo,Psicoemocional,3
+Hostigamiento en actividades espirituales,Psicoemocional,3
+Manipulación de tiempo personal,Psicoemocional,3
+Restricción de actividades espirituales,Psicoemocional,3
+Control de asistencia a eventos de salud,Psicoemocional,3
+Manipulación de contactos laborales,Económica,3
+Boicot a interacciones sociales,Psicoemocional,3
+Hostigamiento en eventos espirituales,Psicoemocional,3
+Manipulación de asistencia a eventos,Psicoemocional,3
+Restricción de acceso a eventos públicos,Psicoemocional,3
+Control de relaciones de pareja,Psicoemocional,3
+Manipulación de relaciones laborales,Económica,3
+Boicot a asistencia a eventos públicos,Psicoemocional,3
+Hostigamiento en eventos de ocio,Psicoemocional,3
+Manipulación de actividades de ocio,Psicoemocional,3
+Restricción de actividades de ocio,Psicoemocional,3
+Control de asistencia a eventos de ocio,Psicoemocional,3
+Manipulación de interacciones sociales,Psicoemocional,3
+Boicot a actividades de relaciones,Psicoemocional,3
+Hostigamiento en actividades de relaciones,Psicoemocional,3
+Manipulación de actividades de relaciones,Psicoemocional,3
+Restricción de actividades de relaciones,Psicoemocional,3
+Control de asistencia a eventos de relaciones,Psicoemocional,3
+Manipulación de tiempo de relaciones,Psicoemocional,3
+Boicot a tiempo de relaciones,Psicoemocional,3
+Hostigamiento en espacios de relaciones,Psicoemocional,3
+Manipulación de espacios de relaciones,Psicoemocional,3
+Restricción de espacios de relaciones,Psicoemocional,3
+Control de espacios de relaciones,Psicoemocional,3
+Manipulación de participación en relaciones,Psicoemocional,3
+Boicot a participación en relaciones,Psicoemocional,3
+Hostigamiento en interacciones de relaciones,Psicoemocional,3
+Manipulación de interacciones de relaciones,Psicoemocional,3
+Restricción de interacciones de relaciones,Psicoemocional,3
+Control de interacciones de relaciones,Psicoemocional,3
+Manipulación de asistencia a interacciones de relaciones,Psicoemocional,3
+Boicot a asistencia a interacciones de relaciones,Psicoemocional,3
+Hostigamiento en eventos de relaciones,Psicoemocional,3
+Manipulación de eventos de relaciones,Psicoemocional,3
+Restricción de eventos de relaciones,Psicoemocional,3
+Control de eventos de relaciones,Psicoemocional,3
+Manipulación de actividades de relaciones familiares,Psicoemocional,3
+Restricción de actividades de relaciones familiares,Psicoemocional,3
+Control de actividades de relaciones familiares,Psicoemocional,3
+Manipulación de tiempo de relaciones familiares,Psicoemocional,3
+Boicot a tiempo de relaciones familiares,Psicoemocional,3
+Hostigamiento en espacios de relaciones familiares,Psicoemocional,3
+Manipulación de espacios de relaciones familiares,Psicoemocional,3
+Restricción de espacios de relaciones familiares,Psicoemocional,3
+Control de espacios de relaciones familiares,Psicoemocional,3
+Manipulación de participación en relaciones familiares,Psicoemocional,3
+Boicot a participación en relaciones familiares,Psicoemocional,3
+Hostigamiento en interacciones de relaciones familiares,Psicoemocional,3
+Manipulación de interacciones de relaciones familiares,Psicoemocional,3
+Restricción de interacciones de relaciones familiares,Psicoemocional,3
+Control de interacciones de relaciones familiares,Psicoemocional,3
+Manipulación de asistencia a interacciones de relaciones familiares,Psicoemocional,3
+Boicot a asistencia a interacciones de relaciones familiares,Psicoemocional,3
+Hostigamiento en eventos de relaciones familiares,Psicoemocional,3
+Manipulación de eventos de relaciones familiares,Psicoemocional,3
+Restricción de eventos de relaciones familiares,Psicoemocional,3
+Control de eventos de relaciones familiares,Psicoemocional,3
+Manipulación de actividades de relaciones laborales,Económica,3
+Restricción de actividades de relaciones laborales,Económica,3
+Control de actividades de relaciones laborales,Económica,3
+Manipulación de tiempo de relaciones laborales,Económica,3
+Boicot a tiempo de relaciones laborales,Económica,3
+Hostigamiento en espacios de relaciones laborales,Económica,3
+Manipulación de espacios de relaciones laborales,Económica,3
+Restricción de espacios de relaciones laborales,Económica,3
+Control de espacios de relaciones laborales,Económica,3
+Manipulación de participación en relaciones laborales,Económica,3
+Boicot a participación en relaciones laborales,Económica,3
+Hostigamiento en interacciones de relaciones laborales,Económica,3
+Manipulación de interacciones de relaciones laborales,Económica,3
+Restricción de interacciones de relaciones laborales,Económica,3
+Control de interacciones de relaciones laborales,Económica,3
+Manipulación de asistencia a interacciones de relaciones laborales,Económica,3
+Boicot a asistencia a interacciones de relaciones laborales,Económica,3
+Hostigamiento en eventos de relaciones laborales,Económica,3
+Manipulación de eventos de relaciones laborales,Económica,3
+Restricción de eventos de relaciones laborales,Económica,3
+Control de eventos de relaciones laborales,Económica,3
+Manipulación de actividades de ocio,Psicoemocional,3
+Restricción de actividades de ocio,Psicoemocional,3
+Control de actividades de ocio,Psicoemocional,3
+Manipulación de tiempo de ocio,Psicoemocional,3
+Boicot a tiempo de ocio,Psicoemocional,3
+Hostigamiento en espacios de ocio,Psicoemocional,3
+Manipulación de espacios de ocio,Psicoemocional,3
+Restricción de espacios de ocio,Psicoemocional,3
+Control de espacios de ocio,Psicoemocional,3
+Manipulación de participación en ocio,Psicoemocional,3
+Boicot a participación en ocio,Psicoemocional,3
+Hostigamiento en interacciones de ocio,Psicoemocional,3
+Manipulación de interacciones de ocio,Psicoemocional,3
+Restricción de interacciones de ocio,Psicoemocional,3
+Control de interacciones de ocio,Psicoemocional,3
+Manipulación de asistencia a interacciones de ocio,Psicoemocional,3
+Boicot a asistencia a interacciones de ocio,Psicoemocional,3
+Hostigamiento en eventos de ocio,Psicoemocional,3
+Manipulación de eventos de ocio,Psicoemocional,3
+Restricción de eventos de ocio,Psicoemocional,3
+Control de eventos de ocio,Psicoemocional,3
+Amenazas de muerte,Psicoemocional,4
+Control total de la vida,Psicoemocional,4
+Abuso verbal extremo,Psicoemocional,4
+Humillaciones constantes,Psicoemocional,4
+Crear miedo constante,Psicoemocional,4
+Manipulación extrema,Psicoemocional,4
+Intimidación constante,Psicoemocional,4
+Acoso psicológico severo,Psicoemocional,4
+Control de las redes sociales,Psicoemocional,4
+Amenazas de violencia extrema,Psicoemocional,4
+Arruinar económicamente,Económica,4
+Impedir cualquier ingreso,Económica,4
+Controlar todos los gastos,Económica,4
+Amenazas de dejar sin nada,Económica,4
+Controlar todas las propiedades,Económica,4
+Impedir acceso a recursos,Económica,4
+Destruir documentos financieros,Económica,4
+Amenazas de desalojo o desempleo,Económica,4
+Deudas manipuladas,Económica,4
+Obligar a renunciar a empleos,Económica,4
+Golpes severos,Física,4
+Lesiones graves,Física,4
+Uso de armas,Física,4
+Agresiones con objetos,Física,4
+Estrangulación,Física,4
+Intentos de asfixia,Física,4
+Tortura física,Física,4
+Secuestro,Física,4
+Agresiones en público,Física,4
+Amenazas de muerte,Física,4
+Robo de bienes,Patrimonial,4
+Destrucción de posesiones,Patrimonial,4
+Venta forzada de propiedades,Patrimonial,4
+Amenazas con hacer daño a bienes,Patrimonial,4
+Manipulación de documentos legales,Patrimonial,4
+Control total de las finanzas,Patrimonial,4
+Uso de bienes como herramienta de amenaza,Patrimonial,4
+Control de dónde y cómo vivir,Patrimonial,4
+Obligar a firmar documentos,Patrimonial,4
+Amenazas de perder todo,Patrimonial,4
+Violación,Sexual,4
+Violencia sexual extrema,Sexual,4
+Forzar prácticas peligrosas,Sexual,4
+Control total de la sexualidad,Sexual,4
+Utilizar el sexo como arma de poder,Sexual,4
+Amenazas de dañar sexualmente,Sexual,4
+Coacción con violencia física,Sexual,4
+Control de anticonceptivos forzados,Sexual,4
+Forzar relaciones sexuales no deseadas,Sexual,4
+Amenazas de dañar a otros con actos sexuales,Sexual,4
+Trata de personas,Sexual,5
+Homicidio,Homicidio,5
+Intento de homicidio,Homicidio,5
+Violencia ritual,Psicoemocional,5
+Tráfico de órganos,Patrimonial,5
+Asesinato por honor,Homicidio,5
+Violación en grupo,Sexual,5
+Suicidio forzado,Psicoemocional,5
+Descuartizamiento,Homicidio,5
+Asesinato en público,Homicidio,5
+Sacrificio humano,Psicoemocional,5
+Canibalismo,Homicidio,5
+Violación en cadena,Sexual,5
+Lapidación,Psicoemocional,5
+Descuartizamiento,Homicidio,5
+Enterramiento vivo,Psicoemocional,5
+Fuego,Homicidio,5
+Violación ritual,Sexual,5
+Decapitación,Homicidio,5
+Inmolación,Psicoemocional,5
+Ahogamiento,Homicidio,5
+Caza de brujas,Psicoemocional,5
+Fusilamiento,Homicidio,5
+Quemadura ácida,Psicoemocional,5
+Descuartizamiento,Homicidio,5
+Lanzamiento desde altura,Homicidio,5
+Empalamiento,Psicoemocional,5
+Tortura medieval,Homicidio,5
+Castración,Psicoemocional,5
+Mutilación genital,Homicidio,5
+Envenenamiento,Psicoemocional,5
+Hacer volar,Homicidio,5
+Ataque con ácido,Psicoemocional,5
+Quemado vivo,Homicidio,5
+Uso de vehículo como arma,Psicoemocional,5
+Masacre,Homicidio,5
+Tortura medieval,Psicoemocional,5
+Inseguridades,Psicoemocional,1
+Críticas constantes,Psicoemocional,1
+"Burlas ""inofensivas""",Psicoemocional,1
+Chismes y difamación,Psicoemocional,1
+Intimidación sutil,Psicoemocional,1
+Ridiculización en público,Psicoemocional,1
+Desvalorización de opiniones,Psicoemocional,1
+Desatención de necesidades emocionales,Psicoemocional,1
+Descalificaciones ocasionales,Psicoemocional,1
+Celos excesivos,Psicoemocional,1
+Sentimientos de inferioridad,Psicoemocional,1
+Gastos no justificados,Económica,1
+Ocultamiento de ingresos,Económica,1
+Control de pequeñas compras,Económica,1
+Restricción en la compra de ropa,Económica,1
+Uso excesivo de tarjetas de crédito,Económica,1
+Desempleo controlado,Económica,1
+Negativa a contribuir en gastos comunes,Económica,1
+Gastar en exceso en actividades propias,Económica,1
+Negar acceso a fondos compartidos,Económica,1
+Empujones ligeros,Física,1
+Agarrones de muñeca,Física,1
+Tirar objetos,Física,1
+Bloquear puertas,Física,1
+Paredes encerrando,Física,1
+Restringir movimiento,Física,1
+Desorden intencional,Física,1
+Ruptura de objetos simbólicos,Física,1
+Uso de gestos agresivos,Física,1
+Agresiones en momentos de ira,Física,1
+Negativa a pagar deudas compartidas,Patrimonial,1
+Control de bienes comunes,Patrimonial,1
+Impedir el uso de coche familiar,Patrimonial,1
+Restringir acceso a cuentas bancarias,Patrimonial,1
+Vender bienes compartidos sin consentimiento,Patrimonial,1
+Amenazar con destruir posesiones,Patrimonial,1
+Negarse a contribuir a la hipoteca,Patrimonial,1
+Controlar acceso a documentos importantes,Patrimonial,1
+Restringir el uso de la vivienda,Patrimonial,1
+No permitir adquisición de bienes personales,Patrimonial,1
+Comentarios inapropiados,Sexual,1
+No respetar los límites en el sexo,Sexual,1
+Forzar caricias no deseadas,Sexual,1
+Ignorar el consentimiento,Sexual,1
+Burlarse de preferencias sexuales,Sexual,1
+Utilizar el sexo como arma emocional,Sexual,1
+Presionar para realizar actos no deseados,Sexual,1
+Amenazar con infidelidad,Sexual,1
+Hacer sentir culpable por no querer sexo,Sexual,1
+Insultos,Psicoemocional,2
+Culpar,Psicoemocional,2
+Impedir trabajo,Económica,2
+Empujar,Física,2
+Impedir estudios,Económica,2
+Presión sexual,Sexual,2
+Forzar aborto,Derechos Reproductivos,2
+Burla,Violencia simbólica,2
+Infringir la ley,Patrimonial,2
+Ignorar opiniones,Psicoemocional,2
+Acusaciones falsas,Psicoemocional,2
+Control de apariencia,Psicoemocional,2
+Restricción médica,Patrimonial,2
+Obligar intimidad,Sexual,2
+Despojo de bienes,Patrimonial,2
+Pornografía forzada,Sexual,2
+Control de redes sociales,Violencia simbólica,2
+Aislamiento familiar,Psicoemocional,2
+Desprecio público,Psicoemocional,2
+Control de dietas,Psicoemocional,2
+Control de embarazo,Derechos Reproductivos,2
+Celular escondido,Violencia simbólica,2
+Descalificar logros,Psicoemocional,2
+Restricción social,Psicoemocional,2
+Amenazas de daño,Psicoemocional,2
+Boicot laboral,Económica,2
+Patrimonio usado,Patrimonial,2
+Sobornos,Económica,2
+Ofensas verbales,Psicoemocional,2
+Desvalorización,Psicoemocional,2
+Desvío de ingresos,Económica,2
+Empeoramiento de salud por estrés,Psicoemocional,2
+Intimidación psicológica,Psicoemocional,2
+Restricción de comunicación,Psicoemocional,2
+Monitoreo constante,Psicoemocional,2
+Amenazas de revelar secretos,Psicoemocional,2
+Amenazas de abandono,Psicoemocional,2
+Control de amigos,Psicoemocional,2
+Rechazo sexual,Psicoemocional,2
+Amenazas a familiares,Psicoemocional,2
+Limitación de movimientos,Patrimonial,2
+Exhibicionismo,Sexual,2
+Espionaje,Violencia simbólica,2
+Humillaciones públicas,Psicoemocional,2
+Descalificación laboral,Económica,2
+Monitoreo en línea,Violencia simbólica,2
+Exclusión social,Psicoemocional,2
+Ignorar emociones,Psicoemocional,2
+Control de actividades,Psicoemocional,2
+Negación de responsabilidades,Psicoemocional,2
+Aislamiento emocional,Psicoemocional,2
+Control de horarios,Psicoemocional,2
+Manipulación emocional,Psicoemocional,2
+Desvalorización de logros,Psicoemocional,2
+Amenazas de desheredar,Patrimonial,2

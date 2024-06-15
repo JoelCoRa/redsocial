@@ -13,10 +13,8 @@
 <div class="menuRecursos">
     <p>{{mensaje}}</p>
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle class="opcion" value="videos" [routerLink]="'/recursos'" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Videos</mat-button-toggle>
-        <mat-button-toggle class="opcion" value="articulos" [routerLink]="'/recursos/articulos'" routerLinkActive="selected">Contactos</mat-button-toggle>
-        <mat-button-toggle class="opcion" value="organizaciones" [routerLink]="'/recursos/organizaciones'" routerLinkActive="selected">Organizaciones </mat-button-toggle>
+        <mat-button-toggle class="opcion" value="videos" [routerLink]="'/recursos'" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}">Multimedia</mat-button-toggle>
+        <mat-button-toggle class="opcion" value="articulos" [routerLink]="'/recursos/articulos'" routerLinkActive="selected">Contactos de emergencia</mat-button-toggle>
         <mat-button-toggle class="opcion" value="aplicaciones" [routerLink]="'/recursos/aplicaciones'" routerLinkActive="selected">Aplicaciones</mat-button-toggle>
-        <mat-button-toggle class="opcion" value="legal" [routerLink]="'/recursos/legal'" routerLinkActive="selected">Info Legal</mat-button-toggle>
     </mat-button-toggle-group>
 </div>

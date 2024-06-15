@@ -18,13 +18,11 @@
                     <select [(ngModel)]="opcionSeleccionada">
                         <option value="" disabled>--Selecciona--</option>
                         <option value="Reportes" selected>Reportes</option>
-                        <option value="Solicitudes">Contactos Inside</option>
-                        <option value="Contactos">Contactos Outside</option>
+                        <option value="Solicitudes">Contactos</option>
                     </select>
                     <div class="contTablaIncidencias" [ngSwitch]="opcionSeleccionada">
                         <app-reportes *ngSwitchCase="'Reportes'"></app-reportes>
                         <app-solicitudes *ngSwitchCase="'Solicitudes'"></app-solicitudes>
-                        <app-contacto *ngSwitchCase="'Contactos'"></app-contacto>
                     </div>
                 </div>
             </div>

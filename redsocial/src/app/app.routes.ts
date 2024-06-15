@@ -16,8 +16,8 @@ import { SeguidoresComponent } from './components/seguidores/seguidores.componen
 import { CrearforoComponent } from './components/compForos/crearforo/crearforo.component';
 import { ForoComponent } from './components/compForos/foro/foro.component';
 import { ArticulosComponent } from './components/compRecursos/articulos/articulos.component';
-import { OrganizacionesComponent } from './components/compRecursos/organizaciones/organizaciones.component';
-import { LegalComponent } from './components/compRecursos/legal/legal.component';
+import { OrganizacionesComponent } from './components/secciones/organizaciones/organizaciones.component';
+import { LegalComponent } from './components/secciones/legal/legal.component';
 import { PagcontactoComponent } from './components/compContacto/pagcontacto/pagcontacto.component';
 import { AvisoprivacidadComponent } from './components/avisoprivacidad/avisoprivacidad.component';
 import { PaneladminComponent } from './components/paneladmin/paneladmin.component';
@@ -55,9 +55,11 @@ export const routes: Routes = [
 
     {path: 'recursos', component: ResourcesComponent},
     {path: 'recursos/articulos', component: ArticulosComponent},
-    {path: 'recursos/organizaciones', component: OrganizacionesComponent},
     {path: 'recursos/aplicaciones', component: AplicacionesComponent},
-    {path: 'recursos/legal', component: LegalComponent}, 
+
+
+    {path: 'organizaciones', component: OrganizacionesComponent},
+    {path: 'legal', component: LegalComponent}, 
 
     {path: 'ajustes', component: SettingsComponent},
     

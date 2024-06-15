@@ -72,7 +72,7 @@ exports.getUserAjustes = getUserAjustes;
 // }
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { nombreUsuario, correo, password } = req.body;
+    const { correo, password } = req.body;
     try {
         // Buscar el usuario por id
         const user = yield user_model_1.User.findOne({ where: { id: id } });
@@ -88,7 +88,7 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         // Verificar si el nombre de usuario o el correo ya existen en otros usuarios
         const existingUser = yield user_model_1.User.findOne({
             where: {
-                [sequelize_1.Op.or]: [{ nombreUsuario }, { correo }],
+                [sequelize_1.Op.or]: [{ correo }],
                 id: { [sequelize_1.Op.ne]: id } // Asegurarse de que no sea el mismo usuario
             }
         });
@@ -99,7 +99,7 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             });
         }
         // Actualizar el nombre de usuario y el correo
-        yield user_model_1.User.update({ nombreUsuario, correo }, { where: { id } });
+        yield user_model_1.User.update({ correo }, { where: { id } });
         // Responder con éxito
         return res.json({
             success: true,

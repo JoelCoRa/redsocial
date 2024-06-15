@@ -19,14 +19,18 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FooterComponent, RouterModule, BtnRegresarComponent, FormsModule, TituloComponent, EnviarComponent, ReactiveFormsModule, MatError, CommonModule, HttpClientModule, SpinnerComponent, ReactiveFormsModule],
+  imports: [
+    FooterComponent, RouterModule, BtnRegresarComponent, FormsModule,
+    TituloComponent, EnviarComponent, ReactiveFormsModule, MatError,
+    CommonModule, HttpClientModule, SpinnerComponent, ReactiveFormsModule
+  ],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
+  styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
   isFormSubmitted = false;
-  opciones = ['Hombre', 'Mujer', 'Otro', 'Prefiero no responder'];
+  opciones = ['Hombre', 'Mujer', 'Prefiero no responder'];
   loading: boolean = false;
   nombre: string = '';
   apellido: string = '';
@@ -40,17 +44,24 @@ export class SignInComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   action: string = 'Cerrar';
 
-  constructor(private fb: FormBuilder, private user: UserService, private sb: MatSnackBar, private router: Router, private error: ErrorService, private dialog: MatDialog) {}
+  constructor(
+    private fb: FormBuilder,
+    private user: UserService,
+    private sb: MatSnackBar,
+    private router: Router,
+    private error: ErrorService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$'), Validators.maxLength(50)]],
+      apellido: ['', [Validators.required, Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$'), Validators.maxLength(50)]],
       fechaNacimiento: ['', Validators.required],
       sexo: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]],
-      nombreUsuario: ['', [Validators.required, Validators.minLength(8)]],
-      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
+      correo: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+      nombreUsuario: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9$%#&]+$')]],
+      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator, Validators.maxLength(50)]],
       confirmPassword: ['', Validators.required],
     }, {
       validator: this.mustMatch('password', 'confirmPassword')
@@ -68,7 +79,7 @@ export class SignInComponent implements OnInit {
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
     const isValid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar;
 
-    return isValid ? null : { 
+    return isValid ? null : {
       passwordInvalid: true,
       hasUpperCase: !hasUpperCase,
       hasLowerCase: !hasLowerCase,
@@ -94,6 +105,18 @@ export class SignInComponent implements OnInit {
     };
   }
 
+  onInputChange(event: any) {
+    const maxLength = 60;
+    if (event.target.value.length === maxLength) {
+      this.sb.open(`Has alcanzado el límite de ${maxLength} caracteres`, this.action, {
+        duration: 3000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['notifAviso'],
+      });
+    }
+  }
+
   onSubmit(): void {
     this.isFormSubmitted = true;
     const user: User = this.signInForm.value;
@@ -113,7 +136,7 @@ export class SignInComponent implements OnInit {
         },
         error: (e: HttpErrorResponse) => {
           this.loading = false;
-          this.error.msgError(e)
+          this.error.msgError(e);
         },
         complete: () => console.info('complete')
       });
@@ -123,7 +146,7 @@ export class SignInComponent implements OnInit {
   }
 
   tosignInOrg() {
-    this.router.navigate(['/signinorg'])
+    this.router.navigate(['/signinorg']);
   }
 
   openDialog() {
@@ -142,10 +165,13 @@ export class SignInComponent implements OnInit {
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
 })
 export class DialogElementsExampleDialog {
-  opcion!: number
+  opcion!: number;
 
-  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
-    this.opcion = data.id
-    console.log(this.opcion)
+  constructor(
+    public dialogRef: MatDialogRef<DialogElementsExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number }
+  ) {
+    this.opcion = data.id;
+    console.log(this.opcion);
   }
 }

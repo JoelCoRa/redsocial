@@ -36,15 +36,25 @@ export class CrearpublicacionComponent {
 
   createPost(){
     const userId = Number(this.user2.getUserId());  
+    if(this.contenido === ''){
+      this.sb.open(`El contenido de la publicación no puede quedar vacío!`, 'Cerrar', {
+        duration: 5000,        
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['notifError'],  
+      });
+      return;
+    }
     const post2: postCreado = {
       contenido: this.contenido,
       userId: userId
     }
     // console.log(this.contenido)
     
+    
     this.posts.createPost(post2).subscribe({
       next: (v) => {  
-        this.sb.open(`Post creado con éxito!`, 'Cerrar', {
+        this.sb.open(`Publicación creada con éxito!`, 'Cerrar', {
           duration: 5000,        
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,

@@ -6,7 +6,7 @@ const router = Router();
 
 
 router.post('/', newUser);
-router.post('/login', loginUser);
+router.post('/login', validateToken,loginUser);
 
 // router.post('/regorg', newOrganizacion);
 // router.post('/loginorg', loginOrganizacion);

@@ -79,7 +79,7 @@ export const getUserAjustes = async(req:Request, res:Response) =>{
 
 export const updateUser = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { nombreUsuario, correo, password } = req.body;
+    const { correo, password } = req.body;
 
     try {
         // Buscar el usuario por id
@@ -99,7 +99,7 @@ export const updateUser = async (req: Request, res: Response) => {
         // Verificar si el nombre de usuario o el correo ya existen en otros usuarios
         const existingUser = await User.findOne({
             where: {
-                [Op.or]: [{ nombreUsuario }, { correo }],
+                [Op.or]: [{ correo }],
                 id: { [Op.ne]: id } // Asegurarse de que no sea el mismo usuario
             }
         });
@@ -113,7 +113,7 @@ export const updateUser = async (req: Request, res: Response) => {
 
         // Actualizar el nombre de usuario y el correo
         await User.update(
-            { nombreUsuario, correo },
+            { correo },
             { where: { id } }
         );
 

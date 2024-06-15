@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-
 <app-sidebar>
   <div class="contenedor">
+    <button class="contBtnUser" (click)="openDialog2()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
     <app-titulo-seccion [title]="'Perfil'"></app-titulo-seccion>  
     <div class="cuerpoPerfil">
       <app-headerperfil></app-headerperfil>      
@@ -17,8 +17,8 @@
             <div class="contenidoPrincipal">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image">
-                        <img *ngIf="base64Image === ''" src="../../../../assets/avatars/user.png" alt="imgPerfil" class="imgCircular">
-                        <img *ngIf="base64Image!== ''" [src]="this.base64Image" alt="imgPerfil" class="imgCircular">
+                        <img *ngIf="usuario.imgPerfil === null" src="../../../../assets/avatars/user.png" at="imgPerf" class="imgCircular">
+                        <img *ngIf="usuario.imgPerfil !== null" [src]="this.base64Image" alt="imgPerfil" class="imgCircular">
                     </div>
                     <mat-card-title>{{nombreUsuario}}</mat-card-title>
                   </mat-card-header>
@@ -26,8 +26,7 @@
                       <p>{{item.contenido}}</p> 
                       <p class="fechaPublicacion">{{item.fechaPublicacion | date: 'dd / MMM / yyyy'}}</p>               
                   </mat-card-content>
-            </div>
-            
+            </div>            
             <mat-card-actions class="acciones tooltip-container">   
               <span class="tooltip">Borrar publicación</span>             
                 <button class="accion delete" (click)="openDialog(item.id)" >
@@ -41,21 +40,12 @@
                   </svg>
                   <span style="visibility: hidden;"></span>
                 </button>
-                <!-- Button trigger modal -->
-
-             
-             
-
-
             </mat-card-actions>    
           </mat-card>
-        </div>
-        
-      </div>
-      
+        </div>        
+      </div>      
     </div>
   </div>
-
 </app-sidebar>
 
 

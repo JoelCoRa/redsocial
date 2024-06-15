@@ -135,6 +135,7 @@
 .contForo{
   background-color: var(--fondoTextArea);
   font-family: var(--fuentePrimaria);
+  margin-top: 3rem;
 }
 
 .spanElimEtiq:hover + .mensaje {
@@ -347,4 +348,12 @@
       pointer-events: auto;
       color: #fff;
   } 
+}
+.headerCuerpo .msgNormas{
+  font-family: var(--fuenteGenerica);
+  font-size: 0.7rem;
+  line-height: 1;
+  text-align: center;
+  color: #9098a9;
+  margin-left: 30rem;
 }

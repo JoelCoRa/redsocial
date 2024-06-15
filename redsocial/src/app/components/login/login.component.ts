@@ -60,7 +60,7 @@ export class LoginComponent {
       next: (token) => {
         localStorage.setItem('token', token);
         this.router.navigate(['/inicio']);
-        this.sb.open(`Bienvenido ${user.nombreUsuario}!`, 'Cerrar', {
+        this.sb.open(`Sesión iniciada como ${user.nombreUsuario}!`, 'Cerrar', {
           duration: 5000,        
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
@@ -94,7 +94,6 @@ export class LoginComponent {
   openDialog() {
     this.dialog.open(DialogElementsExampleDialog, {
       width: '800px',
-      data: { id: 1 } // Puedes pasar datos aquí si es necesario
     });
   }
 }
@@ -110,8 +109,7 @@ export class DialogElementsExampleDialog {
 
   opcion!: number
 
-  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>, @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
-    this.opcion = data.id
-    console.log(this.opcion)
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {
+    
   }
 }

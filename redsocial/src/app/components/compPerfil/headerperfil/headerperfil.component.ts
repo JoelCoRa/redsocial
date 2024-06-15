@@ -87,7 +87,7 @@ export class HeaderperfilComponent {
       // console.log(this.usuario.imgPerfil)
 
       // console.log(this.usuario)
-      this.idUsuario = '000'+ this.usuario.id.toString();
+      this.idUsuario = 'ID: '+ this.usuario.id.toString();
       this.nombreUsuario = this.usuario.nombreUsuario;     
       this.descripcionUsuario = this.usuario.descripcion; 
       this.imagenPerfil = this.usuario.imgPerfil;
@@ -117,7 +117,7 @@ export class HeaderperfilComponent {
   updateDescripcion(){
     const userId = Number(this.user.getUserId());
     if(this.descripcionUsuario === ''){
-      this.sb.open('El campo no puede quedar vacio', "Cerrar", {
+      this.sb.open('La descripción no puede quedar vacia!', "Cerrar", {
         duration: 5000,        
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,

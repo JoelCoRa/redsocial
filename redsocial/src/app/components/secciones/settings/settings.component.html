@@ -2,6 +2,7 @@
 
 <app-sidebar>
   <div class="contenedor">
+    <button class="contBtnUser" (click)="openDialog3()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
     <app-titulo-seccion [title]="'Ajustes'"></app-titulo-seccion>
     <p class="msgRecursos">En esta sección podrás modificar tus datos personales y preferencias</p>
 
@@ -37,12 +38,12 @@
             <mat-card-content class="cuerpoAjustes">
               <form [formGroup]="ajustesPasswordForm" (ngSubmit)="openDialogPassword()"> 
                 <div class="inputDG">
-                  <label for="password" class="labelDG">Nuevo Password</label>
-                  <input type="password" placeholder="Nuevo Password" name="text" class="input" [(ngModel)]="password" formControlName="password">
+                  <label for="password" class="labelDG">Nueva Contraseña</label>
+                  <input type="password" placeholder="Nueva Contraseña" name="text" class="input" [(ngModel)]="password" formControlName="password">
                 </div>
                 <div class="inputDG">
-                  <label for="confirmpassword"  class="labelDG">Confirma Password</label>
-                  <input type="password" placeholder="Repite el nuevo password" name="text" class="input" [(ngModel)]="confirmPassword" formControlName="confirmPassword">
+                  <label for="confirmpassword"  class="labelDG">Confirma contraseña</label>
+                  <input type="password" placeholder="Repite la nueva conraseña" name="text" class="input" [(ngModel)]="confirmPassword" formControlName="confirmPassword">
                 </div> 
                 <div class="contBtn">
                   <button class="btnGuardar">Guardar Contraseña</button>

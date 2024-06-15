@@ -21,7 +21,7 @@ import { UserService } from '../../services/user.service';
     imports: [MatButtonModule, RouterModule, MatFormFieldModule, MatSidenavModule, MensajeSidebarComponent, FooterComponent, EnviarComponent, ChatbotComponent, CommonModule, FooterinsideComponent]
 })
 export class SidebarComponent {
-  constructor (private router: Router, private renderer: Renderer2, private user:UserService){ }
+  constructor (private user:UserService){ }
   showFiller = false;
   isRotated: boolean = false;
   openDrawer : boolean = false;

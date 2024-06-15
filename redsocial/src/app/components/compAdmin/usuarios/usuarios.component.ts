@@ -28,7 +28,7 @@ export class UsuariosComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private user: UserService, private error: ErrorService, public dialog: MatDialog) {}
+  constructor(private user: UserService, private error: ErrorService, public dialog: MatDialog, private sb: MatSnackBar) {}
 
   ngAfterViewInit() {
     this.dataSource2.paginator = this.paginator;
@@ -47,7 +47,14 @@ export class UsuariosComponent implements AfterViewInit {
       this.dataSource2.paginator.firstPage();
     }
   }
-
+  msgYaEsAdmin(){
+    this.sb.open(`Este usuario ya es Admin!`, 'Cerrar', {
+      duration: 5000,        
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['notifError'],  
+    });
+  }
   getAllUsers() {
     const userId = Number(this.user.getUserId());
     this.user.getAllUsers(userId).subscribe(
@@ -98,7 +105,6 @@ export class DialogElementsExampleDialog{
   constructor(private sb: MatSnackBar,private router: Router, private user:UserService, private error: ErrorService, @Inject(MAT_DIALOG_DATA) public data: { id: number, nombre: string }){} 
 
   cancelar(){
-    window.location.reload();
   }
 
   deleteUser(){
@@ -141,11 +147,10 @@ export class DialogElementsUpdateAdmin{
   constructor(private sb: MatSnackBar,private router: Router, private user:UserService, private error: ErrorService, @Inject(MAT_DIALOG_DATA) public data: { id: number, nombre: string, tipoUsuario: boolean }){} 
 
   cancelar(){
-    window.location.reload();
   }
   updateAdmin(){
     const userId = this.data.id;
-    console.log("Se va a actualizar el user con el id", userId);
+    console.log("Se va a actualizar el usuario con el id", userId);
     const user: UserIsAdmin = {
       id: userId,
       tipoUsuario: !this.data.tipoUsuario
@@ -154,7 +159,7 @@ export class DialogElementsUpdateAdmin{
     console.log(userId)
     this.user.updateAdmin(userId, user).subscribe({
       next: (v) => {  
-        this.sb.open(`Usuario actualizado con éxito!`, 'Cerrar', {
+        this.sb.open(`Usuario promovido a administrador con éxito!`, 'Cerrar', {
           duration: 5000,        
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
@@ -175,7 +180,6 @@ export class DialogElementsUpdateAdmin{
   }
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-
 }
 
 
@@ -191,7 +195,6 @@ export class DialogElementsUpdateBlocked{
   constructor(private sb: MatSnackBar,private router: Router, private user:UserService, private error: ErrorService, @Inject(MAT_DIALOG_DATA) public data: { id: number, nombre: string, isBlocked: boolean }){} 
 
   cancelar(){
-    window.location.reload();
   }
   updateBlocked(){
     const userId = this.data.id;

@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <app-sidebar>
   <div class="contenedor">
-    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
-    <!-- <app-msg-recursos></app-msg-recursos>      -->
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+
+    <app-titulo-seccion [title]="'Información legal'"></app-titulo-seccion>
     <div class="cuerpoRecursos">
-      <app-menurecursos [mensaje]="'Aqui encontrarás algunas definiciones y leyes que pueden ser de tu interés.'"></app-menurecursos>
+      <span class="msgSeccion">Aqui encontrarás algunas definiciones y leyes que pueden ser de tu interés.</span>
       <div class="row">
         <div class="col-lg-6 col-sm-12 mt-2">
           <div class="accordion" id="accordionExample">

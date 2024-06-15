@@ -8,6 +8,9 @@ import { TituloSeccionComponent } from '../../titulo-seccion/titulo-seccion.comp
 import { MatCardModule } from '@angular/material/card';
 import { MsgRecursosComponent } from "../../compRecursos/msg-recursos/msg-recursos.component";
 import { MenurecursosComponent } from "../../compRecursos/menurecursos/menurecursos.component";
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-resources',
@@ -18,10 +21,24 @@ import { MenurecursosComponent } from "../../compRecursos/menurecursos/menurecur
 })
 export class ResourcesComponent {
 
+  constructor(private dialog: MatDialog){}
   width: number = 400;
   height: number = 215;
-
-
-
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+    });
+  }
 }
+@Component({
+  selector: 'dialogRecursos',
+  templateUrl: 'dialogRecursos.html',
+  styleUrls: ['./resources.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {}
+}
+
   

@@ -2,9 +2,8 @@
 
 <app-sidebar>
   <div class="contenedor">
-    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>
-    <!-- <app-msg-recursos></app-msg-recursos>  -->
-    
+    <button class="contBtnUser" (click)="openDialog()"><img src="../../../assets/help.png" alt="" class="btn-user-org"></button>
+    <app-titulo-seccion [title]="'Recursos'"></app-titulo-seccion>    
     <div class="cuerpoRecursos">
       <app-menurecursos [mensaje]="'Aqui encontrarás videos que pueden ser de tu interés.'"></app-menurecursos>
       <div class="contPrincipalRecursos">

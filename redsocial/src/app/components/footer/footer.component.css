@@ -87,6 +87,7 @@
     .tt{
         margin: 0 4rem;
         font-size: 1rem;
+        margin-left: 0;
     }
     .links{
         text-decoration: underline;
@@ -94,13 +95,15 @@
         margin: 1rem 0.5rem;
         line-height: 1.4rem;
         font-size: 0.8rem;
+        margin-top: 2rem;
     }
     .titulo2{
         margin-top: 1rem;
     }  
     .columna {
         margin: 0;
-    }  
+        margin-top: 1rem;
+    }   
 }
 
 

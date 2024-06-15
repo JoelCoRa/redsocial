@@ -1,22 +1,17 @@
-/* .cont-chatbot{
-    display: none;
-} */
+
 .cont-chatbot{
     position: fixed;
-    top: 2rem;
-    /* right: 1rem; */
-    /* top: 5%; */
-    right: 20%;
+    top: 15%;
+    right: 25%;
     width: 20rem;    
-    height: 35rem;
+    height: 40rem;
     background-color: #1b4584;
     border: 3px solid #fff;
     padding: 1rem;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     justify-content: center;
     align-items: center;   
-    /* margin: 0 1rem; */
     z-index: 100;
  }
 .msgChatbot{
@@ -47,23 +42,33 @@
 }
 .btnOcultar{
     position: absolute;
-    margin: 1rem;
+    margin: 0.5rem 1rem;
     top: 0;
     right: 0;
     border: none;
     background: none
 }
-.contenedorChat{
+.contSecundario{
+    padding: 0.5rem;
+    background-color: #b9d5e2;
+    height: 27rem;
+    width: 95%;
+    margin: 0 auto;
+    overflow-y: auto; 
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f4f4f4;
+}
+
+.contenedorChat {
     background-color: rgb(235, 236, 237);
-    /* position: absolute;
-    top: 0;
-    left: 0; */
     border: 2px solid #000;
     border-radius: 3px;
-    height: 65%;
-    width: 80%;
-    /* margin: 1rem auto; */
-    margin: 3.2rem 2rem 1rem 2rem;
+    height: 90%; 
+    width: 90%; 
+    position: absolute;
+    top: 9%;
+    left: 6%;
+    max-height: 700px;
 }
 .formChat{
     width: 100%;
@@ -74,8 +79,8 @@
 }
 .inputChat{   
     width: 80%; 
-    height: 3rem; /* Altura mínima del textarea */
-    max-height: 10rem; /* Altura máxima del textarea */
+    height: 3rem; 
+    max-height: 10rem;
     overflow-y: auto;
     resize: none;
     padding: 0.3rem;
@@ -87,7 +92,7 @@
     justify-content: center;
     align-items: center;
     margin: 1.5rem auto;
-    /* border: 1px solid #000; */
+    
 }
 .btnChat{
     border: none;
@@ -114,7 +119,28 @@
     border: none;
     background: none;
 }
-@media(min-width: 900px){
+.contInput{
+    width: 80%;
+    margin: 1rem;
+    display: inline;
+}
+.contInput input{
+    padding: 0.3rem;
+    font-family: var(--fuentePrimaria);
+    height: 2rem;
+    width: 9rem;
+    margin: 0 auto;
+}
+.contInput button{
+    padding: 0.3rem;
+    background-color: rgb(20, 74, 132);
+    border-radius: 8px;
+    color: #cbd5e4;
+    border: none;
+    font-family: var(--fuenteGenerica);
+    margin: 0.5rem;  
+}
+@media(min-width: 1000px){
     .cont-chatbot{
         position: fixed;
         top: 0;
@@ -134,21 +160,80 @@
         transform: scale(110%);
         transition: 0.5s ease-in all;
     }
+    .contSecundario{
+        padding: 0.5rem;
+        background-color: #b9d5e2;
+        height: 30rem;
+        overflow-y: scroll;
+    }
     .contenedorChat{
         border-radius: 3px;
-        height: 65%;
-        width: 80%;
-        margin: 3.2rem 2rem 1rem 2rem;
+        height: 75%;
+        width: 90%;
+        padding: 0.5rem;
     }
     .btnCerrarChat{
         display: none;
-    }
-    
-     
+    }     
     .btnChat:hover{
         transform: scale(105%);
         transition: 0.5 ease-out all;
     }
+    .contInput{
+        width: 90%;
+        margin: 1rem;
+        display: inline;
+    }
+    .contInput input{
+        padding: 0.3rem;
+        font-family: var(--fuentePrimaria);
+        height: 3rem;
+        width: 11rem;
+        margin-top: 1rem;
+    }
+    .contInput button{
+        padding: 0.5rem;
+        background-color: rgb(20, 74, 132);
+        border-radius: 8px;
+        color: #cbd5e4;
+        border: none;
+        font-family: var(--fuenteGenerica);
+        margin: 0.5rem;
+        margin-right: 0;
+    }
 }
-
-
+.msg{
+    padding: 0.3rem;
+    background-color: #1b4584;
+    color: #fff;
+    font-family: var(--fuentePrimaria);
+}
+.msgCb{
+    padding: 0.3rem;
+    background-color: #cbd5e4;
+    color: #161616;
+    font-family: var(--fuentePrimaria);
+}
+.contenedorChat p{
+    font-family: var(--fuentePrimaria);
+    text-align: start;
+    font-size: 1rem;
+}
+.contenedorChat .titulo{
+    text-align: center;
+}
+.sugerenciasSaludo button{
+    border: none;
+    background-color: #dee1e2;
+    padding: 0.3rem;
+    font-family: var(--fuenteGenerica);
+    border-radius: 5px;
+    margin: 0.2rem;
+}
+.sugerenciasSaludo{
+    text-align: center;
+}
+.msgInstruccion{
+    color: #888;
+    text-align: center;
+}

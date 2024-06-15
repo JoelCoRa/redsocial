@@ -38,9 +38,9 @@ export class CrearforoComponent {
     constructor(private user: UserService, private sb: MatSnackBar, private error: ErrorService, private foro: ForosService, private router: Router){
         console.log(this.etiquetaIngresada)
         this.crearForoForm = new FormGroup({
-            titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(30)]),
-            etiquetaIngresada: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-            contenido: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]),
+            titulo: new FormControl('', [Validators.required, Validators.minLength(2),Validators.maxLength(30), Validators.pattern('^[A-Za-z]+$')]),
+            etiquetaIngresada: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern('^[A-Za-z]+$')]),
+            contenido: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
             anonimo: new FormControl('false')
             
         })
@@ -50,34 +50,16 @@ export class CrearforoComponent {
         console.log(this.crearForoForm.value);
     }
 
-
-
-
-
-    // manejarKeyPress(event: KeyboardEvent): void {
-    //     if (event.key == 'Enter' && this.etiquetas.length < 1 && this.etiquetaIngresada.trim() !== '') {
-
-    //         if (this.etiquetaIngresada.trim() !== '' && this.contador < 1) {
-    //             this.etiquetas.push(this.etiquetaIngresada);
-    //             console.log(this.etiquetas)
-
-    //             this.etiquetaIngresada = ''; // Limpiar el campo de entrada
-    //             this.contador++;                
-    //           }
-    //           console.log(this.etiquetaIngresada)
-              
-    //     }
-    // }
-
-    // quitarEtiqueta(index: number): void{
-    //     this.etiquetas.splice(index, 1);
-    //     this.contador--;
-    // }
-    // deshabilitado(): boolean{
-    //     return this.contador === 1;
-    // }
-
     crearForo(){
+        if(this.titulo === '' || this.etiquetaIngresada === '' || this.contenido === ''){
+            this.sb.open(`Los campos no pueden quedar vacíos!`, 'Cerrar', {
+                duration: 5000,        
+                horizontalPosition: this.horizontalPosition,
+                verticalPosition: this.verticalPosition,
+                panelClass: ['notifError'],  
+            });
+            return;
+        }
         const userId = Number(this.user.getUserId());  
         const foro: CrearForo = {
             titulo: this.titulo,
@@ -106,11 +88,4 @@ export class CrearforoComponent {
     }
     horizontalPosition: MatSnackBarHorizontalPosition = 'right';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
-
-
-
-
-
-
-
 }

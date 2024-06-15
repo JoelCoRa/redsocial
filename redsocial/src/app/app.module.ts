@@ -7,11 +7,16 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { ChatbotComponent } from "./components/chatbot/chatbot.component";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { AppComponent } from "./app.component";
 // import { addTokenInterceptor } from "./utils/add-token.interceptor";
 
 
 @NgModule({
+    declarations: [
+        
+    ],
     imports:[
         BrowserModule,
         FormsModule,
@@ -19,11 +24,12 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
         ReactiveFormsModule,
         CommonModule,
         MatSnackBarModule,
+        HttpClientModule,
     ],
     providers:[
         // { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
     ],
-    bootstrap:[]
+    bootstrap:[ ]
 
 })
 

@@ -15,6 +15,9 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { ForosService } from '../../../services/foros.service';
 import { CommonModule } from '@angular/common';
 import { MensajevacioComponent } from '../../mensajevacio/mensajevacio.component';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSort } from '@angular/material/sort';
 
 
 export interface ForoResultado {
@@ -45,7 +48,8 @@ export interface ForoResultado {
     FormsModule,
     CommonModule,
     MensajevacioComponent,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ]
 })
 export class ForumComponent implements OnInit, AfterViewInit {
@@ -58,13 +62,15 @@ export class ForumComponent implements OnInit, AfterViewInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private user: UserService,
     private sb: MatSnackBar,
     private foro: ForosService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -73,9 +79,19 @@ export class ForumComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource2.paginator = this.paginator;
+    this.dataSource2.sort = this.sort;
   }
 
   search() {
+    if(this.query === ''){
+      this.sb.open(`Porfavor ingresa datos en la barra de búsqueda!`, 'Cerrar', {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['notifError'],
+      });
+      return;
+    }
     if (this.query.length < 4) {
       this.sb.open(`Por favor ingresa más caracteres`, 'Cerrar', {
         duration: 5000,
@@ -142,4 +158,19 @@ export class ForumComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+    });
+  }
+}
+@Component({
+  selector: 'dialogForos',
+  templateUrl: 'dialogForos.html',
+  styleUrls: ['./forum.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {}
 }

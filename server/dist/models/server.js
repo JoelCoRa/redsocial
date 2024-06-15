@@ -76,7 +76,7 @@ class Server {
                 yield reporte_model_1.Reporte.sync();
                 yield seguidosseguidores_model_1.SeguidoSeguidor.sync();
                 yield replicaforo_model_1.ReplicaForo.sync();
-                yield contacto_model_1.Contacto.sync({ alter: true });
+                yield contacto_model_1.Contacto.sync();
                 yield contactoportal_model_1.ContactoGeneral.sync();
                 yield apoyo_model_1.Apoyo.sync();
                 yield likes_model_1.Like.sync();

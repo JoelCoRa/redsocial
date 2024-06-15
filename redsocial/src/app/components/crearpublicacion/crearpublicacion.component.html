@@ -1,4 +1,5 @@
 <mat-card class="cuerpoCrearPublicacion">
+    <span class="msgNormas">Asegurate de cumplir con las Normas de publicación</span>
     <div class="tooltip-container">
         <span class="tooltip">Normas</span>
         <button class="normas" [routerLink]="['/normas']">
@@ -9,10 +10,10 @@
         </button>
     </div>
     
-    <p class="creaprimerpublicacion">Crea una publicación</p>
+    <p class="creaprimerpublicacion">Crea una publicación <span>(máx 200 caracteres)</span></p>
     
     <form class="contenedorCrear" [formGroup]="crearPost">    
-        <textarea middleCursor rows="4" class="mi-textarea" placeholder="Escribe algo" formControlName="contenido" [(ngModel)]="contenido"></textarea>
+        <textarea middleCursor rows="4" class="mi-textarea" placeholder="Escribe algo" formControlName="contenido" maxlength="200" [(ngModel)]="contenido"></textarea>
         <button class="btnCrear" (click)="createPost()">Crear Publicación</button>
     </form>
 </mat-card>

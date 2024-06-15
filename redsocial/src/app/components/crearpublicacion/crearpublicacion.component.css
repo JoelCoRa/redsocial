@@ -82,9 +82,8 @@
     
     .tooltip{
         display: block;
-        position: absolute;
-        
-        transform: translate(400%, -120%);
+        position: absolute;        
+        transform: translate(383%, -120%);
         top: 10%; /* Initially hidden above the container */
         left: 16%;
         padding: 0.6em 1em;
@@ -128,3 +127,15 @@
     }   
 
 }
+.msgNormas{
+    font-family: var(--fuenteGenerica);
+    font-size: 0.7rem;
+    line-height: 1;
+    text-align: center;
+    color: #9098a9;
+    margin-left: 30rem;
+  }
+  .creaprimerpublicacion span{
+    font-size: 0.8rem;
+    color: #979696;
+  }

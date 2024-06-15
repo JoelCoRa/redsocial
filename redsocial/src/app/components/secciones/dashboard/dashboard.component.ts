@@ -20,13 +20,14 @@ import { Liked, PostSeg } from '../../../interfaces/post';
 import { HttpErrorResponse } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [NavbarComponent, FooterComponent, RouterModule, MensajeSidebarComponent, MatButtonModule, MatFormFieldModule, MatSelectModule, MatSidenavModule, SidebarComponent, MatCardModule, TituloSeccionComponent, ChatbotComponent, CommonModule, MensajevacioComponent, MatTooltipModule],
+  imports: [NavbarComponent, FooterComponent, RouterModule, MensajeSidebarComponent, MatButtonModule, MatFormFieldModule, MatSelectModule, MatSidenavModule, SidebarComponent, MatCardModule, TituloSeccionComponent, ChatbotComponent, CommonModule, MensajevacioComponent, MatTooltipModule, MatDialogModule],
   providers: [DatePipe]
 })
 export class DashboardComponent{
@@ -39,15 +40,42 @@ export class DashboardComponent{
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+  frases: string[] = [
+    "Aquí no estás solo.",
+    "Aquí encontrarás apoyo y comprensión.",
+    "Únete a nuestra comunidad segura y solidaria.",
+    "Estamos aquí para apoyarte.",
+    "Bienvenido, juntos somos más fuertes.",
+    "Encuentra apoyo y esperanza aquí.",
+    "Aquí encontrarás comprensión y apoyo.",
+    "Estamos contigo.",
+    "Juntos superamos cualquier obstáculo.",
+    "Este es tu refugio.",
+    "No estás solo, este es un espacio de esperanza.",
+    "Aquí tu voz importa.",
+    "Aquí estamos para apoyarte siempre.",
+    "Encuentra fuerza en la comunidad.",
+    "Estamos aquí para escuchar y ayudar."
+  ];
+  fraseAleatoria!: string;
+
+
   constructor(
     private userService: UserService,
     private postsService: PostsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.getUser();
     this.getPostSeg();
+    this.seleccionarFraseAleatoria();
+
+  }
+  seleccionarFraseAleatoria() {
+    const indice = Math.floor(Math.random() * this.frases.length);
+    this.fraseAleatoria = this.frases[indice];
   }
 
   getUserId(): string | null {
@@ -146,4 +174,20 @@ export class DashboardComponent{
       // console.log(this.likesMap);
     });
   }
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+    });
+  }
+}
+
+@Component({
+  selector: 'dialogInicio',
+  templateUrl: 'dialogInicio.html',
+  styleUrls: ['./dashboard.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {}
 }

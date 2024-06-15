@@ -2,13 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { SidebarComponent } from "../../sidebar/sidebar.component";
 import { TituloSeccionComponent } from "../../titulo-seccion/titulo-seccion.component";
-import { MsgRecursosComponent } from "../msg-recursos/msg-recursos.component";
-import { MenurecursosComponent } from "../menurecursos/menurecursos.component";
+import { MsgRecursosComponent } from "../../compRecursos/msg-recursos/msg-recursos.component";
+import { MenurecursosComponent } from "../../compRecursos/menurecursos/menurecursos.component";
 import { FooterComponent } from "../../footer/footer.component";
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-legal',
@@ -19,6 +21,8 @@ import { CommonModule } from '@angular/common';
 })
 export class LegalComponent {
   link: string = 'Saber más';
+  constructor(private dialog: MatDialog){}
+
 
 
   definiciones = [
@@ -43,6 +47,21 @@ export class LegalComponent {
     {nombreLey: 'Ley Olimpia',descLey: 'Conjunto de reformas legislativas que se han adoptado en diversos estados de México para penalizar la violencia digital y el ciberacoso, incluyendo la difusión de contenido sexual sin consentimiento.', linkLey: 'http://ordenjuridico.gob.mx/violenciagenero/LEY%20OLIMPIA.pdf'},
     {nombreLey: 'Ley de Acceso de las Mujeres a una Vida Libre de Violencia de cada entidad federativa',descLey: 'Cada estado de México ha adaptado y promulgado su propia versión de esta ley, ajustada a su contexto local, para implementar las medidas de prevención y atención a la violencia contra las mujeres.', linkLey: 'https://congresocdmx.gob.mx/archivos/transparencia/LEY_DE_ACCESO_DE_LAS_MUJERES_A_UNA_VIDA_LIBRE_DE_VIOLENCIA_DEL_DISTRITO_FEDERAL.pdf'},
   ]
+  openDialog() {
+    this.dialog.open(DialogElementsExampleDialog, {
+      width: '800px',
+    });
+  }
+}
 
+@Component({
+  selector: 'dialogLegal',
+  templateUrl: 'dialogLegal.html',
+  styleUrls: ['./legal.component.css'],
+  standalone: true,
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule, CommonModule],
+})
+export class DialogElementsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogElementsExampleDialog>) {}
 }
 

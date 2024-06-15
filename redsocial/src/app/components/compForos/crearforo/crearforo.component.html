@@ -1,63 +1,74 @@
 <app-navbar></app-navbar>
 <app-sidebar>
-  <div class="contenedor">
-    <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
-    <div class="contRegresar">
-      <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
-    </div>    
-    <div class="cuerpoForo">
-      <form [formGroup]="crearForoForm" (ngSubmit)="crearForo()">
-        <mat-card class="example-card">
-            <mat-card-header class="headerCuerpo">
-              <div class="tooltip-container">
-                <span class="tooltip">Normas</span>
-                <button class="normas" [routerLink]="['/normas']">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm.01 13l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -8a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor" />
-                      </svg>
-                </button>
-            </div>
-              <mat-card-title class="tituloCrearForo">Crea un Foro</mat-card-title>
-              <div class="inputs">
-                <div class="inputGroup">
-                  <div class="datosForo">
-                    <input type="text" required="" autocomplete="off" formControlName="titulo" [(ngModel)]="titulo">
-                    <label for="tituloforo">Título del Foro</label>
-                    <span class="instruccion">Ingresa un título para el foro</span>
-                  </div>                  
+    <div class="contenedor">
+        <app-titulo-seccion [title]="'Foros'"></app-titulo-seccion>
+        <div class="contRegresar">
+            <app-btnregresarportal routerLink="/foros"></app-btnregresarportal>
+        </div>
+        <div class="cuerpoForo">
+            <form [formGroup]="crearForoForm" (ngSubmit)="crearForo()">
+                <mat-card class="example-card">
+                    <mat-card-header class="headerCuerpo">
+                        <span class="msgNormas">Asegúrate de cumplir con las Normas de publicación</span>
+                        <div class="tooltip-container">
+                            <span class="tooltip">Normas</span>
+                            <button class="normas" [routerLink]="['/normas']">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-circle-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1 -19.995 .324l-.005 -.324l.004 -.28c.148 -5.393 4.566 -9.72 9.996 -9.72zm.01 13l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -8a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                        <mat-card-title class="tituloCrearForo">Crea un Foro</mat-card-title>
+                        <div class="inputs">
+                            <div class="inputGroup">
+                                <div class="datosForo">
+                                    <input type="text" required autocomplete="off" formControlName="titulo" maxlength="30">
+                                    <label for="tituloforo">Título del Foro</label>
+                                    <span class="instruccion">Ingresa un título para el foro</span>
+                                    <div class="text-danger" *ngIf="crearForoForm.get('titulo')?.invalid && (crearForoForm.get('titulo')?.dirty || crearForoForm.get('titulo')?.touched)">
+                                        <div class="error-message" *ngIf="crearForoForm.get('titulo')?.hasError('maxlength')">El título debe tener máximo 30 caracteres.</div>
+                                        <div class="error-message" *ngIf="crearForoForm.get('titulo')?.hasError('pattern')">El título solo puede contener letras.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputGroup">
+                                <div class="datosforo">
+                                    <input type="text" id="etiq" required autocomplete="off" formControlName="etiquetaIngresada" maxlength="20">
+                                    <label for="etiquetas">Etiqueta</label>
+                                    <span class="instruccion">Ingresa una etiqueta para el foro</span>
+                                    <div class="text-danger" *ngIf="crearForoForm.get('etiquetaIngresada')?.invalid && (crearForoForm.get('etiquetaIngresada')?.dirty || crearForoForm.get('etiquetaIngresada')?.touched)">
+                                        <div  *ngIf="crearForoForm.get('etiquetaIngresada')?.hasError('maxlength')">La etiqueta debe tener máximo 20 caracteres.</div>
+                                        <div  *ngIf="crearForoForm.get('etiquetaIngresada')?.hasError('pattern')">La etiqueta solo puede contener letras.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <textarea placeholder="Ingresa el contenido del foro" class="contForo" formControlName="contenido" maxlength="255"></textarea>
+                        <div class="text-danger" *ngIf="crearForoForm.get('contenido')?.invalid && (crearForoForm.get('contenido')?.dirty || crearForoForm.get('contenido')?.touched)">
+                            <div class="error-message" *ngIf="crearForoForm.get('contenido')?.hasError('maxlength')">El contenido debe tener máximo 255 caracteres.</div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="checkbox-wrapper-46">
+                            <input type="checkbox" id="cbx-46" class="inp-cbx" formControlName="anonimo">
+                            <label for="cbx-46" class="cbx">
+                                <span>
+                                    <svg viewBox="0 0 12 10" height="10px" width="12px">
+                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="anonimo">Publicar como anónimo</span>
+                            </label>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+                <div class="botones">
+                    <button class="btnPublicar" type="submit">Publicar</button>
                 </div>
-                <div class="inputGroup">
-                  <div class="datosforo">
-                    <input type="text" id="etiq" required="" autocomplete="off" [(ngModel)]="etiquetaIngresada" formControlName="etiquetaIngresada">
-                    <label for="etiquetas">Etiqueta</label>
-                    <span class="instruccion">Ingresa una etiqueta para el foro</span>
-                  </div>                  
-                </div>               
-              </div>              
-            </mat-card-header>
-            <mat-card-content>
-                <textarea id="" placeholder="Ingresa el contenido del foro" class="contForo" formControlName="contenido" [(ngModel)]="contenido"></textarea>
-            </mat-card-content>
-            <mat-card-actions>
-                <div class="checkbox-wrapper-46">
-                    <input type="checkbox" id="cbx-46" class="inp-cbx" formControlName="anonimo" [(ngModel)]="anonimo"/>
-                    <label for="cbx-46" class="cbx"
-                      ><span>
-                        <svg viewBox="0 0 12 10" height="10px" width="12px">
-                          <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
-                      ><span class="anonimo">Publicar como anónimo</span>
-                    </label>
-                  </div>
-            </mat-card-actions>
-          </mat-card>  
-          <div class="botones">
-            <button class="btnPublicar" type="submit">Publicar</button>
-          </div>         
-        </form>  
+            </form>
+        </div>
     </div>
-  
-  </div>
 </app-sidebar>
-
-
